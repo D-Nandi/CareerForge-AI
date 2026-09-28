@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resumatic — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard-style.css" />
+</head>
+<body>
+
+  <div class="noise"></div>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+
+  <!-- HEADER -->
+  <header class="dash-header">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
+    </a>
+    <nav class="dash-nav">
+      <a href="dashboard.html" class="dash-nav-link active">Dashboard</a>
+    </nav>
+    <a href="form-index.html" class="btn-new">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      New Resume
+    </a>
+  </header>
+
+  <!-- MAIN -->
+  <main class="dash-main">
+
+    <!-- PAGE TITLE -->
+    <div class="dash-page-header">
+      <div>
+        <h1 class="dash-page-title">My Documents</h1>
+        <p class="dash-page-sub">All your resumes and cover letters in one place.</p>
+      </div>
+      <div class="dash-stats" id="dashStats">
+        <div class="stat-chip"><span id="statResumes">0</span> Resumes</div>
+        <div class="stat-chip"><span id="statCLs">0</span> Cover Letters</div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="dash-tabs">
+      <button class="tab-btn active" data-tab="resumes">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="1" width="10" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 4.5h5M4.5 7h5M4.5 9.5h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Resumes
+      </button>
+      <button class="tab-btn" data-tab="coverletters">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="3" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 5l5 3.5 5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Cover Letters
+      </button>
+    </div>
+
+    <!-- RESUMES TAB -->
+    <div class="tab-panel active" id="tabResumes">
+      <div class="doc-grid" id="resumeGrid">
+        <!-- Cards injected by JS -->
+      </div>
+      <div class="empty-state" id="resumeEmpty" style="display:none;">
+        <div class="empty-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="4" width="28" height="32" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M13 13h14M13 19h14M13 25h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="empty-title">No resumes yet</div>
+        <div class="empty-sub">Create your first resume to get started.</div>
+        <a href="form-index.html" class="btn-empty-action">Create Resume</a>
+      </div>
+    </div>
+
+    <!-- COVER LETTERS TAB -->
+    <div class="tab-panel" id="tabCoverLetters">
+      <div class="cl-list" id="clList">
+        <!-- Rows injected by JS -->
+      </div>
+      <div class="empty-state" id="clEmpty" style="display:none;">
+        <div class="empty-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 14l16 10 16-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="empty-title">No cover letters yet</div>
+        <div class="empty-sub">Generate a cover letter from the resume form.</div>
+        <a href="form-index.html" class="btn-empty-action">Create Resume</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- DELETE CONFIRM MODAL -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-card" id="modalCard">
+      <div class="modal-icon">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 8v5M11 15v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9.26 3.5a2 2 0 0 1 3.48 0l6.74 11.5A2 2 0 0 1 17.74 18H4.26a2 2 0 0 1-1.74-3L9.26 3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="modal-title">Delete Document</div>
+      <div class="modal-body" id="modalBody">Are you sure you want to delete this document? This cannot be undone.</div>
+      <div class="modal-actions">
+        <button class="btn-modal-cancel" id="btnModalCancel">Cancel</button>
+        <button class="btn-modal-confirm" id="btnModalConfirm">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="dashboard-script.js"></script>
+</body>
+</html>

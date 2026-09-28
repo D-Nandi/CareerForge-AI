@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resumatic — Live Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="preview-style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <!-- HEADER -->
+  <header class="preview-header">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
+    </a>
+    <div class="header-center">
+      <span class="live-dot"></span> Live Preview
+    </div>
+    <div class="header-actions">
+      <button class="btn-ghost" id="btnBack">← Edit</button>
+      <button class="btn-download" id="btnDownload">
+        <span class="btn-download-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="btn-download-label">Download PDF</span>
+        <span class="btn-download-spinner" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- TEMPLATE SWITCHER BAR -->
+  <div class="template-bar">
+    <div class="template-bar-label">Template</div>
+    <div class="template-switcher">
+      <button class="tpl-btn active" data-template="classic">
+        <span class="tpl-icon">
+          <span class="tpl-line tpl-line-wide"></span>
+          <span class="tpl-line tpl-line-mid"></span>
+          <span class="tpl-line tpl-line-short"></span>
+        </span>
+        <span class="tpl-name">Classic</span>
+      </button>
+      <button class="tpl-btn" data-template="modern">
+        <span class="tpl-icon tpl-icon-modern">
+          <span class="tpl-sidebar-preview"></span>
+          <span class="tpl-main-preview">
+            <span class="tpl-line tpl-line-mid"></span>
+            <span class="tpl-line tpl-line-short"></span>
+          </span>
+        </span>
+        <span class="tpl-name">Modern</span>
+      </button>
+      <button class="tpl-btn" data-template="minimal">
+        <span class="tpl-icon tpl-icon-minimal">
+          <span class="tpl-line tpl-line-thin tpl-line-wide"></span>
+          <span class="tpl-spacer"></span>
+          <span class="tpl-line tpl-line-thin tpl-line-mid"></span>
+          <span class="tpl-line tpl-line-thin tpl-line-short"></span>
+        </span>
+        <span class="tpl-name">Minimal</span>
+      </button>
+    </div>
+    <div class="tpl-indicator">
+      <span id="activeTemplateName">Classic</span>
+    </div>
+  </div>
+
+  <!-- SPLIT SCREEN -->
+  <div class="split-screen">
+
+    <!-- LEFT: FORM PANEL -->
+    <div class="panel panel-form" id="formPanel">
+      <div class="panel-label">YOUR DETAILS</div>
+
+      <!-- Personal -->
+      <div class="form-section">
+        <div class="fs-title">Personal Info</div>
+        <div class="form-row">
+          <div class="field-group">
+            <label>First Name</label>
+            <input type="text" id="p_firstName" placeholder="Alex" />
+          </div>
+          <div class="field-group">
+            <label>Last Name</label>
+            <input type="text" id="p_lastName" placeholder="Carter" />
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Professional Title</label>
+          <input type="text" id="p_title" placeholder="Senior Frontend Developer" />
+        </div>
+        <div class="form-row">
+          <div class="field-group">
+            <label>Email</label>
+            <input type="email" id="p_email" placeholder="alex@email.com" />
+          </div>
+          <div class="field-group">
+            <label>Phone</label>
+            <input type="text" id="p_phone" placeholder="+91 98765 43210" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field-group">
+            <label>Location</label>
+            <input type="text" id="p_location" placeholder="Kolkata, India" />
+          </div>
+          <div class="field-group">
+            <label>LinkedIn</label>
+            <input type="text" id="p_linkedin" placeholder="linkedin.com/in/alex" />
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Summary</label>
+          <textarea id="p_summary" rows="3" placeholder="A brief professional summary..."></textarea>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="form-section">
+        <div class="fs-title-row">
+          <div class="fs-title">Work Experience</div>
+          <button class="btn-add-sm" id="addExp">+ Add</button>
+        </div>
+        <div id="expFields"></div>
+      </div>
+
+      <!-- Education -->
+      <div class="form-section">
+        <div class="fs-title-row">
+          <div class="fs-title">Education</div>
+          <button class="btn-add-sm" id="addEdu">+ Add</button>
+        </div>
+        <div id="eduFields"></div>
+      </div>
+
+      <!-- Skills -->
+      <div class="form-section">
+        <div class="fs-title">Skills</div>
+        <div class="field-group">
+          <label>Technical Skills <span class="hint">(comma separated)</span></label>
+          <input type="text" id="p_techSkills" placeholder="React, Node.js, TypeScript, CSS" />
+        </div>
+        <div class="field-group">
+          <label>Soft Skills <span class="hint">(comma separated)</span></label>
+          <input type="text" id="p_softSkills" placeholder="Leadership, Communication" />
+        </div>
+        <div class="field-group">
+          <label>Languages <span class="hint">(comma separated)</span></label>
+          <input type="text" id="p_languages" placeholder="English, Bengali" />
+        </div>
+      </div>
+
+      <!-- Cover Letter -->
+      <div class="form-section">
+        <div class="fs-title">AI Cover Letter</div>
+
+        <div class="field-group">
+          <label>Target Role</label>
+          <input type="text" id="cl_targetRole" placeholder="e.g. Frontend Developer at Google" />
+        </div>
+
+        <div class="field-group">
+          <label>Job Description</label>
+          <textarea id="cl_jobDescription" rows="5" placeholder="Paste the job description here…"></textarea>
+        </div>
+
+        <div class="field-group">
+          <label>Tone</label>
+          <select id="cl_tone">
+            <option value="professional">Professional</option>
+            <option value="enthusiastic">Enthusiastic</option>
+            <option value="formal">Formal</option>
+            <option value="conversational">Conversational</option>
+          </select>
+        </div>
+
+        <button class="btn-generate-cl" id="btnGenerateCL">Generate Cover Letter</button>
+
+        <div class="cl-output-wrap">
+          <div class="cl-output placeholder" id="coverLetterOutput">Your generated cover letter will appear here…</div>
+          <button class="btn-copy-cl" id="btnCopyCL" style="display:none">Copy</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider" id="divider"></div>
+
+    <!-- RIGHT: RESUME PREVIEW -->
+    <div class="panel panel-preview" id="previewPanel">
+      <div class="panel-label">LIVE PREVIEW</div>
+
+      <!-- ═══════════════════════════════════════
+           TEMPLATE: CLASSIC
+      ═══════════════════════════════════════ -->
+      <div class="resume-sheet template-classic active-template" id="tpl-classic">
+
+        <div class="cl-header">
+          <div class="cl-name" id="cl_name">Your Name</div>
+          <div class="cl-title" id="cl_title">Professional Title</div>
+          <div class="cl-divider"></div>
+          <div class="cl-contact" id="cl_contact"></div>
+        </div>
+
+        <div class="cl-body">
+
+          <div class="cl-section" id="clSummarySection">
+            <div class="cl-section-title">Profile</div>
+            <p class="cl-summary" id="cl_summary">Your professional summary will appear here.</p>
+          </div>
+
+          <div class="cl-section">
+            <div class="cl-section-title">Experience</div>
+            <div id="cl_experience"></div>
+          </div>
+
+          <div class="cl-section">
+            <div class="cl-section-title">Education</div>
+            <div id="cl_education"></div>
+          </div>
+
+          <div class="cl-section">
+            <div class="cl-section-title">Skills</div>
+            <div class="cl-skills-row">
+              <div class="cl-skill-group">
+                <div class="cl-skill-label">Technical</div>
+                <div id="cl_techSkills" class="cl-skill-tags"></div>
+              </div>
+              <div class="cl-skill-group">
+                <div class="cl-skill-label">Soft Skills</div>
+                <div id="cl_softSkills" class="cl-skill-tags"></div>
+              </div>
+              <div class="cl-skill-group">
+                <div class="cl-skill-label">Languages</div>
+                <div id="cl_languages" class="cl-skill-tags"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           TEMPLATE: MODERN
+      ═══════════════════════════════════════ -->
+      <div class="resume-sheet template-modern" id="tpl-modern">
+
+        <div class="mo-sidebar">
+          <div class="mo-avatar-wrap">
+            <div class="mo-avatar">
+              <span id="mo_initials">?</span>
+            </div>
+          </div>
+          <div class="mo-name" id="mo_name">Your Name</div>
+          <div class="mo-title" id="mo_title">Professional Title</div>
+
+          <div class="mo-section">
+            <div class="mo-section-title">Contact</div>
+            <div id="mo_contact" class="mo-contact-list"></div>
+          </div>
+
+          <div class="mo-section">
+            <div class="mo-section-title">Technical</div>
+            <div id="mo_techSkills" class="mo-tags"></div>
+          </div>
+
+          <div class="mo-section">
+            <div class="mo-section-title">Soft Skills</div>
+            <div id="mo_softSkills" class="mo-tags"></div>
+          </div>
+
+          <div class="mo-section">
+            <div class="mo-section-title">Languages</div>
+            <div id="mo_languages" class="mo-tags"></div>
+          </div>
+        </div>
+
+        <div class="mo-main">
+          <div class="mo-main-header">
+            <div class="mo-main-name" id="mo_main_name">Your Name</div>
+            <div class="mo-main-title" id="mo_main_title">Professional Title</div>
+          </div>
+
+          <div class="mo-section-main">
+            <div class="mo-section-title-main">Profile</div>
+            <p class="mo-summary" id="mo_summary">Your professional summary will appear here.</p>
+          </div>
+
+          <div class="mo-section-main">
+            <div class="mo-section-title-main">Experience</div>
+            <div id="mo_experience"></div>
+          </div>
+
+          <div class="mo-section-main">
+            <div class="mo-section-title-main">Education</div>
+            <div id="mo_education"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           TEMPLATE: MINIMAL
+      ═══════════════════════════════════════ -->
+      <div class="resume-sheet template-minimal" id="tpl-minimal">
+
+        <div class="mn-header">
+          <div class="mn-name-block">
+            <div class="mn-name" id="mn_name">Your Name</div>
+            <div class="mn-title" id="mn_title">Professional Title</div>
+          </div>
+          <div class="mn-contact" id="mn_contact"></div>
+        </div>
+
+        <div class="mn-rule"></div>
+
+        <div class="mn-body">
+
+          <div class="mn-row">
+            <div class="mn-label">Profile</div>
+            <div class="mn-content">
+              <p class="mn-summary" id="mn_summary">Your professional summary will appear here.</p>
+            </div>
+          </div>
+
+          <div class="mn-row">
+            <div class="mn-label">Experience</div>
+            <div class="mn-content" id="mn_experience"></div>
+          </div>
+
+          <div class="mn-row">
+            <div class="mn-label">Education</div>
+            <div class="mn-content" id="mn_education"></div>
+          </div>
+
+          <div class="mn-row">
+            <div class="mn-label">Skills</div>
+            <div class="mn-content">
+              <div class="mn-skills-grid">
+                <div>
+                  <div class="mn-skill-cat">Technical</div>
+                  <div id="mn_techSkills" class="mn-tags"></div>
+                </div>
+                <div>
+                  <div class="mn-skill-cat">Soft Skills</div>
+                  <div id="mn_softSkills" class="mn-tags"></div>
+                </div>
+                <div>
+                  <div class="mn-skill-cat">Languages</div>
+                  <div id="mn_languages" class="mn-tags"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div><!-- end panel-preview -->
+
+  </div><!-- end split-screen -->
+
+  <!-- PDF EXPORT OVERLAY -->
+  <div class="pdf-overlay" id="pdfOverlay" aria-hidden="true">
+    <div class="pdf-overlay-card">
+      <div class="pdf-spinner"></div>
+      <div class="pdf-overlay-title">Generating PDF</div>
+      <div class="pdf-overlay-sub" id="pdfOverlaySub">Capturing resume…</div>
+      <div class="pdf-progress-track">
+        <div class="pdf-progress-fill" id="pdfProgressFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="preview-script.js"></script>
+</body>
+</html>

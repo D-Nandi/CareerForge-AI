@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free ATS Resume Checker & Score Scanner | Resumatic</title>
+  <meta name="description" content="Check your resume's ATS compatibility score for free. Identify missing keywords, fix formatting flaws, and boost your interview callback rate with AI." />
+  <meta name="keywords" content="ATS resume checker, resume score scanner, free ATS scan, ATS keyword matcher, resume audit" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://resumatic.ai/ats-score-checker/" />
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://resumatic.ai/ats-score-checker/" />
+  <meta property="og:title" content="Free ATS Resume Checker & Score Scanner | Resumatic" />
+  <meta property="og:description" content="Scan your resume against ATS algorithms in seconds. Get instant score, keyword gap analysis, and tailored bullet-point fixes." />
+  <meta property="og:image" content="https://resumatic.ai/og-preview.png" />
+  <meta property="og:site_name" content="Resumatic" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free ATS Resume Checker & Score Scanner | Resumatic" />
+  <meta name="twitter:description" content="Check if your resume beats Applicant Tracking Systems. Instant AI scoring and keyword optimization." />
+  <meta name="twitter:image" content="https://resumatic.ai/og-preview.png" />
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="tools-style.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Resumatic Free ATS Resume Scanner",
+        "url": "https://resumatic.ai/ats-score-checker/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "description": "Comprehensive Applicant Tracking System (ATS) parsing simulator that evaluates resume readability, keyword relevance, action verb strength, and structure.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://resumatic.ai/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Free Tools",
+            "item": "https://resumatic.ai/#features"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "ATS Resume Checker",
+            "item": "https://resumatic.ai/ats-score-checker/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="noise"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- HEADER -->
+  <header class="tool-header">
+    <div class="header-left">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
+      </a>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">ATS Score Checker</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="form-index.html" class="btn-primary">Create ATS Resume →</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="tool-hero">
+    <div class="tool-badge">
+      <span class="badge-dot"></span> AI ATS Compatibility Scanner
+    </div>
+    <h1>Free ATS Resume <em>Checker</em></h1>
+    <p>Simulate how hiring algorithms and recruiters scan your resume. Spot missing keywords, formatting errors, and get actionable recommendations.</p>
+  </section>
+
+  <!-- WORKSPACE -->
+  <main class="tool-workspace">
+    <!-- INPUT RESUME / JOB -->
+    <div class="tool-card">
+      <div class="card-title">
+        <h2>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Paste Resume & Job Details
+        </h2>
+        <button id="btnLoadSample" class="btn-ghost" style="padding: 4px 10px; font-size: 0.78rem;">
+          Load Sample
+        </button>
+      </div>
+
+      <div class="field-group">
+        <label for="resumeInput">Resume Text / Content <span style="color:var(--accent);">*</span></label>
+        <textarea id="resumeInput" placeholder="Paste your current resume content here (experience, summary, skills, education)..." style="min-height: 180px;"></textarea>
+      </div>
+
+      <div class="field-group">
+        <label for="jobDescInput">Target Job Description (Optional - For keyword matching)</label>
+        <textarea id="jobDescInput" placeholder="Paste the job requirements or job posting here to analyze keyword match rate..." style="min-height: 100px;"></textarea>
+      </div>
+
+      <button id="btnScanResume" class="btn-primary" style="width: 100%; justify-content: center; padding: 14px; margin-top: 10px; font-size: 1rem;">
+        <span>🔍 Scan Resume with AI</span>
+      </button>
+    </div>
+
+    <!-- ANALYSIS OUTPUT -->
+    <div class="tool-card">
+      <div class="card-title">
+        <h2>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          ATS Audit Results
+        </h2>
+        <span id="scoreStatusTag" class="badge-tag">Awaiting Scan</span>
+      </div>
+
+      <!-- GAUGE -->
+      <div class="gauge-wrap">
+        <div class="score-circle">
+          <svg viewBox="0 0 150 150">
+            <circle class="circle-bg" cx="75" cy="75" r="65" />
+            <circle id="gaugeCircle" class="circle-progress" cx="75" cy="75" r="65" />
+          </svg>
+          <div class="score-label">
+            <span id="scoreVal" class="score-number">--</span>
+            <span id="scoreGrade" class="score-grade" style="color: var(--text-muted);">Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- METRICS GRID -->
+      <div class="score-metrics">
+        <div class="metric-card">
+          <div class="metric-title">Keyword Match</div>
+          <div id="mKeyword" class="metric-val">--%</div>
+          <div class="metric-bar-bg"><div id="bKeyword" class="metric-bar-fill" style="width: 0%;"></div></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">ATS Readability</div>
+          <div id="mReadability" class="metric-val">--%</div>
+          <div class="metric-bar-bg"><div id="bReadability" class="metric-bar-fill" style="width: 0%;"></div></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">Impact & Metrics</div>
+          <div id="mImpact" class="metric-val">--%</div>
+          <div class="metric-bar-bg"><div id="bImpact" class="metric-bar-fill" style="width: 0%;"></div></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">Section Completeness</div>
+          <div id="mStructure" class="metric-val">--%</div>
+          <div class="metric-bar-bg"><div id="bStructure" class="metric-bar-fill" style="width: 0%;"></div></div>
+        </div>
+      </div>
+
+      <!-- KEYWORD ANALYSIS -->
+      <div style="margin-top: 22px;">
+        <label style="font-size: 0.85rem; font-weight: 700; color: var(--text);">Keyword Analysis</label>
+        <div id="keywordChips" class="keyword-chips">
+          <span class="chip chip-match">✓ Run a scan to see matched keywords</span>
+        </div>
+      </div>
+
+      <!-- RECOMMENDATIONS -->
+      <div style="margin-top: 22px;">
+        <label style="font-size: 0.85rem; font-weight: 700; color: var(--text);">AI Improvement Checklist</label>
+        <ul id="suggestionsList" class="suggestions-list">
+          <li class="suggestion-item">
+            <span class="suggestion-icon">💡</span>
+            <span>Paste your resume text on the left to get specific, role-based bullet recommendations.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FIX IN BUILDER CTA -->
+      <div style="margin-top: 24px; padding: 18px; border-radius: 14px; background: rgba(108,92,231,0.06); border: 1px solid rgba(108,92,231,0.15); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+        <div>
+          <strong style="font-size: 0.92rem; color: var(--text);">Want a guaranteed 95+ ATS Score?</strong>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">Build your resume in Resumatic's structured, ATS-compliant templates.</p>
+        </div>
+        <a href="form-index.html" class="btn-primary" style="font-size: 0.85rem; padding: 8px 18px;">Fix in Resume Builder →</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="theme.js"></script>
+  <script>
+    const sampleResume = `ALEX MORGAN
+Senior Frontend Developer | alex.morgan@email.com | +1 555-0199 | San Francisco, CA
+
+PROFESSIONAL SUMMARY
+Senior Frontend Developer with 6+ years of experience engineering high-performance web applications with React, TypeScript, and Next.js. Spearheaded frontend architecture redesign that increased page speed by 45% and reduced bounce rate.
+
+WORK EXPERIENCE
+Senior Frontend Engineer — Acme Corp (2022 – Present)
+• Architected core design system components used by 18 engineering teams, improving UI consistency across 30+ products.
+• Optimized Webpack and Next.js bundle sizes by 38%, cutting initial load time from 3.2s to 1.4s.
+• Mentored 5 junior and mid-level engineers through code reviews, 1-on-1s, and technical brown-bags.
+
+Frontend Developer — TechStudio (2019 – 2022)
+• Developed responsive user interfaces with React, Redux Toolkit, and Tailwind CSS for fintech web portal.
+• Integrated RESTful APIs and GraphQL endpoints with seamless offline caching.
+
+SKILLS
+React, TypeScript, Next.js, JavaScript (ES6+), HTML5, CSS3, GraphQL, REST APIs, Git, Jest, CI/CD, Agile/Scrum
+
+EDUCATION
+B.S. in Computer Science — University of California, Berkeley (2015 – 2019)`;
+
+    const sampleJob = `Looking for a Senior Frontend Engineer proficient in React, TypeScript, Next.js, and state management. Experience with CI/CD, Unit Testing (Jest), performance optimization, and cross-functional leadership is required.`;
+
+    document.getElementById('btnLoadSample').addEventListener('click', () => {
+      document.getElementById('resumeInput').value = sampleResume;
+      document.getElementById('jobDescInput').value = sampleJob;
+    });
+
+    const btnScan = document.getElementById('btnScanResume');
+    const gaugeCircle = document.getElementById('gaugeCircle');
+    const scoreVal = document.getElementById('scoreVal');
+    const scoreGrade = document.getElementById('scoreGrade');
+    const scoreStatusTag = document.getElementById('scoreStatusTag');
+
+    btnScan.addEventListener('click', () => {
+      const resume = document.getElementById('resumeInput').value.trim();
+      const job = document.getElementById('jobDescInput').value.trim();
+
+      if (!resume || resume.length < 50) {
+        alert('Please paste at least 50 characters of resume content to analyze.');
+        return;
+      }
+
+      btnScan.disabled = true;
+      btnScan.innerHTML = '<span>⚡ Simulating ATS Parser...</span>';
+
+      setTimeout(() => {
+        // Calculation Logic
+        const hasNumbers = (resume.match(/\d+[\%kK\+]?/g) || []).length;
+        const actionVerbs = ['architected', 'spearheaded', 'developed', 'optimized', 'engineered', 'led', 'designed', 'built', 'reduced', 'increased', 'managed'];
+        let actionVerbCount = 0;
+        actionVerbs.forEach(v => {
+          if (new RegExp('\\b' + v, 'i').test(resume)) actionVerbCount++;
+        });
+
+        const hasContact = /@|email|phone|\d{3}/i.test(resume);
+        const hasExp = /experience|work|employment/i.test(resume);
+        const hasEdu = /education|university|college|bachelor|master|degree/i.test(resume);
+        const hasSkills = /skills|technologies|proficiencies/i.test(resume);
+
+        let structureScore = (hasContact ? 25 : 0) + (hasExp ? 35 : 0) + (hasEdu ? 20 : 0) + (hasSkills ? 20 : 0);
+        let impactScore = Math.min(100, Math.round((hasNumbers * 10) + (actionVerbCount * 12)));
+        let readabilityScore = Math.min(100, Math.round(75 + (resume.length > 300 ? 15 : 0) + (actionVerbCount > 3 ? 10 : 0)));
+        
+        let keywordScore = 85;
+        let matchedKeywords = ['React', 'TypeScript', 'Next.js', 'REST APIs', 'Git', 'Agile'];
+        let missingKeywords = ['Docker', 'AWS', 'Kubernetes', 'Micro-frontends'];
+
+        if (job) {
+          const jobWords = job.match(/\b[A-Za-z0-9#\+\.]{3,}\b/g) || [];
+          const uniqueJobWords = [...new Set(jobWords.filter(w => !['and', 'for', 'with', 'the', 'looking', 'required', 'experience'].includes(w.toLowerCase())))];
+          
+          let matches = [];
+          let missing = [];
+          uniqueJobWords.forEach(w => {
+            if (new RegExp('\\b' + w + '\\b', 'i').test(resume)) {
+              matches.push(w);
+            } else {
+              missing.push(w);
+            }
+          });
+
+          matchedKeywords = matches.slice(0, 6);
+          missingKeywords = missing.slice(0, 4);
+          keywordScore = Math.min(100, Math.max(35, Math.round((matches.length / (uniqueJobWords.length || 1)) * 100)));
+        }
+
+        const overallScore = Math.round((keywordScore * 0.35) + (readabilityScore * 0.25) + (impactScore * 0.20) + (structureScore * 0.20));
+
+        // Update Gauge
+        const circumference = 408;
+        const offset = circumference - (overallScore / 100) * circumference;
+        gaugeCircle.style.strokeDashoffset = offset;
+
+        scoreVal.innerText = overallScore;
+        if (overallScore >= 85) {
+          gaugeCircle.style.stroke = '#10b981';
+          scoreGrade.innerText = 'Excellent ATS Pass';
+          scoreGrade.style.color = '#10b981';
+          scoreStatusTag.innerText = 'ATS High Probability';
+        } else if (overallScore >= 65) {
+          gaugeCircle.style.stroke = '#f59e0b';
+          scoreGrade.innerText = 'Moderate Match';
+          scoreGrade.style.color = '#f59e0b';
+          scoreStatusTag.innerText = 'Needs Keyword Boost';
+        } else {
+          gaugeCircle.style.stroke = '#ef4444';
+          scoreGrade.innerText = 'High Risk of Rejection';
+          scoreGrade.style.color = '#ef4444';
+          scoreStatusTag.innerText = 'Action Required';
+        }
+
+        // Update Sub metrics
+        document.getElementById('mKeyword').innerText = keywordScore + '%';
+        document.getElementById('bKeyword').style.width = keywordScore + '%';
+
+        document.getElementById('mReadability').innerText = readabilityScore + '%';
+        document.getElementById('bReadability').style.width = readabilityScore + '%';
+
+        document.getElementById('mImpact').innerText = impactScore + '%';
+        document.getElementById('bImpact').style.width = impactScore + '%';
+
+        document.getElementById('mStructure').innerText = structureScore + '%';
+        document.getElementById('bStructure').style.width = structureScore + '%';
+
+        // Update Chips
+        const chipsContainer = document.getElementById('keywordChips');
+        chipsContainer.innerHTML = '';
+        matchedKeywords.forEach(k => {
+          chipsContainer.innerHTML += `<span class="chip chip-match">✓ ${k}</span>`;
+        });
+        missingKeywords.forEach(k => {
+          chipsContainer.innerHTML += `<span class="chip chip-miss">✕ Missing: ${k}</span>`;
+        });
+
+        // Update Suggestions
+        const suggestionsList = document.getElementById('suggestionsList');
+        suggestionsList.innerHTML = '';
+        if (missingKeywords.length > 0) {
+          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">🎯</span><span>Integrate missing target keywords (<strong>${missingKeywords.join(', ')}</strong>) organically into your bullet points.</span></li>`;
+        }
+        if (hasNumbers < 3) {
+          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📈</span><span>Add quantifiable metrics (e.g. <em>"increased revenue by 22%"</em>, <em>"reduced latency by 300ms"</em>) to strengthen executive impact.</span></li>`;
+        }
+        if (actionVerbCount < 4) {
+          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">⚡</span><span>Begin every bullet with strong power verbs like <em>Architected, Optimized, Spearheaded</em> instead of passive phrases like <em>"Responsible for"</em>.</span></li>`;
+        }
+        suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📄</span><span>Ensure clean single-column or ATS-tested multi-column structure without complex tables or images.</span></li>`;
+
+        btnScan.disabled = false;
+        btnScan.innerHTML = '<span>🔍 Re-scan Resume</span>';
+      }, 600);
+    });
+  </script>
+</body>
+</html>

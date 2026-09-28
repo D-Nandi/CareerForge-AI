@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resumatic — Free AI Resume Builder & ATS Resume Scanner</title>
+  <meta name="description" content="Build professional, ATS-optimized resumes in minutes with AI. Real-time ATS keyword optimization, job-specific cover letters, and high-converting templates. Free PDF export." />
+  <meta name="keywords" content="AI resume builder, ATS resume checker, free resume generator, modern CV maker, AI cover letter generator, job application optimizer" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://resumatic.ai/" />
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://resumatic.ai/" />
+  <meta property="og:title" content="Resumatic — Free AI Resume Builder & ATS Scanner" />
+  <meta property="og:description" content="Build professional, ATS-ready resumes in minutes with AI. Real-time scoring, role-tailored cover letters, and modern templates." />
+  <meta property="og:image" content="https://resumatic.ai/og-preview.png" />
+  <meta property="og:site_name" content="Resumatic" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://resumatic.ai/" />
+  <meta name="twitter:title" content="Resumatic — Free AI Resume Builder & ATS Scanner" />
+  <meta name="twitter:description" content="Craft interview-winning resumes with AI intelligence and ATS keyword matching. Free instant PDF export." />
+  <meta name="twitter:image" content="https://resumatic.ai/og-preview.png" />
+  <meta name="twitter:creator" content="@resumatic_ai" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- JSON-LD Structured Data: SoftwareApplication & WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://resumatic.ai/#app",
+        "name": "Resumatic",
+        "url": "https://resumatic.ai/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "description": "AI-powered resume builder and ATS score optimization tool providing automated bullet point crafting, live template preview, and instant PDF downloads.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "1240"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://resumatic.ai/#organization",
+        "name": "Resumatic AI",
+        "url": "https://resumatic.ai/",
+        "logo": "https://resumatic.ai/logo.png",
+        "sameAs": [
+          "https://twitter.com/resumatic_ai",
+          "https://linkedin.com/company/resumatic"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://resumatic.ai/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Resumatic completely free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! You can build, customize, and export your professional resume as a high-quality PDF with full ATS compliance completely free."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are Resumatic templates ATS-friendly?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every template in Resumatic is designed and coded according to strict Applicant Tracking System (ATS) parsing standards, ensuring clear section headers, clean text flow, and machine readability."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the AI cover letter generator work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our integrated Google Gemini AI analyzes your work experience and target job description to draft a tailored, persuasive cover letter matching your profile."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="noise"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="templates.html">Templates</a></li>
+        <li><a href="ats-score-checker.html">ATS Checker</a></li>
+        <li><a href="resume-examples.html">Examples</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="form-index.html" class="btn-primary">Build Resume Free</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="templates.html">Templates</a></li>
+        <li><a href="ats-score-checker.html">ATS Checker</a></li>
+        <li><a href="cover-letter-generator.html">Cover Letter Generator</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="form-index.html" class="mobile-cta">Get Started Free</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Powered by Google Gemini AI
+      </div>
+      <h1 class="hero-heading">
+        <span class="line line-1">Build Resumes</span>
+        <span class="line line-2">That <em>Actually</em></span>
+        <span class="line line-3">Get You Hired.</span>
+      </h1>
+      <p class="hero-sub">
+        Fill in your details. Let AI craft a tailored cover letter.<br />
+        Pick a template. Download. Land the interview.
+      </p>
+      <div class="hero-actions">
+        <a href="form-index.html" class="btn-primary btn-large">
+          Build My Resume
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#how" class="btn-text">
+          See how it works
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">12k+</span><span class="stat-label">Resumes created</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">94%</span><span class="stat-label">Interview rate</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">8</span><span class="stat-label">Premium templates</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="resume-card card-back"></div>
+      <div class="resume-card card-front">
+        <div class="rc-header">
+          <div class="rc-avatar"></div>
+          <div class="rc-meta">
+            <div class="rc-line rc-name"></div>
+            <div class="rc-line rc-role"></div>
+          </div>
+        </div>
+        <div class="rc-section">
+          <div class="rc-label"></div>
+          <div class="rc-bar w-90"></div>
+          <div class="rc-bar w-70"></div>
+          <div class="rc-bar w-80"></div>
+        </div>
+        <div class="rc-section">
+          <div class="rc-label"></div>
+          <div class="rc-bar w-60"></div>
+          <div class="rc-bar w-85"></div>
+        </div>
+        <div class="rc-tags">
+          <span class="rc-tag"></span>
+          <span class="rc-tag"></span>
+          <span class="rc-tag"></span>
+        </div>
+        <div class="ai-badge">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#a78bfa" stroke-width="1.2"/><path d="M6 3v3l2 1" stroke="#a78bfa" stroke-width="1.2" stroke-linecap="round"/></svg>
+          AI Generated
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-inner">
+      <div class="section-tag">What you get</div>
+      <h2 class="section-heading">Everything to land <br/><em>your dream job</em></h2>
+      <div class="features-grid">
+        <div class="feature-card fc-large">
+          <div class="fc-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M9 14h10M9 10h6M9 18h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Multi-step Resume Form</h3>
+          <p>Guided step-by-step form covering personal info, experience, education, and skills — no blank-page anxiety.</p>
+          <div class="fc-glow"></div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4C8.477 4 4 8.477 4 14s4.477 10 10 10 10-4.477 10-10S19.523 4 14 4Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 9v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>AI Cover Letters</h3>
+          <p>Gemini crafts personalized cover letters matched to your target role instantly.</p>
+          <div class="fc-glow"></div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="5" y="3" width="13" height="17" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 8h5M9 12h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 18l4 4M15 22l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>PDF Export</h3>
+          <p>Download a pixel-perfect PDF ready to send to any recruiter.</p>
+          <div class="fc-glow"></div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 6h16v4H6zM6 14h10v4H6zM6 22h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Template Gallery</h3>
+          <p>8 premium layouts: classic, modern, minimal, creative, and more.</p>
+          <div class="fc-glow"></div>
+        </div>
+        <div class="feature-card fc-large">
+          <div class="fc-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M5 24c0-4.418 4.03-8 9-8s9 3.582 9 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Personal Dashboard</h3>
+          <p>Save, manage, and update multiple resumes from your account — everything in one place, always accessible.</p>
+          <div class="fc-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <div class="section-tag">The process</div>
+      <h2 class="section-heading">From blank to hired <br/><em>in four steps</em></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-body"><h3>Fill your details</h3><p>Walk through our guided form — experience, skills, education, and more.</p></div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-body"><h3>Pick a template</h3><p>Choose from 8 beautiful, ATS-friendly layouts and preview live.</p></div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-body"><h3>Generate cover letter</h3><p>Enter your target role and let Gemini write a tailored letter instantly.</p></div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-body"><h3>Download &amp; Apply</h3><p>Export as PDF and start sending applications today.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section" id="faq">
+    <div class="section-inner">
+      <div class="section-tag">Frequently Asked Questions</div>
+      <h2 class="section-heading">Got Questions? <br/><em>We've Got Answers</em></h2>
+      <div class="faq-grid">
+        <div class="faq-card">
+          <h3>Is Resumatic completely free to use?</h3>
+          <p>Yes, 100%! You can create, edit, style, and download unlimited high-resolution PDF resumes with no hidden fees or paywalls.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Will my resume pass ATS filters?</h3>
+          <p>Absolutely. Every template is engineered for ATS compliance with structured layout headings, clean typography, and zero unreadable formatting bugs.</p>
+        </div>
+        <div class="faq-card">
+          <h3>How does the AI cover letter generator work?</h3>
+          <p>Resumatic uses Google Gemini AI to analyze your job title, experience, and custom prompt to generate tailored, compelling cover letters instantly.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Can I customize the resume templates?</h3>
+          <p>Yes. You can switch between Classic, Modern, and Minimal designs anytime, adjust custom accent colors, and preview live before downloading.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-inner">
+      <h2>Your next job starts <em>here.</em></h2>
+      <p>Join thousands who've landed interviews with Resumatic.</p>
+      <a href="form-index.html" class="btn-primary btn-large">Build My Resume — It's Free</a>
+    </div>
+    <div class="cta-orb"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo"><span class="logo-mark">R</span><span class="logo-text">esumatic</span></a>
+        <p>AI-powered resumes and ATS optimization that get results.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <span>Product</span>
+          <a href="form-index.html">Resume Builder</a>
+          <a href="templates.html">Resume Templates</a>
+          <a href="#how">How It Works</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <span>Free Tools</span>
+          <a href="ats-score-checker.html">ATS Resume Checker</a>
+          <a href="cover-letter-generator.html">Cover Letter Generator</a>
+          <a href="preview.html">Live Preview</a>
+          <a href="sitemap.xml">XML Sitemap</a>
+        </div>
+        <div class="footer-col">
+          <span>Company & Content</span>
+          <a href="blog.html">Career Blog</a>
+          <a href="resume-examples.html">Resume Examples</a>
+          <a href="robots.txt">Robots.txt</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Resumatic AI. All rights reserved.</p></div>
+  </footer>
+
+  <script src="theme.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resumatic — AI Resume Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="noise"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#templates">Templates</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn-ghost">Sign in</a>
+        <a href="form-index.html" class="btn-primary">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#templates">Templates</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="login.html">Sign in</a></li>
+        <li><a href="form-index.html" class="mobile-cta">Get Started Free</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Powered by Google Gemini AI
+      </div>
+      <h1 class="hero-heading">
+        <span class="line line-1">Build Resumes</span>
+        <span class="line line-2">That <em>Actually</em></span>
+        <span class="line line-3">Get You Hired.</span>
+      </h1>
+      <p class="hero-sub">
+        Fill in your details. Let AI craft a tailored cover letter.<br />
+        Pick a template. Download. Land the interview.
+      </p>
+      <div class="hero-actions">
+        <a href="form-index.html" class="btn-primary btn-large">
+          Build My Resume
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a href="#how" class="btn-text">
+          See how it works
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M7 1v12M1 7l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">12k+</span><span class="stat-label">Resumes created</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">94%</span><span class="stat-label">Interview rate</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">8</span><span class="stat-label">Premium templates</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="resume-card card-back"></div>
+      <div class="resume-card card-front">
+        <div class="rc-header">
+          <div class="rc-avatar"></div>
+          <div class="rc-meta">
+            <div class="rc-line rc-name"></div>
+            <div class="rc-line rc-role"></div>
+          </div>
+        </div>
+        <div class="rc-section">
+          <div class="rc-label"></div>
+          <div class="rc-bar w-90"></div>
+          <div class="rc-bar w-70"></div>
+          <div class="rc-bar w-80"></div>
+        </div>
+        <div class="rc-section">
+          <div class="rc-label"></div>
+          <div class="rc-bar w-60"></div>
+          <div class="rc-bar w-85"></div>
+        </div>
+        <div class="rc-tags">
+          <span class="rc-tag"></span>
+          <span class="rc-tag"></span>
+          <span class="rc-tag"></span>
+        </div>
+        <div class="ai-badge">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <circle cx="6" cy="6" r="5" stroke="#a78bfa" stroke-width="1.2" />
+            <path d="M6 3v3l2 1" stroke="#a78bfa" stroke-width="1.2" stroke-linecap="round" />
+          </svg>
+          AI Generated
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-inner">
+      <div class="section-tag">What you get</div>
+      <h2 class="section-heading">Everything to land <br /><em>your dream job</em></h2>
+      <div class="features-grid">
+        <div class="feature-card fc-large">
+          <div class="fc-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect x="4" y="4" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5" />
+              <path d="M9 14h10M9 10h6M9 18h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Multi-step Resume Form</h3>
+          <p>Guided step-by-step form covering personal info, experience, education, and skills — no blank-page anxiety.
+          </p>
+          <div class="fc-glow"></div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M14 4C8.477 4 4 8.477 4 14s4.477 10 10 10 10-4.477 10-10S19.523 4 14 4Z" stroke="currentColor"
+                stroke-width="1.5" />
+              <path d="M14 9v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>AI Cover Letters</h3>
+          <p>Gemini crafts personalized cover letters matched to your target role instantly.</p>
+          <div class="fc-glow"></div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect x="5" y="3" width="13" height="17" rx="2" stroke="currentColor" stroke-width="1.5" />
+              <path d="M9 8h5M9 12h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              <path d="M15 18l4 4M15 22l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>PDF Export</h3>
+          <p>Download a pixel-perfect PDF ready to send to any recruiter.</p>
+          <div class="fc-glow"></div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M6 6h16v4H6zM6 14h10v4H6zM6 22h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>Template Gallery</h3>
+          <p>8 premium layouts: classic, modern, minimal, creative, and more.</p>
+          <div class="fc-glow"></div>
+        </div>
+        <div class="feature-card fc-large">
+          <div class="fc-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="14" cy="10" r="5" stroke="currentColor" stroke-width="1.5" />
+              <path d="M5 24c0-4.418 4.03-8 9-8s9 3.582 9 8" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Personal Dashboard</h3>
+          <p>Save, manage, and update multiple resumes from your account — everything in one place, always accessible.
+          </p>
+          <div class="fc-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <div class="section-tag">The process</div>
+      <h2 class="section-heading">From blank to hired <br /><em>in four steps</em></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Fill your details</h3>
+            <p>Walk through our guided form — experience, skills, education, and more.</p>
+          </div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Pick a template</h3>
+            <p>Choose from 8 beautiful, ATS-friendly layouts and preview live.</p>
+          </div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Generate cover letter</h3>
+            <p>Enter your target role and let Gemini write a tailored letter instantly.</p>
+          </div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Download &amp; Apply</h3>
+            <p>Export as PDF and start sending applications today.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-inner">
+      <h2>Your next job starts <em>here.</em></h2>
+      <p>Join thousands who've landed interviews with Resumatic.</p>
+      <a href="form-index.html" class="btn-primary btn-large">Build My Resume — It's Free</a>
+    </div>
+    <div class="cta-orb"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo"><span class="logo-mark">R</span><span class="logo-text">esumatic</span></a>
+        <p>AI-powered resumes that get results.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><span>Product</span><a href="#">Features</a><a href="#">Templates</a><a
+            href="#">Pricing</a></div>
+        <div class="footer-col"><span>Company</span><a href="#">About</a><a href="#">Blog</a><a href="#">Contact</a>
+        </div>
+        <div class="footer-col"><span>Legal</span><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Resumatic. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
