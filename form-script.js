@@ -211,6 +211,7 @@ function addExperience(data = {}) {
     </div>`;
   document.getElementById('experienceList').appendChild(card);
   attachEntryListeners(card, 'experience', id);
+  syncEntry(card, 'experience', id);
 }
 
 // ── EDUCATION ENTRIES ──
@@ -248,6 +249,7 @@ function addEducation(data = {}) {
     </div>`;
   document.getElementById('educationList').appendChild(card);
   attachEntryListeners(card, 'education', id);
+  syncEntry(card, 'education', id);
 }
 
 function toggleCard(id) {
@@ -561,3 +563,12 @@ function initPrefill() {
 
 initPrefill();
 
+// ── GLOBAL EXPORTS FOR AUTOFILL & IMPORT ──
+window.state = state;
+window.addExperience = addExperience;
+window.addEducation = addEducation;
+window.addTag = addTag;
+window.removeTag = removeTag;
+window.syncEntry = syncEntry;
+window.saveStep = saveStep;
+window.persistState = persistState;
