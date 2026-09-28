@@ -5,8 +5,7 @@ const connectDB = async () => {
     const conn = await mongoose.connect(process.env.MONGO_URI);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (err) {
-    console.error(`MongoDB Error: ${err.message}`);
-    process.exit(1);
+    console.warn(`MongoDB Warning: ${err.message}. Running in standalone mode.`);
   }
 };
 

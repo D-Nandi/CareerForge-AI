@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // ── STATIC FILES ──
+app.use(express.static(path.join(__dirname, '..')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ── ROUTES ──
