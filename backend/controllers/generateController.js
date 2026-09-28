@@ -38,9 +38,17 @@ ${jobDescription.jobDescription}
 Write only the cover letter body. No subject line. No placeholders. Keep it under 350 words.
 `.trim();
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
-    const result = await model.generateContent(prompt);
-    const text = result.response.text();
+    let text = '';
+    try {
+      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+      const result = await model.generateContent(prompt);
+      text = result.response.text();
+    } catch (modelErr) {
+      console.warn('Gemini 1.5 flash failed, trying gemini-2.0-flash-exp...', modelErr.message);
+      const model2 = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+      const result2 = await model2.generateContent(prompt);
+      text = result2.response.text();
+    }
 
     res.json({ success: true, coverLetter: text });
   } catch (err) {
