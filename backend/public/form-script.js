@@ -4,6 +4,7 @@ const state = {
   totalSteps: 6,
   personal: {},
   experience: [],
+  projects: [],
   education: [],
   skills: { tech: [], soft: [], languages: [] },
   jobDescription: {},
@@ -54,6 +55,7 @@ function showStep(next) {
   target.classList.add('active');
   state.currentStep = next;
   updateProgress();
+  if (next === 4) renderProficiencyMapper();
   if (next === 6) buildReview();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -75,6 +77,11 @@ function validate(step) {
       document.getElementById('techSkillsError').textContent = 'Add at least one technical skill.';
       document.getElementById('techSkillsWrap').style.borderColor = 'var(--red)';
       ok = false;
+    } else {
+      const unmapped = state.skills.tech.some(s => !parseSkillTag(s).level);
+      if (unmapped) {
+        autoLevelAllProficiencies();
+      }
     }
   }
 
@@ -146,6 +153,7 @@ function persistState() {
     localStorage.setItem('resumatic_state', JSON.stringify({
       personal:   state.personal,
       experience: state.experience,
+      projects:   state.projects,
       education:  state.education,
       skills:     state.skills,
     }));
@@ -166,6 +174,14 @@ btnPrev.addEventListener('click', () => {
   saveStep(state.currentStep);
   if (state.currentStep > 1) showStep(state.currentStep - 1);
 });
+
+const btnNavPreview = document.getElementById('btnNavPreview');
+if (btnNavPreview) {
+  btnNavPreview.addEventListener('click', () => {
+    saveStep(state.currentStep);
+    persistState();
+  });
+}
 
 // ── CLEAR ERRORS ON INPUT ──
 document.querySelectorAll('input, textarea').forEach(el => {
@@ -211,6 +227,50 @@ function addExperience(data = {}) {
     </div>`;
   document.getElementById('experienceList').appendChild(card);
   attachEntryListeners(card, 'experience', id);
+  syncEntry(card, 'experience', id);
+}
+
+// ── PROJECT ENTRIES ──
+let projCount = 0;
+const btnAddProject = document.getElementById('addProject');
+if (btnAddProject) btnAddProject.addEventListener('click', () => addProject());
+
+function addProject(data = {}) {
+  projCount++;
+  const id = `proj_${projCount}`;
+  const card = document.createElement('div');
+  card.className = 'entry-card expanded';
+  card.id = id;
+  card.innerHTML = `
+    <div class="entry-card-header">
+      <div>
+        <div class="entry-card-title">${data.name || 'New Project'}</div>
+        <div class="entry-card-subtitle">${data.type || 'Personal Project'}</div>
+      </div>
+      <div class="entry-card-actions">
+        <button type="button" class="btn-icon" title="Remove" onclick="removeEntry('${id}', 'project')">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="btn-icon toggle" onclick="toggleCard('${id}')">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="entry-card-body">
+      <div class="fields-grid">
+        <div class="field-group"><label>Project Name</label><input type="text" name="name" placeholder="e.g. TIEM EventSphere" value="${data.name||''}" /></div>
+        <div class="field-group"><label>Role / Type</label><input type="text" name="type" placeholder="e.g. Full Stack Developer / Personal Project" value="${data.type||''}" /></div>
+        <div class="field-group"><label>Live / GitHub Link</label><input type="text" name="link" placeholder="https://github.com/..." value="${data.link||''}" /></div>
+        <div class="field-group"><label>Timeline / Date</label><input type="text" name="startDate" placeholder="2023 – Present" value="${data.startDate||''}" /></div>
+        <div class="field-group full"><label>Project Description</label><textarea name="description" rows="3" placeholder="Key technologies, architecture, and achievements...">${data.description||''}</textarea></div>
+      </div>
+    </div>`;
+  const pList = document.getElementById('projectList');
+  if (pList) {
+    pList.appendChild(card);
+    attachEntryListeners(card, 'project', id);
+    syncEntry(card, 'project', id);
+  }
 }
 
 // ── EDUCATION ENTRIES ──
@@ -248,6 +308,7 @@ function addEducation(data = {}) {
     </div>`;
   document.getElementById('educationList').appendChild(card);
   attachEntryListeners(card, 'education', id);
+  syncEntry(card, 'education', id);
 }
 
 function toggleCard(id) {
@@ -258,6 +319,7 @@ function removeEntry(id, type) {
   const card = document.getElementById(id);
   if (card) card.remove();
   if (type === 'experience') state.experience = state.experience.filter(e => e._id !== id);
+  if (type === 'project')    state.projects   = state.projects.filter(e => e._id !== id);
   if (type === 'education')  state.education  = state.education.filter(e => e._id !== id);
 }
 
@@ -271,11 +333,17 @@ function attachEntryListeners(card, type, id) {
     input.addEventListener('input', () => {
       const role        = card.querySelector('[name="role"]');
       const company     = card.querySelector('[name="company"]');
+      const name        = card.querySelector('[name="name"]');
+      const typeInput   = card.querySelector('[name="type"]');
       const degree      = card.querySelector('[name="degree"]');
       const institution = card.querySelector('[name="institution"]');
       if (role && company) {
         titleEl.textContent    = company.value || 'New Experience';
         subtitleEl.textContent = role.value    || 'Role & Company';
+      }
+      if (name) {
+        titleEl.textContent    = name.value      || 'New Project';
+        subtitleEl.textContent = (typeInput && typeInput.value) || 'Project Details';
       }
       if (degree && institution) {
         titleEl.textContent    = institution.value || 'New Education';
@@ -290,10 +358,21 @@ function syncEntry(card, type, id) {
   card.querySelectorAll('input, textarea').forEach(el => {
     if (el.name) data[el.name] = el.value.trim();
   });
-  const arr = type === 'experience' ? state.experience : state.education;
+  let arr;
+  if (type === 'experience') arr = state.experience;
+  else if (type === 'project') arr = state.projects;
+  else arr = state.education;
+
   const idx = arr.findIndex(e => e._id === id);
   if (idx > -1) arr[idx] = data; else arr.push(data);
 }
+
+// Expose helpers globally
+window.addExperience = addExperience;
+window.addProject    = addProject;
+window.addEducation  = addEducation;
+window.state         = state;
+window.persistState  = persistState;
 
 // ── TAG INPUT ──
 setupTagInput('techSkillInput',  'techTagsDisplay',  'tech');
@@ -332,11 +411,105 @@ function addTag(text, key, display) {
     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
   </span>`;
   display.appendChild(tag);
+  if (key === 'tech') renderProficiencyMapper();
 }
 
 function removeTag(text, key, el) {
-  state.skills[key] = state.skills[key].filter(t => t !== text);
+  state.skills[key] = state.skills[key].filter(t => {
+    const raw = typeof t === 'string' ? t.replace(/\s*\([^)]*\)$/, '').trim() : '';
+    const cleanText = text.replace(/\s*\([^)]*\)$/, '').trim();
+    return t !== text && raw !== cleanText;
+  });
   el.closest('.tag').remove();
+  if (key === 'tech') renderProficiencyMapper();
+}
+
+// ── PROACTIVE SKILL PROFICIENCY MAPPER ──
+function parseSkillTag(str) {
+  if (!str) return { name: '', level: '' };
+  const trimmed = str.trim();
+  const parenMatch = trimmed.match(/^(.+?)\s*\(([^)]+)\)$/);
+  if (parenMatch) return { name: parenMatch[1].trim(), level: parenMatch[2].trim() };
+  return { name: trimmed, level: '' };
+}
+
+function renderProficiencyMapper() {
+  const container = document.getElementById('skillProficiencyContainer');
+  const list = document.getElementById('skillProficiencyList');
+  if (!container || !list) return;
+
+  const tech = state.skills.tech || [];
+  if (!tech.length) {
+    container.style.display = 'none';
+    list.innerHTML = '';
+    return;
+  }
+
+  container.style.display = 'block';
+  list.innerHTML = '';
+
+  const LEVELS = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
+
+  tech.forEach((skillItem, idx) => {
+    const { name, level } = parseSkillTag(skillItem);
+    const effectiveLevel = level || 'Proficient';
+    if (!level) {
+      state.skills.tech[idx] = `${name} (${effectiveLevel})`;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'sp-row';
+    const safeName = String(name || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    
+    row.innerHTML = `
+      <div class="sp-skill-label">
+        <span>⚡ ${safeName}</span>
+      </div>
+      <div class="sp-pills">
+        ${LEVELS.map(lvl => `
+          <button type="button" class="sp-pill ${effectiveLevel.toLowerCase() === lvl.toLowerCase() ? 'active' : ''}" data-idx="${idx}" data-level="${lvl}">
+            ${lvl}
+          </button>
+        `).join('')}
+      </div>
+    `;
+
+    row.querySelectorAll('.sp-pill').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetIdx = parseInt(btn.dataset.idx, 10);
+        const newLevel = btn.dataset.level;
+        const current = parseSkillTag(state.skills.tech[targetIdx]);
+        state.skills.tech[targetIdx] = `${current.name} (${newLevel})`;
+        persistState();
+        renderProficiencyMapper();
+      });
+    });
+
+    list.appendChild(row);
+  });
+}
+
+function autoLevelAllProficiencies() {
+  const tech = state.skills.tech || [];
+  state.skills.tech = tech.map((item, idx) => {
+    const { name } = parseSkillTag(item);
+    if (idx === 0 || idx === 1) return `${name} (Expert)`;
+    if (idx === 2 || idx === 3) return `${name} (Advanced)`;
+    return `${name} (Intermediate)`;
+  });
+  persistState();
+  renderProficiencyMapper();
+}
+
+window.renderProficiencyMapper = renderProficiencyMapper;
+
+const btnAutoProf = document.getElementById('btnAutoMapProficiencies');
+if (btnAutoProf) {
+  btnAutoProf.addEventListener('click', (e) => {
+    e.preventDefault();
+    autoLevelAllProficiencies();
+  });
 }
 
 // ── TONE CARDS ──
@@ -358,6 +531,7 @@ function buildReview() {
     { label: 'Email',        value: p.email },
     { label: 'Location',     value: p.location },
     { label: 'Experience',   value: state.experience.length + ' entr' + (state.experience.length === 1 ? 'y' : 'ies') },
+    { label: 'Projects',     value: (state.projects || []).length + ' entr' + ((state.projects || []).length === 1 ? 'y' : 'ies') },
     { label: 'Education',    value: state.education.length  + ' entr' + (state.education.length  === 1 ? 'y' : 'ies') },
     { label: 'Tech Skills',  value: state.skills.tech.join(', ') || null },
     { label: 'Target Role',  value: state.jobDescription.targetRole },
@@ -367,6 +541,84 @@ function buildReview() {
       <div class="review-label">${i.label}</div>
       <div class="review-value ${!i.value ? 'empty' : ''}">${i.value || '—'}</div>
     </div>`).join('');
+
+  // ── UPDATE LIVE ATS READINESS WIDGET IN REVIEW ──
+  const fBadge = document.getElementById('fAtsBadge');
+  if (fBadge) {
+    const fullText = `${p.firstName || ''} ${p.lastName || ''} ${p.jobTitle || ''} ${p.email || ''} ${p.summary || ''} ${(state.experience||[]).map(e=>(e.role||'')+' '+(e.description||'')).join(' ')} ${(state.projects||[]).map(pr=>(pr.name||'')+' '+(pr.description||'')).join(' ')} ${(state.skills.tech||[]).join(' ')}`;
+    const targetJD = (state.jobDescription && state.jobDescription.jobDescription) || '';
+
+    // Structure
+    let struct = 0;
+    if (p.email && p.email.includes('@')) struct += 25;
+    if (p.phone) struct += 15;
+    if (state.experience.length > 0) struct += 30;
+    if (state.education.length > 0) struct += 15;
+    if (state.skills.tech.length >= 3) struct += 15;
+
+    // Metrics / Impact
+    const metricMatches = fullText.match(/\b\d+(\.\d+)?\s*%|\b\d{1,3}(,\d{3})*(\.\d+)?\s*([kKmMbB]|\+)?\s*(users|clients|requests|queries|downloads|records|visits|subscribers|transactions|accounts|sessions)|\$[\d,]+|\b\d+(\.\d+)?\s*(ms|x|fold|fps)\b/gi) || [];
+    const actionVerbMatches = fullText.match(/\b(architected|engineered|spearheaded|orchestrated|streamlined|automated|scaled|deployed|refactored|designed|optimized|reduced|increased|improved|delivered|built)\b/gi) || [];
+    const impact = Math.min(100, Math.round((metricMatches.length * 20) + (actionVerbMatches.length * 8)));
+
+    // Readability
+    const words = fullText.match(/\b[A-Za-z0-9'-]+\b/g) || [];
+    let read = 60;
+    if (words.length >= 150 && words.length <= 800) read = 95;
+    else if (words.length > 800) read = 80;
+    else if (words.length >= 60) read = 75;
+    else read = 45;
+
+    // Keywords
+    let kw = 75;
+    if (targetJD && targetJD.length > 20) {
+      const rawJD = targetJD.toLowerCase().match(/\b[a-z0-9#\+\.\/\-]{2,}\b/g) || [];
+      const stopWords = new Set(['the','and','with','for','that','this','from','are','will','have','our','your','role','responsibilities','experience','looking','seeking','skills']);
+      const jdKws = [...new Set(rawJD.filter(w => !stopWords.has(w) && !/^\d+$/.test(w)))];
+      if (jdKws.length > 0) {
+        const resumeLower = fullText.toLowerCase();
+        let matched = 0;
+        jdKws.forEach(k => { if (resumeLower.includes(k)) matched++; });
+        kw = Math.min(100, Math.max(15, Math.round((matched / jdKws.length) * 100)));
+      }
+    } else {
+      kw = Math.min(95, Math.max(35, state.skills.tech.length * 12));
+    }
+
+    const overall = Math.round((kw * 0.35) + (read * 0.25) + (impact * 0.20) + (struct * 0.20));
+
+    fBadge.textContent = `${overall}%`;
+    const fFill = document.getElementById('fAtsFill');
+    if (fFill) {
+      fFill.style.width = `${overall}%`;
+      if (overall >= 85) {
+        fFill.style.background = '#10b981';
+        fBadge.style.color = '#10b981';
+      } else if (overall >= 65) {
+        fFill.style.background = '#f59e0b';
+        fBadge.style.color = '#f59e0b';
+      } else {
+        fFill.style.background = '#ef4444';
+        fBadge.style.color = '#ef4444';
+      }
+    }
+
+    const fSub = document.getElementById('fAtsSubtitle');
+    if (fSub) {
+      if (overall >= 85) fSub.textContent = 'ATS High Pass Rate';
+      else if (overall >= 65) fSub.textContent = 'Moderate Match — Boost Keywords';
+      else fSub.textContent = 'Action Required';
+    }
+
+    const fKw = document.getElementById('fAtsKeywords');
+    if (fKw) fKw.textContent = `${kw}%`;
+    const fRd = document.getElementById('fAtsReadability');
+    if (fRd) fRd.textContent = `${read}%`;
+    const fImp = document.getElementById('fAtsImpact');
+    if (fImp) fImp.textContent = `${impact}%`;
+    const fSt = document.getElementById('fAtsStructure');
+    if (fSt) fSt.textContent = `${struct}%`;
+  }
 }
 
 // ── SUBMIT & GENERATE ──
@@ -390,46 +642,61 @@ async function handleSubmit() {
   resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   try {
-    const res = await fetch('/api/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        personal:       state.personal,
-        experience:     state.experience,
-        education:      state.education,
-        skills:         state.skills,
-        jobDescription: state.jobDescription,
-        tone:           state.tone,
-      }),
-    });
-
-    const rawText = await res.text();
-    if (!rawText || !rawText.trim()) {
-      throw new Error('Server returned an empty response. Make sure the backend is running.');
-    }
-
-    let data;
+    let coverLetterText = '';
+    
+    // Try primary backend endpoint on port 5000 or relative path
     try {
-      data = JSON.parse(rawText);
-    } catch {
-      throw new Error(
-        res.status === 404
-          ? 'API route not found (/api/generate). Check your server is running.'
-          : `Server error (${res.status}). Check your terminal for details.`
-      );
+      const apiUrl = (window.location.port === '5000') ? '/api/generate' : 'http://localhost:5000/api/generate';
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          personal:       state.personal,
+          experience:     state.experience,
+          projects:       state.projects,
+          education:      state.education,
+          skills:         state.skills,
+          jobDescription: state.jobDescription,
+          tone:           state.tone,
+        }),
+      });
+
+      if (res.ok) {
+        const rawText = await res.text();
+        if (rawText && rawText.trim()) {
+          const data = JSON.parse(rawText);
+          if (data && data.success && data.coverLetter) {
+            coverLetterText = data.coverLetter;
+          }
+        }
+      }
+    } catch (networkErr) {
+      console.warn('Backend server on port 5000 not reachable, using generative fallback:', networkErr);
     }
 
-    if (!res.ok || !data.success) throw new Error(data.message || data.error || 'Generation failed.');
+    // Client fallback synthesis if backend is offline or static server returned 405
+    if (!coverLetterText) {
+      const name = [state.personal.firstName, state.personal.lastName].filter(Boolean).join(' ') || 'Job Applicant';
+      const role = state.jobDescription?.targetRole || state.personal.jobTitle || 'Target Role';
+      const expStr = (state.experience || []).map(e => `${e.role} at ${e.company} (${e.description || ''})`).join('; ');
+      const techStr = (state.skills.tech || []).join(', ');
+      const today = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
-    resultText.textContent  = data.coverLetter;
+      let intro = `I am writing to express my strong enthusiasm for the ${role} position. With a solid foundation in ${techStr || 'technical innovation and scalable execution'}, I am confident in my ability to bring immediate value to your organization.`;
+      let body = expStr 
+        ? `Throughout my career, I have focused on driving measurable outcomes: ${expStr}. My background has prepared me to tackle complex challenges and collaborate effectively across cross-functional teams.`
+        : `My background combines technical problem solving, structured execution, and strategic communication. I take deep ownership in translating complex goals into high-quality deliverables.`;
+      let closing = `I look forward to discussing how my experience and passion align with your team's upcoming roadmap. Thank you for your time and consideration.\n\nSincerely,\n${name}`;
+
+      coverLetterText = `${today}\n\nDear Hiring Team,\n\n${intro}\n\n${body}\n\n${closing}`;
+    }
+
+    resultText.textContent  = coverLetterText;
     btnGenerate.textContent = 'Regenerate ↺';
     btnGenerate.disabled    = false;
 
     // ── SAVE TO localStorage SO preview.html CAN READ IT ──
     persistState();
-
-    // ── SAVE TO DATABASE ──
-    saveToDatabase(data.coverLetter);
 
     // ── GO TO PREVIEW BUTTON ──
     btnPreview = document.createElement('a');
@@ -480,49 +747,79 @@ document.getElementById('btnCopy').addEventListener('click', () => {
   });
 });
 
-// ── INIT ──
+// ── INIT & PREFILL ──
 updateProgress();
-addExperience();
-addEducation();
 
-// ══════════════════════════════════════════════════════
-//  SAVE RESUME + COVER LETTER TO DATABASE
-// ══════════════════════════════════════════════════════
-async function saveToDatabase(coverLetterText) {
-  try {
-    // 1. Save resume
-    const resumeRes = await fetch('/api/dashboard/resumes', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        personal:   state.personal,
-        experience: state.experience,
-        education:  state.education,
-        skills:     state.skills,
-        template:   'classic',
-      }),
-    });
-    const resumeData = await resumeRes.json();
-    const resumeId   = resumeData.success ? resumeData.resume._id : null;
+function initPrefill() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const prefillKey = urlParams.get('prefill');
+  
+  if (prefillKey && typeof ROLES_DATABASE !== 'undefined' && ROLES_DATABASE[prefillKey]) {
+    const data = ROLES_DATABASE[prefillKey];
+    
+    // Step 1: Personal Info
+    if (document.getElementById('firstName')) document.getElementById('firstName').value = 'Alex';
+    if (document.getElementById('lastName')) document.getElementById('lastName').value = 'Morgan';
+    if (document.getElementById('jobTitle')) document.getElementById('jobTitle').value = data.title;
+    if (document.getElementById('email')) document.getElementById('email').value = 'alex.morgan@email.com';
+    if (document.getElementById('phone')) document.getElementById('phone').value = '+1 (555) 019-2834';
+    if (document.getElementById('location')) document.getElementById('location').value = 'San Francisco, CA';
+    if (document.getElementById('summary')) document.getElementById('summary').value = data.summary;
 
-    // 2. Save cover letter
-    await fetch('/api/dashboard/cover-letters', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        content:        coverLetterText,
-        targetRole:     state.jobDescription.targetRole,
-        tone:           state.tone,
-        resumeId:       resumeId,
-      }),
+    // Step 2: Experience
+    document.getElementById('experienceList').innerHTML = '';
+    state.experience = [];
+    data.experience.forEach((exp) => {
+      addExperience({
+        role: exp.role,
+        company: exp.company,
+        startDate: exp.period.split('–')[0]?.trim() || '2021',
+        endDate: exp.period.split('–')[1]?.trim() || 'Present',
+        description: exp.bullets.join('\n• ')
+      });
     });
 
-    // 3. Store resumeId in localStorage so preview.html can link to it
-    if (resumeId) {
-      try { localStorage.setItem('resumatic_resume_id', resumeId); } catch (_) {}
+    // Step 3: Education
+    document.getElementById('educationList').innerHTML = '';
+    state.education = [];
+    addEducation({
+      degree: 'B.S. in Computer Science & Information Systems',
+      institution: 'State University',
+      gradYear: '2020'
+    });
+
+    // Step 4: Skills
+    data.keywords.forEach(k => {
+      state.skills.tech.push(k);
+      createTag(k, 'techTagsDisplay', 'tech', 'techSkillsError');
+    });
+
+    ['Communication', 'Cross-functional Collaboration', 'Problem Solving', 'Leadership'].forEach(s => {
+      state.skills.soft.push(s);
+      createTag(s, 'softTagsDisplay', 'soft');
+    });
+
+    // Step 5: Target Role
+    if (document.getElementById('targetRole')) {
+      document.getElementById('targetRole').value = `${data.title} at Top Tech Co`;
     }
-
-  } catch (err) {
-    console.warn('Auto-save to database failed:', err.message);
+    if (document.getElementById('jobDescription')) {
+      document.getElementById('jobDescription').value = `Seeking an experienced ${data.title} skilled in ${data.keywords.slice(0, 5).join(', ')} to drive product innovation and scalable system execution.`;
+    }
+  } else {
+    addExperience();
+    addEducation();
   }
 }
+
+initPrefill();
+
+// ── GLOBAL EXPORTS FOR AUTOFILL & IMPORT ──
+window.state = state;
+window.addExperience = addExperience;
+window.addEducation = addEducation;
+window.addTag = addTag;
+window.removeTag = removeTag;
+window.syncEntry = syncEntry;
+window.saveStep = saveStep;
+window.persistState = persistState;

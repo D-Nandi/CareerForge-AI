@@ -1,15 +1,79 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resumatic — Live Preview</title>
+  <title>Live Resume Preview & PDF Export | Resumatic</title>
+  <meta name="description" content="Preview your AI-generated resume in real time. Switch between Classic, Modern, and Minimal ATS-compliant templates, customize styling, and export high-res PDFs." />
+  <meta name="keywords" content="resume preview, PDF resume export, live CV editor, ATS resume templates, AI cover letter preview" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://resumatic.ai/preview.html" />
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://resumatic.ai/preview.html" />
+  <meta property="og:title" content="Live Resume Preview & PDF Export | Resumatic" />
+  <meta property="og:description" content="Preview your AI-generated resume in real time with Classic, Modern, and Minimal templates. Free PDF download." />
+  <meta property="og:image" content="https://resumatic.ai/og-preview.png" />
+  <meta property="og:site_name" content="Resumatic" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Live Resume Preview & PDF Export | Resumatic" />
+  <meta name="twitter:description" content="Preview and customize your ATS-optimized resume. Free instant PDF export." />
+  <meta name="twitter:image" content="https://resumatic.ai/og-preview.png" />
+
+  <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="preview-style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- JSON-LD Structured Data: CreativeWork & BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Resumatic Resume Preview & PDF Exporter",
+        "url": "https://resumatic.ai/preview.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "description": "Live interactive resume renderer with customizable typography, colors, and multi-template ATS export."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://resumatic.ai/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Resume Builder",
+            "item": "https://resumatic.ai/form-index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Live Preview",
+            "item": "https://resumatic.ai/preview.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -17,14 +81,38 @@
 
   <!-- HEADER -->
   <header class="preview-header">
-    <a href="index.html" class="nav-logo">
-      <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
-    </a>
+    <div class="header-left">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
+      </a>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="form-index.html">Builder</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">Preview</li>
+        </ol>
+      </nav>
+    </div>
     <div class="header-center">
-      <span class="live-dot"></span> Live Preview
+      <div class="view-mode-toggle" id="viewModeToggle" role="tablist" aria-label="View Mode">
+        <button type="button" class="mode-toggle-btn active" id="btnModePreview" data-mode="preview" role="tab" aria-selected="true" title="Clean Live Preview & PDF View">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Preview</span>
+        </button>
+        <button type="button" class="mode-toggle-btn" id="btnModeEditor" data-mode="editor" role="tab" aria-selected="false" title="Dedicated Editor Canvas with Full Tools">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <span>Editor Canvas</span>
+        </button>
+      </div>
     </div>
     <div class="header-actions">
-      <button class="btn-ghost" id="btnBack">← Edit</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="form-index.html" class="btn-ghost" id="btnBack" title="Return to step-by-step form">Form Wizard →</a>
       <button class="btn-download" id="btnDownload">
         <span class="btn-download-icon">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -72,12 +160,171 @@
     </div>
   </div>
 
+  <!-- DEDICATED EDITOR HEADER BAR (Active in Editor Canvas Mode) -->
+  <div class="editor-canvas-header" id="editorCanvasHeader" style="display:none;" aria-label="Editor Canvas Tools">
+    <!-- Active Target Breadcrumb -->
+    <div class="ech-target-badge" id="echTargetBadge" title="Currently focused element or highlighted text">
+      <span class="ech-target-dot"></span>
+      <span class="ech-target-text" id="echTargetText">Click any text or element to edit</span>
+    </div>
+
+    <div class="ech-divider"></div>
+
+    <!-- Typography: Font Family -->
+    <div class="ech-group">
+      <label class="ech-label" for="echFontFamily">Font</label>
+      <select id="echFontFamily" class="ech-select" title="Change Font Family">
+        <option value="">Default Font</option>
+        <option value="'Syne', sans-serif">Syne</option>
+        <option value="'DM Sans', sans-serif">DM Sans</option>
+        <option value="'Lora', serif">Lora</option>
+        <option value="'Playfair Display', serif">Playfair Display</option>
+        <option value="'IBM Plex Serif', serif">IBM Plex</option>
+        <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+        <option value="system-ui, sans-serif">System Sans</option>
+        <option value="'Times New Roman', serif">Times New Roman</option>
+        <option value="Arial, sans-serif">Arial</option>
+      </select>
+    </div>
+
+    <!-- Typography: Font Size -->
+    <div class="ech-group">
+      <label class="ech-label" for="echFontSize">Size</label>
+      <div class="ech-size-stepper">
+        <button type="button" class="ech-btn-step" id="echSizeDec" title="Decrease font size">-</button>
+        <select id="echFontSize" class="ech-select ech-select-sm" title="Font Size">
+          <option value="">Size</option>
+          <option value="9px">9px</option>
+          <option value="10px">10px</option>
+          <option value="11px">11px</option>
+          <option value="12px">12px</option>
+          <option value="13px">13px</option>
+          <option value="14px">14px</option>
+          <option value="16px">16px</option>
+          <option value="18px">18px</option>
+          <option value="20px">20px</option>
+          <option value="24px">24px</option>
+          <option value="28px">28px</option>
+          <option value="32px">32px</option>
+        </select>
+        <button type="button" class="ech-btn-step" id="echSizeInc" title="Increase font size">+</button>
+      </div>
+    </div>
+
+    <div class="ech-divider"></div>
+
+    <!-- Formatting Styles -->
+    <div class="ech-group">
+      <button type="button" class="ech-tool-btn" id="echBtnBold" title="Bold (Ctrl+B)"><b>B</b></button>
+      <button type="button" class="ech-tool-btn" id="echBtnItalic" title="Italic (Ctrl+I)"><i>I</i></button>
+      <button type="button" class="ech-tool-btn" id="echBtnUnderline" title="Underline (Ctrl+U)"><u>U</u></button>
+      <button type="button" class="ech-tool-btn" id="echBtnBullet" title="Insert Bullet Point (•)">• Bullet</button>
+    </div>
+
+    <div class="ech-divider"></div>
+
+    <!-- Colors -->
+    <div class="ech-group ech-color-group">
+      <label class="ech-label">Color</label>
+      <div class="ech-swatches">
+        <button type="button" class="ech-swatch" data-color="#1a1d26" style="background:#1a1d26;" title="Charcoal"></button>
+        <button type="button" class="ech-swatch" data-color="#2563eb" style="background:#2563eb;" title="Blue"></button>
+        <button type="button" class="ech-swatch" data-color="#6c5ce7" style="background:#6c5ce7;" title="Purple"></button>
+        <button type="button" class="ech-swatch" data-color="#059669" style="background:#059669;" title="Emerald"></button>
+        <button type="button" class="ech-swatch" data-color="#dc2626" style="background:#dc2626;" title="Red"></button>
+        <button type="button" class="ech-swatch" data-color="#d97706" style="background:#d97706;" title="Amber"></button>
+        <div class="ech-color-custom" title="Custom Color Picker">
+          <input type="color" id="echCustomColorPicker" value="#6c5ce7" />
+        </div>
+      </div>
+    </div>
+
+    <div class="ech-divider"></div>
+
+    <!-- Text Alignment -->
+    <div class="ech-group">
+      <button type="button" class="ech-tool-btn" id="echAlignLeft" title="Align Left">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
+      </button>
+      <button type="button" class="ech-tool-btn" id="echAlignCenter" title="Align Center">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+      <button type="button" class="ech-tool-btn" id="echAlignRight" title="Align Right">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="ech-divider"></div>
+
+    <!-- Element Operations -->
+    <div class="ech-group ech-actions-group">
+      <button type="button" class="ech-action-btn" id="echAddProjectBtn" title="Add a new project to resume">+ Project</button>
+      <button type="button" class="ech-action-btn" id="echAddExpBtn" title="Add work experience entry">+ Experience</button>
+      <button type="button" class="ech-action-btn" id="echAddEduBtn" title="Add education entry">+ Education</button>
+      <button type="button" class="ech-action-btn" id="echAddSkillBtn" title="Add a new skill tag">+ Skill</button>
+      <button type="button" class="ech-action-btn ech-btn-danger" id="echDeleteElemBtn" title="Delete currently selected element or entry" style="display:none;">🗑️ Delete</button>
+      <button type="button" class="ech-tool-btn" id="echResetFormatting" title="Clear custom formatting on selected element">🧹</button>
+    </div>
+
+    <div class="ech-divider"></div>
+
+    <!-- Zoom Canvas Controls -->
+    <div class="ech-group ech-zoom-group">
+      <button type="button" class="ech-zoom-btn" id="echZoomFit" title="Fit to screen">Fit</button>
+      <button type="button" class="ech-zoom-btn" id="echZoom80" data-scale="0.8">80%</button>
+      <button type="button" class="ech-zoom-btn active" id="echZoom100" data-scale="1.0">100%</button>
+      <button type="button" class="ech-zoom-btn" id="echZoom120" data-scale="1.2">120%</button>
+    </div>
+  </div>
+
+
+  <!-- PAGE OVERFLOW BANNER -->
+  <div id="pageOverflowBanner" class="page-overflow-banner" style="display:none;" role="alert" aria-live="polite"></div>
   <!-- SPLIT SCREEN -->
   <div class="split-screen">
 
     <!-- LEFT: FORM PANEL -->
     <div class="panel panel-form" id="formPanel">
       <div class="panel-label">YOUR DETAILS</div>
+
+      <!-- LIVE ATS READINESS METER -->
+      <div class="ats-readiness-widget" id="atsReadinessWidget">
+        <div class="arw-header">
+          <div class="arw-title-wrap">
+            <span class="arw-icon">⚡</span>
+            <div>
+              <div class="arw-title">ATS Readiness Score</div>
+              <div class="arw-subtitle" id="arwSubtitle">Real-time candidate score</div>
+            </div>
+          </div>
+          <div class="arw-score-badge" id="arwScoreBadge">--%</div>
+        </div>
+        <div class="arw-progress-bar">
+          <div class="arw-progress-fill" id="arwProgressFill" style="width: 0%;"></div>
+        </div>
+        <div class="arw-breakdown">
+          <div class="arw-item">
+            <span class="arw-label">🎯 Keywords</span>
+            <span class="arw-val" id="arwKeywords">--%</span>
+          </div>
+          <div class="arw-item">
+            <span class="arw-label">📖 Readability</span>
+            <span class="arw-val" id="arwReadability">--%</span>
+          </div>
+          <div class="arw-item">
+            <span class="arw-label">📈 Impact</span>
+            <span class="arw-val" id="arwImpact">--%</span>
+          </div>
+          <div class="arw-item">
+            <span class="arw-label">🏗️ Structure</span>
+            <span class="arw-val" id="arwStructure">--%</span>
+          </div>
+        </div>
+        <div id="arwActionTip" style="display:none; margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(108,92,231,0.08); font-size: 0.74rem; font-weight: 600; color: var(--accent);"></div>
+        <div class="arw-footer">
+          <a href="ats-score-checker.html" class="arw-full-audit-link">Full ATS Breakdown &amp; Fixes →</a>
+        </div>
+      </div>
 
       <!-- Personal -->
       <div class="form-section">
@@ -131,6 +378,15 @@
         <div id="expFields"></div>
       </div>
 
+      <!-- Projects -->
+      <div class="form-section">
+        <div class="fs-title-row">
+          <div class="fs-title">Projects</div>
+          <button class="btn-add-sm" id="addProj">+ Add</button>
+        </div>
+        <div id="projFields"></div>
+      </div>
+
       <!-- Education -->
       <div class="form-section">
         <div class="fs-title-row">
@@ -142,18 +398,35 @@
 
       <!-- Skills -->
       <div class="form-section">
-        <div class="fs-title">Skills</div>
+        <div class="fs-title">Skills &amp; ATS Proficiencies</div>
         <div class="field-group">
-          <label>Technical Skills <span class="hint">(comma separated)</span></label>
-          <input type="text" id="p_techSkills" placeholder="React, Node.js, TypeScript, CSS" />
+          <label>Technical Skills <span class="hint">(e.g. React (Advanced), Node.js (Expert))</span></label>
+          <input type="text" id="p_techSkills" placeholder="React (Advanced), Node.js (Expert), TypeScript, CSS" />
         </div>
-        <div class="field-group">
+
+        <!-- SKILL PROFICIENCY ENHANCER WIDGET -->
+        <div class="skill-enhancer-box" id="skillEnhancerBox">
+          <div class="seb-header">
+            <span class="seb-title">⚡ ATS Skill Enhancer <span style="font-weight:400;font-size:0.7rem;opacity:0.8;">(Boosts ATS Rank)</span></span>
+            <button type="button" class="seb-btn-auto" id="btnAutoProficiency" title="Automatically attach recommended proficiency levels to unrated skills">✨ Auto-Level All</button>
+          </div>
+          <div style="font-size:0.72rem; color:var(--text-muted); line-height:1.35;">
+            ATS scanners rank candidates higher when skills include depth (Beginner, Intermediate, Advanced, Expert).
+          </div>
+          <div class="seb-chips" id="sebSkillChips"></div>
+        </div>
+
+        <div class="field-group" style="margin-top:10px;">
           <label>Soft Skills <span class="hint">(comma separated)</span></label>
           <input type="text" id="p_softSkills" placeholder="Leadership, Communication" />
         </div>
-        <div class="field-group">
-          <label>Languages <span class="hint">(comma separated)</span></label>
-          <input type="text" id="p_languages" placeholder="English, Bengali" />
+        <div class="field-group lpw-section" style="margin-top:10px;">
+          <div class="lpw-header">
+            <label style="margin:0;">Languages &amp; Proficiency</label>
+            <button type="button" class="lpw-add-btn" onclick="addLanguage()" id="btnAddLanguage">+ Add Language</button>
+          </div>
+          <div class="lpw-hint">Set overall fluency + speaking, reading &amp; writing levels per language.</div>
+          <div id="langProfContainer" class="lpw-container"></div>
         </div>
       </div>
 
@@ -197,7 +470,13 @@
 
     <!-- RIGHT: RESUME PREVIEW -->
     <div class="panel panel-preview" id="previewPanel">
-      <div class="panel-label">LIVE PREVIEW</div>
+      <div class="panel-label" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+        <span>LIVE PREVIEW</span>
+        <div class="canva-edit-pill" title="Click directly on any text on the resume to edit it like Canva">
+          <span class="pulse-dot"></span>
+          <span>Canva Editor: Click any text to edit</span>
+        </div>
+      </div>
 
       <!-- ═══════════════════════════════════════
            TEMPLATE: CLASSIC
@@ -221,6 +500,11 @@
           <div class="cl-section">
             <div class="cl-section-title">Experience</div>
             <div id="cl_experience"></div>
+          </div>
+
+          <div class="cl-section" id="clProjectsSection">
+            <div class="cl-section-title">Projects</div>
+            <div id="cl_projects"></div>
           </div>
 
           <div class="cl-section">
@@ -300,6 +584,11 @@
             <div id="mo_experience"></div>
           </div>
 
+          <div class="mo-section-main" id="moProjectsSection">
+            <div class="mo-section-title-main">Projects</div>
+            <div id="mo_projects"></div>
+          </div>
+
           <div class="mo-section-main">
             <div class="mo-section-title-main">Education</div>
             <div id="mo_education"></div>
@@ -337,6 +626,11 @@
             <div class="mn-content" id="mn_experience"></div>
           </div>
 
+          <div class="mn-row" id="mnProjectsSection">
+            <div class="mn-label">Projects</div>
+            <div class="mn-content" id="mn_projects"></div>
+          </div>
+
           <div class="mn-row">
             <div class="mn-label">Education</div>
             <div class="mn-content" id="mn_education"></div>
@@ -367,7 +661,6 @@
       </div>
 
     </div><!-- end panel-preview -->
-
   </div><!-- end split-screen -->
 
   <!-- PDF EXPORT OVERLAY -->
@@ -382,6 +675,167 @@
     </div>
   </div>
 
+  <!-- VIRAL POST-DOWNLOAD SHARE & REFERRAL MODAL -->
+  <div class="viral-modal-overlay" id="viralModal" aria-hidden="true">
+    <div class="viral-modal-card">
+      <button class="modal-close-btn" id="btnCloseViralModal" aria-label="Close modal">✕</button>
+      
+      <div class="modal-header-icon">🎉</div>
+      <h2 class="modal-title">Your Resume is Downloaded!</h2>
+      <p class="modal-subtitle">You're one step closer to your dream interview. Level up your job search below:</p>
+
+      <!-- EMAIL BACKUP CAPTURE -->
+      <div class="viral-section-box">
+        <label class="v-box-label">📧 Send Email Backup + Free Interview Guide</label>
+        <div class="email-capture-row">
+          <input type="email" id="backupEmailInput" placeholder="Enter your email address..." />
+          <button id="btnSendBackup" class="btn-primary" style="padding: 7px 14px; border-radius: 6px; font-size: 0.8rem;">Send Backup</button>
+        </div>
+        <div id="backupFeedback" class="v-feedback" style="display: none;"></div>
+      </div>
+
+      <!-- SHAREABLE LINK -->
+      <div class="viral-section-box">
+        <label class="v-box-label">🔗 Your Public Shareable Resume Link</label>
+        <div class="share-link-row">
+          <input type="text" id="shareableLinkInput" readonly value="http://localhost:3000/r.html" />
+          <button id="btnCopyShareLink" class="btn-ghost" style="padding: 6px 12px; font-size: 0.8rem;">Copy</button>
+        </div>
+      </div>
+
+      <!-- SOCIAL SHARE BUTTONS -->
+      <div style="margin-top: 6px;">
+        <label class="v-box-label">📢 Share & Inspire Your Network</label>
+        <div class="social-share-buttons">
+          <button id="btnShareLinkedIn" class="btn-social btn-linkedin">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6c0-.88-.72-1.6-1.6-1.6Z"/></svg>
+            Share on LinkedIn
+          </button>
+          <button id="btnShareTwitter" class="btn-social btn-twitter">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Share on X
+          </button>
+        </div>
+      </div>
+
+      <!-- REFERRAL LOOP -->
+      <div class="referral-box">
+        <div class="ref-title">🎁 Invite Peers, Get 30 Days Free Pro AI</div>
+        <p class="ref-desc">Give your friends 1 free month of unlimited cover letter generations. Earn 30 days for every friend who signs up.</p>
+        <div class="share-link-row" style="margin-top: 6px;">
+          <input type="text" id="referralCodeInput" readonly value="https://resumatic.ai/?ref=CAREER_2025" />
+          <button id="btnCopyRefCode" class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem;">Copy Invite</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FLOATING TEXT FORMATTING & STYLE TOOLBAR -->
+  <div class="text-selection-toolbar" id="textSelectionToolbar" style="display:none;" aria-hidden="true">
+    <!-- Font Family -->
+    <div class="tst-group">
+      <select id="tstFontFamily" class="tst-select" title="Font Family">
+        <option value="">Font Family</option>
+        <option value="'Syne', sans-serif">Syne</option>
+        <option value="'DM Sans', sans-serif">DM Sans</option>
+        <option value="'Lora', serif">Lora</option>
+        <option value="'Playfair Display', serif">Playfair Display</option>
+        <option value="'IBM Plex Serif', serif">IBM Plex</option>
+        <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+        <option value="system-ui, sans-serif">System Sans</option>
+        <option value="'Times New Roman', serif">Times New Roman</option>
+        <option value="Arial, sans-serif">Arial</option>
+      </select>
+    </div>
+
+    <!-- Font Size -->
+    <div class="tst-group">
+      <select id="tstFontSize" class="tst-select" title="Font Size">
+        <option value="">Size</option>
+        <option value="10px">10px</option>
+        <option value="11px">11px</option>
+        <option value="12px">12px</option>
+        <option value="13px">13px</option>
+        <option value="14px">14px</option>
+        <option value="16px">16px</option>
+        <option value="18px">18px</option>
+        <option value="20px">20px</option>
+        <option value="24px">24px</option>
+      </select>
+    </div>
+
+    <div class="tst-divider"></div>
+
+    <!-- Color -->
+    <div class="tst-group">
+      <button type="button" class="tst-color-swatch" data-color="#1a1d26" style="background:#1a1d26;" title="Charcoal"></button>
+      <button type="button" class="tst-color-swatch" data-color="#6c5ce7" style="background:#6c5ce7;" title="Purple"></button>
+      <button type="button" class="tst-color-swatch" data-color="#2563eb" style="background:#2563eb;" title="Blue"></button>
+      <button type="button" class="tst-color-swatch" data-color="#059669" style="background:#059669;" title="Emerald"></button>
+      <button type="button" class="tst-color-swatch" data-color="#dc2626" style="background:#dc2626;" title="Red"></button>
+      <button type="button" class="tst-color-swatch" data-color="#d97706" style="background:#d97706;" title="Amber"></button>
+      <div class="tst-custom-color" title="Custom Color Picker">
+        <input type="color" id="tstCustomColorPicker" value="#6c5ce7" />
+      </div>
+    </div>
+
+    <div class="tst-divider"></div>
+
+    <!-- Alignment -->
+    <div class="tst-group">
+      <button type="button" class="tst-btn" id="tstAlignLeft" title="Align Left">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
+      </button>
+      <button type="button" class="tst-btn" id="tstAlignCenter" title="Align Center">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+      <button type="button" class="tst-btn" id="tstAlignRight" title="Align Right">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <button type="button" class="tst-btn" id="tstAlignJustify" title="Justify">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="tst-divider"></div>
+
+    <!-- Basic Formatting -->
+    <div class="tst-group">
+      <button type="button" class="tst-btn" id="tstBtnBold" title="Bold"><b>B</b></button>
+      <button type="button" class="tst-btn" id="tstBtnItalic" title="Italic"><i>I</i></button>
+      <button type="button" class="tst-btn" id="tstBtnUnderline" title="Underline"><u>U</u></button>
+      <button type="button" class="tst-btn tst-btn-reset" id="tstBtnReset" title="Clear Formatting">↺</button>
+    </div>
+  </div>
+
+
+    <!-- SINGLE PAGE TIPS MODAL -->
+  <div id="singlePageTipsModal" class="sptm-overlay" role="dialog" aria-modal="true" aria-label="Single Page Resume Tips">
+    <div class="sptm-box">
+      <div class="sptm-header">
+        <div class="sptm-icon-wrap">&#x1F4A1;</div>
+        <div>
+          <div class="sptm-title">Single-Page Resume Tips</div>
+          <div class="sptm-sub">Most recruiters spend &lt;30s per resume &mdash; keep it tight &amp; impactful!</div>
+        </div>
+        <button class="sptm-close" onclick="document.getElementById('singlePageTipsModal').classList.remove('visible')" aria-label="Close modal">&times;</button>
+      </div>
+      <ul class="sptm-list">
+        <li><span class="tip-icon">&#x26A1;</span><div><strong>Shorten bullets:</strong> Aim for 1-2 lines per bullet. Lead with strong action verbs and quantifiable metrics.</div></li>
+        <li><span class="tip-icon">&#x1F3AF;</span><div><strong>Reduce projects:</strong> Feature only 2-3 most relevant projects that highlight core competencies for target role.</div></li>
+        <li><span class="tip-icon">&#x1F4DD;</span><div><strong>Compress summary:</strong> Keep professional summary concise to 2-3 sentences (50-80 words max).</div></li>
+        <li><span class="tip-icon">&#x1F4CF;</span><div><strong>Reduce font size:</strong> Switch to Editor Canvas &rarr; Font Size &rarr; try 9.5px or 10px body font size.</div></li>
+        <li><span class="tip-icon">&#x1F6E0;</span><div><strong>Tighten skills:</strong> List only role-relevant technical and soft skills. Remove generic buzzwords.</div></li>
+        <li><span class="tip-icon">&#x1F4D0;</span><div><strong>Use compact layout:</strong> The Minimal template offers the highest text density layout.</div></li>
+        <li><span class="tip-icon">&#x1F4BC;</span><div><strong>2 pages is acceptable</strong> if you have 10+ years of experience or senior executive roles.</div></li>
+      </ul>
+      <button class="sptm-cta" onclick="document.getElementById('singlePageTipsModal').classList.remove('visible')">Got It, Let's Optimize!</button>
+    </div>
+  </div>
+  <script src="theme.js"></script>
+  <script src="ai-enhance.js"></script>
+  <script src="pdf-renderer.js"></script>
   <script src="preview-script.js"></script>
 </body>
 </html>

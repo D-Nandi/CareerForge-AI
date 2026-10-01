@@ -319,17 +319,32 @@
       </div>
     </section>
 
-    <!-- STEP 2: Work Experience -->
+    <!-- STEP 2: Work Experience & Projects -->
     <section class="form-step" data-step="2">
       <div class="step-header">
         <div class="step-tag">Step 02</div>
-        <h2>Work <em>Experience</em></h2>
-        <p>Add your most recent roles first.</p>
+        <h2>Experience &amp; <em>Projects</em></h2>
+        <p>Add your employment history and standalone personal or academic projects.</p>
+      </div>
+
+      <div class="section-subheading">
+        <h3>Work Experience</h3>
+        <p>Company roles, internships, and professional employment.</p>
       </div>
       <div id="experienceList" class="entry-list"></div>
       <button type="button" class="btn-add" id="addExperience">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Add Experience
+        Add Work Experience
+      </button>
+
+      <div class="section-subheading" style="margin-top: 36px;">
+        <h3>Projects</h3>
+        <p>Personal projects, open-source work, and academic applications.</p>
+      </div>
+      <div id="projectList" class="entry-list"></div>
+      <button type="button" class="btn-add" id="addProject">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Add Project
       </button>
     </section>
 
@@ -362,6 +377,21 @@
             <input type="text" id="techSkillInput" placeholder="e.g. React, Node.js — press Enter" />
           </div>
           <span class="field-error" id="techSkillsError"></span>
+
+          <!-- PROACTIVE SKILL PROFICIENCY MAPPING -->
+          <div class="skill-prof-wrap" id="skillProficiencyContainer" style="display:none;">
+            <div class="sp-header">
+              <div class="sp-title-area">
+                <div class="sp-title">
+                  <span>🎯 Skill Proficiency Mapping</span>
+                  <span class="sp-badge">+15% ATS Match</span>
+                </div>
+                <div class="sp-sub">Map each technical skill with your mastery level before reviewing your resume.</div>
+              </div>
+              <button type="button" class="sp-auto-btn" id="btnAutoMapProficiencies">✨ Auto-Level All</button>
+            </div>
+            <div class="sp-list" id="skillProficiencyList"></div>
+          </div>
         </div>
         <div class="field-group full">
           <label>Soft Skills</label>
@@ -453,6 +483,44 @@
         </label>
       </div>
 
+      <!-- ATS READINESS PREVIEW -->
+      <div class="ats-readiness-widget" id="formAtsWidget" style="margin-top: 24px; margin-bottom: 24px;">
+        <div class="arw-header">
+          <div class="arw-title-wrap">
+            <span class="arw-icon">⚡</span>
+            <div>
+              <div class="arw-title">ATS Readiness Check</div>
+              <div class="arw-subtitle" id="fAtsSubtitle">Resume profile analysis</div>
+            </div>
+          </div>
+          <div class="arw-score-badge" id="fAtsBadge">--%</div>
+        </div>
+        <div class="arw-progress-bar">
+          <div class="arw-progress-fill" id="fAtsFill" style="width: 0%;"></div>
+        </div>
+        <div class="arw-breakdown">
+          <div class="arw-item">
+            <span class="arw-label">🎯 Keywords</span>
+            <span class="arw-val" id="fAtsKeywords">--%</span>
+          </div>
+          <div class="arw-item">
+            <span class="arw-label">📖 Readability</span>
+            <span class="arw-val" id="fAtsReadability">--%</span>
+          </div>
+          <div class="arw-item">
+            <span class="arw-label">📈 Impact</span>
+            <span class="arw-val" id="fAtsImpact">--%</span>
+          </div>
+          <div class="arw-item">
+            <span class="arw-label">🏗️ Structure</span>
+            <span class="arw-val" id="fAtsStructure">--%</span>
+          </div>
+        </div>
+        <div class="arw-footer">
+          <a href="ats-score-checker.html" target="_blank" class="arw-full-audit-link">Full ATS Audit &amp; Fixes →</a>
+        </div>
+      </div>
+
       <!-- SUMMARY REVIEW -->
       <div class="review-box" id="reviewBox">
         <div class="review-title">
@@ -469,10 +537,17 @@
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Back
       </button>
-      <button type="button" class="btn-next" id="btnNext">
-        Continue
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
+      <div class="form-nav-right">
+        <a href="preview.html" class="btn-nav-preview" id="btnNavPreview" title="Go to Live Resume Preview & PDF Export">
+          <span class="nav-preview-pulse"></span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Go to Preview →</span>
+        </a>
+        <button type="button" class="btn-next" id="btnNext">
+          Continue
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
 
     <!-- COVER LETTER RESULT -->
@@ -496,6 +571,7 @@
 
   <script src="theme.js"></script>
   <script src="roles-data.js"></script>
+  <script src="ai-enhance.js"></script>
   <script src="form-script.js"></script>
   <!-- Libraries for resume parsing -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>

@@ -5,10 +5,14 @@ exports.generate = async (req, res, next) => {
     // Initialize INSIDE the function so dotenv has already loaded the key
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-    const { personal, experience, education, skills, jobDescription, tone } = req.body;
+    const { personal, experience, projects, education, skills, jobDescription, tone } = req.body;
 
     const expText = (experience || []).map(e =>
       `${e.role} at ${e.company} (${e.startDate} – ${e.endDate}): ${e.description}`
+    ).join('\n');
+
+    const projText = (projects || []).map(p =>
+      `${p.name} (${p.type || 'Project'}): ${p.description}`
     ).join('\n');
 
     const eduText = (education || []).map(e =>
@@ -25,6 +29,9 @@ Candidate:
 
 Experience:
 ${expText || 'N/A'}
+
+Projects:
+${projText || 'N/A'}
 
 Education:
 ${eduText || 'N/A'}
