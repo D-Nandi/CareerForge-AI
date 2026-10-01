@@ -1,4 +1,6 @@
-﻿/* ── RESET ── */
+@import url('css/tokens.css');
+
+/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ══════════════════════════════════════════

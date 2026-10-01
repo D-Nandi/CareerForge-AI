@@ -1,3 +1,5 @@
+@import url('css/tokens.css');
+
 /* ── TOOLS DESIGN SYSTEM (Light default + Dark toggle) ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
