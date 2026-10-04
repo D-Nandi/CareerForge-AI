@@ -1,4 +1,4 @@
-﻿﻿// ══════════════════════════════════════════════════════
+﻿﻿﻿// ══════════════════════════════════════════════════════
 //  RESUMATIC — Preview Script
 //  Handles: live data binding, template switching,
 //           experience/education blocks, divider drag,
@@ -79,17 +79,9 @@ const personalBindings = {
   p_languages : renderAll,
 };
 
-let renderDebounceTimer = null;
-function debouncedRenderAll() {
-  clearTimeout(renderDebounceTimer);
-  renderDebounceTimer = setTimeout(() => {
-    renderAll();
-  }, 200);
-}
-
 Object.entries(personalBindings).forEach(([id, fn]) => {
   const el = document.getElementById(id);
-  if (el) el.addEventListener('input', () => { syncPersonal(); debouncedRenderAll(); });
+  if (el) el.addEventListener('input', () => { syncPersonal(); fn(); });
 });
 
 function syncPersonal() {
@@ -1261,7 +1253,7 @@ const DEFAULT_SAMPLE_RESUME = {
 function loadFromStorage() {
   let saved;
   try {
-    const raw = localStorage.getItem('resumatic_state') || localStorage.getItem('resumatic_draft_state');
+    const raw = localStorage.getItem('resumatic_state');
     if (raw) saved = JSON.parse(raw);
   } catch (e) {}
 
@@ -1269,7 +1261,7 @@ function loadFromStorage() {
     (!saved.experience || saved.experience.length === 0) &&
     (!saved.education || saved.education.length === 0) &&
     (!saved.skills?.tech || saved.skills.tech.length === 0) &&
-    (!saved.personal?.email && !saved.personal?.firstName && !saved.personal?.lastName)
+    (!saved.personal?.email)
   );
 
   if (isEssentiallyEmpty) {
@@ -1277,11 +1269,8 @@ function loadFromStorage() {
   }
 
   // ── Personal fields ──
+  // form-script uses 'jobTitle'; preview uses 'p_title'
   const p = saved.personal || {};
-  const jobTitleVal = p.title || p.jobTitle || '';
-  p.title = jobTitleVal;
-  p.jobTitle = jobTitleVal;
-
   const fieldMap = {
     firstName : 'p_firstName',
     lastName  : 'p_lastName',
@@ -1294,10 +1283,8 @@ function loadFromStorage() {
   };
   Object.entries(fieldMap).forEach(([key, id]) => {
     const el = document.getElementById(id);
-    if (el && p[key] !== undefined && p[key] !== null) el.value = String(p[key]).replace(/<[^>]+>/g, '');
+    if (el && p[key]) el.value = p[key].replace(/<[^>]+>/g, '');
   });
-
-  if (typeof syncPersonal === 'function') syncPersonal();
 
   // ── Skills (comma-join arrays into the text inputs) ──
   const sk = saved.skills || {};

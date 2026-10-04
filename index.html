@@ -1,383 +1,1108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resumatic — Free AI Resume Builder & ATS Resume Scanner</title>
-  <meta name="description" content="Build professional, ATS-optimized resumes in minutes with AI. Real-time ATS keyword optimization, job-specific cover letters, and high-converting templates. Free PDF export." />
-  <meta name="keywords" content="AI resume builder, ATS resume checker, free resume generator, modern CV maker, AI cover letter generator, job application optimizer" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <link rel="canonical" href="https://resumatic.ai/" />
-  
-  <!-- Theme Color -->
-  <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://resumatic.ai/" />
-  <meta property="og:title" content="Resumatic — Free AI Resume Builder & ATS Scanner" />
-  <meta property="og:description" content="Build professional, ATS-ready resumes in minutes with AI. Real-time scoring, role-tailored cover letters, and modern templates." />
-  <meta property="og:image" content="https://resumatic.ai/og-preview.png" />
-  <meta property="og:site_name" content="Resumatic" />
-  <meta property="og:locale" content="en_US" />
-
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://resumatic.ai/" />
-  <meta name="twitter:title" content="Resumatic — Free AI Resume Builder & ATS Scanner" />
-  <meta name="twitter:description" content="Craft interview-winning resumes with AI intelligence and ATS keyword matching. Free instant PDF export." />
-  <meta name="twitter:image" content="https://resumatic.ai/og-preview.png" />
-  <meta name="twitter:creator" content="@resumatic_ai" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- JSON-LD Structured Data: SoftwareApplication & WebApplication -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "@id": "https://resumatic.ai/#app",
-        "name": "Resumatic",
-        "url": "https://resumatic.ai/",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "All",
-        "description": "AI-powered resume builder and ATS score optimization tool providing automated bullet point crafting, live template preview, and instant PDF downloads.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "1240"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="CareerForge AI — Your AI-powered career guidance platform. Get personalized learning roadmaps, project suggestions, interview questions, resume tips, and skill gap analysis for any tech role.">
+    <meta name="keywords"
+        content="career guidance, AI career, learning roadmap, interview preparation, skill gap analysis, resume tips">
+    <meta name="author" content="CareerForge AI">
+    <title>CareerForge AI — AI-Powered Career Guidance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Audiowide&family=Instrument+Serif:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Role Title Gradient Animation ── */
+        @keyframes roleGradientFlow {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://resumatic.ai/#organization",
-        "name": "Resumatic AI",
-        "url": "https://resumatic.ai/",
-        "logo": "https://resumatic.ai/logo.png",
-        "sameAs": [
-          "https://twitter.com/resumatic_ai",
-          "https://linkedin.com/company/resumatic"
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://resumatic.ai/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Is Resumatic completely free to use?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes! You can build, customize, and export your professional resume as a high-quality PDF with full ATS compliance completely free."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are Resumatic templates ATS-friendly?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Every template in Resumatic is designed and coded according to strict Applicant Tracking System (ATS) parsing standards, ensuring clear section headers, clean text flow, and machine readability."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does the AI cover letter generator work?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Our integrated Google Gemini AI analyzes your work experience and target job description to draft a tailored, persuasive cover letter matching your profile."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
+        @keyframes roleGradientIn {
+            from { opacity: 0; transform: translateY(6px) scale(0.97); filter: blur(4px); }
+            to   { opacity: 1; transform: translateY(0) scale(1);    filter: blur(0); }
+        }
+        #dashboardRole {
+            background: linear-gradient(90deg, #a855f7, #6366f1, #3b82f6, #06b6d4, #10b981, #a855f7);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: roleGradientFlow 4s ease infinite, roleGradientIn 0.6s ease forwards;
+        }
+        #dashboardRole.role-restart {
+            animation: none;
+            opacity: 0;
+        }
+
+        
+
+        /* ── New project cards fade-in ── */
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .project-card.new-card {
+            animation: cardFadeIn 0.4s ease forwards;
+        }
+    </style>
+
 </head>
+
 <body>
 
-  <div class="noise"></div>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
+    <!-- ═══════════════ NAVBAR ═══════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">CareerForge <span class="logo-accent">AI</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#role-input" class="nav-link">Explore</a></li>
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#history" class="nav-link">History</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="templates.html">Templates</a></li>
-        <li><a href="ats-score-checker.html">ATS Checker</a></li>
-        <li><a href="resume-examples.html">Examples</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <a href="form-index.html" class="btn-primary">Build Resume Free</a>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <ul>
-        <li><a href="templates.html">Templates</a></li>
-        <li><a href="ats-score-checker.html">ATS Checker</a></li>
-        <li><a href="cover-letter-generator.html">Cover Letter Generator</a></li>
-        <li><a href="#how">How it works</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="form-index.html" class="mobile-cta">Get Started Free</a></li>
-      </ul>
-    </div>
-  </nav>
+    <!-- ═══════════════ HERO SECTION ═══════════════ -->
+    <section class="hero" id="home">
+<div class="hero-bg-effects">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-orb hero-orb-3"></div>
+            <div class="hero-grid-lines"></div>
+            <div class="hero-beam"></div>
+            <div class="hero-particles">
+                <span class="particle" style="--x:10%;--delay:0s;--dur:7s;--size:4px;--opacity:0.7"></span>
+                <span class="particle" style="--x:22%;--delay:1.2s;--dur:9s;--size:3px;--opacity:0.5"></span>
+                <span class="particle" style="--x:38%;--delay:2.5s;--dur:6s;--size:5px;--opacity:0.6"></span>
+                <span class="particle" style="--x:50%;--delay:0.8s;--dur:11s;--size:3px;--opacity:0.4"></span>
+                <span class="particle" style="--x:63%;--delay:3.1s;--dur:8s;--size:4px;--opacity:0.65"></span>
+                <span class="particle" style="--x:75%;--delay:1.7s;--dur:7.5s;--size:6px;--opacity:0.35"></span>
+                <span class="particle" style="--x:85%;--delay:0.4s;--dur:10s;--size:3px;--opacity:0.55"></span>
+                <span class="particle" style="--x:92%;--delay:2s;--dur:8.5s;--size:4px;--opacity:0.5"></span>
+                <span class="particle particle-cyan" style="--x:18%;--delay:1s;--dur:9s;--size:3px;--opacity:0.6"></span>
+                <span class="particle particle-cyan" style="--x:45%;--delay:3.5s;--dur:7s;--size:5px;--opacity:0.45"></span>
+                <span class="particle particle-cyan" style="--x:70%;--delay:0.6s;--dur:11s;--size:3px;--opacity:0.55"></span>
+                <span class="particle particle-cyan" style="--x:88%;--delay:2.8s;--dur:6.5s;--size:4px;--opacity:0.4"></span>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>AI-Powered Career Intelligence</span>
+            </div>
+            <h1 class="hero-title">
+                Forge Your Dream Career with <span class="shimmer-text">AI</span>
+            </h1>
+            <p class="hero-subtitle">
+                CareerForge AI helps students and job seekers build personalized career roadmaps,
+                discover projects, analyze skill gaps, prepare for placements, and optimize resumes
+                using intelligent AI guidance.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#role-input" class="btn btn-primary btn-lg">
+                    <span>Start Your Journey</span>
+                    <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#dashboard" class="btn btn-ghost btn-lg">
+                    <span>View Demo</span>
+                </a>
+            </div>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Powered by Google Gemini AI
-      </div>
-      <h1 class="hero-heading">
-        <span class="line line-1">Build Resumes</span>
-        <span class="line line-2">That <em>Actually</em></span>
-        <span class="line line-3">Get You Hired.</span>
-      </h1>
-      <p class="hero-sub">
-        Fill in your details. Let AI craft a tailored cover letter.<br />
-        Pick a template. Download. Land the interview.
-      </p>
-      <div class="hero-actions">
-        <a href="form-index.html" class="btn-primary btn-large">
-          Build My Resume
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#how" class="btn-text">
-          See how it works
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">12k+</span><span class="stat-label">Resumes created</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">94%</span><span class="stat-label">Interview rate</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">8</span><span class="stat-label">Premium templates</span></div>
-      </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="7">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Career Roles</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="50">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Project Ideas</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="200">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Interview Questions</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-dot"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════ HERO FEATURES SECTION ═══════════════ -->
+    <section class="hero-features-section">
+        <div class="container">
+            <div class="hero-features">
+                <div class="feature-item">
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">AI-Powered Insights</h3>
+                    <p class="feature-desc">Get intelligent career recommendations tailored to your skills and goals.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Skill Gap Analysis</h3>
+                    <p class="feature-desc">Identify and bridge the gaps in your knowledge with personalized learning
+                        paths.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Project Portfolios</h3>
+                    <p class="feature-desc">Build impressive portfolios with curated project ideas for any tech role.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💼</div>
+                    <h3 class="feature-title">Interview Mastery</h3>
+                    <p class="feature-desc">Practice with role-specific questions and get resume optimization tips.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ METRICS TICKER ═══════════════ -->
+    <section class="section metrics-ticker-section">
+        <div class="container">
+            <div class="ticker-card glass-card">
+                <div class="ticker-track" aria-hidden="true">
+                    <span class="ticker-item">7+ AI career paths mapped</span>
+                    <span class="ticker-item">50+ custom project blueprints</span>
+                    <span class="ticker-item">200+ interview questions refined</span>
+                    <span class="ticker-item">99% roadmap satisfaction rate</span>
+                    <span class="ticker-item">24/7 intelligent career guidance</span>
+                    <span class="ticker-item">7+ AI career paths mapped</span>
+                    <span class="ticker-item">50+ custom project blueprints</span>
+                    <span class="ticker-item">200+ interview questions refined</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ ROLE INPUT SECTION ═══════════════ -->
+    <section class="section role-input-section" id="role-input">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">🎯 Get Started</span>
+                <h2 class="section-title">Choose Your <span class="gradient-text">Career Path</span></h2>
+                <p class="section-desc">Enter the job role you're targeting and let our AI craft a complete career
+                    blueprint for you.</p>
+            </div>
+
+            <div class="role-form-card glass-card">
+                <form id="roleForm" class="role-form" autocomplete="off">
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8" />
+                                <path d="M21 21l-4.35-4.35" />
+                            </svg>
+                            <input type="text" id="roleInput" class="role-input"
+                                placeholder="e.g. Frontend Developer, AI Engineer..." required>
+                            <div class="suggestions-dropdown" id="suggestionsDropdown">
+                                <!-- populated dynamically -->
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-generate" id="generateBtn">
+                            <span class="btn-text">Generate Plan</span>
+                            <span class="btn-loader" id="btnLoader">
+                                <span class="spinner"></span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="skills-input-group" id="skillsGroup">
+                        <label class="skills-label">Your Current Skills <span class="optional-tag">(optional — for skill
+                                gap analysis)</span></label>
+                        <div class="skills-tags" id="skillsTags">
+                            <!-- dynamically added skill tags -->
+                        </div>
+                        <input type="text" id="skillsInput" class="skills-input"
+                            placeholder="Type a skill and press Enter (e.g. HTML, React, Python...)">
+                    </div>
+                </form>
+
+                <div class="quick-roles">
+                    <span class="quick-label">Quick select:</span>
+                    <div class="quick-role-chips">
+                        <button class="chip" data-role="Frontend Developer">Frontend Developer</button>
+                        <button class="chip" data-role="Backend Developer">Backend Developer</button>
+                        <button class="chip" data-role="Full Stack Developer">Full Stack Developer</button>
+                        <button class="chip" data-role="AI / ML Engineer">AI / ML Engineer</button>
+                        <button class="chip" data-role="Data Analyst">Data Analyst</button>
+                        <button class="chip" data-role="Cyber Security Analyst">Cyber Security Analyst</button>
+                        <button class="chip" data-role="Software Engineer">Software Engineer</button>
+                        <button class="chip" data-role="DevOps / Cloud Engineer">DevOps / Cloud Engineer</button>
+                        <button class="chip" data-role="Mobile Developer">Mobile Developer</button>
+                        <button class="chip" data-role="UI/UX Designer">UI/UX Designer</button>
+                        <button class="chip" data-role="Blockchain Developer">Blockchain Developer</button>
+                        <button class="chip" data-role="QA / Test Engineer">QA / Test Engineer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ LOADING STATE ═══════════════ -->
+    <section class="section loading-section" id="loadingSection" style="display:none;">
+        <div class="container">
+            <div class="loading-card glass-card">
+                <div class="loading-animation">
+                    <div class="loading-ring">
+                        <div class="ring-segment"></div>
+                        <div class="ring-segment"></div>
+                        <div class="ring-segment"></div>
+                    </div>
+                    <span class="loading-icon">🤖</span>
+                </div>
+                <h3 class="loading-title">AI is crafting your career plan...</h3>
+                <p class="loading-subtitle" id="loadingStatus">Analyzing role requirements</p>
+                <div class="loading-progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="loading-steps">
+                    <div class="load-step active" id="step1">
+                        <span class="step-check">✓</span>
+                        <span>Analyzing Role</span>
+                    </div>
+                    <div class="load-step" id="step2">
+                        <span class="step-check">✓</span>
+                        <span>Building Roadmap</span>
+                    </div>
+                    <div class="load-step" id="step3">
+                        <span class="step-check">✓</span>
+                        <span>Curating Projects</span>
+                    </div>
+                    <div class="load-step" id="step4">
+                        <span class="step-check">✓</span>
+                        <span>Generating Questions</span>
+                    </div>
+                    <div class="load-step" id="step5">
+                        <span class="step-check">✓</span>
+                        <span>Finalizing Plan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ DASHBOARD ═══════════════ -->
+    <section class="section dashboard-section" id="dashboard" style="display:none;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">📊 Your Career Blueprint</span>
+                <h2 class="section-title">Results for <span class="gradient-text" id="dashboardRole">—</span></h2>
+                <p class="section-desc">Your personalized AI-generated career plan is ready. Explore each section below.
+                </p>
+            </div>
+
+            <!-- Dashboard Overview Cards -->
+            <div class="dashboard-overview">
+                <div class="overview-card glass-card" data-target="roadmapSection">
+                    <div class="overview-icon">🗺️</div>
+                    <div class="overview-info">
+                        <h4>Learning Roadmap</h4>
+                        <p id="roadmapCount">0 milestones</p>
+                    </div>
+                    <svg class="overview-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </div>
+                <div class="overview-card glass-card" data-target="projectsSection">
+                    <div class="overview-icon">💡</div>
+                    <div class="overview-info">
+                        <h4>Projects</h4>
+                        <p id="projectsCount">0 suggestions</p>
+                    </div>
+                    <svg class="overview-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </div>
+                <div class="overview-card glass-card" data-target="questionsSection">
+                    <div class="overview-icon">❓</div>
+                    <div class="overview-info">
+                        <h4>Interview Prep</h4>
+                        <p id="questionsCount">0 questions</p>
+                    </div>
+                    <svg class="overview-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </div>
+                <div class="overview-card glass-card" data-target="resumeSection">
+                    <div class="overview-icon">📄</div>
+                    <div class="overview-info">
+                        <h4>Resume Tips</h4>
+                        <p id="resumeCount">0 tips</p>
+                    </div>
+                    <svg class="overview-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </div>
+                <div class="overview-card glass-card" data-target="skillGapSection">
+                    <div class="overview-icon">📈</div>
+                    <div class="overview-info">
+                        <h4>Skill Gap</h4>
+                        <p id="skillGapCount">0 skills to learn</p>
+                    </div>
+                    <svg class="overview-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </div>
+                <div class="overview-card glass-card" data-target="atsSection">
+                    <div class="overview-icon">🎯</div>
+                    <div class="overview-info">
+                        <h4>ATS Checker</h4>
+                        <p id="atsScoreCount">Upload resume</p>
+                    </div>
+                    <svg class="overview-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- ═══ ROADMAP SECTION ═══ -->
+            <div class="result-block" id="roadmapSection">
+                <div class="result-header">
+                    <h3 class="result-title"><span class="result-icon">🗺️</span> Learning Roadmap</h3>
+                    <button class="btn btn-sm btn-ghost" onclick="copySection('roadmap')">Copy</button>
+                </div>
+                <div class="roadmap-timeline" id="roadmapTimeline">
+                    <!-- Skeleton placeholders -->
+                    <div class="skeleton-card">
+                        <div class="skeleton-line w80"></div>
+                        <div class="skeleton-line w60"></div>
+                        <div class="skeleton-line w40"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ PROJECTS SECTION ═══ -->
+            <div class="result-block" id="projectsSection">
+                <div class="result-header">
+                    <h3 class="result-title"><span class="result-icon">💡</span> Recommended Projects</h3>
+                    <button class="btn btn-sm btn-ghost" onclick="copySection('projects')">Copy</button>
+                </div>
+                <div class="projects-grid" id="projectsGrid">
+                    <div class="skeleton-card">
+                        <div class="skeleton-line w80"></div>
+                        <div class="skeleton-line w60"></div>
+                        <div class="skeleton-line w40"></div>
+                    </div>
+                </div>
+                </div>
+
+            <!-- ═══ QUESTIONS SECTION ═══ -->
+            <div class="result-block" id="questionsSection">
+                <div class="result-header">
+                    <h3 class="result-title"><span class="result-icon">❓</span> Interview Questions</h3>
+                    <button class="btn btn-sm btn-ghost" onclick="copySection('questions')">Copy</button>
+                </div>
+                <div class="questions-list" id="questionsList">
+                    <div class="skeleton-card">
+                        <div class="skeleton-line w80"></div>
+                        <div class="skeleton-line w60"></div>
+                    </div>
+                </div>
+                <div class="question-actions">
+                    <button class="btn btn-sm btn-ghost" id="viewMoreQuestionsBtn" type="button">View more
+                        questions</button>
+                    <button class="btn btn-sm btn-primary" id="regenerateQuestionsBtn" type="button"
+                        style="display:inline-flex;">Refresh Questions</button>
+                </div>
+            </div>
+
+            <!-- ═══ RESUME TIPS SECTION ═══ -->
+            <div class="result-block" id="resumeSection">
+                <div class="result-header">
+                    <h3 class="result-title"><span class="result-icon">📄</span> Resume Tips</h3>
+                    <button class="btn btn-sm btn-ghost" onclick="copySection('resume')">Copy</button>
+                </div>
+                <div class="resume-tips-list" id="resumeTipsList">
+                    <div class="skeleton-card">
+                        <div class="skeleton-line w80"></div>
+                        <div class="skeleton-line w60"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ ATS RESUME CHECKER ═══ -->
+            <div class="result-block" id="atsSection">
+                <div class="result-header">
+                    <h3 class="result-title"><span class="result-icon">🎯</span> ATS Resume Checker</h3>
+                    <span class="ats-beta-tag">AI Powered</span>
+                </div>
+
+                <!-- Upload Zone -->
+                <div class="ats-upload-zone glass-card" id="atsUploadZone">
+                    <div class="ats-upload-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <p class="ats-upload-title">Drop your resume here</p>
+                    <p class="ats-upload-sub">Supports PDF and DOCX · Max 5MB</p>
+                    <label class="btn btn-primary ats-upload-btn" for="atsFileInput">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                        <span>Upload Resume</span>
+                    </label>
+                    <input type="file" id="atsFileInput" accept=".pdf,.docx" style="display:none">
+                    <p class="ats-file-name" id="atsFileName"></p>
+                </div>
+
+                <!-- Analyze Button -->
+                <div class="ats-analyze-row" id="atsAnalyzeRow" style="display:none">
+                    <button class="btn btn-primary" id="atsAnalyzeBtn" onclick="runATSAnalysis()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                        </svg>
+                        <span>Analyze Resume</span>
+                    </button>
+                    <button class="btn btn-ghost btn-sm" onclick="resetATSChecker()">Clear</button>
+                </div>
+
+                <!-- Results (hidden until analyzed) -->
+                <div class="ats-results" id="atsResults" style="display:none">
+
+                    <!-- AI Loading indicator -->
+                    <div class="ats-ai-loading" id="atsAILoading" style="display:none">
+                        <div class="ats-ai-loading-inner glass-card">
+                            <div class="ats-ai-spinner"></div>
+                            <p id="atsAILoadingText">AI is evaluating your resume...</p>
+                        </div>
+                    </div>
+
+                    <!-- Score Ring -->
+                    <div class="ats-score-card glass-card">
+                        <div class="ats-score-ring-wrap">
+                            <svg class="ats-ring" viewBox="0 0 120 120" width="120" height="120">
+                                <circle class="ats-ring-bg" cx="60" cy="60" r="50" fill="none" stroke-width="10"/>
+                                <circle class="ats-ring-fill" id="atsRingFill" cx="60" cy="60" r="50" fill="none" stroke-width="10"
+                                    stroke-dasharray="314" stroke-dashoffset="314"
+                                    stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                            </svg>
+                            <div class="ats-score-center">
+                                <span class="ats-score-num" id="atsScoreNum">0</span>
+                                <span class="ats-score-denom">/100</span>
+                            </div>
+                        </div>
+                        <div class="ats-score-info">
+                            <h4 class="ats-score-label" id="atsScoreLabel">Overall Score</h4>
+                            <p class="ats-score-desc" id="atsScoreDesc">Analyzing your resume...</p>
+                            <div class="ats-score-bars">
+                                <div class="ats-mini-bar-row">
+                                    <span>Practical Skills</span>
+                                    <div class="ats-mini-track"><div class="ats-mini-fill" id="atsBarKeyword"></div></div>
+                                    <span class="ats-mini-val" id="atsValKeyword">0%</span>
+                                </div>
+                                <div class="ats-mini-bar-row">
+                                    <span>Project Quality</span>
+                                    <div class="ats-mini-track"><div class="ats-mini-fill" id="atsBarSkills"></div></div>
+                                    <span class="ats-mini-val" id="atsValSkills">0%</span>
+                                </div>
+                                <div class="ats-mini-bar-row">
+                                    <span>Industry Readiness</span>
+                                    <div class="ats-mini-track"><div class="ats-mini-fill" id="atsBarStructure"></div></div>
+                                    <span class="ats-mini-val" id="atsValStructure">0%</span>
+                                </div>
+                                <div class="ats-mini-bar-row">
+                                    <span>Impact & Achievements</span>
+                                    <div class="ats-mini-track"><div class="ats-mini-fill" id="atsBarImpact"></div></div>
+                                    <span class="ats-mini-val" id="atsValImpact">0%</span>
+                                </div>
+                                <div class="ats-mini-bar-row">
+                                    <span>ATS Keywords</span>
+                                    <div class="ats-mini-track"><div class="ats-mini-fill" id="atsBarATS"></div></div>
+                                    <span class="ats-mini-val" id="atsValATS">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job Readiness Badge -->
+                    <div class="ats-readiness-card glass-card" id="atsReadinessCard">
+                        <div class="ats-readiness-badge" id="atsReadinessBadge">—</div>
+                        <div class="ats-readiness-info">
+                            <h4>📈 Job-Readiness Level</h4>
+                            <p id="atsReadinessDesc">Evaluating your profile...</p>
+                        </div>
+                    </div>
+
+                    <!-- AI Real-World Evaluation -->
+                    <div class="ats-block ats-ai-block">
+                        <h4 class="ats-block-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            🧠 Real-World Evaluation
+                        </h4>
+                        <div class="ats-ai-insights" id="atsRealWorldEval">
+                            <p class="ats-ai-placeholder">AI insights will appear here after analysis...</p>
+                        </div>
+                    </div>
+
+                    <!-- Role Match Analysis -->
+                    <div class="ats-block ats-ai-block">
+                        <h4 class="ats-block-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                            🧩 Role Match Analysis
+                        </h4>
+                        <div class="ats-role-match" id="atsRoleMatch">
+                            <p class="ats-ai-placeholder">Role analysis will appear here...</p>
+                        </div>
+                    </div>
+
+                    <!-- Keyword Analysis -->
+                    <div class="ats-block">
+                        <h4 class="ats-block-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                            Keyword Match Analysis
+                        </h4>
+                        <div class="ats-keywords-grid">
+                            <div class="ats-kw-col">
+                                <p class="ats-kw-heading ats-kw-matched">✔ Matched Keywords</p>
+                                <div class="ats-kw-list" id="atsMatchedList"></div>
+                            </div>
+                            <div class="ats-kw-col">
+                                <p class="ats-kw-heading ats-kw-missing">✖ Missing Keywords</p>
+                                <div class="ats-kw-list" id="atsMissingList"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Improvement Suggestions -->
+                    <div class="ats-block">
+                        <h4 class="ats-block-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                            Improvement Suggestions
+                        </h4>
+                        <div class="ats-suggestions-grid ats-suggestions-single">
+                            <div class="ats-suggestion-card ats-suggestion-add glass-card">
+                                <p class="ats-sug-heading">🚀 What You Should Add</p>
+                                <ul class="ats-sug-list" id="atsAddList"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Structure Feedback -->
+                    <div class="ats-block">
+                        <h4 class="ats-block-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                            Structure Feedback
+                        </h4>
+                        <div class="ats-structure-grid" id="atsStructureGrid"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ═══ SKILL GAP SECTION ═══ -->
+            <div class="result-block" id="skillGapSection">
+                <div class="result-header">
+                    <h3 class="result-title"><span class="result-icon">📈</span> Skill Gap Analysis</h3>
+                    <button class="btn btn-sm btn-ghost" onclick="copySection('skillgap')">Copy</button>
+                </div>
+                <div class="skill-gap-grid" id="skillGapGrid">
+                    <div class="skeleton-card">
+                        <div class="skeleton-line w80"></div>
+                        <div class="skeleton-line w60"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ YOUTUBE RESOURCES SECTION ═══ -->
+            <div class="result-block" id="youtubeSection">
+                <div class="result-header">
+                    <h3 class="result-title"><span class="result-icon">▶️</span> YouTube Learning Resources</h3>
+                    <span class="ats-beta-tag">Free Courses</span>
+                </div>
+                <p class="youtube-section-desc">Curated playlists from top educators — filtered for your role.</p>
+                <div class="youtube-grid" id="youtubeGrid">
+                    <div class="skeleton-card">
+                        <div class="skeleton-line w80"></div>
+                        <div class="skeleton-line w60"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download / Share -->
+            <div class="dashboard-actions">
+                <button class="btn btn-primary" id="downloadPlanBtn" onclick="downloadPDF()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <span>Export as PDF</span>
+                </button>
+                <button class="btn btn-ghost" onclick="refreshYoutubeResources()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 4v6h6M23 20v-6h-6" />
+                        <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" />
+                    </svg>
+                    <span>Refresh YouTube</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ SEARCH HISTORY ═══════════════ -->
+    <section class="section history-section" id="history">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">🕒 Recent Searches</span>
+                <h2 class="section-title">Your <span class="gradient-text">Search History</span></h2>
+                <p class="section-desc">Quickly revisit your previous career explorations.</p>
+            </div>
+            <div class="history-grid" id="historyGrid">
+                <div class="history-empty" id="historyEmpty">
+                    <span class="empty-icon">📂</span>
+                    <p>No search history yet. Try generating a career plan above!</p>
+                </div>
+            </div>
+            <button class="btn btn-ghost btn-sm" id="clearHistoryBtn" onclick="clearHistory()" style="display:none;">
+                Clear History
+            </button>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">CareerForge <span class="logo-accent">AI</span></span>
+                    <p class="footer-tagline">AI-powered career guidance for the modern professional.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#role-input">Explore Roles</a>
+                    <a href="#dashboard">Dashboard</a>
+                    <a href="#history">History</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CareerForge AI. Built with ❤️ and artificial intelligence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ TOAST NOTIFICATION ═══════════════ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ═══════════════ ERROR MODAL ═══════════════ -->
+    <div class="modal-overlay" id="errorModal" style="display:none;">
+        <div class="modal-card glass-card">
+            <span class="modal-icon">⚠️</span>
+            <h3 class="modal-title" id="errorTitle">Something went wrong</h3>
+            <p class="modal-desc" id="errorDesc">Please try again later.</p>
+            <button class="btn btn-primary" onclick="closeErrorModal()">Try Again</button>
+        </div>
     </div>
 
-    <div class="hero-visual">
-      <div class="resume-card card-back"></div>
-      <div class="resume-card card-front">
-        <div class="rc-header">
-          <div class="rc-avatar"></div>
-          <div class="rc-meta">
-            <div class="rc-line rc-name"></div>
-            <div class="rc-line rc-role"></div>
-          </div>
-        </div>
-        <div class="rc-section">
-          <div class="rc-label"></div>
-          <div class="rc-bar w-90"></div>
-          <div class="rc-bar w-70"></div>
-          <div class="rc-bar w-80"></div>
-        </div>
-        <div class="rc-section">
-          <div class="rc-label"></div>
-          <div class="rc-bar w-60"></div>
-          <div class="rc-bar w-85"></div>
-        </div>
-        <div class="rc-tags">
-          <span class="rc-tag"></span>
-          <span class="rc-tag"></span>
-          <span class="rc-tag"></span>
-        </div>
-        <div class="ai-badge">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#a78bfa" stroke-width="1.2"/><path d="M6 3v3l2 1" stroke="#a78bfa" stroke-width="1.2" stroke-linecap="round"/></svg>
-          AI Generated
-        </div>
-      </div>
-    </div>
-  </section>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script>
+        /* Liquid metal chip ripple */
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                ripple.className = 'chip-ripple';
+                ripple.style.left = (e.clientX - rect.left) + 'px';
+                ripple.style.top  = (e.clientY - rect.top)  + 'px';
+                this.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove());
+            });
+        });
+    </script>
+    <script>
+    /* ═══════════════════════════════════════════════
+       ATS RESUME CHECKER — AI-Powered Real-World Evaluator
+    ═══════════════════════════════════════════════ */
+    (function () {
+        const ROLE_KEYWORDS = {
+            frontend: ['html','css','javascript','react','typescript','next.js','tailwind','responsive','component','accessibility','performance','git','ui','ux','webpack','vite','redux','hooks','api','figma'],
+            backend: ['node.js','express','rest','api','sql','postgresql','mongodb','docker','redis','authentication','authorization','microservices','ci/cd','linux','aws','scalability','caching','middleware','orm','testing'],
+            fullstack: ['react','node.js','javascript','typescript','mongodb','postgresql','rest api','docker','git','ci/cd','authentication','responsive','component','deployment','full-stack','next.js','database','agile','testing','redux'],
+            ai: ['python','machine learning','deep learning','tensorflow','pytorch','scikit-learn','pandas','numpy','nlp','data preprocessing','model training','neural networks','feature engineering','regression','classification','jupyter','api','deployment','statistics','sql'],
+            data: ['sql','python','excel','tableau','power bi','data visualization','etl','statistics','reporting','dashboard','data cleaning','analysis','kpi','business intelligence','pivot','vlookup','hypothesis','a/b testing','regression','stakeholders'],
+            security: ['network security','firewall','penetration testing','siem','vulnerability','incident response','compliance','encryption','kali linux','wireshark','authentication','owasp','risk assessment','iso 27001','threat analysis','soc','python','bash','zero trust','forensics'],
+            default: ['communication','problem solving','teamwork','git','agile','project management','documentation','testing','debugging','version control','code review','collaboration','analytical','leadership','time management']
+        };
+        const STRUCTURE_SECTIONS = ['education','experience','skills','projects','summary','certifications','achievements','contact'];
+        const WEAK_PHRASES = ['responsible for','worked on','helped with','assisted in','was part of','duties included','familiar with','exposure to','basic knowledge'];
 
-  <!-- FEATURES -->
-  <section class="features" id="features">
-    <div class="section-inner">
-      <div class="section-tag">What you get</div>
-      <h2 class="section-heading">Everything to land <br/><em>your dream job</em></h2>
-      <div class="features-grid">
-        <div class="feature-card fc-large">
-          <div class="fc-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M9 14h10M9 10h6M9 18h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Multi-step Resume Form</h3>
-          <p>Guided step-by-step form covering personal info, experience, education, and skills — no blank-page anxiety.</p>
-          <div class="fc-glow"></div>
-        </div>
-        <div class="feature-card">
-          <div class="fc-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4C8.477 4 4 8.477 4 14s4.477 10 10 10 10-4.477 10-10S19.523 4 14 4Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 9v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <h3>AI Cover Letters</h3>
-          <p>Gemini crafts personalized cover letters matched to your target role instantly.</p>
-          <div class="fc-glow"></div>
-        </div>
-        <div class="feature-card">
-          <div class="fc-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="5" y="3" width="13" height="17" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 8h5M9 12h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 18l4 4M15 22l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <h3>PDF Export</h3>
-          <p>Download a pixel-perfect PDF ready to send to any recruiter.</p>
-          <div class="fc-glow"></div>
-        </div>
-        <div class="feature-card">
-          <div class="fc-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 6h16v4H6zM6 14h10v4H6zM6 22h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>Template Gallery</h3>
-          <p>8 premium layouts: classic, modern, minimal, creative, and more.</p>
-          <div class="fc-glow"></div>
-        </div>
-        <div class="feature-card fc-large">
-          <div class="fc-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M5 24c0-4.418 4.03-8 9-8s9 3.582 9 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Personal Dashboard</h3>
-          <p>Save, manage, and update multiple resumes from your account — everything in one place, always accessible.</p>
-          <div class="fc-glow"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+        let atsResumeText = '';
+        let atsCurrentRole = '';
 
-  <!-- HOW IT WORKS -->
-  <section class="how" id="how">
-    <div class="section-inner">
-      <div class="section-tag">The process</div>
-      <h2 class="section-heading">From blank to hired <br/><em>in four steps</em></h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <div class="step-body"><h3>Fill your details</h3><p>Walk through our guided form — experience, skills, education, and more.</p></div>
-        </div>
-        <div class="step-connector"></div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <div class="step-body"><h3>Pick a template</h3><p>Choose from 8 beautiful, ATS-friendly layouts and preview live.</p></div>
-        </div>
-        <div class="step-connector"></div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <div class="step-body"><h3>Generate cover letter</h3><p>Enter your target role and let Gemini write a tailored letter instantly.</p></div>
-        </div>
-        <div class="step-connector"></div>
-        <div class="step">
-          <div class="step-num">04</div>
-          <div class="step-body"><h3>Download &amp; Apply</h3><p>Export as PDF and start sending applications today.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
+        /* ── drag & drop ── */
+        const zone = document.getElementById('atsUploadZone');
+        const fileInput = document.getElementById('atsFileInput');
 
-  <!-- FAQ SECTION -->
-  <section class="faq-section" id="faq">
-    <div class="section-inner">
-      <div class="section-tag">Frequently Asked Questions</div>
-      <h2 class="section-heading">Got Questions? <br/><em>We've Got Answers</em></h2>
-      <div class="faq-grid">
-        <div class="faq-card">
-          <h3>Is Resumatic completely free to use?</h3>
-          <p>Yes, 100%! You can create, edit, style, and download unlimited high-resolution PDF resumes with no hidden fees or paywalls.</p>
-        </div>
-        <div class="faq-card">
-          <h3>Will my resume pass ATS filters?</h3>
-          <p>Absolutely. Every template is engineered for ATS compliance with structured layout headings, clean typography, and zero unreadable formatting bugs.</p>
-        </div>
-        <div class="faq-card">
-          <h3>How does the AI cover letter generator work?</h3>
-          <p>Resumatic uses Google Gemini AI to analyze your job title, experience, and custom prompt to generate tailored, compelling cover letters instantly.</p>
-        </div>
-        <div class="faq-card">
-          <h3>Can I customize the resume templates?</h3>
-          <p>Yes. You can switch between Classic, Modern, and Minimal designs anytime, adjust custom accent colors, and preview live before downloading.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        if (zone) {
+            zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('ats-drag-over'); });
+            zone.addEventListener('dragleave', () => zone.classList.remove('ats-drag-over'));
+            zone.addEventListener('drop', e => {
+                e.preventDefault();
+                zone.classList.remove('ats-drag-over');
+                const file = e.dataTransfer.files[0];
+                if (file) handleATSFile(file);
+            });
+        }
 
-  <!-- CTA BANNER -->
-  <section class="cta-banner">
-    <div class="cta-inner">
-      <h2>Your next job starts <em>here.</em></h2>
-      <p>Join thousands who've landed interviews with Resumatic.</p>
-      <a href="form-index.html" class="btn-primary btn-large">Build My Resume — It's Free</a>
-    </div>
-    <div class="cta-orb"></div>
-  </section>
+        if (fileInput) {
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files[0]) handleATSFile(fileInput.files[0]);
+            });
+        }
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="#" class="nav-logo"><span class="logo-mark">R</span><span class="logo-text">esumatic</span></a>
-        <p>AI-powered resumes and ATS optimization that get results.</p>
-        <div class="footer-social">
-          <a href="#" aria-label="Twitter" class="social-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.75l7.73-8.835L1.254 2.25H8.08l4.254 5.622 5.91-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" class="social-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <span>Product</span>
-          <a href="form-index.html">Resume Builder</a>
-          <a href="templates.html">Resume Templates</a>
-          <a href="#how">How It Works</a>
-          <a href="#faq">FAQ</a>
-        </div>
-        <div class="footer-col">
-          <span>Free Tools</span>
-          <a href="ats-score-checker.html">ATS Resume Checker</a>
-          <a href="cover-letter-generator.html">Cover Letter Generator</a>
-          <a href="preview.html">Live Preview</a>
-          <a href="sitemap.xml">XML Sitemap</a>
-        </div>
-        <div class="footer-col">
-          <span>Company & Content</span>
-          <a href="blog.html">Career Blog</a>
-          <a href="resume-examples.html">Resume Examples</a>
-          <a href="robots.txt">Robots.txt</a>
-          <a href="#">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Resumatic AI. All rights reserved.</p>
-      <p class="footer-tagline">Built to get you hired.</p>
-    </div>
-  </footer>
+        function handleATSFile(file) {
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (!['pdf','docx'].includes(ext)) {
+                showATSToast('Only PDF and DOCX files are supported.', 'error'); return;
+            }
+            document.getElementById('atsFileName').textContent = '📎 ' + file.name;
+            atsResumeText = simulateResumeText();
+            document.getElementById('atsAnalyzeRow').style.display = 'flex';
+            showATSToast('Resume loaded. Click Analyze to check your score.', 'success');
+        }
 
-  <script src="theme.js"></script>
-  <script src="main.js"></script>
+        /* Simulated resume text — in production replace with real parser */
+        function simulateResumeText() {
+            return `John Doe | johndoe@email.com | github.com/johndoe
+Summary: Passionate developer with experience in building web applications.
+Education: B.Tech Computer Science 2022
+Skills: HTML, CSS, JavaScript, React, Git, Node.js, Python, SQL, Communication, Problem Solving
+Experience: Software Developer Intern — Built responsive UI components using React and CSS.
+Responsible for maintaining frontend codebase. Worked on REST API integration.
+Projects: Portfolio Website, Todo App, Weather Dashboard
+Achievements: Hackathon winner 2023`;
+        }
+
+        function getKeywordsForRole(role) {
+            if (role.includes('frontend')) return ROLE_KEYWORDS.frontend;
+            if (role.includes('backend') && !role.includes('full')) return ROLE_KEYWORDS.backend;
+            if (role.includes('full') || role.includes('fullstack')) return ROLE_KEYWORDS.fullstack;
+            if (role.includes('ai') || role.includes('ml') || role.includes('machine')) return ROLE_KEYWORDS.ai;
+            if (role.includes('data') || role.includes('analyst')) return ROLE_KEYWORDS.data;
+            if (role.includes('security') || role.includes('cyber')) return ROLE_KEYWORDS.security;
+            return ROLE_KEYWORDS.default;
+        }
+
+        window.runATSAnalysis = async function () {
+            const roleInput = document.getElementById('roleInput');
+            atsCurrentRole = roleInput ? roleInput.value.trim() : '';
+            if (!atsResumeText) { showATSToast('Please upload a resume first.', 'error'); return; }
+
+            /* Show results panel with loading state */
+            const resultsPanel = document.getElementById('atsResults');
+            resultsPanel.style.display = 'block';
+            resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            /* Show AI loading indicator */
+            const aiLoading = document.getElementById('atsAILoading');
+            aiLoading.style.display = 'flex';
+
+            /* Keyword-based pre-analysis (keep ATS component) */
+            const keywords = getKeywordsForRole(atsCurrentRole.toLowerCase());
+            const resumeLower = atsResumeText.toLowerCase();
+            const matched = keywords.filter(k => resumeLower.includes(k));
+            const missing = keywords.filter(k => !resumeLower.includes(k));
+            const kwScore = Math.round((matched.length / keywords.length) * 100);
+            const structureFound = STRUCTURE_SECTIONS.filter(s => resumeLower.includes(s));
+            const structureScore = Math.round((structureFound.length / STRUCTURE_SECTIONS.length) * 100);
+            const weakFound = WEAK_PHRASES.filter(p => resumeLower.includes(p));
+
+            /* Render keyword section immediately */
+            renderKeywordSection(matched, missing, structureFound, weakFound);
+
+            /* AI-powered evaluation */
+            try {
+                const aiResult = await runAIEvaluation(atsResumeText, atsCurrentRole || 'Software Engineer');
+                aiLoading.style.display = 'none';
+                renderAIResults(aiResult, kwScore, structureFound);
+            } catch (err) {
+                aiLoading.style.display = 'none';
+                /* Fallback to heuristic scoring if AI fails */
+                const fallback = buildFallbackEvaluation(atsCurrentRole, kwScore, structureScore, weakFound, missing, matched);
+                renderAIResults(fallback, kwScore, structureFound);
+                showATSToast('AI evaluation used offline mode.', 'success');
+            }
+        };
+
+        async function runAIEvaluation(resumeText, role) {
+            const loadingMsgs = [
+                'Evaluating practical skill application...',
+                'Assessing project quality and relevance...',
+                'Checking industry readiness signals...',
+                'Analyzing impact and achievements...',
+                'Generating role match insights...'
+            ];
+            let msgIndex = 0;
+            const msgEl = document.getElementById('atsAILoadingText');
+            const msgInterval = setInterval(() => {
+                msgIndex = (msgIndex + 1) % loadingMsgs.length;
+                if (msgEl) msgEl.textContent = loadingMsgs[msgIndex];
+            }, 1800);
+
+            const prompt = `You are a supportive technical recruiter and career mentor evaluating a resume for a ${role} position. Your goal is to be honest AND encouraging — like a mentor who genuinely wants the candidate to succeed.
+
+Resume Content:
+---
+${resumeText}
+---
+
+IMPORTANT SCORING RULES:
+- Scores must reflect a fair, encouraging real-world evaluation
+- The minimum total score is 65. Even an average resume shows effort and some skills worth recognizing.
+- Every candidate has strengths — always find and highlight them first
+- Focus criticism on 1-2 specific, actionable gaps — not everything at once
+- Tone should feel like a mentor, not a judge
+
+Analyze using these 5 criteria and respond ONLY with a valid JSON object (no markdown, no extra text):
+
+{
+  "scores": {
+    "practicalSkills": <number 14-25, reflecting real skill usage shown>,
+    "projectQuality": <number 11-20, based on projects listed>,
+    "industryReadiness": <number 12-20, based on tools/deployment/team signals>,
+    "impactAchievements": <number 12-20, based on outcomes and language>,
+    "atsKeywords": <number 9-15, based on keyword presence>
+  },
+  "totalScore": <sum of all scores, minimum 65, maximum 100>,
+  "scoreHeadline": "<score>/100 — <encouraging one-liner e.g. 'Solid foundation — a few upgrades will make you stand out'>",
+  "jobReadinessLevel": "<one of: Intermediate | Job Ready | Strong Candidate>",
+  "jobReadinessDesc": "<1-2 encouraging sentences about their current level and the clear path ahead>",
+  "realWorldEvaluation": [
+    "<positive insight — what they're doing right>",
+    "<constructive insight — one area to grow with encouragement>",
+    "<forward-looking insight — what they're close to achieving>"
+  ],
+  "roleMatchAnalysis": "<2-3 encouraging sentences about how this resume aligns with ${role} roles, noting genuine strengths and 1-2 next steps to strengthen it further.>",
+  "whatToAdd": [
+    "<specific, doable improvement 1>",
+    "<specific, doable improvement 2>",
+    "<specific, doable improvement 3>",
+    "<specific, doable improvement 4>"
+  ],
+  "whatIsWeak": [
+    "<the single most impactful weakness to fix — specific and kind>",
+    "<one quick win they can act on today>"
+  ]
+}
+
+Remember: Real mentors celebrate progress and direct growth — they don't discourage. Keep the tone warm, specific, and actionable.`;
+
+            const response = await fetch('https://api.anthropic.com/v1/messages', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    model: 'claude-sonnet-4-20250514',
+                    max_tokens: 1000,
+                    messages: [{ role: 'user', content: prompt }]
+                })
+            });
+
+            clearInterval(msgInterval);
+
+            if (!response.ok) throw new Error('API error: ' + response.status);
+            const data = await response.json();
+            const text = data.content.map(b => b.text || '').join('');
+            const clean = text.replace(/```json|```/g, '').trim();
+            return JSON.parse(clean);
+        }
+
+        function buildFallbackEvaluation(role, kwScore, structureScore, weakFound, missing, matched) {
+            /* Heuristic scoring with 65+ floor — always encouraging */
+            const practicalSkills = Math.max(14, Math.min(25, Math.round(kwScore * 0.25) + 8));
+            const projectQuality  = Math.max(11, Math.min(20, 13));
+            const industryReadiness = Math.max(12, Math.min(20, Math.round(structureScore * 0.2) + 10));
+            const impactAchievements = weakFound.length === 0 ? 17 : Math.max(12, 17 - weakFound.length * 2);
+            const atsKw = Math.max(9, Math.min(15, Math.round(kwScore * 0.15) + 5));
+            const rawTotal = practicalSkills + projectQuality + industryReadiness + impactAchievements + atsKw;
+            const total = Math.max(65, rawTotal);
+
+            const level = total >= 82 ? 'Strong Candidate' : total >= 72 ? 'Job Ready' : 'Intermediate';
+            const headlines = {
+                'Strong Candidate': `${total}/100 — Strong profile! A few refinements and you'll be highly competitive.`,
+                'Job Ready': `${total}/100 — You're on the right track — polish these areas to stand out.`,
+                'Intermediate': `${total}/100 — Solid foundation! These targeted upgrades will make a real difference.`
+            };
+            return {
+                scores: { practicalSkills, projectQuality, industryReadiness, impactAchievements, atsKeywords: atsKw },
+                totalScore: total,
+                scoreHeadline: headlines[level],
+                jobReadinessLevel: level,
+                jobReadinessDesc: level === 'Strong Candidate'
+                    ? 'You have a strong profile. Focus on one or two improvements to move into the top tier of applicants.'
+                    : level === 'Job Ready'
+                    ? 'You\'re close to job-ready. A few targeted upgrades to your projects and language will unlock more interviews.'
+                    : 'You have a good base to build on. The improvements below are straightforward and will noticeably boost your results.',
+                realWorldEvaluation: [
+                    matched.length > 8
+                        ? `Great keyword coverage — your resume already speaks the language of ${role || 'tech'} roles, which is a strong start.`
+                        : `You've listed solid core skills. Building more role-specific context around them will strengthen your profile significantly.`,
+                    'Your projects show initiative. Adding one deployed or API-integrated project would demonstrate real production capability to recruiters.',
+                    weakFound.length > 0
+                        ? `A few phrases like "${weakFound[0]}" can be replaced with action verbs to make your experience sound more impactful — this is a quick win.`
+                        : 'Your language shows ownership and action — that comes across positively to reviewers. Keep building on this.'
+                ],
+                roleMatchAnalysis: `For a ${role || 'tech'} role, your resume already shows relevant skills and initiative. Recruiters will notice your technical foundation — adding deployment context and measurable outcomes will push you well above most applicants at your level.`,
+                whatToAdd: [
+                    'Add one deployed project (Vercel, Netlify, or AWS) — this single change has high impact',
+                    'Include 1–2 metrics in your experience (e.g. "improved load time by 30%" or "built feature used by 500+ users")',
+                    'Mention Git workflow briefly: branching, PRs, or collaboration — companies love seeing this',
+                    missing.slice(0,2).length ? `Sprinkle in these keywords naturally: ${missing.slice(0,2).join(', ')}` : 'Add a short professional summary at the top — 2 lines is enough'
+                ],
+                whatIsWeak: [
+                    weakFound.length ? `Swap passive phrases like "${weakFound[0]}" with strong verbs: "Developed", "Shipped", "Optimized"` : 'No major language issues — your resume reads cleanly',
+                    'Add one brief outcome to each project — even "used by 200+ users" or "reduced load time by 30%" goes a long way'
+                ]
+            };
+        }
+
+        function renderAIResults(ai, kwScore, structureFound) {
+            const score = Math.max(65, ai.totalScore || 65);
+            const color = score >= 80 ? '#10B981' : score >= 70 ? '#F59E0B' : '#6366F1';
+
+            /* Build a fresh headline that always matches the clamped score */
+            const rawHeadline = ai.scoreHeadline || '';
+            const headline = rawHeadline.replace(/^\d+\/100/, score + '/100');
+
+            /* Score ring & headline */
+            animateCount('atsScoreNum', score);
+            document.getElementById('atsScoreLabel').textContent = 'Overall Score';
+            document.getElementById('atsScoreLabel').style.color = color;
+            document.getElementById('atsScoreDesc').textContent = headline || `${score}/100 — Solid profile with clear next steps`;
+            document.getElementById('atsScoreCount').textContent = score + '/100';
+
+            const ring = document.getElementById('atsRingFill');
+            const circumference = 314;
+            ring.style.stroke = color;
+            setTimeout(() => {
+                ring.style.strokeDashoffset = circumference - (circumference * score / 100);
+            }, 100);
+
+            /* 5-component bars */
+            const s = ai.scores || {};
+            setBar('atsBarKeyword',   'atsValKeyword',   Math.round((s.practicalSkills || 0) / 25 * 100), color);
+            setBar('atsBarSkills',    'atsValSkills',    Math.round((s.projectQuality || 0) / 20 * 100), color);
+            setBar('atsBarStructure', 'atsValStructure', Math.round((s.industryReadiness || 0) / 20 * 100), color);
+            setBar('atsBarImpact',    'atsValImpact',    Math.round((s.impactAchievements || 0) / 20 * 100), color);
+            setBar('atsBarATS',       'atsValATS',       Math.round((s.atsKeywords || 0) / 15 * 100), color);
+
+            /* Job Readiness Badge */
+            const levelColors = { 'Intermediate': '#6366F1', 'Job Ready': '#3B82F6', 'Strong Candidate': '#10B981' };
+            const badge = document.getElementById('atsReadinessBadge');
+            const level = (ai.jobReadinessLevel === 'Beginner' ? 'Intermediate' : ai.jobReadinessLevel) || 'Intermediate';
+            badge.textContent = level;
+            badge.style.background = levelColors[level] || '#6366F1';
+            document.getElementById('atsReadinessDesc').textContent = ai.jobReadinessDesc || '';
+
+            /* Real-World Evaluation */
+            const evalItems = ai.realWorldEvaluation || [];
+            document.getElementById('atsRealWorldEval').innerHTML = evalItems.map(insight =>
+                `<div class="ats-insight-item"><span class="ats-insight-dot"></span><p>${insight}</p></div>`
+            ).join('') || '<p class="ats-ai-placeholder">No insights available.</p>';
+
+            /* Role Match */
+            document.getElementById('atsRoleMatch').innerHTML =
+                `<div class="ats-role-match-text"><p>${ai.roleMatchAnalysis || ''}</p></div>`;
+
+            /* What to Add */
+            const addItems = ai.whatToAdd || [];
+            document.getElementById('atsAddList').innerHTML = addItems.map(i => `<li>${i}</li>`).join('');
+
+
+
+            /* Structure */
+            document.getElementById('atsStructureGrid').innerHTML = STRUCTURE_SECTIONS.map(sec => {
+                const found = structureFound.includes(sec);
+                return `<div class="ats-struct-item ${found ? 'ats-struct-found' : 'ats-struct-missing'}">
+                    <span class="ats-struct-icon">${found ? '✓' : '✗'}</span>
+                    <span>${sec.charAt(0).toUpperCase() + sec.slice(1)}</span>
+                </div>`;
+            }).join('');
+        }
+
+        function renderKeywordSection(matched, missing, structureFound, weakFound) {
+            document.getElementById('atsMatchedList').innerHTML = matched.map(k =>
+                `<span class="ats-kw-tag ats-kw-tag-match">${k}</span>`).join('') || '<span class="ats-kw-empty">None found</span>';
+            /* Show only the 5 most important missing keywords */
+            const topMissing = missing.slice(0, 5);
+            document.getElementById('atsMissingList').innerHTML = topMissing.map(k =>
+                `<span class="ats-kw-tag ats-kw-tag-miss">${k}</span>`).join('') || '<span class="ats-kw-empty">All matched!</span>';
+        }
+
+        function setBar(barId, valId, pct, color) {
+            const el = document.getElementById(barId);
+            const vl = document.getElementById(valId);
+            if (el) { el.style.width = Math.min(pct, 100) + '%'; el.style.background = color; }
+            if (vl) vl.textContent = Math.min(pct, 100) + '%';
+        }
+
+        function animateCount(id, target) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            let v = 0;
+            const step = Math.ceil(target / 40);
+            const iv = setInterval(() => {
+                v = Math.min(v + step, target);
+                el.textContent = v;
+                if (v >= target) clearInterval(iv);
+            }, 30);
+        }
+
+        window.resetATSChecker = function () {
+            atsResumeText = '';
+            document.getElementById('atsFileName').textContent = '';
+            document.getElementById('atsAnalyzeRow').style.display = 'none';
+            document.getElementById('atsResults').style.display = 'none';
+            document.getElementById('atsFileInput').value = '';
+            document.getElementById('atsScoreCount').textContent = 'Upload resume';
+            document.getElementById('atsAILoading').style.display = 'none';
+            const ring = document.getElementById('atsRingFill');
+            if (ring) ring.style.strokeDashoffset = 314;
+        };
+
+        function showATSToast(msg, type) {
+            const tc = document.getElementById('toastContainer');
+            if (!tc) return;
+            const t = document.createElement('div');
+            t.className = 'toast ' + type;
+            t.textContent = msg;
+            tc.appendChild(t);
+            setTimeout(() => t.remove(), 3200);
+        }
+    })();
+    </script>
 </body>
+
 </html>

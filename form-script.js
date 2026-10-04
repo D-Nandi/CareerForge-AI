@@ -136,36 +136,27 @@ function saveStep(step) {
       const el = document.getElementById(id);
       if (el) state.personal[id] = el.value.trim();
     });
-    state.personal.title = state.personal.jobTitle || state.personal.title || '';
   }
   if (step === 5) {
-    const rEl = document.getElementById('targetRole');
-    const dEl = document.getElementById('jobDescription');
-    if (rEl) state.jobDescription.targetRole = rEl.value.trim();
-    if (dEl) state.jobDescription.jobDescription = dEl.value.trim();
+    state.jobDescription.targetRole     = document.getElementById('targetRole').value.trim();
+    state.jobDescription.jobDescription = document.getElementById('jobDescription').value.trim();
   }
   if (step === 6) {
     const checked = document.querySelector('input[name="tone"]:checked');
     if (checked) state.tone = checked.value;
   }
-  persistState();
 }
 
 // ── PERSIST TO localStorage ──
 function persistState() {
   try {
-    const json = JSON.stringify({
-      personal:        state.personal,
-      experience:      state.experience,
-      projects:        state.projects,
-      education:       state.education,
-      skills:          state.skills,
-      jobDescription:  state.jobDescription,
-      tone:            state.tone,
-      langProficiency: state.langProficiency
-    });
-    localStorage.setItem('resumatic_state', json);
-    localStorage.setItem('resumatic_draft_state', json);
+    localStorage.setItem('resumatic_state', JSON.stringify({
+      personal:   state.personal,
+      experience: state.experience,
+      projects:   state.projects,
+      education:  state.education,
+      skills:     state.skills,
+    }));
   } catch (e) {
     console.warn('Could not save to localStorage:', e);
   }
@@ -175,14 +166,12 @@ function persistState() {
 btnNext.addEventListener('click', () => {
   saveStep(state.currentStep);
   if (!validate(state.currentStep)) return;
-  persistState();
   if (state.currentStep < state.totalSteps) showStep(state.currentStep + 1);
   else handleSubmit();
 });
 
 btnPrev.addEventListener('click', () => {
   saveStep(state.currentStep);
-  persistState();
   if (state.currentStep > 1) showStep(state.currentStep - 1);
 });
 

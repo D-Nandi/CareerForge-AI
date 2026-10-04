@@ -2,42 +2,29 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 exports.generate = async (req, res, next) => {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return res.status(500).json({
-        success: false,
-        message: 'Server configuration error: Missing GEMINI_API_KEY environment variable.'
-      });
-    }
+    // Initialize INSIDE the function so dotenv has already loaded the key
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-    const genAI = new GoogleGenerativeAI(apiKey);
-
-    const { personal = {}, experience = [], projects = [], education = [], skills = {}, jobDescription = {}, tone = 'professional' } = req.body;
-
-    const targetRole = jobDescription.targetRole || personal.jobTitle || 'Target Role';
-    const targetJD = jobDescription.jobDescription || 'N/A';
+    const { personal, experience, projects, education, skills, jobDescription, tone } = req.body;
 
     const expText = (experience || []).map(e =>
-      `${e.role || ''} at ${e.company || ''} (${e.startDate || ''} – ${e.endDate || 'Present'}): ${e.description || ''}`
-    ).filter(t => t.trim()).join('\n');
+      `${e.role} at ${e.company} (${e.startDate} – ${e.endDate}): ${e.description}`
+    ).join('\n');
 
     const projText = (projects || []).map(p =>
-      `${p.name || p.title || ''} (${p.type || 'Project'}): ${p.description || ''}`
-    ).filter(t => t.trim()).join('\n');
+      `${p.name} (${p.type || 'Project'}): ${p.description}`
+    ).join('\n');
 
     const eduText = (education || []).map(e =>
-      `${e.degree || ''}, ${e.institution || ''} (${e.startYear || ''} – ${e.endYear || ''})`
-    ).filter(t => t.trim()).join('\n');
-
-    const techSkills = Array.isArray(skills.tech) ? skills.tech.join(', ') : (skills.tech || 'N/A');
-    const softSkills = Array.isArray(skills.soft) ? skills.soft.join(', ') : (skills.soft || 'N/A');
+      `${e.degree}, ${e.institution} (${e.startYear} – ${e.endYear})`
+    ).join('\n');
 
     const prompt = `
-Write a ${tone} cover letter for the following candidate applying to: ${targetRole}.
+Write a ${tone || 'professional'} cover letter for the following candidate applying to: ${jobDescription.targetRole}.
 
 Candidate:
-- Name: ${personal.firstName || ''} ${personal.lastName || ''}
-- Title: ${personal.jobTitle || personal.title || ''}
+- Name: ${personal.firstName} ${personal.lastName}
+- Title: ${personal.jobTitle}
 - Summary: ${personal.summary || 'N/A'}
 
 Experience:
@@ -49,33 +36,25 @@ ${projText || 'N/A'}
 Education:
 ${eduText || 'N/A'}
 
-Technical Skills: ${techSkills}
-Soft Skills: ${softSkills}
+Technical Skills: ${(skills.tech || []).join(', ') || 'N/A'}
+Soft Skills: ${(skills.soft || []).join(', ') || 'N/A'}
 
 Job Description:
-${targetJD}
+${jobDescription.jobDescription}
 
 Write only the cover letter body. No subject line. No placeholders. Keep it under 350 words.
 `.trim();
 
     let text = '';
-    const preferredModels = ['gemini-2.5-flash', 'gemini-1.5-flash-latest', 'gemini-2.0-flash-exp', 'gemini-1.5-pro-latest'];
-    let lastError = null;
-
-    for (const modelName of preferredModels) {
-      try {
-        const model = genAI.getGenerativeModel({ model: modelName });
-        const result = await model.generateContent(prompt);
-        text = result.response.text();
-        if (text) break;
-      } catch (modelErr) {
-        lastError = modelErr;
-        console.warn(`Generative AI model "${modelName}" failed:`, modelErr.message);
-      }
-    }
-
-    if (!text) {
-      throw new Error(`All AI models failed to generate response. Last error: ${lastError ? lastError.message : 'Unknown'}`);
+    try {
+      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+      const result = await model.generateContent(prompt);
+      text = result.response.text();
+    } catch (modelErr) {
+      console.warn('Gemini 1.5 flash failed, trying gemini-2.0-flash-exp...', modelErr.message);
+      const model2 = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+      const result2 = await model2.generateContent(prompt);
+      text = result2.response.text();
     }
 
     res.json({ success: true, coverLetter: text });
