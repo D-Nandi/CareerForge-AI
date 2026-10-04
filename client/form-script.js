@@ -66,7 +66,10 @@ function showStep(next) {
   target.classList.add('active');
   state.currentStep = next;
   updateProgress();
-  if (next === 4) renderProficiencyMapper();
+  if (next === 4) {
+    renderProficiencyMapper();
+    renderLangProficiencyMapper();
+  }
   if (next === 6) buildReview();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -92,6 +95,13 @@ function validate(step) {
       const unmapped = state.skills.tech.some(s => !parseSkillTag(s).level);
       if (unmapped) {
         autoLevelAllProficiencies();
+      }
+    }
+
+    if (state.skills.languages && state.skills.languages.length > 0) {
+      const unmappedLang = state.skills.languages.some(l => !parseSkillTag(l).level);
+      if (unmappedLang) {
+        autoLevelAllLangProficiencies();
       }
     }
   }
@@ -141,32 +151,38 @@ function clearErrors() {
 }
 
 // ── SAVE STATE ──
+function saveAllSteps() {
+  ['firstName','lastName','jobTitle','email','phone','location','linkedin','summary'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) state.personal[id] = el.value.trim();
+  });
+  const tr = document.getElementById('targetRole');
+  if (tr) state.jobDescription.targetRole = tr.value.trim();
+  const jd = document.getElementById('jobDescription');
+  if (jd) state.jobDescription.jobDescription = jd.value.trim();
+  const checked = document.querySelector('input[name="tone"]:checked');
+  if (checked) state.tone = checked.value;
+}
+
 function saveStep(step) {
-  if (step === 1) {
-    ['firstName','lastName','jobTitle','email','phone','location','linkedin','summary'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) state.personal[id] = el.value.trim();
-    });
-  }
-  if (step === 5) {
-    state.jobDescription.targetRole     = document.getElementById('targetRole').value.trim();
-    state.jobDescription.jobDescription = document.getElementById('jobDescription').value.trim();
-  }
-  if (step === 6) {
-    const checked = document.querySelector('input[name="tone"]:checked');
-    if (checked) state.tone = checked.value;
-  }
+  saveAllSteps();
 }
 
 // ── PERSIST TO localStorage ──
 function persistState() {
+  saveAllSteps();
+  if (typeof syncLangProficiencyArray === 'function') syncLangProficiencyArray();
   try {
     localStorage.setItem('resumatic_state', JSON.stringify({
-      personal:   state.personal,
-      experience: state.experience,
-      projects:   state.projects,
-      education:  state.education,
-      skills:     state.skills,
+      personal:        state.personal,
+      experience:      state.experience,
+      projects:        state.projects,
+      education:       state.education,
+      skills:          state.skills,
+      langProficiency: state.langProficiency,
+      jobDescription:  state.jobDescription,
+      tone:            state.tone,
+      deletedSegments: state.deletedSegments || {},
     }));
   } catch (e) {
     console.warn('Could not save to localStorage:', e);
@@ -412,9 +428,7 @@ function setupTagInput(inputId, displayId, key) {
   });
 }
 
-function addTag(text, key, display) {
-  if (!text || state.skills[key].includes(text)) return;
-  state.skills[key].push(text);
+function renderTagPill(text, key, display) {
   const tag = document.createElement('span');
   tag.className = 'tag';
   tag.dataset.tag = text;
@@ -432,7 +446,18 @@ function addTag(text, key, display) {
   tag.appendChild(removeBtn);
 
   display.appendChild(tag);
+}
+
+function addTag(text, key, display) {
+  if (!text || state.skills[key].includes(text)) return;
+  state.skills[key].push(text);
+  renderTagPill(text, key, display);
   if (key === 'tech') renderProficiencyMapper();
+  if (key === 'languages') {
+    syncLangProficiencyArray();
+    renderLangProficiencyMapper();
+  }
+  persistState();
 }
 
 function removeTag(text, key, el) {
@@ -441,8 +466,13 @@ function removeTag(text, key, el) {
     const cleanText = text.replace(/\s*\([^)]*\)$/, '').trim();
     return t !== text && raw !== cleanText;
   });
-  el.closest('.tag').remove();
+  el.closest('.tag')?.remove();
   if (key === 'tech') renderProficiencyMapper();
+  if (key === 'languages') {
+    syncLangProficiencyArray();
+    renderLangProficiencyMapper();
+  }
+  persistState();
 }
 
 // ── PROACTIVE SKILL PROFICIENCY MAPPER ──
@@ -530,6 +560,96 @@ if (btnAutoProf) {
   btnAutoProf.addEventListener('click', (e) => {
     e.preventDefault();
     autoLevelAllProficiencies();
+  });
+}
+
+// ── PROACTIVE LANGUAGE PROFICIENCY MAPPER ──
+const LANG_LEVELS = ['Basic', 'Conversational', 'Fluent', 'Native'];
+
+function renderLangProficiencyMapper() {
+  const container = document.getElementById('langProficiencyContainer');
+  const list = document.getElementById('langProficiencyList');
+  if (!container || !list) return;
+
+  const langs = state.skills.languages || [];
+  if (!langs.length) {
+    container.style.display = 'none';
+    list.innerHTML = '';
+    return;
+  }
+
+  container.style.display = 'block';
+  list.innerHTML = '';
+
+  langs.forEach((langItem, idx) => {
+    const { name, level } = parseSkillTag(langItem);
+    const effectiveLevel = level || 'Fluent';
+    if (!level) {
+      state.skills.languages[idx] = `${name} (${effectiveLevel})`;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'sp-row';
+    const safeName = String(name || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    
+    row.innerHTML = `
+      <div class="sp-skill-label">
+        <span>🗣️ ${safeName}</span>
+      </div>
+      <div class="sp-pills">
+        ${LANG_LEVELS.map(lvl => `
+          <button type="button" class="sp-pill ${effectiveLevel.toLowerCase() === lvl.toLowerCase() ? 'active' : ''}" data-idx="${idx}" data-level="${lvl}">
+            ${lvl}
+          </button>
+        `).join('')}
+      </div>
+    `;
+
+    row.querySelectorAll('.sp-pill').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetIdx = parseInt(btn.dataset.idx, 10);
+        const newLevel = btn.dataset.level;
+        const current = parseSkillTag(state.skills.languages[targetIdx]);
+        state.skills.languages[targetIdx] = `${current.name} (${newLevel})`;
+        syncLangProficiencyArray();
+        persistState();
+        renderLangProficiencyMapper();
+      });
+    });
+
+    list.appendChild(row);
+  });
+}
+
+function autoLevelAllLangProficiencies() {
+  const langs = state.skills.languages || [];
+  state.skills.languages = langs.map((item, idx) => {
+    const { name } = parseSkillTag(item);
+    if (idx === 0) return `${name} (Native)`;
+    if (idx === 1) return `${name} (Fluent)`;
+    if (idx === 2) return `${name} (Conversational)`;
+    return `${name} (Basic)`;
+  });
+  syncLangProficiencyArray();
+  persistState();
+  renderLangProficiencyMapper();
+}
+
+function syncLangProficiencyArray() {
+  state.langProficiency = (state.skills.languages || []).map(item => {
+    const { name, level } = parseSkillTag(item);
+    return { name, overall: level || 'Fluent', speaking: level || 'Fluent', reading: level || 'Fluent', writing: level || 'Fluent' };
+  });
+}
+
+window.renderLangProficiencyMapper = renderLangProficiencyMapper;
+
+const btnAutoMapLang = document.getElementById('btnAutoMapLangProficiencies');
+if (btnAutoMapLang) {
+  btnAutoMapLang.addEventListener('click', (e) => {
+    e.preventDefault();
+    autoLevelAllLangProficiencies();
   });
 }
 
@@ -828,10 +948,145 @@ function initPrefill() {
       document.getElementById('jobDescription').value = `Seeking an experienced ${data.title} skilled in ${data.keywords.slice(0, 5).join(', ')} to drive product innovation and scalable system execution.`;
     }
   } else {
-    addExperience();
-    addEducation();
+    const restored = loadFromStorage();
+    if (!restored) {
+      addExperience();
+      addEducation();
+    }
   }
 }
+
+// ── RESTORE FROM LOCALSTORAGE ──
+function loadFromStorage() {
+  let saved = null;
+  try {
+    const raw = localStorage.getItem('resumatic_state');
+    if (raw) saved = JSON.parse(raw);
+  } catch (e) {
+    console.warn('Could not parse resumatic_state:', e);
+  }
+  if (!saved) return false;
+
+  const hasData = (saved.personal && Object.values(saved.personal).some(Boolean)) ||
+                  (Array.isArray(saved.experience) && saved.experience.length > 0) ||
+                  (Array.isArray(saved.education) && saved.education.length > 0) ||
+                  (saved.skills && ((saved.skills.tech && saved.skills.tech.length) || (saved.skills.soft && saved.skills.soft.length) || (saved.skills.languages && saved.skills.languages.length))) ||
+                  (saved.jobDescription && (saved.jobDescription.targetRole || saved.jobDescription.jobDescription));
+  if (!hasData) return false;
+
+  if (saved.deletedSegments) {
+    state.deletedSegments = saved.deletedSegments;
+  }
+
+  // 1. Personal Info
+  if (saved.personal) {
+    state.personal = { ...saved.personal };
+    const pKeys = ['firstName', 'lastName', 'jobTitle', 'email', 'phone', 'location', 'linkedin', 'summary'];
+    pKeys.forEach(k => {
+      const el = document.getElementById(k);
+      if (el && saved.personal[k] !== undefined) {
+        el.value = saved.personal[k];
+      }
+    });
+  }
+
+  // 2. Experience
+  const expList = document.getElementById('experienceList');
+  if (expList) expList.innerHTML = '';
+  state.experience = [];
+  if (Array.isArray(saved.experience) && saved.experience.length > 0) {
+    saved.experience.forEach(exp => addExperience(exp));
+  } else {
+    addExperience();
+  }
+
+  // 3. Education
+  const eduList = document.getElementById('educationList');
+  if (eduList) eduList.innerHTML = '';
+  state.education = [];
+  if (Array.isArray(saved.education) && saved.education.length > 0) {
+    saved.education.forEach(edu => addEducation(edu));
+  } else {
+    addEducation();
+  }
+
+  // Projects
+  if (Array.isArray(saved.projects)) {
+    const seenP = new Set();
+    const cleanProjects = saved.projects.filter(p => {
+      if (!p) return false;
+      const sig = (p.name || p.title || '').trim().toLowerCase();
+      if (!sig || seenP.has(sig)) return false;
+      seenP.add(sig);
+      return true;
+    });
+    state.projects = [];
+    const pList = document.getElementById('projectList');
+    if (pList) {
+      pList.innerHTML = '';
+      cleanProjects.forEach(p => addProject(p));
+    } else {
+      state.projects = cleanProjects;
+    }
+  }
+
+  // 4. Skills & Proficiencies
+  if (saved.skills) {
+    state.skills.tech = Array.isArray(saved.skills.tech) ? [...saved.skills.tech] : [];
+    state.skills.soft = Array.isArray(saved.skills.soft) ? [...saved.skills.soft] : [];
+    state.skills.languages = Array.isArray(saved.skills.languages) ? [...saved.skills.languages] : [];
+
+    const techDisplay = document.getElementById('techTagsDisplay');
+    if (techDisplay) {
+      techDisplay.innerHTML = '';
+      state.skills.tech.forEach(t => renderTagPill(t, 'tech', techDisplay));
+    }
+
+    const softDisplay = document.getElementById('softTagsDisplay');
+    if (softDisplay) {
+      softDisplay.innerHTML = '';
+      state.skills.soft.forEach(s => renderTagPill(s, 'soft', softDisplay));
+    }
+
+    const langDisplay = document.getElementById('langTagsDisplay');
+    if (langDisplay) {
+      langDisplay.innerHTML = '';
+      state.skills.languages.forEach(l => renderTagPill(l, 'languages', langDisplay));
+    }
+
+    renderProficiencyMapper();
+    renderLangProficiencyMapper();
+  }
+
+  // 5. Job Description & Target Role
+  if (saved.jobDescription) {
+    state.jobDescription = { ...saved.jobDescription };
+    const tr = document.getElementById('targetRole');
+    if (tr && saved.jobDescription.targetRole) tr.value = saved.jobDescription.targetRole;
+    const jd = document.getElementById('jobDescription');
+    if (jd && saved.jobDescription.jobDescription) jd.value = saved.jobDescription.jobDescription;
+  }
+
+  // 6. Tone
+  if (saved.tone) {
+    state.tone = saved.tone;
+    const toneRadio = document.querySelector(`input[name="tone"][value="${saved.tone}"]`);
+    if (toneRadio) toneRadio.checked = true;
+  }
+
+  return true;
+}
+
+// Auto-save on any input across form
+document.addEventListener('input', (e) => {
+  if (e.target.matches('input, textarea, select')) {
+    persistState();
+  }
+});
+
+window.addEventListener('beforeunload', () => {
+  persistState();
+});
 
 initPrefill();
 

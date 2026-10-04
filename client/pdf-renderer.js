@@ -201,8 +201,10 @@ function renderClassicPDF(r, state) {
     r.space(3);
   }
 
+  var del = state.deletedSegments || {};
+
   // ── Profile / Summary ──
-  if (p.summary) {
+  if (p.summary && !del.summary) {
     r.sectionHeader('Profile', M.left, PW - M.right);
     r.wrappedText(p.summary, M.left, CW, 9.5, { color: [55, 65, 81], style: 'italic' });
     r.space(5);
@@ -210,7 +212,7 @@ function renderClassicPDF(r, state) {
 
   // ── Experience ──
   var exp = (state.experience || []).filter(function(e) { return e.role || e.company; });
-  if (exp.length) {
+  if (exp.length && !del.experience) {
     r.sectionHeader('Experience', M.left, PW - M.right);
     for (var ei = 0; ei < exp.length; ei++) {
       var e = exp[ei];
@@ -249,7 +251,7 @@ function renderClassicPDF(r, state) {
 
   // ── Projects ──
   var proj = (state.projects || []).filter(function(pj) { return pj.name || pj.title; });
-  if (proj.length) {
+  if (proj.length && !del.projects) {
     r.sectionHeader('Projects', M.left, PW - M.right);
     for (var pi = 0; pi < proj.length; pi++) {
       var pj = proj[pi];
@@ -286,7 +288,7 @@ function renderClassicPDF(r, state) {
 
   // ── Education ──
   var edu = (state.education || []).filter(function(e) { return e.degree || e.institution; });
-  if (edu.length) {
+  if (edu.length && !del.education) {
     r.sectionHeader('Education', M.left, PW - M.right);
     for (var di = 0; di < edu.length; di++) {
       var d = edu[di];
@@ -321,10 +323,13 @@ function renderClassicPDF(r, state) {
 
   // ── Skills ──
   var sk = state.skills || {};
-  if ((sk.tech && sk.tech.length) || (sk.soft && sk.soft.length) || (sk.languages && sk.languages.length)) {
+  var hasTech = sk.tech && sk.tech.length && !del.tech;
+  var hasSoft = sk.soft && sk.soft.length && !del.soft;
+  var hasLang = sk.languages && sk.languages.length && !del.languages;
+  if (hasTech || hasSoft || hasLang) {
     r.sectionHeader('Skills & Proficiencies', M.left, PW - M.right);
 
-    if (sk.tech && sk.tech.length) {
+    if (hasTech) {
       r.pdf.setFont('helvetica', 'bold');
       r.pdf.setFontSize(8);
       r.pdf.setTextColor(26, 29, 38);
@@ -334,7 +339,7 @@ function renderClassicPDF(r, state) {
       r.space(4);
     }
 
-    if (sk.soft && sk.soft.length) {
+    if (hasSoft) {
       r.pdf.setFont('helvetica', 'bold');
       r.pdf.setFontSize(8);
       r.pdf.setTextColor(26, 29, 38);
@@ -344,7 +349,7 @@ function renderClassicPDF(r, state) {
       r.space(4);
     }
 
-    if (sk.languages && sk.languages.length) {
+    if (hasLang) {
       r.pdf.setFont('helvetica', 'bold');
       r.pdf.setFontSize(8);
       r.pdf.setTextColor(26, 29, 38);
@@ -421,8 +426,10 @@ function renderMinimalPDF(r, state) {
     r.space(7);
   }
 
+  var del = state.deletedSegments || {};
+
   // ── Profile ──
-  if (p.summary) {
+  if (p.summary && !del.summary) {
     sectionRow('Profile', function(x, w) {
       r.wrappedText(p.summary, x, w, 9.5, { color: [55, 65, 81], style: 'italic' });
     });
@@ -430,7 +437,7 @@ function renderMinimalPDF(r, state) {
 
   // ── Experience ──
   var exp = (state.experience || []).filter(function(e) { return e.role || e.company; });
-  if (exp.length) {
+  if (exp.length && !del.experience) {
     sectionRow('Experience', function(x, w) {
       for (var ei = 0; ei < exp.length; ei++) {
         var e = exp[ei];
@@ -466,7 +473,7 @@ function renderMinimalPDF(r, state) {
 
   // ── Projects ──
   var proj = (state.projects || []).filter(function(pj) { return pj.name || pj.title; });
-  if (proj.length) {
+  if (proj.length && !del.projects) {
     sectionRow('Projects', function(x, w) {
       for (var pi = 0; pi < proj.length; pi++) {
         var pj = proj[pi];
@@ -503,7 +510,7 @@ function renderMinimalPDF(r, state) {
 
   // ── Education ──
   var edu = (state.education || []).filter(function(e) { return e.degree || e.institution; });
-  if (edu.length) {
+  if (edu.length && !del.education) {
     sectionRow('Education', function(x, w) {
       for (var di = 0; di < edu.length; di++) {
         var d = edu[di];
@@ -534,9 +541,12 @@ function renderMinimalPDF(r, state) {
 
   // ── Skills ──
   var sk = state.skills || {};
-  if ((sk.tech && sk.tech.length) || (sk.soft && sk.soft.length) || (sk.languages && sk.languages.length)) {
+  var hasTech = sk.tech && sk.tech.length && !del.tech;
+  var hasSoft = sk.soft && sk.soft.length && !del.soft;
+  var hasLang = sk.languages && sk.languages.length && !del.languages;
+  if (hasTech || hasSoft || hasLang) {
     sectionRow('Skills & Proficiencies', function(x, w) {
-      if (sk.tech && sk.tech.length) {
+      if (hasTech) {
         r.pdf.setFont('helvetica', 'bold');
         r.pdf.setFontSize(7);
         r.pdf.setTextColor(120, 120, 128);
@@ -545,7 +555,7 @@ function renderMinimalPDF(r, state) {
         r.wrappedText(sk.tech.map(formatSkillForPDF).join('  \u00B7  '), x, w, 8.5, { color: [50, 50, 60] });
         r.space(4);
       }
-      if (sk.soft && sk.soft.length) {
+      if (hasSoft) {
         r.pdf.setFont('helvetica', 'bold');
         r.pdf.setFontSize(7);
         r.pdf.setTextColor(120, 120, 128);
@@ -554,7 +564,7 @@ function renderMinimalPDF(r, state) {
         r.wrappedText(sk.soft.map(formatSkillForPDF).join('  \u00B7  '), x, w, 8.5, { color: [50, 50, 60] });
         r.space(4);
       }
-      if (sk.languages && sk.languages.length) {
+      if (hasLang) {
         r.pdf.setFont('helvetica', 'bold');
         r.pdf.setFontSize(7);
         r.pdf.setTextColor(120, 120, 128);
@@ -664,19 +674,21 @@ function renderModernPDF(r, state) {
   }
   r.space(4);
 
+  var del = state.deletedSegments || {};
+
   // Skills in sidebar
   var sk = state.skills || {};
-  if (sk.tech && sk.tech.length) {
+  if (sk.tech && sk.tech.length && !del.tech) {
     sideSection('Technical');
     sideText(sk.tech.map(formatSkillForPDF).join(', '));
     r.space(4);
   }
-  if (sk.soft && sk.soft.length) {
+  if (sk.soft && sk.soft.length && !del.soft) {
     sideSection('Soft Skills');
     sideText(sk.soft.map(formatSkillForPDF).join(', '));
     r.space(4);
   }
-  if (sk.languages && sk.languages.length) {
+  if (sk.languages && sk.languages.length && !del.languages) {
     sideSection('Languages');
     sideText(sk.languages.map(formatSkillForPDF).join(', '));
   }
@@ -712,7 +724,7 @@ function renderModernPDF(r, state) {
   }
 
   // Profile
-  if (p.summary) {
+  if (p.summary && !del.summary) {
     mainSectionTitle('Profile');
     r.wrappedText(p.summary, mainX, mainW, 9, { color: [55, 65, 81] });
     r.space(7);
@@ -720,7 +732,7 @@ function renderModernPDF(r, state) {
 
   // Experience
   var exp = (state.experience || []).filter(function(e) { return e.role || e.company; });
-  if (exp.length) {
+  if (exp.length && !del.experience) {
     mainSectionTitle('Experience');
     for (var ei = 0; ei < exp.length; ei++) {
       var e = exp[ei];
@@ -756,7 +768,7 @@ function renderModernPDF(r, state) {
 
   // Projects
   var proj = (state.projects || []).filter(function(pj) { return pj.name || pj.title; });
-  if (proj.length) {
+  if (proj.length && !del.projects) {
     mainSectionTitle('Projects');
     for (var pi = 0; pi < proj.length; pi++) {
       var pj = proj[pi];
@@ -793,7 +805,7 @@ function renderModernPDF(r, state) {
 
   // Education
   var edu = (state.education || []).filter(function(e) { return e.degree || e.institution; });
-  if (edu.length) {
+  if (edu.length && !del.education) {
     mainSectionTitle('Education');
     for (var di = 0; di < edu.length; di++) {
       var d = edu[di];

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -96,17 +96,7 @@
       </nav>
     </div>
     <div class="header-center">
-      <div class="view-mode-toggle" id="viewModeToggle" role="tablist" aria-label="View Mode">
-        <button type="button" class="mode-toggle-btn active" id="btnModePreview" data-mode="preview" role="tab" aria-selected="true" title="Clean Live Preview & PDF View">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          <span>Preview</span>
-        </button>
-        <button type="button" class="mode-toggle-btn" id="btnModeEditor" data-mode="editor" role="tab" aria-selected="false" title="Dedicated Editor Canvas with Full Tools">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          <span>Editor Canvas</span>
-        </button>
-      </div>
-    </div>
+      
     <div class="header-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -160,134 +150,16 @@
     </div>
   </div>
 
-  <!-- DEDICATED EDITOR HEADER BAR (Active in Editor Canvas Mode) -->
-  <div class="editor-canvas-header" id="editorCanvasHeader" style="display:none;" aria-label="Editor Canvas Tools">
-    <!-- Active Target Breadcrumb -->
-    <div class="ech-target-badge" id="echTargetBadge" title="Currently focused element or highlighted text">
-      <span class="ech-target-dot"></span>
-      <span class="ech-target-text" id="echTargetText">Click any text or element to edit</span>
-    </div>
-
-    <div class="ech-divider"></div>
-
-    <!-- Typography: Font Family -->
-    <div class="ech-group">
-      <label class="ech-label" for="echFontFamily">Font</label>
-      <select id="echFontFamily" class="ech-select" title="Change Font Family">
-        <option value="">Default Font</option>
-        <option value="'Syne', sans-serif">Syne</option>
-        <option value="'DM Sans', sans-serif">DM Sans</option>
-        <option value="'Lora', serif">Lora</option>
-        <option value="'Playfair Display', serif">Playfair Display</option>
-        <option value="'IBM Plex Serif', serif">IBM Plex</option>
-        <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
-        <option value="system-ui, sans-serif">System Sans</option>
-        <option value="'Times New Roman', serif">Times New Roman</option>
-        <option value="Arial, sans-serif">Arial</option>
-      </select>
-    </div>
-
-    <!-- Typography: Font Size -->
-    <div class="ech-group">
-      <label class="ech-label" for="echFontSize">Size</label>
-      <div class="ech-size-stepper">
-        <button type="button" class="ech-btn-step" id="echSizeDec" title="Decrease font size">-</button>
-        <select id="echFontSize" class="ech-select ech-select-sm" title="Font Size">
-          <option value="">Size</option>
-          <option value="9px">9px</option>
-          <option value="10px">10px</option>
-          <option value="11px">11px</option>
-          <option value="12px">12px</option>
-          <option value="13px">13px</option>
-          <option value="14px">14px</option>
-          <option value="16px">16px</option>
-          <option value="18px">18px</option>
-          <option value="20px">20px</option>
-          <option value="24px">24px</option>
-          <option value="28px">28px</option>
-          <option value="32px">32px</option>
-        </select>
-        <button type="button" class="ech-btn-step" id="echSizeInc" title="Increase font size">+</button>
-      </div>
-    </div>
-
-    <div class="ech-divider"></div>
-
-    <!-- Formatting Styles -->
-    <div class="ech-group">
-      <button type="button" class="ech-tool-btn" id="echBtnBold" title="Bold (Ctrl+B)"><b>B</b></button>
-      <button type="button" class="ech-tool-btn" id="echBtnItalic" title="Italic (Ctrl+I)"><i>I</i></button>
-      <button type="button" class="ech-tool-btn" id="echBtnUnderline" title="Underline (Ctrl+U)"><u>U</u></button>
-      <button type="button" class="ech-tool-btn" id="echBtnBullet" title="Insert Bullet Point (•)">• Bullet</button>
-    </div>
-
-    <div class="ech-divider"></div>
-
-    <!-- Colors -->
-    <div class="ech-group ech-color-group">
-      <label class="ech-label">Color</label>
-      <div class="ech-swatches">
-        <button type="button" class="ech-swatch" data-color="#1a1d26" style="background:#1a1d26;" title="Charcoal"></button>
-        <button type="button" class="ech-swatch" data-color="#2563eb" style="background:#2563eb;" title="Blue"></button>
-        <button type="button" class="ech-swatch" data-color="#6c5ce7" style="background:#6c5ce7;" title="Purple"></button>
-        <button type="button" class="ech-swatch" data-color="#059669" style="background:#059669;" title="Emerald"></button>
-        <button type="button" class="ech-swatch" data-color="#dc2626" style="background:#dc2626;" title="Red"></button>
-        <button type="button" class="ech-swatch" data-color="#d97706" style="background:#d97706;" title="Amber"></button>
-        <div class="ech-color-custom" title="Custom Color Picker">
-          <input type="color" id="echCustomColorPicker" value="#6c5ce7" />
-        </div>
-      </div>
-    </div>
-
-    <div class="ech-divider"></div>
-
-    <!-- Text Alignment -->
-    <div class="ech-group">
-      <button type="button" class="ech-tool-btn" id="echAlignLeft" title="Align Left">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
-      </button>
-      <button type="button" class="ech-tool-btn" id="echAlignCenter" title="Align Center">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-      </button>
-      <button type="button" class="ech-tool-btn" id="echAlignRight" title="Align Right">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-
-    <div class="ech-divider"></div>
-
-    <!-- Element Operations -->
-    <div class="ech-group ech-actions-group">
-      <button type="button" class="ech-action-btn" id="echAddProjectBtn" title="Add a new project to resume">+ Project</button>
-      <button type="button" class="ech-action-btn" id="echAddExpBtn" title="Add work experience entry">+ Experience</button>
-      <button type="button" class="ech-action-btn" id="echAddEduBtn" title="Add education entry">+ Education</button>
-      <button type="button" class="ech-action-btn" id="echAddSkillBtn" title="Add a new skill tag">+ Skill</button>
-      <button type="button" class="ech-action-btn ech-btn-danger" id="echDeleteElemBtn" title="Delete currently selected element or entry" style="display:none;">🗑️ Delete</button>
-      <button type="button" class="ech-tool-btn" id="echResetFormatting" title="Clear custom formatting on selected element">🧹</button>
-    </div>
-
-    <div class="ech-divider"></div>
-
-    <!-- Zoom Canvas Controls -->
-    <div class="ech-group ech-zoom-group">
-      <button type="button" class="ech-zoom-btn" id="echZoomFit" title="Fit to screen">Fit</button>
-      <button type="button" class="ech-zoom-btn" id="echZoom80" data-scale="0.8">80%</button>
-      <button type="button" class="ech-zoom-btn active" id="echZoom100" data-scale="1.0">100%</button>
-      <button type="button" class="ech-zoom-btn" id="echZoom120" data-scale="1.2">120%</button>
-    </div>
-  </div>
-
-
   <!-- PAGE OVERFLOW BANNER -->
   <div id="pageOverflowBanner" class="page-overflow-banner" style="display:none;" role="alert" aria-live="polite"></div>
   <!-- SPLIT SCREEN -->
-  <div class="split-screen">
+  <div class="split-screen" id="splitScreen">
 
-    <!-- LEFT: FORM PANEL -->
+    <!-- LEFT: RESUME EDITOR & CONTROLS PANEL -->
     <div class="panel panel-form" id="formPanel">
-      <div class="panel-label">YOUR DETAILS</div>
+      <div class="panel-label">EDITOR &amp; ATS CONTROLS</div>
 
-      <!-- LIVE ATS READINESS METER -->
+      <!-- LIVE ATS READINESS METER (Kept on top as requested) -->
       <div class="ats-readiness-widget" id="atsReadinessWidget">
         <div class="arw-header">
           <div class="arw-title-wrap">
@@ -326,143 +198,186 @@
         </div>
       </div>
 
-      <!-- Personal -->
-      <div class="form-section">
-        <div class="fs-title">Personal Info</div>
-        <div class="form-row">
-          <div class="field-group">
-            <label>First Name</label>
-            <input type="text" id="p_firstName" placeholder="Alex" />
+      <!-- EDITOR CONTROLS (Moved from toggle into left panel) -->
+      <div class="editor-panel-body" id="editorPanelBody">
+
+        <!-- Active Canvas Target Card -->
+        <div class="ep-card ep-target-card">
+          <div class="ep-card-header">
+            <div class="ep-card-title">
+              <span class="ech-target-dot"></span>
+              <span>Active Target / Element</span>
+            </div>
+            <span class="ep-target-type-badge" id="epTargetTypeBadge" style="display:none;"></span>
           </div>
-          <div class="field-group">
-            <label>Last Name</label>
-            <input type="text" id="p_lastName" placeholder="Carter" />
+          <div class="ech-target-badge" id="echTargetBadge" title="Currently focused element or highlighted text">
+            <span class="ech-target-text" id="echTargetText">Click any text on resume to edit</span>
           </div>
-        </div>
-        <div class="field-group">
-          <label>Professional Title</label>
-          <input type="text" id="p_title" placeholder="Senior Frontend Developer" />
-        </div>
-        <div class="form-row">
-          <div class="field-group">
-            <label>Email</label>
-            <input type="email" id="p_email" placeholder="alex@email.com" />
+          <!-- Direct Editor for Selected Element -->
+          <div class="ep-target-field-wrap" id="epTargetFieldWrap" style="display:none; margin-top: 10px;">
+            <div class="ep-target-field-header">
+              <label class="ech-label" for="epTargetFieldInput" id="epTargetFieldLabel">Selected Content</label>
+              <span class="ep-target-sync-hint">⚡ Live sync</span>
+            </div>
+            <textarea id="epTargetFieldInput" class="ep-target-textarea" rows="2" placeholder="Type to edit selected text..."></textarea>
           </div>
-          <div class="field-group">
-            <label>Phone</label>
-            <input type="text" id="p_phone" placeholder="+91 98765 43210" />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field-group">
-            <label>Location</label>
-            <input type="text" id="p_location" placeholder="Kolkata, India" />
-          </div>
-          <div class="field-group">
-            <label>LinkedIn</label>
-            <input type="text" id="p_linkedin" placeholder="linkedin.com/in/alex" />
+          <div class="ep-target-actions">
+            <button type="button" class="ech-action-btn ech-btn-danger" id="echDeleteElemBtn" style="display:none;" title="Delete selected entry or tag">
+              🗑️ Delete Element
+            </button>
+            <button type="button" class="ech-tool-btn" id="echResetFormatting" title="Reset custom styles on selected element">
+              🧹 Reset Style
+            </button>
           </div>
         </div>
-        <div class="field-group">
-          <label>Summary</label>
-          <textarea id="p_summary" rows="3" placeholder="A brief professional summary..."></textarea>
+
+        <!-- Typography & Styling Card -->
+        <div class="ep-card">
+          <div class="ep-card-header">
+            <div class="ep-card-title">
+              <span>✍️ Typography &amp; Styles</span>
+            </div>
+          </div>
+
+          <div class="ep-tool-row">
+            <div class="ech-group ep-fill">
+              <label class="ech-label" for="echFontFamily">Font</label>
+              <select id="echFontFamily" class="ech-select ep-select-full" title="Change Font Family">
+                <option value="">Default Font</option>
+                <option value="'Syne', sans-serif">Syne</option>
+                <option value="'DM Sans', sans-serif">DM Sans</option>
+                <option value="'Lora', serif">Lora</option>
+                <option value="'Playfair Display', serif">Playfair Display</option>
+                <option value="'IBM Plex Serif', serif">IBM Plex</option>
+                <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+                <option value="system-ui, sans-serif">System Sans</option>
+                <option value="'Times New Roman', serif">Times New Roman</option>
+                <option value="Arial, sans-serif">Arial</option>
+              </select>
+            </div>
+
+            <div class="ech-group">
+              <label class="ech-label" for="echFontSize">Size</label>
+              <div class="ech-size-stepper">
+                <button type="button" class="ech-btn-step" id="echSizeDec" title="Decrease font size">-</button>
+                <select id="echFontSize" class="ech-select ech-select-sm" title="Font Size">
+                  <option value="">Size</option>
+                  <option value="9px">9px</option>
+                  <option value="10px">10px</option>
+                  <option value="11px">11px</option>
+                  <option value="12px">12px</option>
+                  <option value="13px">13px</option>
+                  <option value="14px">14px</option>
+                  <option value="16px">16px</option>
+                  <option value="18px">18px</option>
+                  <option value="20px">20px</option>
+                  <option value="24px">24px</option>
+                  <option value="28px">28px</option>
+                  <option value="32px">32px</option>
+                </select>
+                <button type="button" class="ech-btn-step" id="echSizeInc" title="Increase font size">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Format Buttons & Align -->
+          <div class="ep-tool-row" style="margin-top: 8px;">
+            <div class="ech-group">
+              <button type="button" class="ech-tool-btn" id="echBtnBold" title="Bold (Ctrl+B)"><b>B</b></button>
+              <button type="button" class="ech-tool-btn" id="echBtnItalic" title="Italic (Ctrl+I)"><i>I</i></button>
+              <button type="button" class="ech-tool-btn" id="echBtnUnderline" title="Underline (Ctrl+U)"><u>U</u></button>
+              <button type="button" class="ech-tool-btn" id="echBtnBullet" title="Insert Bullet Point (•)">• Bullet</button>
+            </div>
+
+            <div class="ech-group" style="margin-left: auto;">
+              <button type="button" class="ech-tool-btn" id="echAlignLeft" title="Align Left">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
+              </button>
+              <button type="button" class="ech-tool-btn" id="echAlignCenter" title="Align Center">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+              </button>
+              <button type="button" class="ech-tool-btn" id="echAlignRight" title="Align Right">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Color Swatches -->
+          <div class="ep-tool-row" style="margin-top: 10px;">
+            <div class="ech-group ech-color-group">
+              <label class="ech-label">Color</label>
+              <div class="ech-swatches">
+                <button type="button" class="ech-swatch" data-color="#1a1d26" style="background:#1a1d26;" title="Charcoal"></button>
+                <button type="button" class="ech-swatch" data-color="#2563eb" style="background:#2563eb;" title="Blue"></button>
+                <button type="button" class="ech-swatch" data-color="#6c5ce7" style="background:#6c5ce7;" title="Purple"></button>
+                <button type="button" class="ech-swatch" data-color="#059669" style="background:#059669;" title="Emerald"></button>
+                <button type="button" class="ech-swatch" data-color="#dc2626" style="background:#dc2626;" title="Red"></button>
+                <button type="button" class="ech-swatch" data-color="#d97706" style="background:#d97706;" title="Amber"></button>
+                <div class="ech-color-custom" title="Custom Color Picker">
+                  <input type="color" id="echCustomColorPicker" value="#6c5ce7" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- RESUME SEGMENTS MANAGER (Gap 4: Delete/Manage Segments) -->
+        <div class="ep-card">
+          <div class="ep-card-header">
+            <div>
+              <div class="ep-card-title">
+                <span>🧩 Resume Segments</span>
+              </div>
+              <div class="ep-card-subtitle">Delete or restore specific sections in 1 click</div>
+            </div>
+          </div>
+
+          <div class="ep-segments-list" id="epSegmentsList">
+            <!-- Dynamically rendered by renderSegmentManager() -->
+          </div>
+        </div>
+
+        <!-- Quick Add Entries Card -->
+        <div class="ep-card">
+          <div class="ep-card-header">
+            <div class="ep-card-title">
+              <span>➕ Add Entries &amp; Skills</span>
+            </div>
+          </div>
+          <div class="ep-actions-grid">
+            <button type="button" class="ech-action-btn" id="echAddExpBtn" title="Add work experience entry">💼 + Experience</button>
+            <button type="button" class="ech-action-btn" id="echAddProjectBtn" title="Add a new project">🚀 + Project</button>
+            <button type="button" class="ech-action-btn" id="echAddEduBtn" title="Add education entry">🎓 + Education</button>
+            <button type="button" class="ech-action-btn" id="echAddSkillBtn" title="Add a new technical skill tag">⚡ + Skill Tag</button>
+            <button type="button" class="ech-action-btn" id="echAddLangBtn" title="Add a spoken language">🌐 + Language</button>
+          </div>
+        </div>
+
+        <!-- Canvas Zoom Card -->
+        <div class="ep-card">
+          <div class="ep-card-header">
+            <div class="ep-card-title">
+              <span>🔍 Canvas Zoom</span>
+            </div>
+          </div>
+          <div class="ech-group ech-zoom-group">
+            <button type="button" class="ech-zoom-btn" id="echZoomFit" title="Fit to screen">Fit</button>
+            <button type="button" class="ech-zoom-btn" id="echZoom80" data-scale="0.8">80%</button>
+            <button type="button" class="ech-zoom-btn active" id="echZoom100" data-scale="1.0">100%</button>
+            <button type="button" class="ech-zoom-btn" id="echZoom120" data-scale="1.2">120%</button>
+          </div>
+        </div>
+
+        <!-- Form Wizard Return Link -->
+        <div class="ep-card ep-wizard-shortcut">
+          <div class="ep-ws-text">
+            <span>Return to Form Wizard?</span>
+            <small>All edits are saved continuously.</small>
+          </div>
+          <a href="form-index.html" class="btn-ghost ep-ws-btn" id="btnBackPanel">Form Wizard →</a>
+        </div>
+
       </div>
-
-      <!-- Experience -->
-      <div class="form-section">
-        <div class="fs-title-row">
-          <div class="fs-title">Work Experience</div>
-          <button class="btn-add-sm" id="addExp">+ Add</button>
-        </div>
-        <div id="expFields"></div>
-      </div>
-
-      <!-- Projects -->
-      <div class="form-section">
-        <div class="fs-title-row">
-          <div class="fs-title">Projects</div>
-          <button class="btn-add-sm" id="addProj">+ Add</button>
-        </div>
-        <div id="projFields"></div>
-      </div>
-
-      <!-- Education -->
-      <div class="form-section">
-        <div class="fs-title-row">
-          <div class="fs-title">Education</div>
-          <button class="btn-add-sm" id="addEdu">+ Add</button>
-        </div>
-        <div id="eduFields"></div>
-      </div>
-
-      <!-- Skills -->
-      <div class="form-section">
-        <div class="fs-title">Skills &amp; ATS Proficiencies</div>
-        <div class="field-group">
-          <label>Technical Skills <span class="hint">(e.g. React (Advanced), Node.js (Expert))</span></label>
-          <input type="text" id="p_techSkills" placeholder="React (Advanced), Node.js (Expert), TypeScript, CSS" />
-        </div>
-
-        <!-- SKILL PROFICIENCY ENHANCER WIDGET -->
-        <div class="skill-enhancer-box" id="skillEnhancerBox">
-          <div class="seb-header">
-            <span class="seb-title">⚡ ATS Skill Enhancer <span style="font-weight:400;font-size:0.7rem;opacity:0.8;">(Boosts ATS Rank)</span></span>
-            <button type="button" class="seb-btn-auto" id="btnAutoProficiency" title="Automatically attach recommended proficiency levels to unrated skills">✨ Auto-Level All</button>
-          </div>
-          <div style="font-size:0.72rem; color:var(--text-muted); line-height:1.35;">
-            ATS scanners rank candidates higher when skills include depth (Beginner, Intermediate, Advanced, Expert).
-          </div>
-          <div class="seb-chips" id="sebSkillChips"></div>
-        </div>
-
-        <div class="field-group" style="margin-top:10px;">
-          <label>Soft Skills <span class="hint">(comma separated)</span></label>
-          <input type="text" id="p_softSkills" placeholder="Leadership, Communication" />
-        </div>
-        <div class="field-group lpw-section" style="margin-top:10px;">
-          <div class="lpw-header">
-            <label style="margin:0;">Languages &amp; Proficiency</label>
-            <button type="button" class="lpw-add-btn" onclick="addLanguage()" id="btnAddLanguage">+ Add Language</button>
-          </div>
-          <div class="lpw-hint">Set overall fluency + speaking, reading &amp; writing levels per language.</div>
-          <div id="langProfContainer" class="lpw-container"></div>
-        </div>
-      </div>
-
-      <!-- Cover Letter -->
-      <div class="form-section">
-        <div class="fs-title">AI Cover Letter</div>
-
-        <div class="field-group">
-          <label>Target Role</label>
-          <input type="text" id="cl_targetRole" placeholder="e.g. Frontend Developer at Google" />
-        </div>
-
-        <div class="field-group">
-          <label>Job Description</label>
-          <textarea id="cl_jobDescription" rows="5" placeholder="Paste the job description here…"></textarea>
-        </div>
-
-        <div class="field-group">
-          <label>Tone</label>
-          <select id="cl_tone">
-            <option value="professional">Professional</option>
-            <option value="enthusiastic">Enthusiastic</option>
-            <option value="formal">Formal</option>
-            <option value="conversational">Conversational</option>
-          </select>
-        </div>
-
-        <button class="btn-generate-cl" id="btnGenerateCL">Generate Cover Letter</button>
-
-        <div class="cl-output-wrap">
-          <div class="cl-output placeholder" id="coverLetterOutput">Your generated cover letter will appear here…</div>
-          <button class="btn-copy-cl" id="btnCopyCL" style="display:none">Copy</button>
-        </div>
-
-      </div>
-
     </div>
 
     <!-- DIVIDER -->
@@ -497,7 +412,7 @@
             <p class="cl-summary" id="cl_summary">Your professional summary will appear here.</p>
           </div>
 
-          <div class="cl-section">
+          <div class="cl-section" id="clExperienceSection">
             <div class="cl-section-title">Experience</div>
             <div id="cl_experience"></div>
           </div>
@@ -507,24 +422,24 @@
             <div id="cl_projects"></div>
           </div>
 
-          <div class="cl-section">
+          <div class="cl-section" id="clEducationSection">
             <div class="cl-section-title">Education</div>
             <div id="cl_education"></div>
           </div>
 
-          <div class="cl-section">
+          <div class="cl-section" id="clSkillsSection">
             <div class="cl-section-title">Skills</div>
             <div class="cl-skills-row">
-              <div class="cl-skill-group">
-                <div class="cl-skill-label">Technical</div>
+              <div class="cl-skill-group" id="clTechGroup">
+                <div class="cl-skill-label" data-canva-editable="true">Technical</div>
                 <div id="cl_techSkills" class="cl-skill-tags"></div>
               </div>
-              <div class="cl-skill-group">
-                <div class="cl-skill-label">Soft Skills</div>
+              <div class="cl-skill-group" id="clSoftGroup">
+                <div class="cl-skill-label" data-canva-editable="true">Soft Skills</div>
                 <div id="cl_softSkills" class="cl-skill-tags"></div>
               </div>
-              <div class="cl-skill-group">
-                <div class="cl-skill-label">Languages</div>
+              <div class="cl-skill-group" id="clLangGroup">
+                <div class="cl-skill-label" data-canva-editable="true">Languages</div>
                 <div id="cl_languages" class="cl-skill-tags"></div>
               </div>
             </div>
@@ -547,22 +462,22 @@
           <div class="mo-name" id="mo_name">Your Name</div>
           <div class="mo-title" id="mo_title">Professional Title</div>
 
-          <div class="mo-section">
+          <div class="mo-section" id="moContactSection">
             <div class="mo-section-title">Contact</div>
             <div id="mo_contact" class="mo-contact-list"></div>
           </div>
 
-          <div class="mo-section">
+          <div class="mo-section" id="moTechSection">
             <div class="mo-section-title">Technical</div>
             <div id="mo_techSkills" class="mo-tags"></div>
           </div>
 
-          <div class="mo-section">
+          <div class="mo-section" id="moSoftSection">
             <div class="mo-section-title">Soft Skills</div>
             <div id="mo_softSkills" class="mo-tags"></div>
           </div>
 
-          <div class="mo-section">
+          <div class="mo-section" id="moLangSection">
             <div class="mo-section-title">Languages</div>
             <div id="mo_languages" class="mo-tags"></div>
           </div>
@@ -574,23 +489,23 @@
             <div class="mo-main-title" id="mo_main_title">Professional Title</div>
           </div>
 
-          <div class="mo-section-main">
-            <div class="mo-section-title-main">Profile</div>
+          <div class="mo-section-main" id="moSummarySection">
+            <div class="mo-section-title-main" data-canva-editable="true">Profile</div>
             <p class="mo-summary" id="mo_summary">Your professional summary will appear here.</p>
           </div>
 
-          <div class="mo-section-main">
-            <div class="mo-section-title-main">Experience</div>
+          <div class="mo-section-main" id="moExperienceSection">
+            <div class="mo-section-title-main" data-canva-editable="true">Experience</div>
             <div id="mo_experience"></div>
           </div>
 
           <div class="mo-section-main" id="moProjectsSection">
-            <div class="mo-section-title-main">Projects</div>
+            <div class="mo-section-title-main" data-canva-editable="true">Projects</div>
             <div id="mo_projects"></div>
           </div>
 
-          <div class="mo-section-main">
-            <div class="mo-section-title-main">Education</div>
+          <div class="mo-section-main" id="moEducationSection">
+            <div class="mo-section-title-main" data-canva-editable="true">Education</div>
             <div id="mo_education"></div>
           </div>
         </div>
@@ -614,42 +529,42 @@
 
         <div class="mn-body">
 
-          <div class="mn-row">
-            <div class="mn-label">Profile</div>
+          <div class="mn-row" id="mnSummarySection">
+            <div class="mn-label" data-canva-editable="true">Profile</div>
             <div class="mn-content">
               <p class="mn-summary" id="mn_summary">Your professional summary will appear here.</p>
             </div>
           </div>
 
-          <div class="mn-row">
-            <div class="mn-label">Experience</div>
+          <div class="mn-row" id="mnExperienceSection">
+            <div class="mn-label" data-canva-editable="true">Experience</div>
             <div class="mn-content" id="mn_experience"></div>
           </div>
 
           <div class="mn-row" id="mnProjectsSection">
-            <div class="mn-label">Projects</div>
+            <div class="mn-label" data-canva-editable="true">Projects</div>
             <div class="mn-content" id="mn_projects"></div>
           </div>
 
-          <div class="mn-row">
-            <div class="mn-label">Education</div>
+          <div class="mn-row" id="mnEducationSection">
+            <div class="mn-label" data-canva-editable="true">Education</div>
             <div class="mn-content" id="mn_education"></div>
           </div>
 
-          <div class="mn-row">
-            <div class="mn-label">Skills</div>
+          <div class="mn-row" id="mnSkillsSection">
+            <div class="mn-label" data-canva-editable="true">Skills</div>
             <div class="mn-content">
               <div class="mn-skills-grid">
-                <div>
-                  <div class="mn-skill-cat">Technical</div>
+                <div id="mnTechGroup">
+                  <div class="mn-skill-cat" data-canva-editable="true">Technical</div>
                   <div id="mn_techSkills" class="mn-tags"></div>
                 </div>
-                <div>
-                  <div class="mn-skill-cat">Soft Skills</div>
+                <div id="mnSoftGroup">
+                  <div class="mn-skill-cat" data-canva-editable="true">Soft Skills</div>
                   <div id="mn_softSkills" class="mn-tags"></div>
                 </div>
-                <div>
-                  <div class="mn-skill-cat">Languages</div>
+                <div id="mnLangGroup">
+                  <div class="mn-skill-cat" data-canva-editable="true">Languages</div>
                   <div id="mn_languages" class="mn-tags"></div>
                 </div>
               </div>

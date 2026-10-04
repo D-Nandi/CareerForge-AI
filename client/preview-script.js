@@ -1,4 +1,4 @@
-﻿﻿// ══════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════
 //  RESUMATIC — Preview Script
 //  Handles: live data binding, template switching,
 //           experience/education blocks, divider drag,
@@ -13,6 +13,7 @@ const state = {
   education: [],
   skills: { tech:[], soft:[], languages:[] },
   langProficiency: [], // [{name, overall, speaking, reading, writing}]
+  deletedSegments: {}, // e.g. { summary: true, projects: true }
 };
 
 let expCount = 0;
@@ -38,28 +39,36 @@ function switchTemplate(tpl) {
   const current  = document.getElementById(`tpl-${activeTemplate}`);
   const next     = document.getElementById(`tpl-${tpl}`);
 
-  current.classList.add('leaving');
-  current.classList.remove('active-template');
+  if (current) {
+    current.classList.add('leaving');
+    current.classList.remove('active-template');
+    current.style.pointerEvents = 'none';
+  }
 
-  next.style.display = 'block';
-  next.classList.add('entering');
+  if (next) {
+    next.classList.add('entering');
+    void next.offsetWidth;
 
-  void next.offsetWidth;
-
-  requestAnimationFrame(() => {
-    next.classList.remove('entering');
-    next.classList.add('active-template');
-  });
+    requestAnimationFrame(() => {
+      next.classList.remove('entering');
+      next.classList.add('active-template');
+      next.style.pointerEvents = 'auto';
+    });
+  }
 
   setTimeout(() => {
-    current.classList.remove('leaving');
-    current.style.display = '';
+    if (current) {
+      current.classList.remove('leaving');
+      current.style.pointerEvents = '';
+    }
   }, 380);
 
   tplButtons.forEach(b => b.classList.toggle('active', b.dataset.template === tpl));
-  tplNameLabel.textContent = tpl.charAt(0).toUpperCase() + tpl.slice(1);
+  if (tplNameLabel) tplNameLabel.textContent = tpl.charAt(0).toUpperCase() + tpl.slice(1);
   activeTemplate = tpl;
   renderAll();
+  makeResumeEditable();
+  clearElementSelection();
 }
 
 // ══════════════════════════════════════════════════════
@@ -85,32 +94,42 @@ Object.entries(personalBindings).forEach(([id, fn]) => {
 });
 
 function syncPersonal() {
-  state.personal.firstName = val('p_firstName');
-  state.personal.lastName  = val('p_lastName');
-  state.personal.title     = val('p_title');
-  state.personal.email     = val('p_email');
-  state.personal.phone     = val('p_phone');
-  state.personal.location  = val('p_location');
-  state.personal.linkedin  = val('p_linkedin');
-  state.personal.summary   = val('p_summary');
+  const getV = (id) => {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : null;
+  };
+  const fn = getV('p_firstName'); if (fn !== null) state.personal.firstName = fn;
+  const ln = getV('p_lastName');  if (ln !== null) state.personal.lastName  = ln;
+  const ti = getV('p_title');     if (ti !== null) state.personal.title     = ti;
+  const em = getV('p_email');     if (em !== null) state.personal.email     = em;
+  const ph = getV('p_phone');     if (ph !== null) state.personal.phone     = ph;
+  const lo = getV('p_location');  if (lo !== null) state.personal.location  = lo;
+  const li = getV('p_linkedin');  if (li !== null) state.personal.linkedin  = li;
+  const su = getV('p_summary');   if (su !== null) state.personal.summary   = su;
 
-  const raw = (key, id) => { const r = val(id); return r ? r.split(',').map(s=>s.trim()).filter(Boolean) : []; };
-  state.skills.tech      = raw('tech', 'p_techSkills');
-  state.skills.soft      = raw('soft', 'p_softSkills');
-  // Convert structured language proficiency data to display strings
-  state.skills.languages = (state.langProficiency || []).map(lp => {
-    if (!lp || !lp.name) return null;
-    var parts = [];
-    if (lp.overall) parts.push(lp.overall);
-    var subSkills = [];
-    if (lp.speaking) subSkills.push('Speaking: ' + lp.speaking);
-    if (lp.reading)  subSkills.push('Reading: ' + lp.reading);
-    if (lp.writing)  subSkills.push('Writing: ' + lp.writing);
-    if (subSkills.length) {
-      parts.push(subSkills.join(', '));
-    }
-    return parts.length ? lp.name + ' (' + parts.join(' - ') + ')' : lp.name;
-  }).filter(Boolean);
+  const raw = (id) => {
+    const el = document.getElementById(id);
+    return el ? el.value.split(',').map(s=>s.trim()).filter(Boolean) : null;
+  };
+  const rTech = raw('p_techSkills'); if (rTech !== null) state.skills.tech = rTech;
+  const rSoft = raw('p_softSkills'); if (rSoft !== null) state.skills.soft = rSoft;
+
+  // Convert structured language proficiency data to display strings if available
+  if (state.langProficiency && state.langProficiency.length) {
+    state.skills.languages = state.langProficiency.map(lp => {
+      if (!lp || !lp.name) return null;
+      var parts = [];
+      if (lp.overall) parts.push(lp.overall);
+      var subSkills = [];
+      if (lp.speaking) subSkills.push('Speaking: ' + lp.speaking);
+      if (lp.reading)  subSkills.push('Reading: ' + lp.reading);
+      if (lp.writing)  subSkills.push('Writing: ' + lp.writing);
+      if (subSkills.length) {
+        parts.push(subSkills.join(', '));
+      }
+      return parts.length ? lp.name + ' (' + parts.join(' - ') + ')' : lp.name;
+    }).filter(Boolean);
+  }
 }
 
 let _atsDebounceTimer = null;
@@ -136,6 +155,7 @@ function renderAll() {
   if (activeTemplate === 'minimal')   renderMinimal();
   if (typeof makeResumeEditable === 'function') makeResumeEditable();
   if (typeof updateSkillEnhancerUI === 'function') updateSkillEnhancerUI();
+  if (typeof renderSegmentManager === 'function') renderSegmentManager();
   debouncedUpdateATS();
   debouncedCheckOverflow();
 }
@@ -361,6 +381,13 @@ function renderClassic() {
       .join('');
   }
 
+  const delSegs = state.deletedSegments || {};
+
+  const sumSec = document.getElementById('clSummarySection');
+  if (sumSec) {
+    sumSec.style.display = (!p.summary || delSegs.summary) ? 'none' : 'block';
+  }
+
   const sum = document.getElementById('cl_summary');
   if (sum) {
     if (document.activeElement !== sum) sum.textContent = p.summary || 'Your professional summary will appear here.';
@@ -375,6 +402,39 @@ function renderClassic() {
   renderSkillTags('cl_techSkills', state.skills.tech, 'cl-skill-tag');
   renderSkillTags('cl_softSkills', state.skills.soft, 'cl-skill-tag');
   renderSkillTags('cl_languages',  state.skills.languages, 'cl-skill-tag');
+
+  const expSec = document.getElementById('clExperienceSection');
+  if (expSec) {
+    const hasExp = state.experience && state.experience.some(e => e.role || e.company);
+    expSec.style.display = (!hasExp || delSegs.experience) ? 'none' : 'block';
+  }
+
+  const projSec = document.getElementById('clProjectsSection');
+  if (projSec) {
+    const hasProj = state.projects && state.projects.some(pr => pr.name || pr.title);
+    projSec.style.display = (!hasProj || delSegs.projects) ? 'none' : 'block';
+  }
+
+  const eduSec = document.getElementById('clEducationSection');
+  if (eduSec) {
+    const hasEdu = state.education && state.education.some(ed => ed.degree || ed.institution);
+    eduSec.style.display = (!hasEdu || delSegs.education) ? 'none' : 'block';
+  }
+
+  const techGroup = document.getElementById('clTechGroup');
+  if (techGroup) techGroup.style.display = (!state.skills?.tech?.length || delSegs.tech) ? 'none' : 'block';
+  const softGroup = document.getElementById('clSoftGroup');
+  if (softGroup) softGroup.style.display = (!state.skills?.soft?.length || delSegs.soft) ? 'none' : 'block';
+  const langGroup = document.getElementById('clLangGroup');
+  if (langGroup) langGroup.style.display = (!state.skills?.languages?.length || delSegs.languages) ? 'none' : 'block';
+
+  const clSkillsSec = document.getElementById('clSkillsSection');
+  if (clSkillsSec) {
+    const allSkillsHidden = (!state.skills?.tech?.length || delSegs.tech) &&
+                            (!state.skills?.soft?.length || delSegs.soft) &&
+                            (!state.skills?.languages?.length || delSegs.languages);
+    clSkillsSec.style.display = allSkillsHidden ? 'none' : 'block';
+  }
 }
 
 function renderClassicExperience() {
@@ -458,6 +518,13 @@ function renderModern() {
       .join('') || '<div class="mo-contact-item" style="color:rgba(196,181,253,0.4);font-style:italic">No contact info</div>';
   }
 
+  const delSegs = state.deletedSegments || {};
+
+  const sumSec = document.getElementById('moSummarySection');
+  if (sumSec) {
+    sumSec.style.display = (!p.summary || delSegs.summary) ? 'none' : 'block';
+  }
+
   const sum = document.getElementById('mo_summary');
   if (sum) {
     if (document.activeElement !== sum) sum.textContent = p.summary || 'Your professional summary will appear here.';
@@ -469,9 +536,34 @@ function renderModern() {
   renderSkillTags('mo_softSkills', state.skills.soft, 'mo-tag');
   renderSkillTags('mo_languages',  state.skills.languages, 'mo-tag');
 
+  const moTechSec = document.getElementById('moTechSection');
+  if (moTechSec) moTechSec.style.display = (!state.skills?.tech?.length || delSegs.tech) ? 'none' : 'block';
+  const moSoftSec = document.getElementById('moSoftSection');
+  if (moSoftSec) moSoftSec.style.display = (!state.skills?.soft?.length || delSegs.soft) ? 'none' : 'block';
+  const moLangSec = document.getElementById('moLangSection');
+  if (moLangSec) moLangSec.style.display = (!state.skills?.languages?.length || delSegs.languages) ? 'none' : 'block';
+
   renderModernExperience();
   renderModernProjects();
   renderModernEducation();
+
+  const expSec = document.getElementById('moExperienceSection');
+  if (expSec) {
+    const hasExp = state.experience && state.experience.some(e => e.role || e.company);
+    expSec.style.display = (!hasExp || delSegs.experience) ? 'none' : 'block';
+  }
+
+  const projSec = document.getElementById('moProjectsSection');
+  if (projSec) {
+    const hasProj = state.projects && state.projects.some(pr => pr.name || pr.title);
+    projSec.style.display = (!hasProj || delSegs.projects) ? 'none' : 'block';
+  }
+
+  const eduSec = document.getElementById('moEducationSection');
+  if (eduSec) {
+    const hasEdu = state.education && state.education.some(ed => ed.degree || ed.institution);
+    eduSec.style.display = (!hasEdu || delSegs.education) ? 'none' : 'block';
+  }
 }
 
 function renderModernExperience() {
@@ -547,6 +639,13 @@ function renderMinimal() {
       .join('') || '';
   }
 
+  const delSegs = state.deletedSegments || {};
+
+  const sumSec = document.getElementById('mnSummarySection');
+  if (sumSec) {
+    sumSec.style.display = (!p.summary || delSegs.summary) ? 'none' : 'grid';
+  }
+
   const sum = document.getElementById('mn_summary');
   if (sum) {
     if (document.activeElement !== sum) {
@@ -564,9 +663,42 @@ function renderMinimal() {
   renderSkillTags('mn_softSkills', state.skills.soft, 'mn-tag');
   renderSkillTags('mn_languages',  state.skills.languages, 'mn-tag');
 
+  const mnTechGroup = document.getElementById('mnTechGroup');
+  if (mnTechGroup) mnTechGroup.style.display = (!state.skills?.tech?.length || delSegs.tech) ? 'none' : 'block';
+  const mnSoftGroup = document.getElementById('mnSoftGroup');
+  if (mnSoftGroup) mnSoftGroup.style.display = (!state.skills?.soft?.length || delSegs.soft) ? 'none' : 'block';
+  const mnLangGroup = document.getElementById('mnLangGroup');
+  if (mnLangGroup) mnLangGroup.style.display = (!state.skills?.languages?.length || delSegs.languages) ? 'none' : 'block';
+
+  const mnSkillsSec = document.getElementById('mnSkillsSection');
+  if (mnSkillsSec) {
+    const allSkillsHidden = (!state.skills?.tech?.length || delSegs.tech) &&
+                            (!state.skills?.soft?.length || delSegs.soft) &&
+                            (!state.skills?.languages?.length || delSegs.languages);
+    mnSkillsSec.style.display = allSkillsHidden ? 'none' : 'grid';
+  }
+
   renderMinimalExperience();
   renderMinimalProjects();
   renderMinimalEducation();
+
+  const expSec = document.getElementById('mnExperienceSection');
+  if (expSec) {
+    const hasExp = state.experience && state.experience.some(e => e.role || e.company);
+    expSec.style.display = (!hasExp || delSegs.experience) ? 'none' : 'grid';
+  }
+
+  const projSec = document.getElementById('mnProjectsSection');
+  if (projSec) {
+    const hasProj = state.projects && state.projects.some(pr => pr.name || pr.title);
+    projSec.style.display = (!hasProj || delSegs.projects) ? 'none' : 'grid';
+  }
+
+  const eduSec = document.getElementById('mnEducationSection');
+  if (eduSec) {
+    const hasEdu = state.education && state.education.some(ed => ed.degree || ed.institution);
+    eduSec.style.display = (!hasEdu || delSegs.education) ? 'none' : 'grid';
+  }
 }
 
 function renderMinimalExperience() {
@@ -622,7 +754,10 @@ function renderMinimalEducation() {
 // ══════════════════════════════════════════════════════
 //  EXPERIENCE BLOCKS
 // ══════════════════════════════════════════════════════
-document.getElementById('addExp').addEventListener('click', () => addExpBlock());
+//  EXPERIENCE BLOCKS
+// ══════════════════════════════════════════════════════
+const btnAddExp = document.getElementById('addExp');
+if (btnAddExp) btnAddExp.addEventListener('click', () => addExpBlock());
 
 function addExpBlock(data = {}) {
   expCount++;
@@ -661,8 +796,10 @@ function addExpBlock(data = {}) {
     </div>`;
 
   const entry = { _id: id, role: data.role||'', company: data.company||'', startDate: data.startDate||'', endDate: data.endDate||'', description: data.description||'' };
+  if (!state.experience) state.experience = [];
   state.experience.push(entry);
-  document.getElementById('expFields').appendChild(div);
+  const expFields = document.getElementById('expFields');
+  if (expFields) expFields.appendChild(div);
   div.querySelectorAll('input,textarea').forEach(el => {
     el.addEventListener('input', () => { syncBlock(id, 'experience', div); renderAll(); });
   });
@@ -671,7 +808,8 @@ function addExpBlock(data = {}) {
 // ══════════════════════════════════════════════════════
 //  EDUCATION BLOCKS
 // ══════════════════════════════════════════════════════
-document.getElementById('addEdu').addEventListener('click', () => addEduBlock());
+const btnAddEdu = document.getElementById('addEdu');
+if (btnAddEdu) btnAddEdu.addEventListener('click', () => addEduBlock());
 
 function addEduBlock(data = {}) {
   eduCount++;
@@ -710,8 +848,10 @@ function addEduBlock(data = {}) {
     </div>`;
 
   const entry = { _id: id, degree: data.degree||'', institution: data.institution||'', startYear: data.startYear||'', endYear: data.endYear||'', details: data.details || data.info||'' };
+  if (!state.education) state.education = [];
   state.education.push(entry);
-  document.getElementById('eduFields').appendChild(div);
+  const eduFields = document.getElementById('eduFields');
+  if (eduFields) eduFields.appendChild(div);
   div.querySelectorAll('input').forEach(el => {
     el.addEventListener('input', () => { syncBlock(id, 'education', div); renderAll(); });
   });
@@ -836,10 +976,37 @@ document.addEventListener('mouseup', () => {
 });
 
 // ══════════════════════════════════════════════════════
-//  HEADER BUTTONS
+//  HEADER BUTTONS & DATA PRESERVATION (Gap 3)
 // ══════════════════════════════════════════════════════
-document.getElementById('btnBack').addEventListener('click', () => {
+function navigateBackToWizard() {
+  syncPersonal();
+  try {
+    localStorage.setItem('resumatic_state', JSON.stringify(state));
+  } catch (e) {}
   window.location.href = 'form-index.html';
+}
+
+const btnBack = document.getElementById('btnBack');
+if (btnBack) {
+  btnBack.addEventListener('click', (e) => {
+    e.preventDefault();
+    navigateBackToWizard();
+  });
+}
+
+const btnBackPanel = document.getElementById('btnBackPanel');
+if (btnBackPanel) {
+  btnBackPanel.addEventListener('click', (e) => {
+    e.preventDefault();
+    navigateBackToWizard();
+  });
+}
+
+window.addEventListener('beforeunload', () => {
+  syncPersonal();
+  try {
+    localStorage.setItem('resumatic_state', JSON.stringify(state));
+  } catch (e) {}
 });
 
 // ── PDF DOWNLOAD ──
@@ -1312,12 +1479,24 @@ function loadFromStorage() {
   }
 
   // ── Personal fields ──
-  // form-script uses 'jobTitle'; preview uses 'p_title'
-  const p = saved.personal || {};
+  if (saved.personal) {
+    state.personal = {
+      firstName : saved.personal.firstName || '',
+      lastName  : saved.personal.lastName  || '',
+      title     : saved.personal.jobTitle || saved.personal.title || '',
+      email     : saved.personal.email     || '',
+      phone     : saved.personal.phone     || '',
+      location  : saved.personal.location  || '',
+      linkedin  : saved.personal.linkedin  || '',
+      summary   : saved.personal.summary   || '',
+    };
+  }
+
+  const p = state.personal;
   const fieldMap = {
     firstName : 'p_firstName',
     lastName  : 'p_lastName',
-    jobTitle  : 'p_title',
+    title     : 'p_title',
     email     : 'p_email',
     phone     : 'p_phone',
     location  : 'p_location',
@@ -1329,15 +1508,18 @@ function loadFromStorage() {
     if (el && p[key]) el.value = p[key].replace(/<[^>]+>/g, '');
   });
 
-  // ── Skills (comma-join arrays into the text inputs) ──
+  // ── Skills ──
   const sk = saved.skills || {};
+  if (sk.tech && sk.tech.length) state.skills.tech = [...sk.tech];
+  if (sk.soft && sk.soft.length) state.skills.soft = [...sk.soft];
+  if (sk.languages && sk.languages.length) state.skills.languages = [...sk.languages];
+
   const skillMap = { tech: 'p_techSkills', soft: 'p_softSkills' };
   Object.entries(skillMap).forEach(([key, id]) => {
     const el = document.getElementById(id);
     if (el && sk[key] && sk[key].length) {
       const cleanList = cleanSkillList(sk[key]);
       el.value = cleanList.join(', ');
-      if (state.skills) state.skills[key] = cleanList;
     }
   });
 
@@ -1354,14 +1536,47 @@ function loadFromStorage() {
   }
   setTimeout(function() { if (typeof renderLangProficiencyWidget === 'function') renderLangProficiencyWidget(); }, 50);
 
+  // ── Deleted Segments (Gap 4) ──
+  if (saved.deletedSegments) {
+    state.deletedSegments = Object.assign({}, saved.deletedSegments);
+  }
+
+  // Helper to deduplicate items by unique content signature
+  function deduplicateBySignature(arr, getSig) {
+    if (!Array.isArray(arr)) return [];
+    const seen = new Set();
+    const result = [];
+    arr.forEach(item => {
+      if (!item) return;
+      const sig = getSig(item).toLowerCase().trim();
+      if (!sig || seen.has(sig)) return;
+      seen.add(sig);
+      result.push(item);
+    });
+    return result;
+  }
+
   // ── Experience blocks ──
-  (saved.experience || []).forEach(e => addExpBlock(e));
+  state.experience = (saved.experience && saved.experience.length)
+    ? deduplicateBySignature(saved.experience, e => (e.role || '') + '|' + (e.company || ''))
+    : [];
 
   // ── Project blocks ──
-  (saved.projects || []).forEach(p => addProjBlock(p));
+  state.projects = (saved.projects && saved.projects.length)
+    ? deduplicateBySignature(saved.projects, p => (p.name || p.title || '') + '|' + (p.description || ''))
+    : [];
 
   // ── Education blocks ──
-  (saved.education || []).forEach(e => addEduBlock(e));
+  state.education = (saved.education && saved.education.length)
+    ? deduplicateBySignature(saved.education, ed => (ed.degree || '') + '|' + (ed.institution || ''))
+    : [];
+
+  // Persist cleaned deduplicated state back to localStorage to heal any corrupted state
+  try {
+    localStorage.setItem('resumatic_state', JSON.stringify(state));
+  } catch (e) {}
+
+  renderSegmentManager();
 }
 
 // ══════════════════════════════════════════════════════
@@ -1488,17 +1703,27 @@ function makeResumeEditable() {
     sheet.setAttribute('contenteditable', 'false');
   });
 
-  const editables = document.querySelectorAll('#previewPanel [data-canva-editable="true"]');
-  editables.forEach(el => {
-    el.setAttribute('contenteditable', 'true');
-    el.setAttribute('spellcheck', 'false');
-  });
+  const selectors = [
+    '[data-canva-editable="true"]',
+    '.cl-section-title', '.mo-section-title', '.mo-section-title-main', '.mn-label', '.mn-skill-cat', '.cl-skill-label',
+    '.cl-name', '.mo-name', '.mo-main-name', '.mn-name',
+    '.cl-title', '.mo-title', '.mo-main-title', '.mn-title',
+    '.cl-summary', '.mo-summary', '.mn-summary',
+    '.cl-contact-item', '.mo-contact-item', '.mn-contact-item',
+    '.cl-entry-title', '.cl-entry-sub', '.cl-entry-date', '.cl-entry-desc',
+    '.mo-entry-title', '.mo-entry-sub', '.mo-entry-date', '.mo-entry-desc',
+    '.mn-entry-title', '.mn-entry-sub', '.mn-entry-date', '.mn-entry-desc',
+    '.skill-name'
+  ];
 
-  // Make all section titles directly editable like Canva
-  document.querySelectorAll('#previewPanel .cl-section-title, #previewPanel .mo-section-title, #previewPanel .mn-section-title').forEach(el => {
+  document.querySelectorAll('#previewPanel ' + selectors.join(', #previewPanel ')).forEach(el => {
     el.setAttribute('contenteditable', 'true');
     el.setAttribute('spellcheck', 'false');
     el.setAttribute('data-canva-editable', 'true');
+  });
+
+  document.querySelectorAll('#previewPanel .skill-level-badge, #previewPanel .mo-avatar').forEach(badge => {
+    badge.setAttribute('contenteditable', 'false');
   });
 }
 
@@ -1543,6 +1768,12 @@ function initCanvaLiveEditor() {
       }
     } else if (path) {
       handlePathUpdate(path, text, target);
+    }
+
+    if (activeSelectedElement && activeSelectedElement.contains(target)) {
+      const fieldInput = document.getElementById('epTargetFieldInput');
+      if (fieldInput) fieldInput.value = (activeSelectedElement.innerText || activeSelectedElement.textContent || '').trim();
+      updateTargetBadge(getElementFriendlyLabel(activeSelectedElement).label);
     }
 
     try {
@@ -1651,6 +1882,8 @@ function handlePathUpdate(path, text, target) {
         state.education[idx].endYear = dparts[1] || '';
       } else {
         state.education[idx][field] = text;
+        if (field === 'details') state.education[idx].info = text;
+        if (field === 'info') state.education[idx].details = text;
       }
       const block = document.querySelectorAll('#eduFields .entry-block')[idx];
       if (block) {
@@ -1658,6 +1891,9 @@ function handlePathUpdate(path, text, target) {
         if (field === 'institution') block.querySelector('[data-key="institution"]')?.setAttribute('value', text);
       }
     }
+  } else if (parts[0] === 'sectionTitles') {
+    state.sectionTitles = state.sectionTitles || {};
+    state.sectionTitles[parts[1]] = text;
   }
 }
 
@@ -1858,43 +2094,13 @@ function autoAssignAllProficiencies() {
 
 // ══════════════════════════════════════════════════
 //  DEDICATED EDITOR CANVAS & ELEMENT SELECTION ENGINE
-//  Dual Selection: Character-Level Text Highlighting + Element-Level Selection
+//  Universal Selection: Text Highlighting + Direct Element Mapping
 // ══════════════════════════════════════════════════
-let currentViewMode = 'preview'; // 'preview' | 'editor'
 let activeSelectedElement = null; // Currently clicked DOM element on canvas
-let activeSelectedEntry = null;   // Currently focused entry block (e.g. project or experience item)
+let activeSelectedEntry = null;   // Currently focused entry block
 let savedSelectionRange = null;   // Saved DOM Range for highlighted text
 
-// ── 1. VIEW MODE SWITCHER (Preview vs Editor Canvas) ──
-function initViewModeSwitcher() {
-  const btnPrev = document.getElementById('btnModePreview');
-  const btnEdit = document.getElementById('btnModeEditor');
-  const splitScreen = document.querySelector('.split-screen');
-  const editorHeader = document.getElementById('editorCanvasHeader');
-
-  function setMode(mode) {
-    currentViewMode = mode;
-    if (mode === 'editor') {
-      if (splitScreen) splitScreen.classList.add('mode-editor-active');
-      if (btnEdit) { btnEdit.classList.add('active'); btnEdit.setAttribute('aria-selected', 'true'); }
-      if (btnPrev) { btnPrev.classList.remove('active'); btnPrev.setAttribute('aria-selected', 'false'); }
-      if (editorHeader) editorHeader.style.display = 'flex';
-      makeResumeEditable();
-      updateTargetBadge('Click any element or text to edit');
-    } else {
-      if (splitScreen) splitScreen.classList.remove('mode-editor-active');
-      if (btnPrev) { btnPrev.classList.add('active'); btnPrev.setAttribute('aria-selected', 'true'); }
-      if (btnEdit) { btnEdit.classList.remove('active'); btnEdit.setAttribute('aria-selected', 'false'); }
-      if (editorHeader) editorHeader.style.display = 'none';
-      clearElementSelection();
-    }
-  }
-
-  if (btnPrev) btnPrev.addEventListener('click', () => setMode('preview'));
-  if (btnEdit) btnEdit.addEventListener('click', () => setMode('editor'));
-}
-
-// ── 2. ELEMENT SELECTION & TARGET BADGE ──
+// ── 1. ELEMENT SELECTION & TARGET BADGE ──
 function clearElementSelection() {
   if (activeSelectedElement) {
     activeSelectedElement.classList.remove('editor-element-selected');
@@ -1904,9 +2110,21 @@ function clearElementSelection() {
     activeSelectedEntry.classList.remove('editor-entry-selected');
     activeSelectedEntry = null;
   }
+  const typeBadge = document.getElementById('epTargetTypeBadge');
+  if (typeBadge) typeBadge.style.display = 'none';
+
+  const fieldWrap = document.getElementById('epTargetFieldWrap');
+  if (fieldWrap) fieldWrap.style.display = 'none';
+
   const delBtn = document.getElementById('echDeleteElemBtn');
   if (delBtn) delBtn.style.display = 'none';
-  updateTargetBadge('Click any text or element to edit');
+
+  updateTargetBadge('Click any text on resume to edit');
+
+  // Reset toolbar buttons active states
+  ['echBtnBold', 'echBtnItalic', 'echBtnUnderline', 'echAlignLeft', 'echAlignCenter', 'echAlignRight'].forEach(id => {
+    document.getElementById(id)?.classList.remove('active');
+  });
 }
 
 function selectElement(el) {
@@ -1917,8 +2135,10 @@ function selectElement(el) {
   activeSelectedElement = el;
   el.classList.add('editor-element-selected');
 
-  // Check if inside an entry card (e.g. .cl-entry, .mo-entry)
-  const entryCard = el.closest('.cl-entry, .mo-entry, .mn-entry');
+  const info = getElementFriendlyLabel(el);
+
+  // Check if inside an entry card (e.g. .cl-entry, .mo-entry, .mn-entry)
+  const entryCard = info.entryCard || el.closest('.cl-entry, .mo-entry, .mn-entry');
   if (activeSelectedEntry && activeSelectedEntry !== entryCard) {
     activeSelectedEntry.classList.remove('editor-entry-selected');
   }
@@ -1927,49 +2147,116 @@ function selectElement(el) {
     entryCard.classList.add('editor-entry-selected');
   }
 
-  // Show/Hide Delete Button
-  const delBtn = document.getElementById('echDeleteElemBtn');
-  if (delBtn) {
-    delBtn.style.display = (entryCard || el.classList.contains('cl-skill-tag') || el.classList.contains('mo-tag') || el.classList.contains('mn-tag')) ? 'inline-flex' : 'none';
+  // Update target badge and type badge
+  updateTargetBadge(info.label);
+  const typeBadge = document.getElementById('epTargetTypeBadge');
+  if (typeBadge) {
+    typeBadge.textContent = info.type || 'TARGET';
+    typeBadge.style.display = info.type ? 'inline-block' : 'none';
   }
 
-  // Compute description for badge
-  const label = getElementFriendlyLabel(el);
-  updateTargetBadge(label);
+  // Populate direct editor in left panel
+  const fieldWrap = document.getElementById('epTargetFieldWrap');
+  const fieldInput = document.getElementById('epTargetFieldInput');
+  if (fieldWrap && fieldInput) {
+    fieldWrap.style.display = 'block';
+    fieldInput.value = (el.innerText || el.textContent || '').trim();
+  }
+
+  // Show/Update Delete Button
+  const delBtn = document.getElementById('echDeleteElemBtn');
+  if (delBtn) {
+    if (info.deleteKind) {
+      delBtn.style.display = 'inline-flex';
+      const kindNames = { experience: 'Role', projects: 'Project', education: 'Degree', skill: 'Skill' };
+      delBtn.textContent = '🗑️ Delete ' + (kindNames[info.deleteKind] || 'Element');
+    } else {
+      delBtn.style.display = 'none';
+    }
+  }
 
   // Sync toolbar controls to match element's computed styles
   syncToolbarToElement(el);
 }
 
 function getElementFriendlyLabel(el) {
-  if (el.classList.contains('cl-name') || el.classList.contains('mo-name') || el.classList.contains('mn-name') || (el.id && el.id.includes('name'))) {
-    return '👤 Full Name';
+  if (!el) return { label: 'Click any text or element to edit', type: '', deleteKind: null };
+
+  const path = el.dataset.editPath || '';
+  const text = (el.innerText || el.textContent || '').trim();
+  const preview = text.length > 22 ? text.substring(0, 20) + '…' : text;
+
+  // 1. Personal Info
+  if (el.classList.contains('cl-name') || el.classList.contains('mo-name') || el.classList.contains('mo-main-name') || el.classList.contains('mn-name') || path === 'personal.name' || (el.id && el.id.includes('name'))) {
+    return { label: `👤 Full Name: "${preview}"`, type: 'PERSONAL INFO', deleteKind: null };
   }
-  if (el.classList.contains('cl-title') || el.classList.contains('mo-title') || el.classList.contains('mn-title') || (el.id && el.id.includes('title'))) {
-    return '💼 Professional Title';
+  if (el.classList.contains('cl-title') || el.classList.contains('mo-title') || el.classList.contains('mo-main-title') || el.classList.contains('mn-title') || path === 'personal.title' || (el.id && el.id.includes('title'))) {
+    return { label: `💼 Job Title: "${preview}"`, type: 'PERSONAL INFO', deleteKind: null };
   }
-  if (el.classList.contains('cl-section-title') || el.classList.contains('mo-section-title') || el.classList.contains('mn-section-title')) {
-    return `🏷️ Section: ${el.innerText.trim() || 'Header'}`;
+  if (el.classList.contains('cl-summary') || el.classList.contains('mo-summary') || el.classList.contains('mn-summary') || path === 'personal.summary') {
+    return { label: `📝 Professional Summary`, type: 'SUMMARY', deleteKind: null };
   }
-  if (el.classList.contains('cl-summary') || el.classList.contains('mo-summary') || el.classList.contains('mn-summary')) {
-    return '📝 Professional Summary';
+
+  // 2. Contact Items
+  if (path.startsWith('personal.')) {
+    const key = path.split('.')[1];
+    const icons = { email: '📧 Email', phone: '📞 Phone', location: '📍 Location', linkedin: '🔗 LinkedIn' };
+    return { label: `${icons[key] || '📇 Contact'}: "${preview}"`, type: 'CONTACT', deleteKind: null };
   }
-  if (el.dataset.editPath && el.dataset.editPath.startsWith('projects.')) {
-    return `🚀 Project: ${el.innerText.trim().substring(0, 25) || 'Item'}`;
+  if (el.classList.contains('cl-contact-item') || el.classList.contains('mo-contact-item') || el.classList.contains('mn-contact-item')) {
+    return { label: `📇 Contact: "${preview}"`, type: 'CONTACT', deleteKind: null };
   }
-  if (el.dataset.editPath && el.dataset.editPath.startsWith('experience.')) {
-    return `💼 Work Experience: ${el.innerText.trim().substring(0, 25) || 'Role'}`;
+
+  // 3. Section Headers
+  if (el.classList.contains('cl-section-title') || el.classList.contains('mo-section-title') || el.classList.contains('mo-section-title-main') || el.classList.contains('mn-label') || path.startsWith('sectionTitles.')) {
+    return { label: `🏷️ Section Header: "${preview}"`, type: 'SECTION HEADER', deleteKind: null };
   }
-  if (el.dataset.editPath && el.dataset.editPath.startsWith('education.')) {
-    return `🎓 Education: ${el.innerText.trim().substring(0, 25) || 'Degree'}`;
+  if (el.classList.contains('cl-skill-label') || el.classList.contains('mn-skill-cat')) {
+    return { label: `🏷️ Skill Category: "${preview}"`, type: 'CATEGORY', deleteKind: null };
   }
-  if (el.classList.contains('cl-skill-tag') || el.classList.contains('mo-tag') || el.classList.contains('mn-tag')) {
-    return `⚡ Skill: ${el.innerText.trim()}`;
+
+  // 4. Skills
+  if (el.dataset.editType === 'skill' || el.classList.contains('cl-skill-tag') || el.classList.contains('mo-tag') || el.classList.contains('mn-tag') || el.closest('.cl-skill-tag, .mo-tag, .mn-tag')) {
+    const tag = el.classList.contains('cl-skill-tag') || el.classList.contains('mo-tag') || el.classList.contains('mn-tag') ? el : el.closest('.cl-skill-tag, .mo-tag, .mn-tag');
+    const skillName = tag?.querySelector('.skill-name')?.innerText.trim() || preview;
+    const cat = tag?.dataset.skillType === 'soft' ? 'Soft Skill' : tag?.dataset.skillType === 'languages' ? 'Language' : 'Tech Skill';
+    return { label: `⚡ ${cat}: "${skillName}"`, type: 'SKILL', deleteKind: 'skill', targetElem: tag };
   }
-  if (el.classList.contains('cl-entry-desc') || el.classList.contains('mo-entry-desc')) {
-    return '📄 Bullet Description';
+
+  // 5. Work Experience
+  if (path.startsWith('experience.') || el.closest('.cl-entry, .mo-entry, .mn-entry')) {
+    const entryCard = el.closest('.cl-entry, .mo-entry, .mn-entry');
+    const isRole = el.classList.contains('cl-entry-title') || el.classList.contains('mo-entry-title') || el.classList.contains('mn-entry-title') || path.endsWith('.role');
+    const isCompany = el.classList.contains('cl-entry-sub') || el.classList.contains('mo-entry-sub') || el.classList.contains('mn-entry-sub') || path.endsWith('.company');
+    const isDate = el.classList.contains('cl-entry-date') || el.classList.contains('mo-entry-date') || el.classList.contains('mn-entry-date') || path.endsWith('.dates');
+    const isDesc = el.classList.contains('cl-entry-desc') || el.classList.contains('mo-entry-desc') || el.classList.contains('mn-entry-desc') || path.endsWith('.description');
+
+    const sub = isRole ? 'Role' : isCompany ? 'Company' : isDate ? 'Dates' : isDesc ? 'Description' : 'Entry';
+    return { label: `💼 Experience → ${sub}: "${preview}"`, type: 'EXPERIENCE', deleteKind: 'experience', entryCard };
   }
-  return `Target: ${el.innerText.trim().substring(0, 28) || 'Selected Element'}`;
+
+  // 6. Projects
+  if (path.startsWith('projects.')) {
+    const isName = path.endsWith('.name');
+    const isType = path.endsWith('.type');
+    const isDate = path.endsWith('.startDate') || path.endsWith('.endDate');
+    const isLink = path.endsWith('.link');
+    const isDesc = path.endsWith('.description');
+    const sub = isName ? 'Name' : isType ? 'Type' : isDate ? 'Dates' : isLink ? 'Link' : isDesc ? 'Description' : 'Item';
+    return { label: `🚀 Project → ${sub}: "${preview}"`, type: 'PROJECT', deleteKind: 'projects', entryCard: el.closest('.cl-entry, .mo-entry, .mn-entry') };
+  }
+
+  // 7. Education
+  if (path.startsWith('education.')) {
+    const isDeg = path.endsWith('.degree');
+    const isInst = path.endsWith('.institution');
+    const isDate = path.endsWith('.dates') || path.endsWith('.startYear');
+    const isDetails = path.endsWith('.details') || path.endsWith('.info');
+    const sub = isDeg ? 'Degree' : isInst ? 'Institution' : isDate ? 'Years' : isDetails ? 'Honors/GPA' : 'Item';
+    return { label: `🎓 Education → ${sub}: "${preview}"`, type: 'EDUCATION', deleteKind: 'education', entryCard: el.closest('.cl-entry, .mo-entry, .mn-entry') };
+  }
+
+  return { label: `🎯 Selected: "${preview || 'Element'}"`, type: 'CONTENT', deleteKind: null };
 }
 
 function updateTargetBadge(text) {
@@ -1983,17 +2270,57 @@ function syncToolbarToElement(el) {
     const ffSelect = document.getElementById('echFontFamily');
     const fsSelect = document.getElementById('echFontSize');
     const clrInput = document.getElementById('echCustomColorPicker');
+    const btnBold = document.getElementById('echBtnBold');
+    const btnItalic = document.getElementById('echBtnItalic');
+    const btnUnderline = document.getElementById('echBtnUnderline');
+    const aLeft = document.getElementById('echAlignLeft');
+    const aCenter = document.getElementById('echAlignCenter');
+    const aRight = document.getElementById('echAlignRight');
 
+    // Font Family
+    if (ffSelect) {
+      const family = (el.style.fontFamily || computed.fontFamily || '').toLowerCase();
+      let matched = false;
+      Array.from(ffSelect.options).forEach(opt => {
+        if (opt.value && family.includes(opt.value.replace(/['",]/g, '').toLowerCase().split(' ')[0])) {
+          ffSelect.value = opt.value;
+          matched = true;
+        }
+      });
+      if (!matched) ffSelect.value = '';
+    }
+
+    // Font Size
     if (fsSelect && computed.fontSize) {
       const px = Math.round(parseFloat(computed.fontSize)) + 'px';
       const hasOpt = Array.from(fsSelect.options).some(o => o.value === px);
       if (hasOpt) fsSelect.value = px;
+      else fsSelect.value = '';
     }
+
+    // Color
     if (clrInput && computed.color) {
-      const rgb = computed.color;
-      const hex = rgbToHex(rgb);
+      const hex = rgbToHex(computed.color);
       if (hex) clrInput.value = hex;
     }
+
+    // Bold
+    const isBold = (computed.fontWeight === 'bold' || parseInt(computed.fontWeight, 10) >= 600 || el.style.fontWeight === 'bold');
+    if (btnBold) btnBold.classList.toggle('active', Boolean(isBold));
+
+    // Italic
+    const isItalic = (computed.fontStyle === 'italic' || el.style.fontStyle === 'italic');
+    if (btnItalic) btnItalic.classList.toggle('active', Boolean(isItalic));
+
+    // Underline
+    const isUnderline = (computed.textDecorationLine?.includes('underline') || computed.textDecoration?.includes('underline') || el.style.textDecoration?.includes('underline'));
+    if (btnUnderline) btnUnderline.classList.toggle('active', Boolean(isUnderline));
+
+    // Alignment
+    const align = computed.textAlign || el.style.textAlign || 'left';
+    if (aLeft) aLeft.classList.toggle('active', align === 'left' || align === 'start');
+    if (aCenter) aCenter.classList.toggle('active', align === 'center');
+    if (aRight) aRight.classList.toggle('active', align === 'right');
   } catch(e) {}
 }
 
@@ -2003,25 +2330,54 @@ function rgbToHex(rgb) {
   return '#' + ((1 << 24) + (parseInt(m[0]) << 16) + (parseInt(m[1]) << 8) + parseInt(m[2])).toString(16).slice(1);
 }
 
-// ── 3. ELEMENT SELECTION LISTENERS ──
+// ── 2. ELEMENT SELECTION LISTENERS ──
 function initElementSelectionEngine() {
   const previewPanel = document.getElementById('previewPanel');
   if (!previewPanel) return;
 
   previewPanel.addEventListener('click', (e) => {
-    if (currentViewMode !== 'editor') return;
+    // If clicking inside toolbar or left panel, ignore
+    if (e.target.closest('#editorPanelBody, #editorCanvasHeader, #textSelectionToolbar')) return;
 
-    const editable = e.target.closest('[data-canva-editable="true"], .cl-section-title, .mo-section-title, .mn-section-title, .cl-skill-tag, .mo-tag, .mn-tag, .cl-entry, .mo-entry, .mn-entry');
-    if (editable) {
-      selectElement(editable);
-    } else if (!e.target.closest('#editorCanvasHeader, #textSelectionToolbar')) {
+    const sheet = e.target.closest('.resume-sheet');
+    if (!sheet) {
+      clearElementSelection();
+      return;
+    }
+
+    // Prevent direct link navigation during resume editing
+    const link = e.target.closest('a');
+    if (link && !e.ctrlKey && !e.metaKey) {
+      e.preventDefault();
+    }
+
+    let el = e.target.closest('[data-canva-editable="true"], .cl-section-title, .mo-section-title, .mo-section-title-main, .mn-label, .mn-skill-cat, .cl-skill-label, .cl-skill-tag, .mo-tag, .mn-tag, .cl-contact-item, .mo-contact-item, .mn-contact-item, .cl-entry-title, .cl-entry-sub, .cl-entry-date, .cl-entry-desc, .mo-entry-title, .mo-entry-sub, .mo-entry-date, .mo-entry-desc, .mn-entry-title, .mn-entry-sub, .mn-entry-date, .mn-entry-desc');
+
+    if (!el && sheet.contains(e.target)) {
+      if (['P', 'SPAN', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'LI', 'B', 'I', 'STRONG', 'EM', 'A'].includes(e.target.tagName)) {
+        el = e.target;
+      }
+    }
+
+    // Do not select structural sheet containers
+    if (el && (el.classList.contains('resume-sheet') || el.classList.contains('cl-body') || el.classList.contains('mo-main') || el.classList.contains('mo-sidebar') || el.classList.contains('mn-body'))) {
+      clearElementSelection();
+      return;
+    }
+
+    if (el) {
+      if (!el.getAttribute('contenteditable') || el.getAttribute('contenteditable') === 'false') {
+        el.setAttribute('contenteditable', 'true');
+        el.setAttribute('spellcheck', 'false');
+      }
+      selectElement(el);
+    } else {
       clearElementSelection();
     }
   });
 
   // Track text highlight within preview
   document.addEventListener('selectionchange', () => {
-    if (currentViewMode !== 'editor') return;
     const sel = window.getSelection();
     if (sel && !sel.isCollapsed && sel.rangeCount > 0) {
       const range = sel.getRangeAt(0);
@@ -2035,10 +2391,8 @@ function initElementSelectionEngine() {
     }
   });
 
-  // Keyboard Shortcuts in Editor Canvas
+  // Keyboard Shortcuts
   document.addEventListener('keydown', (e) => {
-    if (currentViewMode !== 'editor') return;
-
     if (e.key === 'Escape') {
       clearElementSelection();
     } else if (e.ctrlKey || e.metaKey) {
@@ -2054,14 +2408,32 @@ function initElementSelectionEngine() {
       }
     }
   });
+
+  // Direct editor field two-way binding
+  const fieldInput = document.getElementById('epTargetFieldInput');
+  if (fieldInput) {
+    fieldInput.addEventListener('input', () => {
+      if (!activeSelectedElement) return;
+      const text = fieldInput.value;
+      if (activeSelectedElement.dataset.editType === 'skill') {
+        const nameSpan = activeSelectedElement.querySelector('.skill-name');
+        if (nameSpan) nameSpan.innerText = text;
+        else activeSelectedElement.innerText = text;
+      } else {
+        activeSelectedElement.innerText = text;
+      }
+      triggerResumeContentChanged();
+    });
+  }
 }
 
-// ── 4. UNIVERSAL FORMATTING ENGINE ──
+// ── 3. UNIVERSAL FORMATTING ENGINE ──
 function applyFormatting(property, value) {
+  restoreSavedSelection();
   const sel = window.getSelection();
   const previewPanel = document.getElementById('previewPanel');
 
-  // Check if text range is highlighted inside the resume sheet
+  // If text range is highlighted inside resume sheet
   if (sel && !sel.isCollapsed && sel.rangeCount > 0) {
     const range = sel.getRangeAt(0);
     if (previewPanel && previewPanel.contains(range.commonAncestorContainer)) {
@@ -2072,11 +2444,12 @@ function applyFormatting(property, value) {
         applyInlineStyle(property, value);
       }
       triggerResumeContentChanged();
+      if (activeSelectedElement) syncToolbarToElement(activeSelectedElement);
       return;
     }
   }
 
-  // If no text range is highlighted, format the currently selected ELEMENT:
+  // Format currently selected element
   if (activeSelectedElement) {
     if (property === 'fontFamily') {
       activeSelectedElement.style.fontFamily = value;
@@ -2085,47 +2458,47 @@ function applyFormatting(property, value) {
     } else if (property === 'color') {
       activeSelectedElement.style.color = value;
     } else if (property === 'fontWeight') {
-      const isBold = activeSelectedElement.style.fontWeight === 'bold' || parseInt(activeSelectedElement.style.fontWeight) >= 700;
+      const comp = window.getComputedStyle(activeSelectedElement);
+      const isBold = comp.fontWeight === 'bold' || parseInt(comp.fontWeight, 10) >= 600 || activeSelectedElement.style.fontWeight === 'bold';
       activeSelectedElement.style.fontWeight = isBold ? 'normal' : 'bold';
     } else if (property === 'fontStyle') {
-      activeSelectedElement.style.fontStyle = (activeSelectedElement.style.fontStyle === 'italic') ? 'normal' : 'italic';
+      const comp = window.getComputedStyle(activeSelectedElement);
+      const isItalic = comp.fontStyle === 'italic' || activeSelectedElement.style.fontStyle === 'italic';
+      activeSelectedElement.style.fontStyle = isItalic ? 'normal' : 'italic';
     } else if (property === 'textDecoration') {
-      const hasUnderline = activeSelectedElement.style.textDecoration && activeSelectedElement.style.textDecoration.includes('underline');
-      activeSelectedElement.style.textDecoration = hasUnderline ? 'none' : 'underline';
+      const comp = window.getComputedStyle(activeSelectedElement);
+      const hasU = comp.textDecoration?.includes('underline') || activeSelectedElement.style.textDecoration?.includes('underline');
+      activeSelectedElement.style.textDecoration = hasU ? 'none' : 'underline';
     }
+    syncToolbarToElement(activeSelectedElement);
     triggerResumeContentChanged();
   }
 }
 
-// ── 5. DEDICATED EDITOR HEADER INITIALIZATION ──
+// ── 4. DEDICATED EDITOR HEADER & PANEL INITIALIZATION ──
 function initDedicatedEditorHeader() {
-  const ech = document.getElementById('editorCanvasHeader');
+  const ech = document.getElementById('editorPanelBody') || document.getElementById('editorCanvasHeader');
   if (!ech) return;
 
-  // Prevent mousedown on header tools from deselecting text
   ech.addEventListener('mousedown', (e) => {
-    if (e.target.tagName !== 'SELECT' && e.target.type !== 'color') {
+    if (e.target.tagName !== 'SELECT' && e.target.type !== 'color' && e.target.tagName !== 'TEXTAREA') {
       e.preventDefault();
     }
   });
 
-  // Font Family
   const echFontFamily = document.getElementById('echFontFamily');
   if (echFontFamily) {
     echFontFamily.addEventListener('change', () => {
       const val = echFontFamily.value;
       if (val) applyFormatting('fontFamily', val);
-      echFontFamily.value = '';
     });
   }
 
-  // Font Size Stepper
   const echFontSize = document.getElementById('echFontSize');
   if (echFontSize) {
     echFontSize.addEventListener('change', () => {
       const val = echFontSize.value;
       if (val) applyFormatting('fontSize', val);
-      echFontSize.value = '';
     });
   }
 
@@ -2153,7 +2526,6 @@ function initDedicatedEditorHeader() {
     applyFormatting('fontSize', nextPx);
   }
 
-  // Formatting Buttons
   const btnB = document.getElementById('echBtnBold');
   const btnI = document.getElementById('echBtnItalic');
   const btnU = document.getElementById('echBtnUnderline');
@@ -2169,7 +2541,6 @@ function initDedicatedEditorHeader() {
     });
   }
 
-  // Colors
   const swatches = ech.querySelectorAll('.ech-swatch');
   swatches.forEach(swatch => {
     swatch.addEventListener('click', (e) => {
@@ -2185,7 +2556,6 @@ function initDedicatedEditorHeader() {
     customColor.addEventListener('change', () => applyFormatting('color', customColor.value));
   }
 
-  // Text Alignment
   const aLeft = document.getElementById('echAlignLeft');
   const aCenter = document.getElementById('echAlignCenter');
   const aRight = document.getElementById('echAlignRight');
@@ -2194,11 +2564,11 @@ function initDedicatedEditorHeader() {
   if (aCenter) aCenter.addEventListener('click', (e) => { e.preventDefault(); applyAlignment('center'); });
   if (aRight) aRight.addEventListener('click', (e) => { e.preventDefault(); applyAlignment('right'); });
 
-  // Add / Delete Actions
   const addProj = document.getElementById('echAddProjectBtn');
   const addExp = document.getElementById('echAddExpBtn');
   const addEdu = document.getElementById('echAddEduBtn');
   const addSkill = document.getElementById('echAddSkillBtn');
+  const addLang = document.getElementById('echAddLangBtn');
   const delBtn = document.getElementById('echDeleteElemBtn');
   const resetBtn = document.getElementById('echResetFormatting');
 
@@ -2206,11 +2576,112 @@ function initDedicatedEditorHeader() {
   if (addExp) addExp.addEventListener('click', (e) => { e.preventDefault(); addExperienceEntry(); });
   if (addEdu) addEdu.addEventListener('click', (e) => { e.preventDefault(); addEducationEntry(); });
   if (addSkill) addSkill.addEventListener('click', (e) => { e.preventDefault(); addSkillTag(); });
+  if (addLang) addLang.addEventListener('click', (e) => { e.preventDefault(); addLanguageTagPrompt(); });
   if (delBtn) delBtn.addEventListener('click', (e) => { e.preventDefault(); deleteSelectedElementOrEntry(); });
   if (resetBtn) resetBtn.addEventListener('click', (e) => { e.preventDefault(); clearSelectionFormatting(); });
 
-  // Canvas Zoom
   initCanvasZoom();
+}
+
+// ── 5. RESUME SEGMENTS MANAGER ──
+const RESUME_SEGMENTS_DEF = [
+  { id: 'summary',    name: 'Professional Summary', icon: '📝', checkActive: () => Boolean(state.personal && state.personal.summary) },
+  { id: 'experience', name: 'Work Experience',      icon: '💼', checkActive: () => Boolean(state.experience && state.experience.length) },
+  { id: 'projects',   name: 'Projects',             icon: '🚀', checkActive: () => Boolean(state.projects && state.projects.length) },
+  { id: 'education',  name: 'Education',            icon: '🎓', checkActive: () => Boolean(state.education && state.education.length) },
+  { id: 'tech',       name: 'Technical Skills',     icon: '⚡', checkActive: () => Boolean(state.skills && state.skills.tech && state.skills.tech.length) },
+  { id: 'soft',       name: 'Soft Skills',          icon: '🤝', checkActive: () => Boolean(state.skills && state.skills.soft && state.skills.soft.length) },
+  { id: 'languages',  name: 'Languages',            icon: '🌐', checkActive: () => Boolean(state.skills && state.skills.languages && state.skills.languages.length) },
+];
+
+function renderSegmentManager() {
+  const container = document.getElementById('epSegmentsList');
+  if (!container) return;
+
+  const del = state.deletedSegments || {};
+
+  container.innerHTML = RESUME_SEGMENTS_DEF.map(seg => {
+    const isDeleted = Boolean(del[seg.id]);
+    const hasData = seg.checkActive();
+    
+    let countBadge = '';
+    if (seg.id === 'experience') countBadge = `${state.experience?.length || 0} jobs`;
+    else if (seg.id === 'projects') countBadge = `${state.projects?.length || 0} projects`;
+    else if (seg.id === 'education') countBadge = `${state.education?.length || 0} degrees`;
+    else if (seg.id === 'tech') countBadge = `${state.skills?.tech?.length || 0} skills`;
+    else if (seg.id === 'soft') countBadge = `${state.skills?.soft?.length || 0} skills`;
+    else if (seg.id === 'languages') countBadge = `${state.skills?.languages?.length || 0} langs`;
+    else countBadge = hasData ? '1 block' : 'Empty';
+
+    if (isDeleted) {
+      return `
+        <div class="ep-segment-item is-deleted">
+          <div class="ep-seg-info">
+            <span class="ep-seg-icon">${seg.icon}</span>
+            <span class="ep-seg-name">${seg.name}</span>
+            <span class="ep-seg-badge ep-seg-badge-deleted">Removed</span>
+          </div>
+          <button type="button" class="ep-btn-restore-seg" onclick="restoreResumeSegment('${seg.id}')" title="Restore this section onto resume">
+            ➕ Restore
+          </button>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="ep-segment-item">
+        <div class="ep-seg-info">
+          <span class="ep-seg-icon">${seg.icon}</span>
+          <span class="ep-seg-name">${seg.name}</span>
+          <span class="ep-seg-badge">${countBadge}</span>
+        </div>
+        <button type="button" class="ep-btn-del-seg" onclick="deleteResumeSegment('${seg.id}')" title="Delete this segment from resume">
+          🗑️
+        </button>
+      </div>
+    `;
+  }).join('');
+}
+
+window.deleteResumeSegment = function(segId) {
+  state.deletedSegments = state.deletedSegments || {};
+  state.deletedSegments[segId] = true;
+  renderAll();
+  renderSegmentManager();
+  debouncedUpdateATS();
+  try { localStorage.setItem('resumatic_state', JSON.stringify(state)); } catch(e) {}
+};
+
+window.restoreResumeSegment = function(segId) {
+  state.deletedSegments = state.deletedSegments || {};
+  delete state.deletedSegments[segId];
+  renderAll();
+  renderSegmentManager();
+  debouncedUpdateATS();
+  try { localStorage.setItem('resumatic_state', JSON.stringify(state)); } catch(e) {}
+};
+
+function addLanguageTagPrompt() {
+  const lang = prompt('Enter language and optional proficiency (e.g. "French (Fluent)"):', 'English (Native)');
+  if (lang && lang.trim()) {
+    state.skills = state.skills || { tech: [], soft: [], languages: [] };
+    state.skills.languages = state.skills.languages || [];
+    state.skills.languages.push(lang.trim());
+    
+    const parsed = parseSkill(lang.trim());
+    state.langProficiency = state.langProficiency || [];
+    state.langProficiency.push({
+      name: parsed.name || lang.trim(),
+      overall: parsed.level || 'Fluent',
+      speaking: '',
+      reading: '',
+      writing: ''
+    });
+
+    renderAll();
+    renderSegmentManager();
+    try { localStorage.setItem('resumatic_state', JSON.stringify(state)); } catch(e) {}
+  }
 }
 
 function insertBulletPoint() {
@@ -2243,6 +2714,8 @@ function addProjectEntry() {
     description: '• Implemented core architecture and optimized performance.\n• Designed responsive user interface with modern frameworks.'
   });
   renderAll();
+  renderSegmentManager();
+  try { localStorage.setItem('resumatic_state', JSON.stringify(state)); } catch(e) {}
   setTimeout(() => {
     const newItems = document.querySelectorAll('#previewPanel [data-edit-path^="projects."]');
     if (newItems.length) {
@@ -2263,6 +2736,8 @@ function addExperienceEntry() {
     description: '• Developed scalable web solutions and collaborated with cross-functional teams.\n• Streamlined deployments and reduced p99 latency.'
   });
   renderAll();
+  renderSegmentManager();
+  try { localStorage.setItem('resumatic_state', JSON.stringify(state)); } catch(e) {}
   setTimeout(() => {
     const newItems = document.querySelectorAll('#previewPanel [data-edit-path^="experience."]');
     if (newItems.length) {
@@ -2280,9 +2755,12 @@ function addEducationEntry() {
     institution: 'University / Institute Name',
     startYear: '2020',
     endYear: '2024',
+    details: 'CGPA: 8.5 / 10.0',
     info: 'CGPA: 8.5 / 10.0'
   });
   renderAll();
+  renderSegmentManager();
+  try { localStorage.setItem('resumatic_state', JSON.stringify(state)); } catch(e) {}
   setTimeout(() => {
     const newItems = document.querySelectorAll('#previewPanel [data-edit-path^="education."]');
     if (newItems.length) {
@@ -2300,6 +2778,8 @@ function addSkillTag() {
     state.skills.tech = state.skills.tech || [];
     state.skills.tech.push(skill.trim());
     renderAll();
+    renderSegmentManager();
+    try { localStorage.setItem('resumatic_state', JSON.stringify(state)); } catch(e) {}
   }
 }
 
@@ -2307,30 +2787,43 @@ function deleteSelectedElementOrEntry() {
   const target = activeSelectedElement || activeSelectedEntry;
   if (!target) return;
 
+  const info = getElementFriendlyLabel(target);
+
   // 1. Skill Tag deletion
-  if (target.dataset.editType === 'skill') {
-    const type = target.dataset.skillType || 'tech';
-    const idx = parseInt(target.dataset.skillIdx, 10);
-    if (state.skills && state.skills[type] && !isNaN(idx)) {
-      state.skills[type].splice(idx, 1);
-      clearElementSelection();
-      renderAll();
-      return;
+  if (info.deleteKind === 'skill' || target.dataset.editType === 'skill') {
+    const skillEl = target.dataset.editType === 'skill' ? target : target.closest('[data-edit-type="skill"]');
+    if (skillEl) {
+      const type = skillEl.dataset.skillType || 'tech';
+      const idx = parseInt(skillEl.dataset.skillIdx, 10);
+      if (state.skills && state.skills[type] && !isNaN(idx)) {
+        const skillName = (skillEl.querySelector('.skill-name')?.innerText || skillEl.innerText || '').trim();
+        if (confirm(`Delete skill "${skillName}"?`)) {
+          state.skills[type].splice(idx, 1);
+          clearElementSelection();
+          renderAll();
+          renderSegmentManager();
+          try { localStorage.setItem('resumatic_state', JSON.stringify(state)); } catch(e) {}
+          return;
+        }
+      }
     }
   }
 
-  // 2. Direct data-edit-path deletion (project, experience, education)
-  const path = target.dataset.editPath || (activeSelectedElement && activeSelectedElement.dataset.editPath);
+  // 2. Direct data-edit-path deletion
+  const path = target.dataset.editPath || target.querySelector('[data-edit-path]')?.dataset.editPath;
   if (path) {
     const parts = path.split('.');
     const section = parts[0];
     const idx = parseInt(parts[1], 10);
 
     if (['experience', 'projects', 'education'].includes(section) && !isNaN(idx)) {
-      if (confirm(`Delete this ${section.slice(0, -1)} entry?`)) {
+      const singular = section === 'experience' ? 'job role' : section === 'projects' ? 'project' : 'degree';
+      if (confirm(`Delete this ${singular} entry?`)) {
         state[section].splice(idx, 1);
         clearElementSelection();
         renderAll();
+        renderSegmentManager();
+        try { localStorage.setItem('resumatic_state', JSON.stringify(state)); } catch(e) {}
         return;
       }
     }
@@ -2344,10 +2837,13 @@ function deleteSelectedElementOrEntry() {
       const section = parts[0];
       const idx = parseInt(parts[1], 10);
       if (['experience', 'projects', 'education'].includes(section) && !isNaN(idx)) {
-        if (confirm(`Delete this ${section.slice(0, -1)} entry?`)) {
+        const singular = section === 'experience' ? 'job role' : section === 'projects' ? 'project' : 'degree';
+        if (confirm(`Delete this ${singular} entry?`)) {
           state[section].splice(idx, 1);
           clearElementSelection();
           renderAll();
+          renderSegmentManager();
+          try { localStorage.setItem('resumatic_state', JSON.stringify(state)); } catch(e) {}
           return;
         }
       }
@@ -2446,60 +2942,31 @@ function initTextSelectionToolbar() {
   const checkSelection = () => {
     const sel = window.getSelection();
     if (!sel || sel.isCollapsed || !sel.rangeCount) {
-      hideToolbar();
       return;
     }
 
     const range = sel.getRangeAt(0);
     const previewPanel = document.getElementById('previewPanel');
     if (!previewPanel || !previewPanel.contains(range.commonAncestorContainer)) {
-      hideToolbar();
       return;
     }
 
     const text = sel.toString().trim();
     if (!text) {
-      hideToolbar();
       return;
     }
 
     savedSelectionRange = range.cloneRange();
-
-    const rect = range.getBoundingClientRect();
-    if (rect.width === 0 && rect.height === 0) {
-      hideToolbar();
-      return;
-    }
-
-    selectionToolbar.style.display = 'flex';
-    selectionToolbar.classList.add('visible');
-
-    const tbWidth  = selectionToolbar.offsetWidth || 500;
-    const tbHeight = selectionToolbar.offsetHeight || 42;
-
-    let top  = rect.top - tbHeight - 12;
-    let left = rect.left + (rect.width / 2) - (tbWidth / 2);
-
-    if (top < 70) {
-      top = rect.bottom + 12;
-    }
-    left = Math.max(12, Math.min(left, window.innerWidth - tbWidth - 12));
-
-    selectionToolbar.style.top  = `${Math.round(top)}px`;
-    selectionToolbar.style.left = `${Math.round(left)}px`;
+    updateTargetBadge(`🔤 Text: "${text.length > 20 ? text.substring(0, 18) + '…' : text}"`);
   };
 
-  function hideToolbar() {
-    if (selectionToolbar.classList.contains('visible')) {
-      selectionToolbar.classList.remove('visible');
-      selectionToolbar.style.display = 'none';
-    }
+  // Hovering toolbar is kept disabled; all editing controls are fixed in the left panel
+  if (selectionToolbar) {
+    selectionToolbar.style.display = 'none';
   }
 
   document.addEventListener('selectionchange', () => {
-    if (!selectionToolbar.matches(':hover') && document.activeElement?.tagName !== 'SELECT') {
-      checkSelection();
-    }
+    checkSelection();
   });
 
   const previewPanel = document.getElementById('previewPanel');
@@ -2510,16 +2977,7 @@ function initTextSelectionToolbar() {
         setTimeout(checkSelection, 30);
       }
     });
-    previewPanel.addEventListener('scroll', () => {
-      if (selectionToolbar.classList.contains('visible')) checkSelection();
-    }, { passive: true });
   }
-
-  document.addEventListener('mousedown', (e) => {
-    if (!selectionToolbar.contains(e.target) && (!previewPanel || !previewPanel.contains(e.target))) {
-      hideToolbar();
-    }
-  });
 }
 
 function restoreSavedSelection() {
@@ -2632,9 +3090,13 @@ function triggerResumeContentChanged() {
   const target = (anchor && anchor.closest('[data-canva-editable="true"]')) || activeSelectedElement || document.activeElement?.closest('[data-canva-editable="true"]');
   if (target) {
     const path = target.dataset.editPath;
-    const content = /<(span|b|i|u|strong|em)\b/i.test(target.innerHTML) ? target.innerHTML : target.innerText.trim();
+    const content = /<(span|b|i|u|strong|em)\b/i.test(target.innerHTML) ? target.innerHTML : (target.innerText || target.textContent || '').trim();
     if (path) {
       handlePathUpdate(path, content, target);
+    }
+    const fieldInput = document.getElementById('epTargetFieldInput');
+    if (fieldInput && activeSelectedElement === target) {
+      fieldInput.value = (target.innerText || target.textContent || '').trim();
     }
   }
 
@@ -2648,10 +3110,10 @@ function triggerResumeContentChanged() {
 //  INIT
 // ══════════════════════════════════════════════════
 loadFromStorage();
-initViewModeSwitcher();
 initDedicatedEditorHeader();
 initElementSelectionEngine();
 initTextSelectionToolbar();
 initCanvaLiveEditor();
 initSkillEnhancer();
 renderAll();
+renderSegmentManager();
