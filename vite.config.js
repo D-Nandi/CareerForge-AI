@@ -1,0 +1,40 @@
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
+
+export default defineConfig({
+  root: 'client',
+  server: {
+    port: 3000,
+    open: '/preview.html',
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
+  },
+  build: {
+    outDir: resolve(__dirname, 'dist'),
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'client/index.html'),
+        preview: resolve(__dirname, 'client/preview.html'),
+        form: resolve(__dirname, 'client/form-index.html'),
+        ats: resolve(__dirname, 'client/ats-score-checker.html'),
+        coverLetter: resolve(__dirname, 'client/cover-letter-generator.html'),
+        growthHub: resolve(__dirname, 'client/growth-hub.html'),
+        templates: resolve(__dirname, 'client/templates.html'),
+        blog: resolve(__dirname, 'client/blog.html'),
+        blogPost: resolve(__dirname, 'client/blog-post.html'),
+        adLanding: resolve(__dirname, 'client/ad-landing.html'),
+        r: resolve(__dirname, 'client/r.html'),
+        resumeExample: resolve(__dirname, 'client/resume-example.html'),
+        resumeExamples: resolve(__dirname, 'client/resume-examples.html'),
+        dashboard: resolve(__dirname, 'client/dashboard.html'),
+        login: resolve(__dirname, 'client/login.html'),
+        signup: resolve(__dirname, 'client/signup.html'),
+      },
+    },
+  },
+});
