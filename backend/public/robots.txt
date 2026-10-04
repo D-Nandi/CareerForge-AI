@@ -1,0 +1,6 @@
+# robots.txt for Resumatic (https://resumatic.ai)
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://resumatic.ai/sitemap.xml

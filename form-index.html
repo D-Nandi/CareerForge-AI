@@ -30,7 +30,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="form-style.css" />
 
   <!-- JSON-LD Structured Data: HowTo & BreadcrumbList -->
@@ -129,6 +129,138 @@
     </div>
   </header>
 
+  <!-- RESUME UPLOAD AUTO-FILL BANNER -->
+  <div class="import-banner" id="importBanner">
+    <div class="import-banner-inner">
+      <div class="import-left">
+        <div class="import-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <div class="import-copy">
+          <strong>Already have a resume?</strong>
+          <span>Upload it and we'll auto-fill all fields instantly — PDF, DOCX, or TXT</span>
+        </div>
+      </div>
+      <div class="import-actions">
+        <button class="btn-import" id="btnOpenImport">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Import Resume
+        </button>
+        <button class="btn-dismiss" id="btnDismissBanner" aria-label="Dismiss">Fill manually →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPORT MODAL OVERLAY -->
+  <div class="import-modal-overlay" id="importModalOverlay" aria-hidden="true">
+    <div class="import-modal" id="importModal" role="dialog" aria-label="Import resume" aria-modal="true">
+
+      <!-- HEADER -->
+      <div class="im-header">
+        <div class="im-title">
+          <div class="im-title-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          Import &amp; Auto-fill from Resume
+        </div>
+        <button class="im-close" id="btnCloseModal" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- PANEL 1: UPLOAD -->
+      <div class="im-panel" id="imPanelUpload">
+        <p class="im-subtitle">Your file is processed locally — nothing is uploaded to any server.</p>
+
+        <div class="im-drop-zone" id="imDropZone" tabindex="0" role="button">
+          <input type="file" id="imFileInput" accept=".pdf,.docx,.doc,.txt" style="display:none;" />
+          <div class="im-drop-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <div class="im-drop-text">
+            <strong>Drag &amp; drop your resume here</strong>
+            <span>or click to browse your files</span>
+          </div>
+          <div class="im-format-pills">
+            <span class="im-pill">PDF</span>
+            <span class="im-pill">DOCX</span>
+            <span class="im-pill">DOC</span>
+            <span class="im-pill">TXT</span>
+          </div>
+        </div>
+
+        <div class="im-file-selected" id="imFileSelected" style="display:none;">
+          <div class="im-file-info">
+            <div class="im-file-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div>
+              <div class="im-file-name" id="imFileName">resume.pdf</div>
+              <div class="im-file-size" id="imFileSize">0 KB</div>
+            </div>
+          </div>
+          <button class="im-file-remove" id="imFileRemove">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <button class="im-btn-extract" id="imBtnExtract" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Extract &amp; Auto-fill Form
+        </button>
+      </div>
+
+      <!-- PANEL 2: EXTRACTING -->
+      <div class="im-panel" id="imPanelExtracting" style="display:none;">
+        <div class="im-extracting">
+          <div class="im-spinner"></div>
+          <div class="im-extract-title">Reading your resume…</div>
+          <div class="im-extract-steps">
+            <div class="im-ext-step" id="extStep1">
+              <div class="im-ext-dot" id="extDot1"></div>
+              <span>Extracting text from file</span>
+            </div>
+            <div class="im-ext-step" id="extStep2">
+              <div class="im-ext-dot" id="extDot2"></div>
+              <span>Parsing contact information</span>
+            </div>
+            <div class="im-ext-step" id="extStep3">
+              <div class="im-ext-dot" id="extDot3"></div>
+              <span>Identifying work experience</span>
+            </div>
+            <div class="im-ext-step" id="extStep4">
+              <div class="im-ext-dot" id="extDot4"></div>
+              <span>Detecting education &amp; skills</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 3: PREVIEW -->
+      <div class="im-panel" id="imPanelPreview" style="display:none;">
+        <div class="im-preview-header">
+          <div class="im-preview-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Extraction complete
+          </div>
+          <p>Review the extracted data below. You can edit everything after import.</p>
+        </div>
+        <div class="im-preview-grid" id="imPreviewGrid"></div>
+        <div class="im-preview-actions">
+          <button class="im-btn-back" id="imBtnBack">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Try different file
+          </button>
+          <button class="im-btn-fill" id="imBtnFill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Fill Form with This Data
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- PROGRESS BAR -->
   <div class="progress-wrap">
     <div class="progress-track">
@@ -187,17 +319,32 @@
       </div>
     </section>
 
-    <!-- STEP 2: Work Experience -->
+    <!-- STEP 2: Work Experience & Projects -->
     <section class="form-step" data-step="2">
       <div class="step-header">
         <div class="step-tag">Step 02</div>
-        <h2>Work <em>Experience</em></h2>
-        <p>Add your most recent roles first.</p>
+        <h2>Experience &amp; <em>Projects</em></h2>
+        <p>Add your employment history and standalone personal or academic projects.</p>
+      </div>
+
+      <div class="section-subheading">
+        <h3>Work Experience</h3>
+        <p>Company roles, internships, and professional employment.</p>
       </div>
       <div id="experienceList" class="entry-list"></div>
       <button type="button" class="btn-add" id="addExperience">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Add Experience
+        Add Work Experience
+      </button>
+
+      <div class="section-subheading" style="margin-top: 36px;">
+        <h3>Projects</h3>
+        <p>Personal projects, open-source work, and academic applications.</p>
+      </div>
+      <div id="projectList" class="entry-list"></div>
+      <button type="button" class="btn-add" id="addProject">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Add Project
       </button>
     </section>
 
@@ -230,6 +377,21 @@
             <input type="text" id="techSkillInput" placeholder="e.g. React, Node.js — press Enter" />
           </div>
           <span class="field-error" id="techSkillsError"></span>
+
+          <!-- PROACTIVE SKILL PROFICIENCY MAPPING -->
+          <div class="skill-prof-wrap" id="skillProficiencyContainer" style="display:none;">
+            <div class="sp-header">
+              <div class="sp-title-area">
+                <div class="sp-title">
+                  <span>🎯 Skill Proficiency Mapping</span>
+                  <span class="sp-badge">+15% ATS Match</span>
+                </div>
+                <div class="sp-sub">Map each technical skill with your mastery level before reviewing your resume.</div>
+              </div>
+              <button type="button" class="sp-auto-btn" id="btnAutoMapProficiencies">✨ Auto-Level All</button>
+            </div>
+            <div class="sp-list" id="skillProficiencyList"></div>
+          </div>
         </div>
         <div class="field-group full">
           <label>Soft Skills</label>
@@ -321,6 +483,44 @@
         </label>
       </div>
 
+      <!-- ATS READINESS PREVIEW -->
+      <div class="ats-readiness-widget" id="formAtsWidget" style="margin-top: 24px; margin-bottom: 24px;">
+        <div class="arw-header">
+          <div class="arw-title-wrap">
+            <span class="arw-icon">⚡</span>
+            <div>
+              <div class="arw-title">ATS Readiness Check</div>
+              <div class="arw-subtitle" id="fAtsSubtitle">Resume profile analysis</div>
+            </div>
+          </div>
+          <div class="arw-score-badge" id="fAtsBadge">--%</div>
+        </div>
+        <div class="arw-progress-bar">
+          <div class="arw-progress-fill" id="fAtsFill" style="width: 0%;"></div>
+        </div>
+        <div class="arw-breakdown">
+          <div class="arw-item">
+            <span class="arw-label">🎯 Keywords</span>
+            <span class="arw-val" id="fAtsKeywords">--%</span>
+          </div>
+          <div class="arw-item">
+            <span class="arw-label">📖 Readability</span>
+            <span class="arw-val" id="fAtsReadability">--%</span>
+          </div>
+          <div class="arw-item">
+            <span class="arw-label">📈 Impact</span>
+            <span class="arw-val" id="fAtsImpact">--%</span>
+          </div>
+          <div class="arw-item">
+            <span class="arw-label">🏗️ Structure</span>
+            <span class="arw-val" id="fAtsStructure">--%</span>
+          </div>
+        </div>
+        <div class="arw-footer">
+          <a href="ats-score-checker.html" target="_blank" class="arw-full-audit-link">Full ATS Audit &amp; Fixes →</a>
+        </div>
+      </div>
+
       <!-- SUMMARY REVIEW -->
       <div class="review-box" id="reviewBox">
         <div class="review-title">
@@ -337,10 +537,17 @@
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Back
       </button>
-      <button type="button" class="btn-next" id="btnNext">
-        Continue
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
+      <div class="form-nav-right">
+        <a href="preview.html" class="btn-nav-preview" id="btnNavPreview" title="Go to Live Resume Preview & PDF Export">
+          <span class="nav-preview-pulse"></span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Go to Preview →</span>
+        </a>
+        <button type="button" class="btn-next" id="btnNext">
+          Continue
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
 
     <!-- COVER LETTER RESULT -->
@@ -364,6 +571,11 @@
 
   <script src="theme.js"></script>
   <script src="roles-data.js"></script>
+  <script src="ai-enhance.js"></script>
   <script src="form-script.js"></script>
+  <!-- Libraries for resume parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <script src="resume-import.js"></script>
 </body>
 </html>
