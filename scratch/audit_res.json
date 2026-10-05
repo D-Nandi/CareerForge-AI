@@ -1,0 +1,397 @@
+[
+  {
+    "file": "404.html",
+    "title": "404 — Page Not Found | Resumatic",
+    "description": "The page you are looking for does not exist or has been moved. Explore Resumatic",
+    "robots": "noindex, follow",
+    "canonical": null,
+    "ogTitle": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1s": [
+      "Page Not Found"
+    ],
+    "jsonLdCount": 0,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 26,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "ad-landing.html",
+    "title": "Build an ATS-Winning Resume in 2 Minutes — Resumatic AI",
+    "description": "Land 3x more interviews with our AI-powered ATS resume builder. Free instant PDF export, keyword optimization, and recruiter-tested templates.",
+    "robots": "noindex, nofollow",
+    "canonical": null,
+    "ogTitle": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1s": [
+      "Stop Getting Screened Out. Build an ATS-Proof Resume."
+    ],
+    "jsonLdCount": 0,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 9,
+    "emptyHrefs": 1
+  },
+  {
+    "file": "ats-score-checker.html",
+    "title": "Free ATS Resume Checker & Score Scanner | Resumatic",
+    "description": "Check your resume",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/ats-score-checker.html",
+    "ogTitle": "Free ATS Resume Checker & Score Scanner | Resumatic",
+    "ogUrl": "https://resumatic.ai/ats-score-checker.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "Free ATS Resume Checker"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 16,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "blog-post.html",
+    "title": "How to Beat ATS in 2025 | Resumatic Blog",
+    "description": "Discover how modern AI ATS algorithms parse resumes, why formatting tables fail, and the exact keyword matching techniques top candidates use.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/blog-post.html?slug=how-to-beat-ats-in-2025",
+    "ogTitle": "How to Beat ATS in 2025 | Resumatic Blog",
+    "ogUrl": "https://resumatic.ai/blog-post.html?slug=how-to-beat-ats-in-2025",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "How to Beat Applicant Tracking Systems (ATS) in 2025: The Definitive Guide"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 11,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "blog.html",
+    "title": "Resumatic Blog — ATS Secrets, Career Strategies & Resume Guides",
+    "description": "Expert career advice, ATS optimization strategies, resume writing teardowns, and job search playbooks to help you land high-paying roles.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/blog.html",
+    "ogTitle": "Resumatic Career Blog & ATS Guides",
+    "ogUrl": "https://resumatic.ai/blog.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "The Resumatic Blog"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 10,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "career-roadmap.html",
+    "title": "AI Career Roadmap for Computer Science Engineers & Freshers | CareerForge AI",
+    "description": "Generate a customized, phase-wise AI career transition roadmap for Indian CS graduates, IT service professionals, and SDEs. Target high-growth roles, certifications, and production projects.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/career-roadmap.html",
+    "ogTitle": "AI Career Roadmap for CS Engineers & Freshers | Resumatic",
+    "ogUrl": "https://resumatic.ai/career-roadmap.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "AI Career Roadmap & Growth Engine"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 16,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "cover-letter-generator.html",
+    "title": "Free AI Cover Letter Generator — Tailored Cover Letters in Seconds | Resumatic",
+    "description": "Generate persuasive, high-converting cover letters customized to any job description using AI. Free instant export to PDF and text.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/cover-letter-generator.html",
+    "ogTitle": "Free AI Cover Letter Generator | Resumatic",
+    "ogUrl": "https://resumatic.ai/cover-letter-generator.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "AI Cover Letter Generator"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 9,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "dashboard.html",
+    "title": "CareerForge AI — Dashboard",
+    "description": "Manage your saved resumes, career roadmaps, interview prep history, and subscription in one place.",
+    "robots": "noindex, nofollow",
+    "canonical": null,
+    "ogTitle": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1s": [
+      "My Career Center"
+    ],
+    "jsonLdCount": 0,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 18,
+    "emptyHrefs": 2
+  },
+  {
+    "file": "form-index.html",
+    "title": "Create Your Resume — Step-by-Step AI Resume Builder | Resumatic",
+    "description": "Step-by-step AI resume builder. Enter your experience, education, and skills to generate an ATS-optimized resume in minutes.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/form-index.html",
+    "ogTitle": "Create Your Resume — Step-by-Step AI Resume Builder | Resumatic",
+    "ogUrl": "https://resumatic.ai/form-index.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "Step-by-Step AI Resume Builder"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 9,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "growth-hub.html",
+    "title": "Growth & Paid Acquisition Dashboard | Resumatic AI",
+    "description": "Internal growth analytics, funnel metrics, and paid acquisition simulator for Resumatic.",
+    "robots": "noindex, nofollow",
+    "canonical": null,
+    "ogTitle": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1s": [
+      "Paid Acquisition & Funnel Intelligence"
+    ],
+    "jsonLdCount": 0,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 7,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "index.html",
+    "title": "Resumatic — Free AI Resume Builder & ATS Resume Scanner",
+    "description": "Build professional, ATS-optimized resumes in minutes with AI. Real-time ATS keyword optimization, job-specific cover letters, and high-converting templates. Free PDF export.",
+    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+    "canonical": "https://resumatic.ai/",
+    "ogTitle": "Resumatic — Free AI Resume Builder & ATS Scanner",
+    "ogUrl": "https://resumatic.ai/",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "Build Resumes\r\n        That Actually\r\n        Get You Hired."
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 48,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "interview-prep.html",
+    "title": "AI Technical Interview Prep & STAR Answer Coach | Resumatic",
+    "description": "Prepare for top tech company software engineering interviews. Practice DSA, System Design, and STAR behavioral answers tailored to your real experience.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/interview-prep.html",
+    "ogTitle": "AI Technical Interview Prep & STAR Answer Coach | Resumatic",
+    "ogUrl": "https://resumatic.ai/interview-prep.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "AI Interview Prep & STAR Answer Coach"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 16,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "login.html",
+    "title": "Resumatic — Sign In",
+    "description": "Sign in to your account to access your saved resumes, career roadmaps, and interview preparations.",
+    "robots": "noindex, follow",
+    "canonical": "https://resumatic.ai/login.html",
+    "ogTitle": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1s": [],
+    "jsonLdCount": 0,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 7,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "preview.html",
+    "title": "Live Resume Preview & PDF Export | Resumatic",
+    "description": "Preview your AI-generated resume in real time. Switch between Classic, Modern, and Minimal ATS-compliant templates, customize styling, and export high-res PDFs.",
+    "robots": "noindex, follow",
+    "canonical": "https://resumatic.ai/preview.html",
+    "ogTitle": "Live Resume Preview & PDF Export | Resumatic",
+    "ogUrl": "https://resumatic.ai/preview.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "Live Resume Preview &amp; PDF Export"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 12,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "pricing.html",
+    "title": "Pricing Plans — Affordable Career Growth & Pro Features | Resumatic",
+    "description": "Transparent, affordable pricing tailored for job seekers and software engineers. Access unlimited ATS checks, customized career roadmaps, and STAR interview prep.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/pricing.html",
+    "ogTitle": "Resumatic Pricing — Accelerate Your Career with AI",
+    "ogUrl": "https://resumatic.ai/pricing.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "Invest in Your Career. \r\n          Not In Costly Coaching."
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 16,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "r.html",
+    "title": "Alex Morgan — Professional Resume | Resumatic",
+    "description": "View Alex Morgan",
+    "robots": "noindex, follow",
+    "canonical": null,
+    "ogTitle": "Verified ATS Resume | Resumatic",
+    "ogUrl": null,
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": null,
+    "h1s": [
+      "${firstName} ${lastName}"
+    ],
+    "jsonLdCount": 0,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 7,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "resume-example.html",
+    "title": "Resume Example & Guide (2025 ATS Ready) | Resumatic",
+    "description": "Recruiter-tested resume example with ATS keywords, high-impact bullet points, and salary benchmarks. Build your resume in 2 minutes.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/resume-example.html?role=software-engineer",
+    "ogTitle": "Software Engineer Resume Example & Guide (2025 ATS Ready) | Resumatic",
+    "ogUrl": "https://resumatic.ai/resume-example.html?role=software-engineer",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "Resume Example & Guide"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 10,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "resume-examples.html",
+    "title": "25+ Free Resume Examples & ATS Guides (2025) | Resumatic",
+    "description": "Explore real, recruiter-approved resume examples and samples for Software Engineers, Data Analysts, Product Managers, and 25+ top professions. Free ATS templates.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/resume-examples.html",
+    "ogTitle": "25+ Free Resume Examples & ATS Guides | Resumatic",
+    "ogUrl": "https://resumatic.ai/resume-examples.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "Real Resume Examples & Guides"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 10,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "salary-benchmark.html",
+    "title": "Tech Salary Benchmarks & Compensation Calculator 2026 | Resumatic",
+    "description": "Explore real software engineer salary bands and compensation trends. Compare Base CTC, equity, and bonuses across tech roles and experience levels.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/salary-benchmark.html",
+    "ogTitle": "Tech Salary Benchmarks & Compensation Calculator — Resumatic",
+    "ogUrl": "https://resumatic.ai/salary-benchmark.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "Know Your Market Worth in India"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 15,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "signup.html",
+    "title": "Resumatic — Create Account",
+    "description": "Create your free account to build ATS resumes, craft cover letters, and track career milestones.",
+    "robots": "noindex, follow",
+    "canonical": "https://resumatic.ai/signup.html",
+    "ogTitle": null,
+    "ogUrl": null,
+    "ogImage": null,
+    "twitterCard": null,
+    "h1s": [],
+    "jsonLdCount": 0,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 7,
+    "emptyHrefs": 0
+  },
+  {
+    "file": "templates.html",
+    "title": "Free ATS Resume Templates — Modern, Clean & Professional Designs | Resumatic",
+    "description": "Explore our library of free, 100% ATS-friendly resume templates. Designed for software engineers, data analysts, executives, and creative professionals.",
+    "robots": "index, follow",
+    "canonical": "https://resumatic.ai/templates.html",
+    "ogTitle": "Free ATS Resume Templates | Resumatic",
+    "ogUrl": "https://resumatic.ai/templates.html",
+    "ogImage": "https://resumatic.ai/og-preview.png",
+    "twitterCard": "summary_large_image",
+    "h1s": [
+      "Professional Resume Templates"
+    ],
+    "jsonLdCount": 1,
+    "missingAltCount": 0,
+    "missingAltSamples": [],
+    "totalHrefs": 14,
+    "emptyHrefs": 0
+  }
+]

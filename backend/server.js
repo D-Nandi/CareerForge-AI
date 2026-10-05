@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // ── STATIC FILES ──
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '../client'), { extensions: ['html'] }));
 
 // ── ROUTES ──
 app.use('/api/auth',      authRoutes);
@@ -41,6 +41,14 @@ app.use('/api/payments',  paymentRoutes);
 app.use('/api/insights',  insightsRoutes);
 app.use('/api',           apiRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+
+// ── 404 HANDLER FOR UNMATCHED ROUTES ──
+app.use((req, res, next) => {
+  if (req.method === 'GET' && !req.path.startsWith('/api/')) {
+    return res.status(404).sendFile(path.join(__dirname, '../client/404.html'));
+  }
+  res.status(404).json({ success: false, error: 'Resource not found' });
+});
 
 // ── ERROR HANDLER ──
 app.use(errorHandler);

@@ -7,9 +7,68 @@
   <meta id="metaDesc" name="description" content="Recruiter-tested resume example with ATS keywords, high-impact bullet points, and salary benchmarks. Build your resume in 2 minutes." />
   <meta name="robots" content="index, follow" />
 
+  <link rel="canonical" id="roleCanonical" href="https://resumatic.ai/resume-example.html?role=software-engineer" />
+
   <!-- Theme Color -->
   <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" id="roleOgUrl" content="https://resumatic.ai/resume-example.html?role=software-engineer" />
+  <meta property="og:title" id="roleOgTitle" content="Software Engineer Resume Example & Guide (2025 ATS Ready) | Resumatic" />
+  <meta property="og:description" id="roleOgDesc" content="Recruiter-tested resume example with ATS keywords, high-impact bullet points, and salary benchmarks. Build your resume in 2 minutes." />
+  <meta property="og:image" content="https://resumatic.ai/og-preview.png" />
+  <meta property="og:site_name" content="Resumatic" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="roleTwitterTitle" content="Software Engineer Resume Example & Guide | Resumatic" />
+  <meta name="twitter:description" id="roleTwitterDesc" content="Recruiter-tested resume example with ATS keywords, bullet points, and salary benchmarks." />
+  <meta name="twitter:image" content="https://resumatic.ai/og-preview.png" />
+
+  <!-- JSON-LD Structured Data: FAQPage & BreadcrumbList -->
+  <script type="application/ld+json" id="roleSchema">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "Software Engineer Resume Example & ATS Guide",
+        "description": "Battle-tested software engineering resume example highlighting system architecture, performance optimization, and scalable backend/frontend systems.",
+        "url": "https://resumatic.ai/resume-example.html?role=software-engineer",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Resumatic AI",
+          "url": "https://resumatic.ai/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://resumatic.ai/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Resume Examples",
+            "item": "https://resumatic.ai/resume-examples.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Software Engineer",
+            "item": "https://resumatic.ai/resume-example.html?role=software-engineer"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -150,9 +209,84 @@
     const role = ROLES_DATABASE[roleSlug] || ROLES_DATABASE['software-engineer'];
 
     // Update Meta & Headings
+    const canonicalUrl = `https://resumatic.ai/resume-example.html?role=${role.slug}`;
     document.title = `${role.title} Resume Example & ATS Guide (2025) | Resumatic`;
     document.getElementById('pageTitle').innerText = `${role.title} Resume Example & Guide (2025 ATS Ready) | Resumatic`;
     document.getElementById('metaDesc').content = `Real ${role.title} resume example. High-impact bullet points, essential ATS keywords, and instant customization in Resumatic builder.`;
+
+    const canEl = document.getElementById('roleCanonical');
+    if (canEl) canEl.href = canonicalUrl;
+
+    const ogUrlEl = document.getElementById('roleOgUrl');
+    if (ogUrlEl) ogUrlEl.content = canonicalUrl;
+
+    const ogTitleEl = document.getElementById('roleOgTitle');
+    if (ogTitleEl) ogTitleEl.content = `${role.title} Resume Example & Guide | Resumatic`;
+
+    const ogDescEl = document.getElementById('roleOgDesc');
+    if (ogDescEl) ogDescEl.content = role.description;
+
+    const twTitleEl = document.getElementById('roleTwitterTitle');
+    if (twTitleEl) twTitleEl.content = `${role.title} Resume Example & Guide | Resumatic`;
+
+    const twDescEl = document.getElementById('roleTwitterDesc');
+    if (twDescEl) twDescEl.content = role.description;
+
+    // Update JSON-LD schema
+    const schemaEl = document.getElementById('roleSchema');
+    if (schemaEl) {
+      schemaEl.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "TechArticle",
+            "headline": `${role.title} Resume Example & ATS Guide`,
+            "description": role.description,
+            "url": canonicalUrl,
+            "publisher": {
+              "@type": "Organization",
+              "name": "Resumatic AI",
+              "url": "https://resumatic.ai/"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": role.faqs.map(f => ({
+              "@type": "Question",
+              "name": f.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f.a
+              }
+            }))
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://resumatic.ai/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Resume Examples",
+                "item": "https://resumatic.ai/resume-examples.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": role.title,
+                "item": canonicalUrl
+              }
+            ]
+          }
+        ]
+      });
+    }
+
     document.getElementById('breadRole').innerText = role.title;
     document.getElementById('heroBadge').innerText = `ATS Score: ${role.atsScore}`;
     document.getElementById('heroTitle').innerHTML = `${role.title} Resume <em>Example</em>`;

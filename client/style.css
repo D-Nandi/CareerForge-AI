@@ -629,6 +629,8 @@ ul { list-style: none; }
 }
 [data-theme="dark"] .cta-orb {
   background: radial-gradient(circle, rgba(124,110,245,0.12), transparent 65%);
+}
+
 /* ── FAQ SECTION ── */
 .faq-grid {
   display: grid;

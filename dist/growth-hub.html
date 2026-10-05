@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growth & Paid Acquisition Dashboard | Resumatic AI</title>
+  <meta name="description" content="Internal growth analytics, funnel metrics, and paid acquisition simulator for Resumatic." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    .growth-tabs {
+      display: flex; gap: 10px; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 12px;
+    }
+    .ad-copy-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px; margin-bottom: 16px;
+    }
+    .ad-headline { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: #1a0dab; }
+    [data-theme="dark"] .ad-headline { color: #8ab4f8; }
+    .ad-url { font-size: 0.8rem; color: #006621; margin: 2px 0 6px; }
+    [data-theme="dark"] .ad-url { color: #81c995; }
+    .ad-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
+    .funnel-meter-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 24px; box-shadow: var(--shadow-sm);
+    }
+  </style>
+  <link rel="stylesheet" crossorigin href="/assets/tools-style-pypH-6Bf.css">
+</head>
+<body>
+
+  <div class="noise"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- HEADER -->
+  <header class="tool-header">
+    <div class="header-left">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
+      </a>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">Growth & Acquisition Hub</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="ad-landing.html" class="btn-primary" target="_blank">View Ad Landing Page ↗</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="tool-hero">
+    <div class="tool-badge">
+      <span class="badge-dot"></span> Phase 7 Growth Engine
+    </div>
+    <h1>Paid Acquisition & <em>Funnel Intelligence</em></h1>
+    <p>Live conversion funnel analytics, ad creatives playbook, and retargeting automation.</p>
+  </section>
+
+  <!-- MAIN WORKSPACE -->
+  <main class="tool-workspace">
+
+    <!-- LEFT: LIVE FUNNEL ANALYTICS -->
+    <div class="tool-card">
+      <div class="card-title">
+        <h2>📊 Real-Time Funnel Tracker</h2>
+        <button id="btnSimulateTraffic" class="btn-ghost" style="font-size:0.8rem;">⚡ Simulate +100 Visitors</button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px;">
+        <div class="metric-card">
+          <div class="metric-title">Total Tracked Visits</div>
+          <div id="statVisits" class="metric-val">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">Funnel Conversion Rate</div>
+          <div id="statConvRate" class="metric-val" style="color: var(--green);">0.0%</div>
+        </div>
+      </div>
+
+      <!-- FUNNEL STAGES -->
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600; margin-bottom:4px;">
+            <span>1. Landing Page Views</span>
+            <span id="countLanding">0</span>
+          </div>
+          <div class="metric-bar-bg"><div id="barLanding" class="metric-bar-fill" style="width:100%;"></div></div>
+        </div>
+
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600; margin-bottom:4px;">
+            <span>2. Started Resume Builder</span>
+            <span id="countBuilder">0</span>
+          </div>
+          <div class="metric-bar-bg"><div id="barBuilder" class="metric-bar-fill" style="width:0%;"></div></div>
+        </div>
+
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600; margin-bottom:4px;">
+            <span>3. Free Tools Used (ATS / Cover Letter)</span>
+            <span id="countTools">0</span>
+          </div>
+          <div class="metric-bar-bg"><div id="barTools" class="metric-bar-fill" style="width:0%;"></div></div>
+        </div>
+
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600; margin-bottom:4px;">
+            <span>4. PDF Downloads (Completed Funnel)</span>
+            <span id="countPdf">0</span>
+          </div>
+          <div class="metric-bar-bg"><div id="barPdf" class="metric-bar-fill" style="width:0%; background:var(--green);"></div></div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px; padding:14px; background:var(--surface); border-radius:10px; font-size:0.82rem; color:var(--text-muted);">
+        💡 <strong>Target Unit Economics:</strong> Target CAC = <strong>$2.80</strong> • 30-Day LTV = <strong>$19.90</strong> • Target ROAS = <strong>7.1x</strong>
+      </div>
+    </div>
+
+    <!-- RIGHT: AD CREATIVE PLAYBOOK -->
+    <div class="tool-card">
+      <div class="card-title">
+        <h2>🎯 Ad Creatives & Search Copy</h2>
+        <span class="badge-tag">Ready to Deploy</span>
+      </div>
+
+      <!-- GOOGLE SEARCH AD 1 -->
+      <div class="ad-copy-card">
+        <div style="font-size:0.75rem; font-weight:700; color:var(--accent); margin-bottom:4px;">GOOGLE SEARCH AD • INTENT: [free ai resume builder]</div>
+        <div class="ad-headline">Free AI Resume Builder (2025) — Beat ATS & Get Hired</div>
+        <div class="ad-url">https://resumatic.ai/start</div>
+        <p class="ad-desc">Build an interview-ready resume in 2 minutes. Gemini AI keyword matching, tailored bullet points & instant PDF export. 100% Free.</p>
+      </div>
+
+      <!-- GOOGLE SEARCH AD 2 -->
+      <div class="ad-copy-card">
+        <div style="font-size:0.75rem; font-weight:700; color:var(--green); margin-bottom:4px;">GOOGLE SEARCH AD • INTENT: [ats resume scanner]</div>
+        <div class="ad-headline">Scan Your Resume ATS Score Free — Spot Missing Keywords</div>
+        <div class="ad-url">https://resumatic.ai/ats-score-checker</div>
+        <p class="ad-desc">Simulate recruiter ATS parsers instantly. Get actionable 0-100 score, keyword gap analysis, and one-click fixes.</p>
+      </div>
+
+      <!-- SHORT-FORM VIDEO AD SCRIPT -->
+      <div class="ad-copy-card" style="border-left: 4px solid #6c5ce7;">
+        <div style="font-size:0.75rem; font-weight:700; color:var(--text); margin-bottom:6px;">📱 TIKTOK / REELS SCRIPT: "The 6-Second Recruiter Test"</div>
+        <p style="font-size:0.85rem; color:var(--text); line-height:1.6;">
+          <strong>Hook (0-3s):</strong> "POV: You applied to 50 tech jobs and got ghosted by every single one."<br/>
+          <strong>Problem (4-8s):</strong> "It’s not your experience. It’s because your resume couldn't get parsed by Workday's ATS."<br/>
+          <strong>Solution (9-18s):</strong> "I ran mine through Resumatic.ai. It added the exact keywords I was missing and formatted it in 2 mins."<br/>
+          <strong>CTA (19-25s):</strong> "Link in bio to scan yours free."
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="theme.js"></script>
+  <script src="analytics.js"></script>
+  <script>
+    function refreshFunnel() {
+      const stats = window.resumaticAnalytics.getFunnelStats();
+      const events = window.resumaticAnalytics.getEvents();
+
+      const visits = events.length || 18;
+      const landing = (stats['page_view'] || 12) + (stats['sim_landing'] || 0);
+      const builder = (stats['sim_builder'] || 6);
+      const tools = (stats['sim_tools'] || 4);
+      const pdf = (stats['sim_pdf'] || 3);
+
+      const convRate = visits > 0 ? ((pdf / visits) * 100).toFixed(1) : '0.0';
+
+      document.getElementById('statVisits').innerText = visits;
+      document.getElementById('statConvRate').innerText = `${convRate}%`;
+
+      document.getElementById('countLanding').innerText = landing;
+      document.getElementById('countBuilder').innerText = builder;
+      document.getElementById('countTools').innerText = tools;
+      document.getElementById('countPdf').innerText = pdf;
+
+      document.getElementById('barLanding').style.width = '100%';
+      document.getElementById('barBuilder').style.width = Math.min(100, Math.round((builder / landing) * 100)) + '%';
+      document.getElementById('barTools').style.width = Math.min(100, Math.round((tools / landing) * 100)) + '%';
+      document.getElementById('barPdf').style.width = Math.min(100, Math.round((pdf / landing) * 100)) + '%';
+    }
+
+    refreshFunnel();
+
+    document.getElementById('btnSimulateTraffic').addEventListener('click', () => {
+      // Add simulated cohort
+      for(let i=0; i<100; i++) {
+        window.resumaticAnalytics.track('sim_landing');
+        if (Math.random() < 0.42) window.resumaticAnalytics.track('sim_builder');
+        if (Math.random() < 0.28) window.resumaticAnalytics.track('sim_tools');
+        if (Math.random() < 0.14) window.resumaticAnalytics.track('sim_pdf');
+      }
+      refreshFunnel();
+    });
+  </script>
+</body>
+</html>
