@@ -13,6 +13,12 @@
   transition: all var(--transition-fast);
   text-decoration: none;
   line-height: var(--leading-none);
+  white-space: nowrap;
+}
+
+.btn-block {
+  width: 100%;
+  display: flex;
 }
 
 .btn:focus-visible {

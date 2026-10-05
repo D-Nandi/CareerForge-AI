@@ -18,15 +18,25 @@
   <!-- HEADER -->
   <header class="dash-header">
     <a href="index.html" class="nav-logo">
-      <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
+      <span class="logo-mark">CF</span><span class="logo-text">CareerForge</span>
     </a>
     <nav class="dash-nav">
       <a href="dashboard.html" class="dash-nav-link active">Dashboard</a>
+      <a href="ats-score-checker.html" class="dash-nav-link">ATS Scanner</a>
+      <a href="career-roadmap.html" class="dash-nav-link">Roadmap</a>
+      <a href="interview-prep.html" class="dash-nav-link">Interview Prep</a>
+      <a href="salary-benchmark.html" class="dash-nav-link">Salary Calculator</a>
+      <a href="pricing.html" class="dash-nav-link">Pricing</a>
     </nav>
-    <a href="form-index.html" class="btn-new">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      New Resume
-    </a>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="form-index.html" class="btn-new">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        New Resume
+      </a>
+      <button class="btn btn-ghost btn-sm" id="btnDashLogout" style="color: var(--text-muted); padding: 8px 12px; cursor: pointer;" onclick="if(window.auth) window.auth.logout()">
+        Sign Out
+      </button>
+    </div>
   </header>
 
   <!-- MAIN -->
@@ -35,12 +45,14 @@
     <!-- PAGE TITLE -->
     <div class="dash-page-header">
       <div>
-        <h1 class="dash-page-title">My Documents</h1>
-        <p class="dash-page-sub">All your resumes and cover letters in one place.</p>
+        <h1 class="dash-page-title">My Career Center</h1>
+        <p class="dash-page-sub">All your resumes, roadmaps, interview prep, and subscription in one place.</p>
       </div>
       <div class="dash-stats" id="dashStats">
         <div class="stat-chip"><span id="statResumes">0</span> Resumes</div>
         <div class="stat-chip"><span id="statCLs">0</span> Cover Letters</div>
+        <div class="stat-chip"><span id="statRoadmapPhase">Phase 1</span> Roadmap</div>
+        <div class="stat-chip">Plan: <span id="statTier" style="font-weight: 700; color: var(--accent);">Free</span></div>
       </div>
     </div>
 
@@ -53,6 +65,14 @@
       <button class="tab-btn" data-tab="coverletters">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="3" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 5l5 3.5 5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
         Cover Letters
+      </button>
+      <button class="tab-btn" data-tab="roadmap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Career Roadmap
+      </button>
+      <button class="tab-btn" data-tab="plan">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Plan & Billing
       </button>
     </div>
 
@@ -86,6 +106,109 @@
       </div>
     </div>
 
+    <!-- CAREER ROADMAP TAB -->
+    <div class="tab-panel" id="tabRoadmap">
+      <div id="roadmapDashboardContent" style="display: none;">
+        <!-- Injected by JS -->
+      </div>
+      <div class="empty-state" id="roadmapEmpty" style="display:none;">
+        <div class="empty-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <div class="empty-title">No Career Roadmap generated yet</div>
+        <div class="empty-sub">Set your target role, bridge skill gaps, and follow a verified 4-phase transition blueprint.</div>
+        <a href="career-roadmap.html" class="btn-empty-action">Generate Career Roadmap →</a>
+      </div>
+    </div>
+
+    <!-- PLAN & BILLING TAB -->
+    <div class="tab-panel" id="tabPlan">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 32px;">
+        
+        <!-- Active Subscription Card -->
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+            <div>
+              <span id="planBadge" style="display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: var(--surface2); color: var(--text-muted); border: 1px solid var(--border);">Free Starter</span>
+              <h2 id="planTitle" style="font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 700; margin-top: 6px;">Free Plan</h2>
+            </div>
+            <div id="planStatusTag" style="padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; background: rgba(74, 222, 128, 0.15); color: var(--green);">Active</div>
+          </div>
+          <p id="planDesc" style="color: var(--text-muted); font-size: 13px; line-height: 1.5; margin-bottom: 20px;">
+            Baseline diagnostic access with 5 monthly ATS checks, Phase 1 roadmap, and top 5 interview questions.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; margin-bottom: 24px; border-top: 1px solid var(--border); padding-top: 16px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">Billing Interval:</span>
+              <strong id="planBillingCycle">Lifetime Free</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted);">Renews / Expires:</span>
+              <strong id="planExpiryDate">Never</strong>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="pricing.html" class="btn-new" id="btnPlanAction" style="text-decoration: none;">Upgrade to Pro / Career+ →</a>
+            <button class="btn-modal-cancel" id="btnCancelSub" style="display: none; padding: 8px 16px; border-radius: var(--radius); cursor: pointer; background: transparent; border: 1px solid var(--border); color: var(--text-muted);">Cancel Subscription</button>
+          </div>
+        </div>
+
+        <!-- Plan Features List -->
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px;">
+          <h3 style="font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 16px;">Features & Privileges</h3>
+          <ul id="planFeaturesList" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 13px;">
+            <!-- Injected by JS -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Payment & Invoices History -->
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px;">
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 16px;">Billing & Payment History</h3>
+        <div id="invoiceTableWrapper" style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border); color: var(--text-muted);">
+                <th style="padding: 10px 12px;">Date</th>
+                <th style="padding: 10px 12px;">Plan</th>
+                <th style="padding: 10px 12px;">Amount</th>
+                <th style="padding: 10px 12px;">Order ID</th>
+                <th style="padding: 10px 12px;">Status</th>
+              </tr>
+            </thead>
+            <tbody id="invoiceTableBody">
+              <!-- Injected by JS -->
+            </tbody>
+          </table>
+          <div id="invoiceEmptyState" style="text-align: center; padding: 32px 16px; color: var(--text-muted); font-size: 13px; display: none;">
+            No payment history yet. When you upgrade, your tax invoices and Razorpay order receipts will appear here.
+          </div>
+        </div>
+      </div>
+
+      <!-- VIRAL REFERRAL PROGRAM CARD -->
+      <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.08) 100%); border: 1px solid var(--accent); border-radius: var(--radius-lg); padding: 24px; margin-top: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <span style="display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; background: var(--surface2); color: var(--accent); border: 1px solid var(--border);">🎁 Peer Referral Engine</span>
+            <h3 style="font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin-top: 6px;">Invite Fellow Engineers — Earn Complimentary Pro Months</h3>
+            <p style="font-size: 13px; color: var(--text-muted); max-width: 600px; margin-top: 4px;">Give your peers 14 days of free Pro access. Every peer who signs up through your link automatically grants you 1 free month of CareerForge Pro.</p>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Your Rewards</div>
+            <div style="font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--green);" id="referralStatsMonths">1 Month Free</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap;">
+          <input type="text" id="referralLinkInput" readonly value="https://careerforge.ai/signup.html?ref=CF-USER-PRO" style="flex: 1; min-width: 260px; font-size: 13px; padding: 8px 12px; border-radius: var(--radius); background: var(--surface2); border: 1px solid var(--border); color: var(--text);" />
+          <button class="btn-new" id="btnCopyReferral" style="padding: 8px 16px;">📋 Copy Link</button>
+          <a href="#" target="_blank" id="btnShareWhatsApp" class="btn-new" style="background: #25D366; text-decoration: none; padding: 8px 16px; box-shadow: none;">💬 WhatsApp</a>
+          <a href="#" target="_blank" id="btnShareLinkedIn" class="btn-new" style="background: #0A66C2; text-decoration: none; padding: 8px 16px; box-shadow: none;">💼 LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- DELETE CONFIRM MODAL -->
@@ -106,6 +229,12 @@
   <!-- TOAST -->
   <div class="toast" id="toast"></div>
 
+  <!-- Shared JS Utilities -->
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/paywall.js"></script>
   <script src="dashboard-script.js"></script>
 </body>
 </html>

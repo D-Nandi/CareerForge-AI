@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +8,9 @@
   <meta name="keywords" content="ATS resume checker, resume score scanner, free ATS scan, ATS keyword matcher, resume audit" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://resumatic.ai/ats-score-checker/" />
+
+  <!-- Theme: MUST be first script — prevents flash of wrong theme -->
+  <script src="theme.js"></script>
 
   <!-- Theme Color -->
   <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
@@ -30,6 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="tools-style.css" />
 
   <!-- JSON-LD Structured Data -->
@@ -98,6 +102,10 @@
       </nav>
     </div>
     <div class="header-actions">
+      <a href="career-roadmap.html" class="btn btn-ghost btn-sm">Career Roadmap</a>
+      <a href="interview-prep.html" class="btn btn-ghost btn-sm">Interview Prep</a>
+      <a href="salary-benchmark.html" class="btn btn-ghost btn-sm">Salary Calculator</a>
+      <a href="pricing.html" class="btn btn-ghost btn-sm">Pricing</a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -234,15 +242,53 @@
         </div>
       </div>
 
-      <!-- RECOMMENDATIONS -->
-      <div style="margin-top: 22px;">
-        <label style="font-size: 0.85rem; font-weight: 700; color: var(--text);">AI Improvement Checklist</label>
-        <ul id="suggestionsList" class="suggestions-list">
-          <li class="suggestion-item">
-            <span class="suggestion-icon">💡</span>
-            <span>Paste your resume text on the left to get specific, role-based bullet recommendations.</span>
-          </li>
-        </ul>
+      <!-- RECOMMENDATIONS & VALUE GLIMPSE -->
+      <div id="recommendationsSection" style="margin-top: 22px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+          <label style="font-size: 0.85rem; font-weight: 700; color: var(--text);">AI Improvement Checklist</label>
+          <span id="checklistCounter" class="badge badge-primary" style="display: none;">Verified Checks</span>
+        </div>
+
+        <div class="paywall-wrapper" id="checklistPaywallWrapper">
+          <ul id="suggestionsList" class="suggestions-list">
+            <li class="suggestion-item">
+              <span class="suggestion-icon">💡</span>
+              <span>Paste your resume text on the left to get specific, role-based bullet recommendations.</span>
+            </li>
+          </ul>
+
+          <!-- EMAIL GATE OVERLAY -->
+          <div class="paywall-overlay hidden" id="leadEmailGateOverlay">
+            <div class="email-capture-box">
+              <span class="paywall-lock-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Full Diagnostic Breakdown
+              </span>
+              <h4>Unlock Your Step-by-Step ATS Fixes</h4>
+              <p>Enter your email to reveal all missing keyword fixes, bullet rewrites, and ATS compliance recommendations.</p>
+              <form class="email-capture-form" id="leadCaptureForm">
+                <input type="email" id="leadEmailInput" class="form-control" placeholder="name@domain.com" required />
+                <button type="submit" class="btn btn-primary" id="btnUnlockAnalysis" style="white-space: nowrap;">Unlock Report →</button>
+              </form>
+              <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 8px;">🔒 No spam. Free diagnostic analysis sent to your inbox.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- POST-UNLOCK CONTEXTUAL CTA (ROADMAP / BUILDER) -->
+      <div id="postUnlockCard" style="display: none; margin-top: 20px; padding: 18px; border-radius: 14px; background: var(--surface2); border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+          <div>
+            <span class="badge badge-success" style="margin-bottom: 6px;">Next Strategic Step</span>
+            <h4 style="font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--text);">Ready to close your skill gaps?</h4>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin-top: 4px; max-width: 480px;">Turn these ATS insights into a personalized Career Roadmap with Indian tech benchmarks and target role milestones.</p>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <a href="form-index.html" class="btn btn-secondary btn-sm">Edit in Builder</a>
+            <a href="career-roadmap.html" class="btn btn-primary btn-sm">Explore Career Roadmap →</a>
+          </div>
+        </div>
       </div>
 
       <!-- FIX IN BUILDER CTA -->
@@ -256,7 +302,12 @@
     </div>
   </main>
 
-  <script src="theme.js"></script>
+  <!-- Shared JS Utilities -->
+  <script src="js/auth.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/paywall.js"></script>
+  <script src="js/api.js"></script>
   <!-- PDF.js for PDF text extraction -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <!-- Mammoth.js for DOCX text extraction -->
@@ -1043,10 +1094,88 @@
           suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📄</span><span>Resume is lengthy (${fleschResult.totalWords} words). Consider tightening descriptions to maintain recruiter scannability.</span></li>`;
         }
 
+        // ── 3. VALUE GLIMPSE & EMAIL CAPTURE ENFORCEMENT ──
+        const leadOverlay = document.getElementById('leadEmailGateOverlay');
+        const postUnlockCard = document.getElementById('postUnlockCard');
+        const checklistCounter = document.getElementById('checklistCounter');
+        if (checklistCounter) {
+          checklistCounter.textContent = `${suggestionsList.children.length} Action Items`;
+          checklistCounter.style.display = 'inline-flex';
+        }
+
+        const isAlreadyCaptured = Boolean(sessionStorage.getItem('cf-email-captured') || (window.auth && window.auth.isLoggedIn()));
+
+        if (isAlreadyCaptured) {
+          suggestionsList.classList.remove('paywall-blurred-content');
+          suggestionsList.classList.add('unlocked');
+          if (leadOverlay) leadOverlay.classList.add('hidden');
+          if (postUnlockCard) postUnlockCard.style.display = 'block';
+        } else {
+          suggestionsList.classList.remove('unlocked');
+          suggestionsList.classList.add('paywall-blurred-content');
+          if (leadOverlay) leadOverlay.classList.remove('hidden');
+          if (postUnlockCard) postUnlockCard.style.display = 'none';
+        }
+
+        // Store last scan stats for lead submission
+        window._lastAtsScan = {
+          score: overallScore,
+          role: keywordResult.detectedDomain,
+          matchRatio: keywordResult.matchRatio,
+          hardMissing: keywordResult.missing.filter(m => m.skillType === 'hard').map(m => m.keyword),
+          totalWords: fleschResult.totalWords
+        };
+
         btnScan.disabled = false;
         btnScan.innerHTML = '<span>🔍 Re-scan Resume</span>';
       }, 600);
     });
+
+    // ── EMAIL CAPTURE FORM SUBMISSION ──
+    const leadForm = document.getElementById('leadCaptureForm');
+    if (leadForm) {
+      leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('leadEmailInput');
+        const email = emailInput.value.trim();
+        if (!email) return;
+
+        const btnUnlock = document.getElementById('btnUnlockAnalysis');
+        if (btnUnlock) {
+          btnUnlock.disabled = true;
+          btnUnlock.textContent = 'Unlocking...';
+        }
+
+        const suggestionsList = document.getElementById('suggestionsList');
+        const leadOverlay = document.getElementById('leadEmailGateOverlay');
+        const postUnlockCard = document.getElementById('postUnlockCard');
+
+        // 1. Optimistic reveal
+        if (suggestionsList) {
+          suggestionsList.classList.remove('paywall-blurred-content');
+          suggestionsList.classList.add('unlocked');
+        }
+        if (leadOverlay) leadOverlay.classList.add('hidden');
+        if (postUnlockCard) postUnlockCard.style.display = 'block';
+        sessionStorage.setItem('cf-email-captured', '1');
+
+        if (window.toast) {
+          window.toast.success('Full ATS breakdown unlocked! Summary queued.');
+        }
+
+        // 2. Send lead to backend non-blocking
+        if (window.api) {
+          window.api.post('/api/leads', {
+            email,
+            source: 'ats_score',
+            score: window._lastAtsScan?.score,
+            metadata: window._lastAtsScan || {}
+          }).catch(err => {
+            console.warn('Lead capture backend note:', err);
+          });
+        }
+      });
+    }
   </script>
 </body>
 </html>

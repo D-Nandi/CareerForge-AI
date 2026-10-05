@@ -1,0 +1,97 @@
+/* ── ATOMS: CARDS ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--border-2);
+}
+
+.card-sm {
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+}
+
+.card-lg {
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+}
+
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-glow);
+}
+
+/* Tool & Feature Cards */
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.tool-card:hover {
+  border-color: rgba(108, 92, 231, 0.25);
+  box-shadow: var(--shadow-md);
+}
+
+/* Metric / Analytics Cards */
+.metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.metric-card:hover {
+  border-color: var(--border-2);
+}
+
+.metric-title {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: var(--weight-semibold);
+  margin-bottom: 0.25rem;
+}
+
+.metric-val {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--text);
+  line-height: var(--leading-tight);
+}
+
+/* Feature & Template Gallery Cards */
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .card, .tool-card, .feature-card {
+    padding: 1.25rem 1rem;
+  }
+  .card-lg {
+    padding: 1.5rem 1.15rem;
+  }
+}

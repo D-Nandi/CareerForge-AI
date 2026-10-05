@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO: Required on every page -->
+  <title>Pricing Plans — Affordable Career Growth for Indian Engineers | CareerForge AI</title>
+  <meta name="description" content="Transparent, affordable pricing tailored for Indian CS graduates and tech job seekers. Upgrade to CareerForge Pro or Career+ for unlimited ATS checks, full roadmaps, and STAR interview prep." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://careerforge.ai/pricing.html" />
+
+  <!-- OG / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="CareerForge AI Pricing — Accelerate Your Tech Career" />
+  <meta property="og:description" content="Unlock unlimited ATS resume scans, full personalized roadmaps, and STAR interview coaching. Pay with UPI, Cards, and NetBanking." />
+  <meta property="og:url" content="https://careerforge.ai/pricing.html" />
+  <meta property="og:image" content="https://careerforge.ai/og-preview.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet" />
+
+  <!-- Theme: First script in head -->
+  <script src="theme.js"></script>
+
+  <!-- Design System Master File -->
+  <link rel="stylesheet" href="css/index.css" />
+  <!-- Page Styles -->
+  <link rel="stylesheet" href="pricing-style.css" />
+</head>
+<body>
+
+  <!-- Ambient background effects -->
+  <div class="noise" aria-hidden="true"></div>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="tool-header" role="banner">
+    <a href="index.html" class="nav-logo" aria-label="CareerForge AI Homepage">
+      <span class="logo-mark">CF</span>
+      <span class="logo-text">CareerForge AI</span>
+    </a>
+    
+    <nav class="tool-breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html" class="crumb-link">Home</a>
+      <span class="crumb-sep">/</span>
+      <span class="crumb-current">Pricing</span>
+    </nav>
+
+    <div class="header-actions">
+      <a href="ats-score-checker.html" class="btn btn-ghost btn-sm">ATS Scanner</a>
+      <a href="career-roadmap.html" class="btn btn-ghost btn-sm">Roadmap</a>
+      <a href="interview-prep.html" class="btn btn-ghost btn-sm">Interview Prep</a>
+      <a href="salary-benchmark.html" class="btn btn-ghost btn-sm">Salary Calculator</a>
+      <a href="dashboard.html" class="btn btn-secondary btn-sm" id="navDashboardBtn">Dashboard</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main role="main">
+    <div class="pricing-wrapper">
+
+      <!-- Hero -->
+      <section class="pricing-hero">
+        <div class="pricing-hero-badge">
+          <span>🇮🇳</span> Built for Indian Tech Graduates & Engineers
+        </div>
+        <h1 class="pricing-title">
+          Invest in Your Career. <br />
+          <span class="gradient-text">Not In Costly Coaching.</span>
+        </h1>
+        <p class="pricing-subtitle">
+          Transparent, high-ROI plans starting at just ₹166/month. Level up your resume, follow a proven roadmap to your dream tech role, and ace interviews at top service & product companies.
+        </p>
+      </section>
+
+      <!-- Billing Cycle Toggle -->
+      <div class="billing-toggle-container">
+        <div class="billing-switch-box" role="radiogroup" aria-label="Billing cycle selector">
+          <button type="button" class="billing-btn" id="btnMonthlyBilling" role="radio" aria-checked="false">
+            Monthly
+          </button>
+          <button type="button" class="billing-btn active" id="btnAnnualBilling" role="radio" aria-checked="true">
+            Annual
+          </button>
+        </div>
+        <span class="save-badge" id="saveBadge">Save up to 47% + 2 Months Free</span>
+      </div>
+
+      <!-- Pricing Tier Cards -->
+      <section class="pricing-grid" aria-label="Subscription Plans">
+        
+        <!-- FREE TIER -->
+        <article class="pricing-card" id="cardFree">
+          <div class="plan-header">
+            <h2 class="plan-tier-name">Free Starter</h2>
+            <p class="plan-tagline">Essential diagnostic tools to gauge your baseline ATS score and explore career paths.</p>
+          </div>
+
+          <div class="plan-price-wrap">
+            <span class="plan-currency">₹</span>
+            <span class="plan-amount">0</span>
+            <span class="plan-period">/ forever</span>
+          </div>
+          <div class="plan-billing-subtext">No credit card required</div>
+
+          <a href="dashboard.html" class="btn btn-outline plan-cta-btn" id="btnFreeCta">
+            Current Plan
+          </a>
+
+          <div class="plan-divider"></div>
+
+          <div class="plan-features-label">What's included:</div>
+          <ul class="plan-features-list">
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Basic ATS Score Scan</strong> (5 checks/month)</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>1 Standard ATS-friendly resume template</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Phase 1 Career Roadmap overview</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Top 5 curated interview questions per tier</span>
+            </li>
+            <li class="feature-item muted">
+              <svg class="feature-icon cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>Full 4-Phase Roadmap & Course Links</span>
+            </li>
+            <li class="feature-item muted">
+              <svg class="feature-icon cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>AI STAR Answer Generator</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- PRO TIER (POPULAR) -->
+        <article class="pricing-card popular" id="cardPro">
+          <div class="popular-ribbon">Most Popular · High ROI</div>
+
+          <div class="plan-header">
+            <h2 class="plan-tier-name">CareerForge Pro</h2>
+            <p class="plan-tagline">Targeted optimization for engineers applying to high-growth tech firms & startups.</p>
+          </div>
+
+          <div class="plan-price-wrap">
+            <span class="plan-currency">₹</span>
+            <span class="plan-amount" id="proAmount">1,999</span>
+            <span class="plan-period" id="proPeriod">/ year</span>
+          </div>
+          <div class="plan-billing-subtext" id="proSubtext">Equivalent to ₹166/month (Billed annually)</div>
+
+          <button class="btn btn-primary plan-cta-btn" id="btnUpgradePro" data-tier="pro">
+            Upgrade to Pro →
+          </button>
+
+          <div class="plan-divider"></div>
+
+          <div class="plan-features-label">Everything in Free, plus:</div>
+          <ul class="plan-features-list">
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="feature-highlight">Unlimited ATS Score Scans</strong> & gap diagnosis</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="feature-highlight">Full 4-Phase Roadmap</strong> with curated Indian & global courses</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Complete 15+ Company Tier Question Bank</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>AI Keyword Tailoring & High-Impact Bullet Rewrites</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Export ATS Resumes in PDF & Word</span>
+            </li>
+            <li class="feature-item muted">
+              <svg class="feature-icon cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>Interactive AI STAR Answer Coach</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- CAREER+ TIER -->
+        <article class="pricing-card" id="cardCareerPlus">
+          <div class="plan-header">
+            <h2 class="plan-tier-name">Career+ Accelerator</h2>
+            <p class="plan-tagline">All-in-one placement accelerator for landing Tier-1 Product & Unicorn tech roles.</p>
+          </div>
+
+          <div class="plan-price-wrap">
+            <span class="plan-currency">₹</span>
+            <span class="plan-amount" id="plusAmount">3,499</span>
+            <span class="plan-period" id="plusPeriod">/ year</span>
+          </div>
+          <div class="plan-billing-subtext" id="plusSubtext">Equivalent to ₹291/month (Save 47%)</div>
+
+          <button class="btn btn-secondary plan-cta-btn" id="btnUpgradePlus" data-tier="career_plus">
+            Upgrade to Career+ →
+          </button>
+
+          <div class="plan-divider"></div>
+
+          <div class="plan-features-label">Everything in Pro, plus:</div>
+          <ul class="plan-features-list">
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="feature-highlight">AI STAR Answer Generator</strong> tailored to your resume projects</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>System Design & High-Frequency FAANG DSA Drills</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Dynamic Roadmap Recalibration as you complete milestones</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Priority AI Response Speed (Gemini Pro Turbo)</span>
+            </li>
+            <li class="feature-item">
+              <svg class="feature-icon check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Portfolio & GitHub Project Review Checklist</span>
+            </li>
+          </ul>
+        </article>
+
+      </section>
+
+      <!-- Trust & Payment Methods Bar -->
+      <section class="payment-trust-bar" aria-label="Supported Payment Methods">
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>100% Secure Razorpay Checkout</span>
+        </div>
+        <div class="trust-item">
+          <span>⚡ Instant UPI (GPay, PhonePe, Paytm, BHIM)</span>
+        </div>
+        <div class="trust-item">
+          <span>💳 All Credit & Debit Cards (Visa, Mastercard, RuPay)</span>
+        </div>
+        <div class="trust-item">
+          <span>🏦 50+ NetBanking Options</span>
+        </div>
+        <div class="trust-item">
+          <span>🔒 Cancel Anytime with 1-Click</span>
+        </div>
+      </section>
+
+      <!-- Comparison Table -->
+      <section class="comparison-section">
+        <div class="comparison-header">
+          <h2 class="comparison-title">Detailed Feature Comparison</h2>
+          <p class="comparison-sub">Every tool engineered to give you the unfair advantage in campus & off-campus hiring.</p>
+        </div>
+
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th style="width: 40%;">Feature</th>
+                <th class="center" style="width: 20%;">Free</th>
+                <th class="center" style="width: 20%;">Pro</th>
+                <th class="center" style="width: 20%;">Career+</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ATS Category -->
+              <tr>
+                <td colspan="4" class="comparison-category">ATS Resume Scanner & Fixer</td>
+              </tr>
+              <tr>
+                <td>Monthly ATS Scans</td>
+                <td class="center">5 scans</td>
+                <td class="center"><strong>Unlimited</strong></td>
+                <td class="center"><strong>Unlimited</strong></td>
+              </tr>
+              <tr>
+                <td>Keyword Match & Gap Diagnostics</td>
+                <td class="center">Basic</td>
+                <td class="center">In-Depth</td>
+                <td class="center">In-Depth + Role Match</td>
+              </tr>
+              <tr>
+                <td>AI Bullet Rewrites & Quantifier Coach</td>
+                <td class="center">—</td>
+                <td class="center">✓</td>
+                <td class="center">✓ Priority</td>
+              </tr>
+
+              <!-- Roadmap Category -->
+              <tr>
+                <td colspan="4" class="comparison-category">Career Roadmap Generator</td>
+              </tr>
+              <tr>
+                <td>Personalized Roadmap Timeline</td>
+                <td class="center">Phase 1 only</td>
+                <td class="center">Full 4 Phases</td>
+                <td class="center">Full 4 Phases + Dynamic Sync</td>
+              </tr>
+              <tr>
+                <td>Indian Market Salary Benchmarks</td>
+                <td class="center">✓</td>
+                <td class="center">✓</td>
+                <td class="center">✓</td>
+              </tr>
+              <tr>
+                <td>Verified Indian & Global Course Recommendations</td>
+                <td class="center">—</td>
+                <td class="center">✓</td>
+                <td class="center">✓</td>
+              </tr>
+              <tr>
+                <td>Milestone Tracking on Dashboard</td>
+                <td class="center">—</td>
+                <td class="center">✓</td>
+                <td class="center">✓</td>
+              </tr>
+
+              <!-- Interview Category -->
+              <tr>
+                <td colspan="4" class="comparison-category">Interview Preparation Hub</td>
+              </tr>
+              <tr>
+                <td>Curated Question Bank</td>
+                <td class="center">5 sample questions</td>
+                <td class="center">15+ questions / tier</td>
+                <td class="center">15+ questions / tier</td>
+              </tr>
+              <tr>
+                <td>Company Tier Breakdown (Service, Startup, Product)</td>
+                <td class="center">Basic</td>
+                <td class="center">✓</td>
+                <td class="center">✓</td>
+              </tr>
+              <tr>
+                <td>AI STAR Answer Generator</td>
+                <td class="center">—</td>
+                <td class="center">—</td>
+                <td class="center"><strong>Unlimited STAR Responses</strong></td>
+              </tr>
+              <tr>
+                <td>Mock HR & Behavioral Drills</td>
+                <td class="center">—</td>
+                <td class="center">—</td>
+                <td class="center">✓</td>
+              </tr>
+
+              <!-- Support & Export -->
+              <tr>
+                <td colspan="4" class="comparison-category">Export & Support</td>
+              </tr>
+              <tr>
+                <td>Resume Export Formats</td>
+                <td class="center">PDF (Watermark)</td>
+                <td class="center">Clean PDF & DOCX</td>
+                <td class="center">Clean PDF & DOCX</td>
+              </tr>
+              <tr>
+                <td>AI Response Priority</td>
+                <td class="center">Standard</td>
+                <td class="center">Fast</td>
+                <td class="center"><strong>Ultra-Fast Turbo</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Testimonial Quote -->
+      <section class="testimonial-section">
+        <blockquote class="testimonial-quote">
+          "I went from getting rejected by automated portals to clearing interviews at Amazon India and TCS Digital. The Career Roadmap gave me exact projects to build, and the ATS checker raised my score from 48 to 86 in two days."
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">RD</div>
+          <div class="author-info">
+            <div class="author-name">Rohan Deshmukh</div>
+            <div class="author-role">B.Tech CSE '24 · Software Engineer, Pune</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Accordion -->
+      <section class="faq-section">
+        <div class="faq-header">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          <p class="faq-sub">Everything you need to know about payments, billing, and plans.</p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>Can I pay using UPI (Google Pay, PhonePe, Paytm)?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Yes, absolutely! We support UPI (Google Pay, PhonePe, Paytm, CRED, BHIM), Indian debit/credit cards (RuPay, Visa, Mastercard), and 50+ NetBanking options via our secure Razorpay gateway.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>Can I cancel my subscription anytime?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Yes. You can cancel your subscription with a single click inside your User Dashboard under the "Membership & Billing" tab. You will continue to have full access until the end of your billing cycle.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>How is CareerForge AI tailored for Indian CS graduates?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Unlike US-centric tools, CareerForge AI understands Indian campus and off-campus recruitment pipelines. Our models differentiate between Mass Recruiters (TCS, Infosys, Cognizant, Wipro), Mid-tier IT consultancies, High-growth Startups (Swiggy, Zomato, Razorpay), and Tier-1 Product Giants (Amazon, Microsoft, Google), offering custom salary benchmarks in INR (LPA) and company-specific question patterns.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>What is the difference between Pro and Career+?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <strong>Pro</strong> is ideal for engineers who want unlimited ATS scoring, full 4-phase roadmaps, and complete interview questions. <br />
+              <strong>Career+</strong> adds our advanced AI STAR Method Answer Coach, which generates behavioral and technical interview responses crafted specifically around your project bullets, plus dynamic roadmap recalibration and FAANG-focused prep.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>Is my payment secure?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              100% secure. We never store your card or bank details on our servers. All transactions are processed using 256-bit SSL encryption through Razorpay, India's leading RBI-authorized payment aggregator.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- PAYMENT CHECKOUT MODAL (For Simulated / Fallback Mode) -->
+  <div class="modal-backdrop" id="simulatedCheckoutModal" aria-hidden="true">
+    <div class="modal-card" style="max-width: 460px; text-align: left;">
+      <button class="modal-close" id="btnSimClose" aria-label="Close modal">✕</button>
+      
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <div class="modal-icon" style="margin-bottom: 0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+            <line x1="1" y1="10" x2="23" y2="10"/>
+          </svg>
+        </div>
+        <div>
+          <span class="badge badge-primary" id="modalPlanBadge">Plan Upgrade</span>
+          <h3 class="modal-title" id="modalPlanTitle" style="font-size: 1.25rem; margin-top: 2px;">Checkout Confirmation</h3>
+        </div>
+      </div>
+
+      <div class="checkout-details-box">
+        <div class="checkout-row">
+          <span>Selected Plan</span>
+          <strong id="checkoutPlanName">CareerForge Pro (Annual)</strong>
+        </div>
+        <div class="checkout-row">
+          <span>Billing Cycle</span>
+          <span id="checkoutBillingCycle">Annual (1 Year)</span>
+        </div>
+        <div class="checkout-row">
+          <span>Payment Gateway</span>
+          <span>Razorpay Secure (UPI & Cards)</span>
+        </div>
+        <div class="checkout-row">
+          <span>Total Amount</span>
+          <strong id="checkoutTotalAmount" style="color: var(--accent);">₹1,999</strong>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1rem;">
+        <div style="font-size: 0.75rem; font-weight: var(--weight-bold); color: var(--text-sub); text-transform: uppercase; margin-bottom: 6px;">Select Payment Simulation Mode:</div>
+        <div class="payment-method-selector">
+          <button type="button" class="method-btn selected" data-method="upi">⚡ UPI (GPay/PhonePe)</button>
+          <button type="button" class="method-btn" data-method="card">💳 Credit/Debit Card</button>
+          <button type="button" class="method-btn" data-method="netbanking">🏦 NetBanking</button>
+        </div>
+      </div>
+
+      <div class="modal-actions" style="margin-top: 0;">
+        <button class="btn btn-primary" id="btnConfirmPayment" style="flex: 1; justify-content: center;">
+          Complete Payment & Activate Plan
+        </button>
+        <button class="btn btn-ghost" id="btnCancelCheckout">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH REQUIRED MODAL -->
+  <div class="modal-backdrop" id="authPromptModal" aria-hidden="true">
+    <div class="modal-card" style="max-width: 420px; text-align: center;">
+      <button class="modal-close" id="btnAuthClose" aria-label="Close modal">✕</button>
+      <div class="modal-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <h3 class="modal-title">Sign In to Continue</h3>
+      <p class="modal-body" style="margin-bottom: 1.5rem;">
+        Please sign in or create your free account before completing your plan upgrade.
+      </p>
+      <div class="modal-actions" style="flex-direction: column;">
+        <a href="login.html?redirect=pricing.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Sign In to CareerForge</a>
+        <a href="signup.html?redirect=pricing.html" class="btn btn-outline" style="width: 100%; justify-content: center;">Create Account</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JS Utilities -->
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="analytics.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <!-- Page Logic -->
+  <script src="pricing-script.js"></script>
+</body>
+</html>

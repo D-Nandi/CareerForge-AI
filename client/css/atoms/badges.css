@@ -8,6 +8,8 @@
   font-size: var(--text-xs);
   font-weight: var(--weight-medium);
   line-height: var(--leading-none);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .badge-primary {

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO: Required on every page -->
+  <title>India Tech Salary Benchmarks & CTC Calculator 2026 | CareerForge AI</title>
+  <meta name="description" content="Explore real software engineer salary bands across Bengaluru, Hyderabad, Pune, and Delhi-NCR. Compare Base CTC, ESOPs, and bonuses for IT Services, Startups, Unicorns, and FAANG." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://careerforge.ai/salary-benchmark.html" />
+
+  <!-- OG / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Indian Tech Salary Benchmarks & Compensation Explorer — CareerForge AI" />
+  <meta property="og:description" content="Know your true market worth in LPA. Real percentile compensation distributions across SDE-1, SDE-2, Full Stack, DevOps, and Data Engineering roles." />
+  <meta property="og:url" content="https://careerforge.ai/salary-benchmark.html" />
+  <meta property="og:image" content="https://careerforge.ai/og-preview.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet" />
+
+  <!-- Theme script in head -->
+  <script src="theme.js"></script>
+
+  <!-- Design System Master File -->
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="tools-style.css" />
+
+  <style>
+    .salary-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+
+    .selector-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .selector-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .salary-band-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (max-width: 1200px) {
+      .salary-band-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .salary-band-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .salary-tier-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-fast), border-color var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .salary-tier-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-2);
+      box-shadow: var(--shadow-md);
+    }
+
+    .salary-tier-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, var(--surface2) 0%, var(--bg-card) 45%);
+    }
+
+    .tier-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tier-card-title {
+      font-family: var(--font-head);
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 3px;
+      line-height: 1.25;
+    }
+
+    .tier-companies-sub {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .median-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: block;
+    }
+
+    .median-badge {
+      font-family: var(--font-head);
+      font-size: 2.5rem;
+      font-weight: var(--weight-black);
+      color: var(--accent);
+      line-height: 1.1;
+      margin: 6px 0 2px;
+    }
+
+    .base-salary-sub {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-bottom: 12px;
+    }
+
+    .percentile-track {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin: 14px 0;
+    }
+
+    .percentile-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .percentile-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .percentile-col .p-tag {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .percentile-col .p-val {
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .percentile-bar-bg {
+      height: 8px;
+      background: var(--surface);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin: 6px 0 10px;
+    }
+
+    .percentile-bar-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: linear-gradient(90deg, var(--accent) 0%, var(--green) 100%);
+    }
+
+    .bonus-esop-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hiring-sentiment-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .sentiment-aggressive {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green);
+    }
+
+    .sentiment-active {
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--blue);
+    }
+
+    .sentiment-selective {
+      background: rgba(234, 179, 8, 0.15);
+      color: var(--yellow);
+    }
+
+    .playbook-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background decorative ambient effects -->
+  <div class="noise" aria-hidden="true"></div>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="tool-header" role="banner">
+    <a href="index.html" class="nav-logo" aria-label="CareerForge AI Homepage">
+      <span class="logo-mark">CF</span>
+      <span class="logo-text">CareerForge AI</span>
+    </a>
+    
+    <nav class="tool-breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html" class="crumb-link">Home</a>
+      <span class="crumb-sep">/</span>
+      <span class="crumb-current">Salary Calculator</span>
+    </nav>
+
+    <div class="header-actions">
+      <a href="ats-score-checker.html" class="btn btn-ghost btn-sm">ATS Scanner</a>
+      <a href="career-roadmap.html" class="btn btn-ghost btn-sm">Roadmap</a>
+      <a href="interview-prep.html" class="btn btn-ghost btn-sm">Interview Prep</a>
+      <a href="pricing.html" class="btn btn-ghost btn-sm">Pricing</a>
+      <a href="dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main role="main">
+    <div class="salary-wrapper">
+
+      <!-- Hero Header -->
+      <section class="tool-hero" style="margin-bottom: 2rem;">
+        <div class="tool-badge">
+          <span class="badge-dot"></span> 2026 Indian Tech Compensation Index
+        </div>
+        <h1>Know Your <em>Market Worth</em> in India</h1>
+        <p>Real-time compensation bands across IT Services, High-Growth Unicorns, Product Companies, and FAANG. Compare Base Pay, Bonuses, and ESOPs across tech hubs.</p>
+      </section>
+
+      <!-- Filter Selectors -->
+      <section class="card" style="margin-bottom: 2.5rem; background: var(--bg-card);">
+        <div class="selector-grid">
+          <div class="field-group" style="margin-bottom: 0;">
+            <label for="selectRole" style="font-weight: 700; color: var(--text);">Select Engineering Role & Experience:</label>
+            <select id="selectRole" class="form-control">
+              <option value="sde1" selected>Software Development Engineer - 1 (0-2 Yrs Fresher / Junior)</option>
+              <option value="sde2">Software Development Engineer - 2 (2-5 Yrs Mid-Level)</option>
+              <option value="fullstack">Full Stack Engineer (React + Node / Spring Boot)</option>
+              <option value="devops">DevOps & Cloud Infrastructure (Kubernetes / AWS)</option>
+              <option value="data_engineer">Data & AI Engineer (Spark / Airflow / SQL)</option>
+            </select>
+          </div>
+
+          <div class="field-group" style="margin-bottom: 0;">
+            <label for="selectCity" style="font-weight: 700; color: var(--text);">Select Tech Hub / City:</label>
+            <select id="selectCity" class="form-control">
+              <option value="Bengaluru" selected>Bengaluru (Tech Capital · +15% Premium)</option>
+              <option value="Hyderabad">Hyderabad (High Growth · +5% Premium)</option>
+              <option value="Gurgaon / Delhi NCR">Gurgaon / Delhi NCR (Fintech Hub · +8% Premium)</option>
+              <option value="Pune">Pune (Auto & IT SaaS Hub)</option>
+              <option value="Chennai">Chennai (SaaS & Enterprise Hub)</option>
+              <option value="Remote (India)">Remote (India-Wide Direct Contracts)</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Salary Tier Cards Grid -->
+      <section class="salary-band-grid" id="salaryBandGrid" aria-label="Salary Breakdown by Company Tier">
+        <!-- Injected dynamically by JS -->
+      </section>
+
+      <!-- Market Trends & Hiring Hubs Widget -->
+      <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 3.5rem;">
+        <div class="card" style="background: var(--surface2);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h3 style="font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; color: var(--text); margin: 0;">City Hiring Activity</h3>
+            <span class="badge badge-success">Live Q4 Index</span>
+          </div>
+          <div id="cityTrendsList" style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <div class="card" style="background: var(--surface2);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h3 style="font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; color: var(--text); margin: 0;">Top Salary Multipliers</h3>
+            <span class="badge badge-primary">Skill Surge</span>
+          </div>
+          <div id="skillsTrendsList" style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Negotiation Playbook for Indian Tech Offers -->
+      <section style="margin-bottom: 4rem;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2 style="font-family: var(--font-head); font-size: 2rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem;">The Indian Tech Offer Negotiation Playbook</h2>
+          <p style="font-size: 14px; color: var(--text-muted);">How to negotiate fixed base pay, deconstruct inflated CTC letters, and navigate notice period buyouts.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;" id="playbookGrid">
+          <!-- Injected by JS -->
+        </div>
+      </section>
+
+      <!-- CTA Mesh -->
+      <section class="card" style="text-align: center; padding: 40px 24px; background: linear-gradient(135deg, rgba(108, 92, 231, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%); border: 1px solid var(--accent);">
+        <h2 style="font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; color: var(--text); margin-bottom: 8px;">Targeting a Higher Salary Band?</h2>
+        <p style="font-size: 15px; color: var(--text-muted); max-width: 620px; margin: 0 auto 24px; line-height: 1.5;">Bridge your skill gaps with a custom 4-phase transition roadmap and practice verified interview questions.</p>
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <a href="career-roadmap.html" class="btn btn-primary btn-lg">Generate Career Roadmap →</a>
+          <a href="interview-prep.html" class="btn btn-secondary btn-lg">Practice Interview Questions</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Shared JS Utilities -->
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="analytics.js"></script>
+
+  <!-- Page Logic Script -->
+  <script src="salary-benchmark-script.js"></script>
+</body>
+</html>
