@@ -26,10 +26,19 @@
   <meta name="twitter:description" content="Explore recruiter-approved resume examples with high-impact bullet points." />
   <meta name="twitter:image" content="https://resumatic.ai/og-preview.png" />
 
-  <!-- Fonts & Styles -->
+  <!-- Theme: Instant theme setter prevents flash without network roundtrip -->
+  <script>
+    (function(){try{var s=localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+  </script>
+
+  <!-- Fonts & Styles: Non-render-blocking async load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
+  </noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -128,7 +137,7 @@
     </div>
   </main>
 
-  <script src="theme.js"></script>
+  <script src="theme.js" defer></script>
   <script src="roles-data.js"></script>
   <script>
     const grid = document.getElementById('rolesGrid');

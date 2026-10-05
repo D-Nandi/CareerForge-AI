@@ -9,8 +9,10 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://resumatic.ai/ats-score-checker.html" />
 
-  <!-- Theme: MUST be first script — prevents flash of wrong theme -->
-  <script src="theme.js"></script>
+  <!-- Theme: Instant theme setter prevents flash without network roundtrip -->
+  <script>
+    (function(){try{var s=localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+  </script>
 
   <!-- Theme Color -->
   <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
@@ -29,10 +31,14 @@
   <meta name="twitter:description" content="Check if your resume beats Applicant Tracking Systems. Instant AI scoring and keyword optimization." />
   <meta name="twitter:image" content="https://resumatic.ai/og-preview.png" />
 
-  <!-- Fonts & Styles -->
+  <!-- Fonts & Styles: Non-render-blocking async load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" />
+  </noscript>
   <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="tools-style.css" />
 
@@ -303,6 +309,7 @@
   </main>
 
   <!-- Shared JS Utilities -->
+  <script src="theme.js" defer></script>
   <script src="js/auth.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/toast.js"></script>

@@ -11,14 +11,20 @@
   <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
 
-  <!-- Fonts & Styles -->
+  <!-- Theme: Instant theme setter prevents flash without network roundtrip -->
+  <script>
+    (function(){try{var s=localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+  </script>
+
+  <!-- Fonts & Styles: Non-render-blocking async load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" />
+  </noscript>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Theme Script -->
-  <script src="theme.js"></script>
 
   <style>
     .error-wrap {
@@ -183,6 +189,7 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="theme.js" defer></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

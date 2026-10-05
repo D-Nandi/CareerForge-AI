@@ -30,10 +30,19 @@
   <meta name="twitter:image" content="https://resumatic.ai/og-preview.png" />
   <meta name="twitter:creator" content="@resumatic_ai" />
 
-  <!-- Fonts -->
+  <!-- Theme: Instant theme setter prevents flash without network roundtrip -->
+  <script>
+    (function(){try{var s=localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+  </script>
+
+  <!-- Fonts: Non-render-blocking async load with preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" />
+  </noscript>
   <link rel="stylesheet" href="style.css" />
 
   <!-- JSON-LD Structured Data: WebSite, WebApplication, Organization & FAQPage -->
@@ -395,7 +404,7 @@
     </div>
   </footer>
 
-  <script src="theme.js"></script>
-  <script src="main.js"></script>
+  <script src="theme.js" defer></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

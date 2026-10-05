@@ -25,13 +25,19 @@
   <meta name="twitter:description" content="Bespoke 30-day, 90-day, and 1-year career transition roadmaps for software engineers." />
   <meta name="twitter:image" content="https://resumatic.ai/og-preview.png" />
 
-  <!-- Fonts: Barlow Condensed & DM Sans -->
+  <!-- Theme: Instant theme setter prevents flash without network roundtrip -->
+  <script>
+    (function(){try{var s=localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+  </script>
+
+  <!-- Fonts: Barlow Condensed & DM Sans (Non-render-blocking async load) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet" />
-
-  <!-- Theme Script: MUST be first script in head -->
-  <script src="theme.js"></script>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" />
+  </noscript>
 
   <!-- Master Design System Stylesheet & Page Overrides -->
   <link rel="stylesheet" href="css/index.css" />
@@ -614,6 +620,7 @@
   </main>
 
   <!-- SHARED JAVASCRIPT UTILITIES -->
+  <script src="theme.js" defer></script>
   <script src="js/auth.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/toast.js"></script>

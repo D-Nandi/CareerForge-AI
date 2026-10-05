@@ -6,12 +6,19 @@
   <title>CareerForge AI — Dashboard</title>
   <meta name="description" content="Manage your saved resumes, career roadmaps, interview prep history, and subscription in one place." />
   <meta name="robots" content="noindex, nofollow" />
+  <!-- Theme: Instant theme setter prevents flash without network roundtrip -->
+  <script>
+    (function(){try{var s=localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+  </script>
+
+  <!-- Fonts: Non-render-blocking async load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-  
-  <!-- Theme Script: MUST be first script in head -->
-  <script src="theme.js"></script>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
+  </noscript>
   <link rel="stylesheet" href="dashboard-style.css" />
 </head>
 <body>
@@ -239,6 +246,7 @@
   <div class="toast" id="toast"></div>
 
   <!-- Shared JS Utilities -->
+  <script src="theme.js" defer></script>
   <script src="js/auth.js"></script>
   <script src="js/api.js"></script>
   <script src="js/toast.js"></script>
