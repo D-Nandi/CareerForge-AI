@@ -10,6 +10,11 @@ const errorHandler = require('./middleware/errorHandler');
 const apiRoutes       = require('./routes/api');
 const authRoutes      = require('./routes/authRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
+const leadRoutes      = require('./routes/leadRoutes');
+const roadmapRoutes   = require('./routes/roadmapRoutes');
+const interviewRoutes = require('./routes/interviewRoutes');
+const paymentRoutes   = require('./routes/paymentRoutes');
+const insightsRoutes  = require('./routes/insightsRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -29,6 +34,11 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 // ── ROUTES ──
 app.use('/api/auth',      authRoutes);
+app.use('/api/leads',     leadRoutes);
+app.use('/api/roadmap',   roadmapRoutes);
+app.use('/api/interview', interviewRoutes);
+app.use('/api/payments',  paymentRoutes);
+app.use('/api/insights',  insightsRoutes);
 app.use('/api',           apiRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 

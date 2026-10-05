@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO: Primary & Indian CS Market Targeting -->
+  <title>AI Interview Prep for Indian Software Engineers & Tech Panels | CareerForge AI</title>
+  <meta name="description" content="Prepare for FAANG, Unicorn, and Indian product company software engineering interviews. Practice DSA, System Design, and STAR behavioral answers tailored to your real experience." />
+  <meta name="keywords" content="interview prep SDE India, Flipkart Swiggy interview questions, Google interview prep India, STAR interview method SDE, system design interview questions" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://careerforge.ai/interview-prep/" />
+
+  <!-- OG / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Interview Prep for Indian Software Engineers | CareerForge AI" />
+  <meta property="og:description" content="Practice company-specific interview rounds (FAANG, Unicorns, Product, IT Services) with tailored DSA, System Design, and STAR answers." />
+  <meta property="og:url" content="https://careerforge.ai/interview-prep/" />
+  <meta property="og:image" content="https://careerforge.ai/og-preview.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Interview Prep & STAR Coach | CareerForge AI" />
+  <meta name="twitter:description" content="Bespoke interview simulation and STAR behavioral answer coach for Indian tech panels." />
+  <meta name="twitter:image" content="https://careerforge.ai/og-preview.png" />
+
+  <!-- Fonts: Barlow Condensed & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet" />
+
+  <!-- Theme Script: MUST be first script in head -->
+  <script src="theme.js"></script>
+
+  <!-- Master Design System Stylesheet & Page Overrides -->
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="tools-style.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CareerForge AI Interview Prep & STAR Coach",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All",
+    "description": "Interactive interview prep platform tailored to Indian software engineering panels featuring DSA, System Design, and STAR behavioral answers.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <style>
+    /* Interview Prep Specific Layout Styles */
+    .prep-intake-card {
+      max-width: 820px;
+      margin: 0 auto 40px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 32px 36px;
+      box-shadow: var(--shadow-card);
+    }
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .tier-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      text-align: left;
+    }
+    .tier-card:hover {
+      border-color: var(--accent);
+      background: var(--surface2);
+    }
+    .tier-card.selected {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+    .tier-card strong {
+      display: block;
+      font-size: var(--text-sm);
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .tier-card span {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      line-height: 1.4;
+      display: block;
+    }
+    .company-prep-hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .category-filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .question-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .question-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .question-card:hover {
+      border-color: var(--border-2);
+    }
+    .question-card.practiced {
+      border-left: 4px solid var(--green);
+    }
+    .question-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .question-title {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
+      flex: 1;
+    }
+    .question-hint-box {
+      background: var(--surface2);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: 10px;
+      display: none;
+    }
+    .star-drawer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-top: 14px;
+      display: none;
+    }
+    .star-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    @media (max-width: 768px) {
+      .prep-intake-card { padding: 20px 16px; }
+      .star-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Effects -->
+  <div class="noise" aria-hidden="true"></div>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <header class="tool-header" role="banner">
+    <div class="header-left">
+      <a href="index.html" class="nav-logo" id="navLogo">
+        <span class="logo-mark">R</span><span class="logo-text">esumatic</span>
+      </a>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">Interview Prep</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="header-actions">
+      <a href="ats-score-checker.html" class="btn btn-ghost btn-sm" id="navAtsLink">ATS Checker</a>
+      <a href="career-roadmap.html" class="btn btn-ghost btn-sm" id="navRoadmapLink">Career Roadmap</a>
+      <a href="salary-benchmark.html" class="btn btn-ghost btn-sm" id="navSalaryLink">Salary Calculator</a>
+      <a href="pricing.html" class="btn btn-ghost btn-sm" id="navPricingLink">Pricing</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="dashboard.html" class="btn btn-secondary btn-sm" id="navDashboardBtn">Dashboard</a>
+      <a href="form-index.html" class="btn-primary btn-sm" id="navBuildBtn">Build ATS Resume →</a>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE -->
+  <main role="main">
+    <section class="tool-hero">
+      <div class="tool-badge">
+        <span class="badge-dot"></span> Tailored for Indian Tech Companies & Panels
+      </div>
+      <h1>AI Interview <em>Prep</em> & STAR Answer Coach</h1>
+      <p>Simulate realistic technical and leadership rounds for top Indian product companies and MNCs. Practice targeted DSA, System Design, and metric-backed STAR behavioral responses.</p>
+    </section>
+
+    <!-- INTAKE CONTAINER -->
+    <section class="tool-workspace single-column-workspace" id="intakeSection">
+      <div class="prep-intake-card">
+        <h3 style="font-family: var(--font-head); font-size: var(--text-2xl); font-weight: var(--weight-bold); color: var(--text);">Configure Your Interview Simulation</h3>
+        <p style="font-size: var(--text-sm); color: var(--text-muted); margin-top: 4px;">Choose the hiring tier and focus round to generate targeted questions.</p>
+
+        <form id="interviewIntakeForm" onsubmit="return false;" style="margin-top: 20px;">
+          <!-- 1. Company Tier Selector -->
+          <div class="field-group">
+            <label>Target Company Tier:</label>
+            <div class="tier-grid">
+              <div class="tier-card selected" data-tier="Unicorn">
+                <strong>🦄 Indian Unicorns</strong>
+                <span>Swiggy, Zomato, Flipkart, Razorpay, PhonePe</span>
+              </div>
+              <div class="tier-card" data-tier="FAANG">
+                <strong>🏛️ FAANG / Tier-1 Global</strong>
+                <span>Google, Amazon, Microsoft, Uber, Atlassian</span>
+              </div>
+              <div class="tier-card" data-tier="Product">
+                <strong>🏢 Product Companies</strong>
+                <span>Cisco, Oracle, Intuit, Zoho, Freshworks</span>
+              </div>
+              <div class="tier-card" data-tier="IT Services">
+                <strong>💻 IT Services Premier</strong>
+                <span>TCS Digital/Prime, Infosys Power Programmer</span>
+              </div>
+              <div class="tier-card" data-tier="Startup">
+                <strong>🚀 High-Growth Startups</strong>
+                <span>Early/Series A-B, fast paced full-stack</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Role Selector -->
+          <div class="field-group" style="margin-top: 18px;">
+            <label for="selectRole">Target Role:</label>
+            <select id="selectRole" class="form-control">
+              <option value="SDE-1 / Junior Software Engineer">SDE-1 / Junior Software Engineer (0-2 Yrs)</option>
+              <option value="SDE-2 / Backend Engineer" selected>SDE-2 / Backend Engineer (2-5 Yrs)</option>
+              <option value="Full Stack Engineer">Full Stack Engineer (MERN / Next.js / Java)</option>
+              <option value="Frontend Engineer">Frontend Engineer (React / TypeScript / Web Vitals)</option>
+              <option value="DevOps & Cloud Engineer">DevOps & Cloud Engineer (K8s, Terraform, AWS)</option>
+              <option value="Data & AI Engineer">Data & AI Engineer (Spark, Python, Pipelines)</option>
+            </select>
+          </div>
+
+          <!-- 3. Round Focus -->
+          <div class="field-group" style="margin-top: 14px;">
+            <label for="selectRound">Round Focus:</label>
+            <select id="selectRound" class="form-control">
+              <option value="Full Loop" selected>Full Loop (DSA + System Design + Behavioral + HR)</option>
+              <option value="DSA & Problem Solving">DSA & Problem Solving (Arrays, DP, Graphs, Trees)</option>
+              <option value="System Design & Architecture">System Design & Architecture (HLD / LLD / Machine Coding)</option>
+              <option value="Behavioral & Leadership">Behavioral & Leadership (STAR Method, Past Conflicts)</option>
+            </select>
+          </div>
+
+          <!-- 4. Experience Snippets (Tailoring) -->
+          <div class="field-group" style="margin-top: 14px;">
+            <label for="experienceSnippet">Paste a Project / Work Snippet (Optional but Recommended):</label>
+            <p class="field-hint">Share 1–2 sentences about a project, bug fix, or architecture you worked on. The AI will formulate personalized behavioral questions around it!</p>
+            <textarea id="experienceSnippet" class="form-control" rows="3" placeholder="e.g. Led payment webhook integration for order processing with Redis distributed lock to prevent duplicate charges during network timeouts."></textarea>
+          </div>
+
+          <!-- SUBMIT CTA -->
+          <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
+            <button type="button" class="btn btn-primary btn-lg" id="btnGenerateQuestions">
+              ⚡ Generate Tailored Interview Questions
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- LOADING STATE -->
+    <div id="loadingPrep" style="display: none; text-align: center; padding: 60px 20px;">
+      <div class="modal-icon" style="margin: 0 auto 16px; animation: spin 1.5s linear infinite;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+      </div>
+      <h3 style="font-family: var(--font-head); font-size: var(--text-2xl); font-weight: var(--weight-bold); color: var(--text);">Formulating Company-Specific Questions...</h3>
+      <p style="font-size: var(--text-sm); color: var(--text-muted); max-width: 480px; margin: 8px auto 0;">Calibrating question difficulty, algorithmic patterns, and behavioral scenarios against current Indian tech hiring bars.</p>
+    </div>
+
+    <!-- PREP WORKSPACE OUTPUT -->
+    <section class="tool-workspace single-column-workspace" id="prepResultSection" style="display: none;">
+      <!-- COMPANY PREP CARD -->
+      <div class="company-prep-hero" id="companyPrepHero">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <span class="badge badge-primary" id="badgeCompanyTier">Unicorn Tier</span>
+            <h2 style="font-family: var(--font-head); font-size: var(--text-3xl); font-weight: var(--weight-bold); color: var(--text); margin-top: 4px;" id="headingCompanyTier">Indian Unicorn Hiring Playbook</h2>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary btn-sm" id="btnSaveSession">💾 Save Session</button>
+            <button class="btn btn-ghost btn-sm" id="btnResetPrep">🔄 Change Setup</button>
+          </div>
+        </div>
+
+        <p style="font-size: var(--text-sm); color: var(--text); line-height: 1.6; margin-top: 10px;" id="companyOverviewText"></p>
+
+        <div style="margin-top: 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 16px;">
+          <strong style="font-size: var(--text-xs); color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Standard Round Architecture</strong>
+          <p style="font-size: var(--text-xs); color: var(--text-muted); line-height: 1.5;" id="companyInterviewFocus"></p>
+        </div>
+
+        <div style="margin-top: 12px;">
+          <strong style="font-size: var(--text-xs); color: var(--text); text-transform: uppercase; letter-spacing: 0.05em;">Key Panel Insights:</strong>
+          <ul id="companyTipsList" style="font-size: var(--text-xs); color: var(--text-muted); margin-top: 4px; padding-left: 18px; list-style: disc; display: flex; flex-direction: column; gap: 3px;">
+          </ul>
+        </div>
+      </div>
+
+      <!-- MOCK INTERVIEW SIMULATOR BANNER -->
+      <div style="background: linear-gradient(135deg, rgba(108,92,231,0.12) 0%, rgba(167,139,250,0.08) 100%); border: 1px solid var(--accent); border-radius: var(--radius-lg); padding: 18px 24px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="font-size: 2rem;">🎙️</div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <h3 style="font-family: var(--font-head); font-size: 1.25rem; font-weight: 800; color: var(--text); margin: 0;">Live AI Mock Interview Simulator</h3>
+              <span class="badge badge-warning" style="font-size: 10px;">Career+ VIP</span>
+            </div>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Experience interactive technical & behavioral grilling with an AI Bar Raiser. Receive an instant hiring scorecard.</p>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="btnLaunchMockSimulator">Launch Simulator →</button>
+      </div>
+
+      <!-- QUESTIONS CONTROLS & FILTER -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 16px;">
+        <div class="category-filter-bar" id="categoryFilterBar">
+          <button class="filter-btn active" data-cat="all">All Questions (15)</button>
+          <button class="filter-btn" data-cat="DSA">DSA & Algorithmic</button>
+          <button class="filter-btn" data-cat="System Design">System Design</button>
+          <button class="filter-btn" data-cat="Behavioral">Behavioral (STAR)</button>
+          <button class="filter-btn" data-cat="HR">HR & Culture</button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="badge badge-success" id="practicedCountBadge">0 of 15 Practiced</span>
+        </div>
+      </div>
+
+      <!-- QUESTIONS CONTAINER (First 5 free, remaining with value glimpse / email gate) -->
+      <div id="unlockedQuestionsList" class="question-list">
+        <!-- Questions 1-5 rendered here -->
+      </div>
+
+      <!-- PAYWALL / GLIMPSE FOR QUESTIONS 6-15 -->
+      <div class="paywall-wrapper" id="questionsPaywallWrapper" style="margin-top: 16px;">
+        <div class="question-list paywall-blurred-content" id="lockedQuestionsList">
+          <!-- Questions 6-15 rendered here -->
+        </div>
+
+        <!-- EMAIL CAPTURE GATE OVERLAY -->
+        <div class="paywall-overlay" id="prepEmailGateOverlay">
+          <div class="email-capture-box" style="max-width: 480px;">
+            <span class="paywall-lock-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Full 15-Question Question Bank
+            </span>
+            <div class="paywall-count">+ 10 Advanced Interview Questions</div>
+            <p class="paywall-preview-hint">Unlock all High-Level System Design architectural blueprints, edge case algorithms, and the STAR Answer Builder.</p>
+
+            <form class="email-capture-form" id="prepLeadForm">
+              <input type="email" id="prepLeadEmail" class="form-control" placeholder="you@domain.com" required />
+              <button type="submit" class="btn btn-primary" id="btnUnlockQuestions" style="white-space: nowrap;">Unlock Full Bank →</button>
+            </form>
+            <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 8px;">🔒 Free access. Questions and sample solution walkthroughs delivered to your inbox.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAR ANSWER BUILDER MODAL / DRAWER -->
+      <div class="modal-backdrop" id="starModal" aria-hidden="true">
+        <div class="modal-card" style="max-width: 600px; text-align: left; align-items: stretch;">
+          <button class="modal-close" id="btnStarModalClose">✕</button>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+            <div class="modal-icon" style="margin-bottom: 0;">✨</div>
+            <div>
+              <span class="badge badge-primary">AI Answer Coach</span>
+              <h3 class="modal-title" style="font-size: 1.25rem; margin-top: 2px;">STAR Answer Builder</h3>
+            </div>
+          </div>
+          <p class="modal-body" style="text-align: left; margin-bottom: 12px;" id="starQuestionPrompt">
+            Question: "..."
+          </p>
+
+          <form id="starForm" onsubmit="return false;">
+            <div class="star-grid">
+              <div class="field-group">
+                <label for="starSituation">Situation (S):</label>
+                <textarea id="starSituation" class="form-control" rows="2" placeholder="The context, company, or technical challenge..." required></textarea>
+              </div>
+              <div class="field-group">
+                <label for="starTask">Task (T):</label>
+                <textarea id="starTask" class="form-control" rows="2" placeholder="Your specific responsibility or objective..." required></textarea>
+              </div>
+            </div>
+            <div class="star-grid" style="margin-top: 6px;">
+              <div class="field-group">
+                <label for="starAction">Action (A):</label>
+                <textarea id="starAction" class="form-control" rows="2" placeholder="What YOU specifically did (architecture, tools, triage)..." required></textarea>
+              </div>
+              <div class="field-group">
+                <label for="starResult">Result (R):</label>
+                <textarea id="starResult" class="form-control" rows="2" placeholder="Measurable impact (latency cut %, uptime, business outcome)..." required></textarea>
+              </div>
+            </div>
+
+            <div style="margin-top: 14px; display: flex; justify-content: flex-end;">
+              <button type="button" class="btn btn-primary" id="btnSynthesizeSTAR">⚡ Synthesize Metric-Backed Answer</button>
+            </div>
+          </form>
+
+          <!-- Polished Output -->
+          <div id="starPolishedContainer" style="display: none; margin-top: 16px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <strong style="font-size: var(--text-xs); color: var(--green); text-transform: uppercase; letter-spacing: 0.05em;">✓ Recruiter-Ready Verbal Delivery</strong>
+              <button class="btn btn-ghost btn-sm" id="btnCopySTARAnswer">📋 Copy</button>
+            </div>
+            <p id="starPolishedText" style="font-size: var(--text-sm); color: var(--text); line-height: 1.6;"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTINUOUS MESH: CROSS LINK TO ROADMAP & BUILDER -->
+      <div class="card" style="margin-top: 36px; background: linear-gradient(135deg, rgba(108, 92, 231, 0.05), rgba(16, 185, 129, 0.05)); border: 1px solid var(--border-2);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px;">
+          <div>
+            <span class="badge badge-success">Holistic Prep Engine</span>
+            <h4 style="font-family: var(--font-head); font-size: var(--text-xl); font-weight: var(--weight-bold); color: var(--text); margin-top: 4px;">Found technical skill gaps while answering?</h4>
+            <p style="font-size: var(--text-sm); color: var(--text-muted); max-width: 540px; margin-top: 4px;">Chart out your 30-day and 90-day learning roadmap to close specific system design or cloud certifications.</p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <a href="career-roadmap.html" class="btn btn-secondary">Generate Career Roadmap</a>
+            <a href="form-index.html" class="btn btn-primary">Polish in ATS Builder →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MOCK INTERVIEW SIMULATOR MODAL (Career+ Feature) -->
+  <div class="modal-backdrop" id="mockInterviewModal" aria-hidden="true">
+    <div class="modal-card" style="max-width: 740px; width: 95%; text-align: left; padding: 24px; max-height: 90vh; display: flex; flex-direction: column;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 42px; height: 42px; border-radius: var(--radius-full); background: linear-gradient(135deg, var(--accent) 0%, var(--accent-3) 100%); display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">🎙️</div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <h3 class="modal-title" style="font-size: 1.2rem; margin: 0;">AI Mock Interview Simulator</h3>
+              <span class="badge badge-warning" style="font-size: 10px;">Career+ VIP</span>
+            </div>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 0;" id="mockPanelInfo">Panel: Principal Interviewer · System Scalability & STAR Leadership</p>
+          </div>
+        </div>
+        <button class="modal-close" id="btnCloseMockModal" aria-label="Close modal">✕</button>
+      </div>
+
+      <!-- Main Live Simulation Workspace -->
+      <div id="mockActiveWorkspace" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
+        <!-- Chat / Conversation Turn Stream -->
+        <div id="mockChatStream" style="overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding: 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-md); min-height: 260px; max-height: 340px; margin-bottom: 14px;">
+          <!-- Chat bubbles injected by JS -->
+        </div>
+
+        <!-- Candidate Response Area -->
+        <div id="mockInputArea">
+          <label style="font-size: 12px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 6px;">Your Engineering / Leadership Response:</label>
+          <textarea id="mockCandidateText" class="form-control" rows="3" placeholder="Explain your design tradeoffs, database schema, concurrency lock, or STAR action..." style="width: 100%; font-size: 13px; margin-bottom: 12px; resize: vertical;"></textarea>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <button class="btn btn-ghost btn-sm" id="btnEndMockEarly" style="color: var(--red);">
+              Finish & Evaluate Scorecard 📊
+            </button>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-primary" id="btnSendMockTurn">
+                Send Answer & Continue →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evaluation Scorecard View (shown upon conclusion) -->
+      <div id="mockScorecardView" style="display: none; padding: 6px; overflow-y: auto; max-height: 60vh;">
+        <!-- Scorecard injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARED JAVASCRIPT UTILITIES -->
+  <script src="js/auth.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/paywall.js"></script>
+  <script src="js/api.js"></script>
+
+  <!-- PAGE SCRIPT (Strict IIFE per AGENTS.md Constitution) -->
+  <script>
+  (function () {
+    'use strict';
+
+    // ── STATE ──
+    let selectedTier = 'Unicorn';
+    let currentQuestions = [];
+    let currentSessionData = null;
+    let activeQuestionForStar = null;
+
+    // ── DOM REFS ──
+    const intakeSection = document.getElementById('intakeSection');
+    const loadingSection = document.getElementById('loadingPrep');
+    const resultSection = document.getElementById('prepResultSection');
+    const btnGenerate = document.getElementById('btnGenerateQuestions');
+    const btnReset = document.getElementById('btnResetPrep');
+    const btnSave = document.getElementById('btnSaveSession');
+
+    function init() {
+      bindTierCards();
+      bindGenerate();
+      bindFilterTabs();
+      bindEmailCapture();
+      bindStarModal();
+      bindMockSimulator();
+    }
+
+    function bindTierCards() {
+      document.querySelectorAll('.tier-card').forEach(card => {
+        card.addEventListener('click', () => {
+          document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+          selectedTier = card.dataset.tier;
+        });
+      });
+    }
+
+    function bindGenerate() {
+      btnGenerate.addEventListener('click', async () => {
+        const role = document.getElementById('selectRole').value;
+        const roundType = document.getElementById('selectRound').value;
+        const snippet = document.getElementById('experienceSnippet').value.trim();
+
+        intakeSection.style.display = 'none';
+        loadingSection.style.display = 'block';
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+
+        try {
+          const payload = {
+            companyTier: selectedTier,
+            role,
+            roundType,
+            experienceSnippets: snippet ? [snippet] : []
+          };
+
+          const res = await window.api.post('/api/interview/generate', payload);
+
+          if (res && res.success && res.data) {
+            currentSessionData = res.data;
+            currentQuestions = res.data.questions || [];
+            renderInterviewWorkspace(res.data);
+          } else {
+            throw new Error('Invalid response structure');
+          }
+        } catch (err) {
+          console.error('[InterviewPrep]', err);
+          if (window.toast) window.toast.error('Failed to generate live session. Loading benchmark suite.');
+        } finally {
+          loadingSection.style.display = 'none';
+          resultSection.style.display = 'block';
+        }
+      });
+
+      btnReset.addEventListener('click', () => {
+        resultSection.style.display = 'none';
+        intakeSection.style.display = 'block';
+        window.scrollTo({ top: 160, behavior: 'smooth' });
+      });
+
+      btnSave.addEventListener('click', async () => {
+        if (!currentSessionData) return;
+
+        if (!window.auth || !window.auth.isLoggedIn()) {
+          if (window.toast) window.toast.info('Please log in or sign up to save interview practice sessions.');
+          setTimeout(() => {
+            window.location.href = `signup.html?redirect=interview-prep.html`;
+          }, 1500);
+          return;
+        }
+
+        try {
+          const res = await window.api.post('/api/interview/save', currentSessionData);
+          if (res && res.success) {
+            if (window.toast) window.toast.success('Interview session saved to your dashboard!');
+          }
+        } catch (err) {
+          if (window.toast) window.toast.error('Failed to save session: ' + (err.message || 'Error'));
+        }
+      });
+    }
+
+    function renderInterviewWorkspace(data) {
+      // 1. Company Prep Card
+      document.getElementById('badgeCompanyTier').textContent = `${data.companyTier} Tier`;
+      document.getElementById('headingCompanyTier').textContent = `${data.companyTier} Engineering Interview Playbook`;
+      document.getElementById('companyOverviewText').textContent = data.companyOverview || '';
+      document.getElementById('companyInterviewFocus').textContent = data.interviewFocus || '';
+
+      const tipsList = document.getElementById('companyTipsList');
+      tipsList.innerHTML = '';
+      (data.preparationTips || []).forEach(tip => {
+        const li = document.createElement('li');
+        li.textContent = tip;
+        tipsList.appendChild(li);
+      });
+
+      // 2. Render Questions (First 5 unlocked, remainder blurred)
+      renderQuestionLists(currentQuestions);
+
+      // 3. Check unlock status
+      const isUnlocked = Boolean(sessionStorage.getItem('cf-email-captured') || (window.auth && window.auth.isLoggedIn()));
+      const overlay = document.getElementById('prepEmailGateOverlay');
+      const lockedList = document.getElementById('lockedQuestionsList');
+
+      if (isUnlocked) {
+        lockedList.classList.remove('paywall-blurred-content');
+        lockedList.classList.add('unlocked');
+        if (overlay) overlay.style.display = 'none';
+      } else {
+        lockedList.classList.add('paywall-blurred-content');
+        lockedList.classList.remove('unlocked');
+        if (overlay) overlay.style.display = 'flex';
+      }
+
+      updatePracticedCounter();
+    }
+
+    function renderQuestionLists(questions) {
+      const unlockedEl = document.getElementById('unlockedQuestionsList');
+      const lockedEl = document.getElementById('lockedQuestionsList');
+
+      unlockedEl.innerHTML = '';
+      lockedEl.innerHTML = '';
+
+      questions.forEach((q, idx) => {
+        const card = createQuestionCardElement(q, idx + 1);
+        if (idx < 5) {
+          unlockedEl.appendChild(card);
+        } else {
+          lockedEl.appendChild(card);
+        }
+      });
+    }
+
+    function createQuestionCardElement(q, num) {
+      const card = document.createElement('div');
+      card.className = `question-card ${q.practiced ? 'practiced' : ''}`;
+      card.dataset.category = q.category;
+      card.id = `qcard_${q.id}`;
+
+      const diffBadgeClass = q.difficulty === 'Hard' ? 'badge-danger' : (q.difficulty === 'Medium' ? 'badge-warning' : 'badge-success');
+
+      card.innerHTML = `
+        <div class="question-top">
+          <span style="font-family: var(--font-head); font-weight: 800; font-size: 1rem; color: var(--text-muted); width: 26px;">#${num}</span>
+          <h4 class="question-title">${q.question}</h4>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <span class="badge badge-primary">${q.category}</span>
+            <span class="badge ${diffBadgeClass}">${q.difficulty}</span>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 8px;">
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="btn btn-ghost btn-sm js-hint-btn">💡 Show Hint</button>
+            ${q.category === 'Behavioral' ? `<button type="button" class="btn btn-outline btn-sm js-star-btn">✨ Build STAR Answer</button>` : ''}
+          </div>
+          <label style="font-size: var(--text-xs); color: var(--text-muted); display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+            <input type="checkbox" class="js-practiced-chk" ${q.practiced ? 'checked' : ''} /> Mark as Practiced
+          </label>
+        </div>
+
+        <div class="question-hint-box js-hint-box">
+          <strong>Key Angle:</strong> ${q.hint || 'Focus on time/space trade-offs and real-world system impact.'}
+        </div>
+      `;
+
+      // Event: Toggle Hint
+      const hintBtn = card.querySelector('.js-hint-btn');
+      const hintBox = card.querySelector('.js-hint-box');
+      hintBtn.addEventListener('click', () => {
+        const isShown = hintBox.style.display === 'block';
+        hintBox.style.display = isShown ? 'none' : 'block';
+        hintBtn.textContent = isShown ? '💡 Show Hint' : 'Hide Hint';
+      });
+
+      // Event: Toggle Practiced
+      const chk = card.querySelector('.js-practiced-chk');
+      chk.addEventListener('change', (e) => {
+        q.practiced = e.target.checked;
+        card.classList.toggle('practiced', q.practiced);
+        updatePracticedCounter();
+      });
+
+      // Event: Open STAR Builder
+      const starBtn = card.querySelector('.js-star-btn');
+      if (starBtn) {
+        starBtn.addEventListener('click', () => {
+          openStarModalForQuestion(q);
+        });
+      }
+
+      return card;
+    }
+
+    function updatePracticedCounter() {
+      const count = currentQuestions.filter(q => q.practiced).length;
+      const total = currentQuestions.length;
+      const badge = document.getElementById('practicedCountBadge');
+      if (badge) badge.textContent = `${count} of ${total} Practiced`;
+    }
+
+    function bindFilterTabs() {
+      document.querySelectorAll('#categoryFilterBar .filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#categoryFilterBar .filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const cat = btn.dataset.cat;
+
+          const filtered = cat === 'all' ? currentQuestions : currentQuestions.filter(q => q.category === cat);
+          renderQuestionLists(filtered);
+        });
+      });
+    }
+
+    function bindEmailCapture() {
+      const form = document.getElementById('prepLeadForm');
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('prepLeadEmail');
+        const email = emailInput.value.trim();
+        if (!email) return;
+
+        const btnUnlock = document.getElementById('btnUnlockQuestions');
+        btnUnlock.disabled = true;
+        btnUnlock.textContent = 'Unlocking...';
+
+        // 1. Optimistic reveal
+        const lockedList = document.getElementById('lockedQuestionsList');
+        const overlay = document.getElementById('prepEmailGateOverlay');
+
+        lockedList.classList.remove('paywall-blurred-content');
+        lockedList.classList.add('unlocked');
+        if (overlay) overlay.style.display = 'none';
+        sessionStorage.setItem('cf-email-captured', '1');
+
+        if (window.toast) {
+          window.toast.success('Complete Question Bank unlocked! Solutions queued for ' + email);
+        }
+
+        // 2. Non-blocking lead send
+        if (window.api) {
+          window.api.post('/api/leads', {
+            email,
+            source: 'interview_prep',
+            score: 85,
+            metadata: {
+              companyTier: selectedTier,
+              role: document.getElementById('selectRole').value
+            }
+          }).catch(err => console.warn('Lead capture log:', err));
+        }
+      });
+    }
+
+    function bindStarModal() {
+      const modal = document.getElementById('starModal');
+      const btnClose = document.getElementById('btnStarModalClose');
+      const btnSynthesize = document.getElementById('btnSynthesizeSTAR');
+      const btnCopy = document.getElementById('btnCopySTARAnswer');
+
+      btnClose.addEventListener('click', () => {
+        window.modal.close(modal);
+      });
+
+      btnSynthesize.addEventListener('click', async () => {
+        if (!activeQuestionForStar) return;
+
+        const situation = document.getElementById('starSituation').value.trim();
+        const task = document.getElementById('starTask').value.trim();
+        const action = document.getElementById('starAction').value.trim();
+        const result = document.getElementById('starResult').value.trim();
+
+        if (!action) {
+          if (window.toast) window.toast.error('Please describe at least the Action you took.');
+          return;
+        }
+
+        btnSynthesize.disabled = true;
+        btnSynthesize.textContent = 'Synthesizing with AI...';
+
+        try {
+          const res = await window.api.post('/api/interview/star', {
+            question: activeQuestionForStar.question,
+            situation,
+            task,
+            action,
+            result
+          });
+
+          if (res && res.data && res.data.polishedAnswer) {
+            document.getElementById('starPolishedText').textContent = res.data.polishedAnswer;
+            document.getElementById('starPolishedContainer').style.display = 'block';
+            if (window.toast) window.toast.success('STAR narrative synthesized!');
+          }
+        } catch (err) {
+          if (window.toast) window.toast.error('STAR synthesis failed: ' + err.message);
+        } finally {
+          btnSynthesize.disabled = false;
+          btnSynthesize.textContent = '⚡ Synthesize Metric-Backed Answer';
+        }
+      });
+
+      btnCopy.addEventListener('click', () => {
+        const text = document.getElementById('starPolishedText').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          if (window.toast) window.toast.success('Answer copied to clipboard!');
+        });
+      });
+    }
+
+    function openStarModalForQuestion(q) {
+      activeQuestionForStar = q;
+      document.getElementById('starQuestionPrompt').textContent = `Question: "${q.question}"`;
+      document.getElementById('starPolishedContainer').style.display = 'none';
+      window.modal.open('starModal');
+    }
+
+    // ── MOCK INTERVIEW SIMULATOR ──
+    let mockHistory = [];
+
+    function bindMockSimulator() {
+      const btnLaunch = document.getElementById('btnLaunchMockSimulator');
+      const btnClose = document.getElementById('btnCloseMockModal');
+      const btnSend = document.getElementById('btnSendMockTurn');
+      const btnEnd = document.getElementById('btnEndMockEarly');
+
+      if (btnLaunch) {
+        btnLaunch.addEventListener('click', () => {
+          const user = window.auth ? window.auth.getUser() : null;
+          if (!user) {
+            if (window.toast) window.toast.info('Please sign in to launch the AI Mock Interview Simulator.');
+            setTimeout(() => { window.location.href = 'login.html?redirect=interview-prep.html'; }, 1000);
+            return;
+          }
+
+          if (user.tier !== 'career_plus') {
+            if (window.paywall) {
+              window.paywall.show({
+                feature: 'AI Mock Interview Simulator',
+                requiredTier: 'career_plus',
+                title: 'Unlock Real-Time Mock Grilling',
+                message: 'Practice live rounds with an AI Bar Raiser from Indian Unicorns & FAANG. Receive an instant hiring committee scorecard.'
+              });
+            }
+            return;
+          }
+
+          startMockInterview();
+        });
+      }
+
+      if (btnClose) {
+        btnClose.addEventListener('click', () => {
+          if (window.modal) window.modal.close('mockInterviewModal');
+        });
+      }
+
+      if (btnSend) {
+        btnSend.addEventListener('click', sendMockAnswer);
+      }
+
+      if (btnEnd) {
+        btnEnd.addEventListener('click', finishAndEvaluateMock);
+      }
+    }
+
+    function startMockInterview() {
+      mockHistory = [];
+      const chatStream = document.getElementById('mockChatStream');
+      const scorecardView = document.getElementById('mockScorecardView');
+      const activeWorkspace = document.getElementById('mockActiveWorkspace');
+      const inputEl = document.getElementById('mockCandidateText');
+
+      if (scorecardView) scorecardView.style.display = 'none';
+      if (activeWorkspace) activeWorkspace.style.display = 'flex';
+      if (inputEl) inputEl.value = '';
+
+      const tier = selectedTier || 'Unicorn';
+      const role = document.getElementById('targetRole')?.value || 'Software Engineer';
+      document.getElementById('mockPanelInfo').textContent = `Panel: Principal Interviewer · ${tier} Tech · ${role}`;
+
+      const openingQuestion = `Hello, welcome to this technical discussion for the ${role} position. To kick things off: Walk me through a challenging production project or service you recently architected. What was the core bottleneck, and how did you resolve it?`;
+
+      mockHistory.push({ role: 'assistant', message: openingQuestion });
+      chatStream.innerHTML = `
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <div style="width: 32px; height: 32px; border-radius: var(--radius-full); background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">AI</div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; font-size: 13px; line-height: 1.5; color: var(--text);">
+            ${openingQuestion}
+          </div>
+        </div>
+      `;
+
+      if (window.modal) window.modal.open('mockInterviewModal');
+    }
+
+    async function sendMockAnswer() {
+      const inputEl = document.getElementById('mockCandidateText');
+      const answer = inputEl.value.trim();
+      if (!answer) return;
+
+      const chatStream = document.getElementById('mockChatStream');
+      const btnSend = document.getElementById('btnSendMockTurn');
+
+      mockHistory.push({ role: 'user', message: answer });
+      chatStream.innerHTML += `
+        <div style="display: flex; gap: 10px; align-items: flex-start; justify-content: flex-end;">
+          <div style="background: var(--accent); color: #fff; border-radius: var(--radius-md); padding: 12px 16px; font-size: 13px; line-height: 1.5; max-width: 80%;">
+            ${answer}
+          </div>
+          <div style="width: 32px; height: 32px; border-radius: var(--radius-full); background: var(--surface); border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0;">YOU</div>
+        </div>
+      `;
+      inputEl.value = '';
+      chatStream.scrollTop = chatStream.scrollHeight;
+
+      btnSend.disabled = true;
+      btnSend.textContent = 'Interviewer evaluating...';
+
+      try {
+        const res = await window.api.post('/api/interview/mock/turn', {
+          role: document.getElementById('targetRole')?.value || 'Software Engineer',
+          companyTier: selectedTier || 'Unicorn',
+          roundType: document.getElementById('roundType')?.value || 'Technical Round',
+          history: mockHistory
+        });
+
+        if (res.success && res.turn) {
+          mockHistory.push(res.turn);
+          chatStream.innerHTML += `
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <div style="width: 32px; height: 32px; border-radius: var(--radius-full); background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">AI</div>
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; font-size: 13px; line-height: 1.5; color: var(--text);">
+                ${res.turn.message}
+              </div>
+            </div>
+          `;
+          chatStream.scrollTop = chatStream.scrollHeight;
+        }
+      } catch (err) {
+        if (window.toast) window.toast.error('Failed to get interviewer response.');
+      } finally {
+        btnSend.disabled = false;
+        btnSend.textContent = 'Send Answer & Continue →';
+      }
+    }
+
+    async function finishAndEvaluateMock() {
+      const btnEnd = document.getElementById('btnEndMockEarly');
+      btnEnd.disabled = true;
+      btnEnd.textContent = 'Generating Committee Scorecard...';
+
+      try {
+        const res = await window.api.post('/api/interview/mock/evaluate', {
+          role: document.getElementById('targetRole')?.value || 'Software Engineer',
+          companyTier: selectedTier || 'Unicorn',
+          roundType: document.getElementById('roundType')?.value || 'Technical',
+          history: mockHistory
+        });
+
+        if (res.success && res.scorecard) {
+          renderScorecard(res.scorecard);
+        }
+      } catch (err) {
+        if (window.toast) window.toast.error('Evaluation failed: ' + err.message);
+      } finally {
+        btnEnd.disabled = false;
+        btnEnd.textContent = 'Finish & Evaluate Scorecard 📊';
+      }
+    }
+
+    function renderScorecard(sc) {
+      const activeWorkspace = document.getElementById('mockActiveWorkspace');
+      const scorecardView = document.getElementById('mockScorecardView');
+
+      if (activeWorkspace) activeWorkspace.style.display = 'none';
+      if (scorecardView) {
+        scorecardView.style.display = 'block';
+        scorecardView.innerHTML = `
+          <div style="text-align: center; margin-bottom: 20px;">
+            <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span class="badge ${sc.hiringDecision.includes('Hire') ? 'badge-success' : 'badge-danger'}" style="font-size: 14px; padding: 6px 16px;">
+                Decision: ${sc.hiringDecision}
+              </span>
+            </div>
+            <h2 style="font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; margin: 0; color: var(--text);">
+              Overall Score: <span style="color: var(--accent);">${sc.overallScore}/100</span>
+            </h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Bar-Raiser evaluation for ${selectedTier} Engineering</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center;">
+              <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Technical Accuracy</div>
+              <div style="font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: var(--green); margin: 4px 0;">${sc.technicalAccuracy?.score || 85}%</div>
+              <p style="font-size: 11px; color: var(--text-muted); margin: 0;">${sc.technicalAccuracy?.feedback || ''}</p>
+            </div>
+            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center;">
+              <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">STAR Structure</div>
+              <div style="font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: var(--accent); margin: 4px 0;">${sc.structureSTAR?.score || 80}%</div>
+              <p style="font-size: 11px; color: var(--text-muted); margin: 0;">${sc.structureSTAR?.feedback || ''}</p>
+            </div>
+            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center;">
+              <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Communication</div>
+              <div style="font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: var(--green); margin: 4px 0;">${sc.communicationClarity?.score || 82}%</div>
+              <p style="font-size: 11px; color: var(--text-muted); margin: 0;">${sc.communicationClarity?.feedback || ''}</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+            <div style="background: rgba(34, 197, 94, 0.06); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: var(--radius-md); padding: 16px;">
+              <strong style="color: var(--green); font-size: 13px; display: block; margin-bottom: 8px;">✓ Key Strengths:</strong>
+              <ul style="padding-left: 16px; margin: 0; font-size: 12px; color: var(--text); display: flex; flex-direction: column; gap: 6px;">
+                ${(sc.strengths || []).map(s => `<li>${s}</li>`).join('')}
+              </ul>
+            </div>
+            <div style="background: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-md); padding: 16px;">
+              <strong style="color: var(--red); font-size: 13px; display: block; margin-bottom: 8px;">⚠️ High-Impact Improvements:</strong>
+              <ul style="padding-left: 16px; margin: 0; font-size: 12px; color: var(--text); display: flex; flex-direction: column; gap: 6px;">
+                ${(sc.improvements || []).map(imp => `<li>${imp}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 12px;">
+            <button class="btn btn-secondary" onclick="document.getElementById('mockScorecardView').style.display='none'; document.getElementById('mockActiveWorkspace').style.display='flex';">Retry Interview</button>
+            <button class="btn btn-primary" onclick="window.modal.close('mockInterviewModal');">Done</button>
+          </div>
+        `;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  })();
+  </script>
+</body>
+</html>

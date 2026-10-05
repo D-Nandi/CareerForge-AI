@@ -1088,6 +1088,18 @@ function setDownloadSuccess() {
   btnDownload.classList.remove('loading');
   btnDownload.classList.add('success');
   btnDownload.querySelector('.btn-download-label').textContent = 'Downloaded ✓';
+  
+  // Show post-export Interview Prep CTA banner
+  const prepBanner = document.getElementById('postExportInterviewBanner');
+  if (prepBanner) {
+    prepBanner.style.display = 'block';
+    const closeBtn = document.getElementById('btnClosePostExportBanner');
+    if (closeBtn && !closeBtn.dataset.bound) {
+      closeBtn.dataset.bound = 'true';
+      closeBtn.addEventListener('click', () => { prepBanner.style.display = 'none'; });
+    }
+  }
+
   setTimeout(() => {
     btnDownload.classList.remove('success');
     btnDownload.querySelector('.btn-download-label').textContent = 'Download PDF';
