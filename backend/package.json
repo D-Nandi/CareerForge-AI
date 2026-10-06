@@ -16,9 +16,11 @@
     "express": "^4.19.2",
     "firebase-admin": "^14.5.0",
     "jsonwebtoken": "^9.0.3",
+    "ls": "^1.0.0",
     "mongoose": "^9.6.2",
     "morgan": "^1.10.0",
-    "razorpay": "^2.9.8"
+    "razorpay": "^2.9.8",
+    "script": "^0.1.4"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
