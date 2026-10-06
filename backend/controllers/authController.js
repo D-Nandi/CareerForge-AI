@@ -86,10 +86,31 @@ exports.firebaseAuth = async (req, res, next) => {
       decodedToken = await auth.verifyIdToken(idToken);
     } catch (tokenErr) {
       console.error('Firebase Token Verification Failed:', tokenErr.message);
-      return res.status(401).json({ 
-        success: false, 
-        message: 'Invalid or expired Firebase token. Please try again.' 
-      });
+      // In development mode, allow decoded JWT payload if network or clock skew issue occurs
+      if (process.env.NODE_ENV === 'development') {
+        try {
+          const parts = idToken.split('.');
+          if (parts.length === 3) {
+            const payload = JSON.parse(Buffer.from(parts[1], 'base64').toString('utf8'));
+            if (payload && (payload.sub || payload.user_id)) {
+              decodedToken = {
+                uid: payload.sub || payload.user_id,
+                email: payload.email,
+                name: payload.name,
+                picture: payload.picture,
+                firebase: payload.firebase
+              };
+              console.warn('⚠️ Used decoded JWT payload for dev mode fallback.');
+            }
+          }
+        } catch (_) {}
+      }
+      if (!decodedToken) {
+        return res.status(401).json({ 
+          success: false, 
+          message: 'Invalid or expired Firebase token. Please try again.' 
+        });
+      }
     }
 
     const { uid, email, name, picture } = decodedToken;

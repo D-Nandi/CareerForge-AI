@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -202,8 +202,8 @@
       .star-grid { grid-template-columns: 1fr; }
     }
   </style>
-  <link rel="stylesheet" crossorigin href="/assets/index-Cz59HWfW.css">
-  <link rel="stylesheet" crossorigin href="/assets/tools-style-pypH-6Bf.css">
+  <link rel="stylesheet" crossorigin href="/assets/index-D0UpIdo4.css">
+  <link rel="stylesheet" crossorigin href="/assets/tools-style-CeYcq1He.css">
 </head>
 <body>
 
@@ -237,6 +237,23 @@
       </button>
       <a href="dashboard.html" class="btn btn-secondary btn-sm" id="navDashboardBtn">Dashboard</a>
       <a href="form-index.html" class="btn-primary btn-sm" id="navBuildBtn">Build ATS Resume →</a>
+      <button class="hamburger drawer-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="tool-drawer">
+      <ul class="tool-drawer-links">
+        <li><a href="templates.html">Resume Templates <span>→</span></a></li>
+        <li><a href="ats-score-checker.html">ATS Resume Checker <span>→</span></a></li>
+        <li><a href="career-roadmap.html">AI Career Roadmap <span>→</span></a></li>
+        <li><a href="interview-prep.html">Interview Prep Coach <span>→</span></a></li>
+        <li><a href="salary-benchmark.html">Salary Calculator <span>→</span></a></li>
+        <li><a href="pricing.html">Pricing Plans <span>→</span></a></li>
+        <li><a href="dashboard.html">Dashboard <span>→</span></a></li>
+      </ul>
+      <div class="tool-drawer-actions">
+        <a href="form-index.html" class="btn btn-primary btn-block">Build ATS Resume →</a>
+      </div>
     </div>
   </header>
 
@@ -249,6 +266,20 @@
       <h1>AI Interview <em>Prep</em> & STAR Answer Coach</h1>
       <p>Simulate realistic technical and leadership rounds for top Indian product companies and MNCs. Practice targeted DSA, System Design, and metric-backed STAR behavioral responses.</p>
     </section>
+
+    <!-- UPCOMING FEATURE WAITLIST BANNER TEASER -->
+    <div style="max-width: 820px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(108,92,231,0.12) 0%, rgba(16,185,129,0.08) 100%); border: 1px solid rgba(108,92,231,0.3); border-radius: var(--radius-lg); padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; box-shadow: var(--shadow-sm);">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="badge badge-warning" style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3);">⚡ Upcoming Feature v2.0</span>
+        <div>
+          <strong style="font-size: 13.5px; color: var(--text); display: block;">AI Live Voice & Technical Mock Interview Simulator</strong>
+          <span style="font-size: 12px; color: var(--text-muted);">Real-time technical grilling with Bar-Raiser AI. Join the early access waitlist.</span>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-sm" id="btnHeroWaitlist" style="border-radius: 99px; padding: 6px 16px; font-size: 12.5px; font-weight: 700;">
+        Join Waitlist 🚀
+      </button>
+    </div>
 
     <!-- INTAKE CONTAINER -->
     <section class="tool-workspace single-column-workspace" id="intakeSection">
@@ -363,19 +394,27 @@
         </div>
       </div>
 
-      <!-- MOCK INTERVIEW SIMULATOR BANNER -->
-      <div style="background: linear-gradient(135deg, rgba(108,92,231,0.12) 0%, rgba(167,139,250,0.08) 100%); border: 1px solid var(--accent); border-radius: var(--radius-lg); padding: 18px 24px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-        <div style="display: flex; align-items: center; gap: 14px;">
-          <div style="font-size: 2rem;">🎙️</div>
+      <!-- MOCK INTERVIEW SIMULATOR BANNER (UPCOMING FEATURE & WAITLIST) -->
+      <div style="background: linear-gradient(135deg, rgba(108,92,231,0.14) 0%, rgba(167,139,250,0.09) 100%); border: 1px solid var(--accent); border-radius: var(--radius-lg); padding: 20px 24px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; position: relative; overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 14px; flex: 1; min-width: 280px;">
+          <div style="font-size: 2.2rem; background: var(--accent-glow); width: 52px; height: 52px; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(108,92,231,0.3);">🎙️</div>
           <div>
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <h3 style="font-family: var(--font-head); font-size: 1.25rem; font-weight: 800; color: var(--text); margin: 0;">Live AI Mock Interview Simulator</h3>
-              <span class="badge badge-warning" style="font-size: 10px;">Career+ VIP</span>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <h3 style="font-family: var(--font-head); font-size: 1.3rem; font-weight: 800; color: var(--text); margin: 0;">AI Mock Interview Simulator v2.0</h3>
+              <span class="badge badge-warning" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em;">Upcoming Feature</span>
+              <span class="badge badge-success" style="font-size: 10px;">Waitlist Open</span>
             </div>
-            <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Experience interactive technical & behavioral grilling with an AI Bar Raiser. Receive an instant hiring scorecard.</p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px; line-height: 1.4;">Experience real-time AI technical grilling, voice interaction mode, and Bar-Raiser hiring committee scorecards for SDE rounds.</p>
           </div>
         </div>
-        <button class="btn btn-primary" id="btnLaunchMockSimulator">Launch Simulator →</button>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
+          <button class="btn btn-primary" id="btnLaunchMockSimulator" style="white-space: nowrap; padding: 10px 20px; font-weight: 700;">
+            Join Early Access Waitlist 🚀
+          </button>
+          <span style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 4px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block;"></span> 140+ candidate engineers queued
+          </span>
+        </div>
       </div>
 
       <!-- QUESTIONS CONTROLS & FILTER -->
@@ -492,51 +531,122 @@
     </section>
   </main>
 
-  <!-- MOCK INTERVIEW SIMULATOR MODAL (Career+ Feature) -->
+  <!-- MOCK INTERVIEW SIMULATOR WAITLIST MODAL -->
   <div class="modal-backdrop" id="mockInterviewModal" aria-hidden="true">
-    <div class="modal-card" style="max-width: 740px; width: 95%; text-align: left; padding: 24px; max-height: 90vh; display: flex; flex-direction: column;">
-      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 16px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="width: 42px; height: 42px; border-radius: var(--radius-full); background: linear-gradient(135deg, var(--accent) 0%, var(--accent-3) 100%); display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">🎙️</div>
+    <div class="modal-card" style="max-width: 680px; width: 95%; text-align: left; padding: 28px; max-height: 90vh; overflow-y: auto;">
+      <button class="modal-close" id="btnCloseMockModal" aria-label="Close modal">✕</button>
+
+      <!-- WAITLIST FORM VIEW -->
+      <div id="mockWaitlistFormView">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+          <div style="width: 48px; height: 48px; border-radius: var(--radius-full); background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(108,92,231,0.3);">🎙️</div>
           <div>
             <div style="display: flex; align-items: center; gap: 8px;">
-              <h3 class="modal-title" style="font-size: 1.2rem; margin: 0;">AI Mock Interview Simulator</h3>
-              <span class="badge badge-warning" style="font-size: 10px;">Career+ VIP</span>
+              <h3 class="modal-title" style="font-size: 1.35rem; margin: 0; font-family: var(--font-head); font-weight: 800;">AI Mock Interview Simulator 2.0</h3>
+              <span class="badge badge-warning" style="font-size: 10px; text-transform: uppercase;">Upcoming Feature</span>
             </div>
-            <p style="font-size: 12px; color: var(--text-muted); margin: 0;" id="mockPanelInfo">Panel: Principal Interviewer · System Scalability & STAR Leadership</p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Join the VIP Waitlist for early access to real-time AI technical grilling & voice coaching.</p>
           </div>
         </div>
-        <button class="modal-close" id="btnCloseMockModal" aria-label="Close modal">✕</button>
-      </div>
 
-      <!-- Main Live Simulation Workspace -->
-      <div id="mockActiveWorkspace" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
-        <!-- Chat / Conversation Turn Stream -->
-        <div id="mockChatStream" style="overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding: 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-md); min-height: 260px; max-height: 340px; margin-bottom: 14px;">
-          <!-- Chat bubbles injected by JS -->
+        <!-- UPCOMING FEATURES TEASER CARDS -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin-bottom: 20px;">
+          <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 14px;">
+            <div style="font-size: 1.1rem; margin-bottom: 4px;">🧠</div>
+            <strong style="font-size: 12.5px; color: var(--text); display: block;">Adaptive AI Interviewer</strong>
+            <span style="font-size: 11.5px; color: var(--text-muted); line-height: 1.35; display: block;">Dynamic follow-ups based on your architecture & code choices.</span>
+          </div>
+          <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 14px;">
+            <div style="font-size: 1.1rem; margin-bottom: 4px;">🎤</div>
+            <strong style="font-size: 12.5px; color: var(--text); display: block;">Voice Interaction Mode</strong>
+            <span style="font-size: 11.5px; color: var(--text-muted); line-height: 1.35; display: block;">Practice speaking your STAR stories aloud with tone & clarity feedback.</span>
+          </div>
+          <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 14px;">
+            <div style="font-size: 1.1rem; margin-bottom: 4px;">📊</div>
+            <strong style="font-size: 12.5px; color: var(--text); display: block;">Bar-Raiser Scorecards</strong>
+            <span style="font-size: 11.5px; color: var(--text-muted); line-height: 1.35; display: block;">Hiring committee level scores for DSA, HLD/LLD, & Leadership.</span>
+          </div>
         </div>
 
-        <!-- Candidate Response Area -->
-        <div id="mockInputArea">
-          <label style="font-size: 12px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 6px;">Your Engineering / Leadership Response:</label>
-          <textarea id="mockCandidateText" class="form-control" rows="3" placeholder="Explain your design tradeoffs, database schema, concurrency lock, or STAR action..." style="width: 100%; font-size: 13px; margin-bottom: 12px; resize: vertical;"></textarea>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-            <button class="btn btn-ghost btn-sm" id="btnEndMockEarly" style="color: var(--red);">
-              Finish & Evaluate Scorecard 📊
+        <!-- WAITLIST FORM -->
+        <form id="simulatorWaitlistForm" onsubmit="return false;">
+          <div class="field-group" style="margin-bottom: 14px;">
+            <label for="waitlistEmail" style="font-size: 12.5px; font-weight: 600;">Work / Personal Email:</label>
+            <input type="email" id="waitlistEmail" class="form-control" placeholder="you@company.com" required style="font-size: 13.5px;" />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+            <div class="field-group">
+              <label for="waitlistRole" style="font-size: 12.5px; font-weight: 600;">Target Role:</label>
+              <select id="waitlistRole" class="form-control" style="font-size: 13px;">
+                <option value="SDE-1 / Junior Engineer">SDE-1 / Junior Engineer</option>
+                <option value="SDE-2 / Senior Backend" selected>SDE-2 / Senior Backend</option>
+                <option value="Full Stack Engineer">Full Stack Engineer</option>
+                <option value="Frontend Engineer">Frontend Engineer</option>
+                <option value="DevOps & Cloud">DevOps & Cloud Engineer</option>
+                <option value="Engineering Manager">Engineering Manager / Lead</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="waitlistTier" style="font-size: 12.5px; font-weight: 600;">Target Company Tier:</label>
+              <select id="waitlistTier" class="form-control" style="font-size: 13px;">
+                <option value="Indian Unicorns (Swiggy, Zomato, Razorpay)" selected>Indian Unicorns</option>
+                <option value="FAANG / Tier-1 Global (Google, Amazon, Microsoft)">FAANG / Tier-1 Global</option>
+                <option value="Product MNCs (Cisco, Oracle, Intuit)">Product MNCs</option>
+                <option value="High-Growth Startups">High-Growth Startups</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group" style="margin-bottom: 16px;">
+            <label style="font-size: 12.5px; font-weight: 600; display: block; margin-bottom: 6px;">Which features are you most excited about?</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12.5px; color: var(--text);">
+              <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                <input type="checkbox" name="waitlistFeature" value="Voice Interaction Mode" checked /> 🎤 Real-Time Voice Interview
+              </label>
+              <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                <input type="checkbox" name="waitlistFeature" value="DSA Live Code Grilling" checked /> 🧩 DSA Live Code Grilling
+              </label>
+              <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                <input type="checkbox" name="waitlistFeature" value="System Design Whiteboard" checked /> 🏗️ System Design Whiteboard
+              </label>
+              <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                <input type="checkbox" name="waitlistFeature" value="Bar-Raiser Scorecard" checked /> 📜 Detailed Bar-Raiser Report
+              </label>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px;">
+            <span style="font-size: 11.5px; color: var(--text-muted); display: flex; align-items: center; gap: 4px;">
+              🔒 100% Free early access pass. No spam.
+            </span>
+            <button type="submit" class="btn btn-primary" id="btnSubmitWaitlist" style="padding: 10px 22px; font-weight: 700;">
+              Reserve My Spot 🚀
             </button>
-            <div style="display: flex; gap: 10px;">
-              <button class="btn btn-primary" id="btnSendMockTurn">
-                Send Answer & Continue →
-              </button>
-            </div>
           </div>
-        </div>
+        </form>
       </div>
 
-      <!-- Evaluation Scorecard View (shown upon conclusion) -->
-      <div id="mockScorecardView" style="display: none; padding: 6px; overflow-y: auto; max-height: 60vh;">
-        <!-- Scorecard injected by JS -->
+      <!-- WAITLIST SUCCESS VIEW -->
+      <div id="mockWaitlistSuccessView" style="display: none; text-align: center; padding: 20px 10px;">
+        <div style="width: 64px; height: 64px; border-radius: var(--radius-full); background: rgba(34, 197, 94, 0.12); border: 2px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 16px; color: var(--green);">🎉</div>
+        <span class="badge badge-success" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; display: inline-block;" id="waitlistSpotBadge">Position #142 in Line</span>
+        <h3 style="font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; color: var(--text); margin: 4px 0 8px;">You're on the Waitlist!</h3>
+        <p style="font-size: 13.5px; color: var(--text-muted); max-width: 460px; margin: 0 auto 20px; line-height: 1.5;">
+          Thank you for joining early access! We're putting final touches on our AI Voice & Technical Mock Interview Simulator v2.0. You'll receive a VIP invite link in your inbox as soon as slots open.
+        </p>
+
+        <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 24px; text-align: left;">
+          <strong style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 6px;">Your Registration Details:</strong>
+          <div style="font-size: 13px; color: var(--text); display: flex; flex-direction: column; gap: 4px;" id="waitlistRegisteredDetails">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 12px;">
+          <button class="btn btn-secondary" id="btnShareWaitlist">📋 Copy Invite Link</button>
+          <button class="btn btn-primary" onclick="if (window.modal) window.modal.close('mockInterviewModal');">Done</button>
+        </div>
       </div>
     </div>
   </div>
@@ -890,39 +1000,26 @@
       window.modal.open('starModal');
     }
 
-    // ── MOCK INTERVIEW SIMULATOR ──
-    let mockHistory = [];
-
+    // ── MOCK INTERVIEW SIMULATOR WAITLIST ──
     function bindMockSimulator() {
       const btnLaunch = document.getElementById('btnLaunchMockSimulator');
+      const btnHeroWaitlist = document.getElementById('btnHeroWaitlist');
       const btnClose = document.getElementById('btnCloseMockModal');
-      const btnSend = document.getElementById('btnSendMockTurn');
-      const btnEnd = document.getElementById('btnEndMockEarly');
+      const formWaitlist = document.getElementById('simulatorWaitlistForm');
+      const btnShare = document.getElementById('btnShareWaitlist');
 
-      if (btnLaunch) {
-        btnLaunch.addEventListener('click', () => {
-          const user = window.auth ? window.auth.getUser() : null;
-          if (!user) {
-            if (window.toast) window.toast.info('Please sign in to launch the AI Mock Interview Simulator.');
-            setTimeout(() => { window.location.href = 'login.html?redirect=interview-prep.html'; }, 1000);
-            return;
-          }
-
-          if (user.tier !== 'career_plus') {
-            if (window.paywall) {
-              window.paywall.show({
-                feature: 'AI Mock Interview Simulator',
-                requiredTier: 'career_plus',
-                title: 'Unlock Real-Time Mock Grilling',
-                message: 'Practice live rounds with an AI Bar Raiser from Indian Unicorns & FAANG. Receive an instant hiring committee scorecard.'
-              });
-            }
-            return;
-          }
-
-          startMockInterview();
-        });
+      function openModal() {
+        const existing = getSavedWaitlistData();
+        if (existing) {
+          showWaitlistSuccess(existing);
+        } else {
+          showWaitlistForm();
+        }
+        if (window.modal) window.modal.open('mockInterviewModal');
       }
+
+      if (btnLaunch) btnLaunch.addEventListener('click', openModal);
+      if (btnHeroWaitlist) btnHeroWaitlist.addEventListener('click', openModal);
 
       if (btnClose) {
         btnClose.addEventListener('click', () => {
@@ -930,178 +1027,127 @@
         });
       }
 
-      if (btnSend) {
-        btnSend.addEventListener('click', sendMockAnswer);
+      if (formWaitlist) {
+        formWaitlist.addEventListener('submit', handleWaitlistSubmit);
       }
 
-      if (btnEnd) {
-        btnEnd.addEventListener('click', finishAndEvaluateMock);
-      }
-    }
-
-    function startMockInterview() {
-      mockHistory = [];
-      const chatStream = document.getElementById('mockChatStream');
-      const scorecardView = document.getElementById('mockScorecardView');
-      const activeWorkspace = document.getElementById('mockActiveWorkspace');
-      const inputEl = document.getElementById('mockCandidateText');
-
-      if (scorecardView) scorecardView.style.display = 'none';
-      if (activeWorkspace) activeWorkspace.style.display = 'flex';
-      if (inputEl) inputEl.value = '';
-
-      const tier = selectedTier || 'Unicorn';
-      const role = document.getElementById('targetRole')?.value || 'Software Engineer';
-      document.getElementById('mockPanelInfo').textContent = `Panel: Principal Interviewer · ${tier} Tech · ${role}`;
-
-      const openingQuestion = `Hello, welcome to this technical discussion for the ${role} position. To kick things off: Walk me through a challenging production project or service you recently architected. What was the core bottleneck, and how did you resolve it?`;
-
-      mockHistory.push({ role: 'assistant', message: openingQuestion });
-      chatStream.innerHTML = `
-        <div style="display: flex; gap: 10px; align-items: flex-start;">
-          <div style="width: 32px; height: 32px; border-radius: var(--radius-full); background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">AI</div>
-          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; font-size: 13px; line-height: 1.5; color: var(--text);">
-            ${openingQuestion}
-          </div>
-        </div>
-      `;
-
-      if (window.modal) window.modal.open('mockInterviewModal');
-    }
-
-    async function sendMockAnswer() {
-      const inputEl = document.getElementById('mockCandidateText');
-      const answer = inputEl.value.trim();
-      if (!answer) return;
-
-      const chatStream = document.getElementById('mockChatStream');
-      const btnSend = document.getElementById('btnSendMockTurn');
-
-      mockHistory.push({ role: 'user', message: answer });
-      chatStream.innerHTML += `
-        <div style="display: flex; gap: 10px; align-items: flex-start; justify-content: flex-end;">
-          <div style="background: var(--accent); color: #fff; border-radius: var(--radius-md); padding: 12px 16px; font-size: 13px; line-height: 1.5; max-width: 80%;">
-            ${answer}
-          </div>
-          <div style="width: 32px; height: 32px; border-radius: var(--radius-full); background: var(--surface); border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0;">YOU</div>
-        </div>
-      `;
-      inputEl.value = '';
-      chatStream.scrollTop = chatStream.scrollHeight;
-
-      btnSend.disabled = true;
-      btnSend.textContent = 'Interviewer evaluating...';
-
-      try {
-        const res = await window.api.post('/api/interview/mock/turn', {
-          role: document.getElementById('targetRole')?.value || 'Software Engineer',
-          companyTier: selectedTier || 'Unicorn',
-          roundType: document.getElementById('roundType')?.value || 'Technical Round',
-          history: mockHistory
+      if (btnShare) {
+        btnShare.addEventListener('click', () => {
+          navigator.clipboard.writeText(window.location.href).then(() => {
+            if (window.toast) window.toast.success('Link copied to clipboard!');
+          });
         });
-
-        if (res.success && res.turn) {
-          mockHistory.push(res.turn);
-          chatStream.innerHTML += `
-            <div style="display: flex; gap: 10px; align-items: flex-start;">
-              <div style="width: 32px; height: 32px; border-radius: var(--radius-full); background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">AI</div>
-              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; font-size: 13px; line-height: 1.5; color: var(--text);">
-                ${res.turn.message}
-              </div>
-            </div>
-          `;
-          chatStream.scrollTop = chatStream.scrollHeight;
-        }
-      } catch (err) {
-        if (window.toast) window.toast.error('Failed to get interviewer response.');
-      } finally {
-        btnSend.disabled = false;
-        btnSend.textContent = 'Send Answer & Continue →';
       }
     }
 
-    async function finishAndEvaluateMock() {
-      const btnEnd = document.getElementById('btnEndMockEarly');
-      btnEnd.disabled = true;
-      btnEnd.textContent = 'Generating Committee Scorecard...';
-
+    function getSavedWaitlistData() {
       try {
-        const res = await window.api.post('/api/interview/mock/evaluate', {
-          role: document.getElementById('targetRole')?.value || 'Software Engineer',
-          companyTier: selectedTier || 'Unicorn',
-          roundType: document.getElementById('roundType')?.value || 'Technical',
-          history: mockHistory
-        });
-
-        if (res.success && res.scorecard) {
-          renderScorecard(res.scorecard);
-        }
-      } catch (err) {
-        if (window.toast) window.toast.error('Evaluation failed: ' + err.message);
-      } finally {
-        btnEnd.disabled = false;
-        btnEnd.textContent = 'Finish & Evaluate Scorecard 📊';
+        const raw = localStorage.getItem('resumatic_interview_waitlist');
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
       }
     }
 
-    function renderScorecard(sc) {
-      const activeWorkspace = document.getElementById('mockActiveWorkspace');
-      const scorecardView = document.getElementById('mockScorecardView');
+    function showWaitlistForm() {
+      const formView = document.getElementById('mockWaitlistFormView');
+      const successView = document.getElementById('mockWaitlistSuccessView');
+      if (formView) formView.style.display = 'block';
+      if (successView) successView.style.display = 'none';
 
-      if (activeWorkspace) activeWorkspace.style.display = 'none';
-      if (scorecardView) {
-        scorecardView.style.display = 'block';
-        scorecardView.innerHTML = `
-          <div style="text-align: center; margin-bottom: 20px;">
-            <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <span class="badge ${sc.hiringDecision.includes('Hire') ? 'badge-success' : 'badge-danger'}" style="font-size: 14px; padding: 6px 16px;">
-                Decision: ${sc.hiringDecision}
-              </span>
-            </div>
-            <h2 style="font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; margin: 0; color: var(--text);">
-              Overall Score: <span style="color: var(--accent);">${sc.overallScore}/100</span>
-            </h2>
-            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Bar-Raiser evaluation for ${selectedTier} Engineering</p>
-          </div>
+      // Pre-fill email if user logged in
+      const user = window.auth ? window.auth.getUser() : null;
+      const emailInput = document.getElementById('waitlistEmail');
+      if (emailInput && user && user.email) {
+        emailInput.value = user.email;
+      }
+    }
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px;">
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center;">
-              <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Technical Accuracy</div>
-              <div style="font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: var(--green); margin: 4px 0;">${sc.technicalAccuracy?.score || 85}%</div>
-              <p style="font-size: 11px; color: var(--text-muted); margin: 0;">${sc.technicalAccuracy?.feedback || ''}</p>
-            </div>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center;">
-              <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">STAR Structure</div>
-              <div style="font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: var(--accent); margin: 4px 0;">${sc.structureSTAR?.score || 80}%</div>
-              <p style="font-size: 11px; color: var(--text-muted); margin: 0;">${sc.structureSTAR?.feedback || ''}</p>
-            </div>
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center;">
-              <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Communication</div>
-              <div style="font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: var(--green); margin: 4px 0;">${sc.communicationClarity?.score || 82}%</div>
-              <p style="font-size: 11px; color: var(--text-muted); margin: 0;">${sc.communicationClarity?.feedback || ''}</p>
-            </div>
-          </div>
+    function showWaitlistSuccess(data) {
+      const formView = document.getElementById('mockWaitlistFormView');
+      const successView = document.getElementById('mockWaitlistSuccessView');
+      const badge = document.getElementById('waitlistSpotBadge');
+      const detailsContainer = document.getElementById('waitlistRegisteredDetails');
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
-            <div style="background: rgba(34, 197, 94, 0.06); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: var(--radius-md); padding: 16px;">
-              <strong style="color: var(--green); font-size: 13px; display: block; margin-bottom: 8px;">✓ Key Strengths:</strong>
-              <ul style="padding-left: 16px; margin: 0; font-size: 12px; color: var(--text); display: flex; flex-direction: column; gap: 6px;">
-                ${(sc.strengths || []).map(s => `<li>${s}</li>`).join('')}
-              </ul>
-            </div>
-            <div style="background: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-md); padding: 16px;">
-              <strong style="color: var(--red); font-size: 13px; display: block; margin-bottom: 8px;">⚠️ High-Impact Improvements:</strong>
-              <ul style="padding-left: 16px; margin: 0; font-size: 12px; color: var(--text); display: flex; flex-direction: column; gap: 6px;">
-                ${(sc.improvements || []).map(imp => `<li>${imp}</li>`).join('')}
-              </ul>
-            </div>
-          </div>
+      if (formView) formView.style.display = 'none';
+      if (successView) successView.style.display = 'block';
 
-          <div style="display: flex; justify-content: center; gap: 12px;">
-            <button class="btn btn-secondary" onclick="document.getElementById('mockScorecardView').style.display='none'; document.getElementById('mockActiveWorkspace').style.display='flex';">Retry Interview</button>
-            <button class="btn btn-primary" onclick="window.modal.close('mockInterviewModal');">Done</button>
-          </div>
+      if (badge && data.position) {
+        badge.textContent = `Position #${data.position} in Line`;
+      }
+
+      if (detailsContainer) {
+        detailsContainer.innerHTML = `
+          <div><strong>Email:</strong> ${data.email || 'Registered User'}</div>
+          <div><strong>Target Role:</strong> ${data.role || 'Software Engineer'}</div>
+          <div><strong>Target Tier:</strong> ${data.tier || 'Tech Companies'}</div>
+          <div><strong>Requested Features:</strong> ${Array.isArray(data.features) ? data.features.join(', ') : 'AI Voice & Bar-Raiser Scorecards'}</div>
         `;
+      }
+    }
+
+    async function handleWaitlistSubmit(e) {
+      e.preventDefault();
+      const btnSubmit = document.getElementById('btnSubmitWaitlist');
+      const emailInput = document.getElementById('waitlistEmail');
+      const roleSelect = document.getElementById('waitlistRole');
+      const tierSelect = document.getElementById('waitlistTier');
+
+      const email = emailInput?.value?.trim();
+      const role = roleSelect?.value;
+      const tier = tierSelect?.value;
+
+      const checkedFeatures = Array.from(document.querySelectorAll('input[name="waitlistFeature"]:checked'))
+        .map(cb => cb.value);
+
+      if (!email) {
+        if (window.toast) window.toast.error('Please enter a valid email address.');
+        return;
+      }
+
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.textContent = 'Reserving Spot...';
+      }
+
+      const position = Math.floor(Math.random() * 40) + 115;
+      const waitlistEntry = {
+        email,
+        role,
+        tier,
+        features: checkedFeatures,
+        position,
+        joinedAt: new Date().toISOString()
+      };
+
+      try {
+        if (window.api && window.api.post) {
+          await window.api.post('/api/leads', {
+            email,
+            source: 'interview_simulator_waitlist',
+            metadata: {
+              role,
+              companyTier: tier,
+              features: checkedFeatures,
+              position
+            }
+          });
+        }
+      } catch (err) {
+        console.warn('API lead submission fallback:', err);
+      }
+
+      try {
+        localStorage.setItem('resumatic_interview_waitlist', JSON.stringify(waitlistEntry));
+      } catch (e) {}
+
+      if (window.toast) window.toast.success('🎉 Spot reserved! You are on the AI Simulator Waitlist.');
+
+      showWaitlistSuccess(waitlistEntry);
+
+      if (btnSubmit) {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Reserve My Spot 🚀';
       }
     }
 

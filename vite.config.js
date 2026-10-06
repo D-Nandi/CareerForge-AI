@@ -6,10 +6,24 @@ export default defineConfig({
   server: {
     port: 3000,
     open: '/preview.html',
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin-allow-popups',
+    },
     proxy: {
       '/api': {
         target: 'http://localhost:5000',
         changeOrigin: true,
+        configure: (proxy, _options) => {
+          proxy.on('error', (err, _req, res) => {
+            if (!res.headersSent) {
+              res.writeHead(502, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({
+                success: false,
+                message: 'Backend API server is not running on port 5000. Please start it with: npm run dev or npm run dev:server'
+              }));
+            }
+          });
+        },
       },
     },
   },

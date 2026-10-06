@@ -132,34 +132,6 @@ em { font-style: italic; color: var(--accent); }
 .header-step-label { font-size: 13px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.03em; }
 
 /* ── THEME TOGGLE (shared) ── */
-.theme-toggle {
-  display: flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-  position: relative;
-  color: var(--text-muted);
-  flex-shrink: 0;
-}
-.theme-toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: scale(1.08);
-  box-shadow: 0 0 12px var(--accent-glow);
-}
-.theme-toggle svg {
-  width: 16px; height: 16px;
-  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.2s;
-}
-.theme-toggle .icon-sun,
-.theme-toggle .icon-moon { position: absolute; }
-.theme-toggle .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.5); }
-.theme-toggle .icon-sun  { opacity: 1; transform: rotate(0) scale(1); }
-[data-theme="dark"] .theme-toggle .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
-[data-theme="dark"] .theme-toggle .icon-sun  { opacity: 0; transform: rotate(90deg) scale(0.5); }
 
 /* ── PROGRESS ── */
 .progress-wrap {
@@ -1200,4 +1172,10 @@ input.error, textarea.error { border-color: var(--red); }
 }
 .arw-full-audit-link:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .arw-breakdown {
+    grid-template-columns: 1fr;
+  }
 }
