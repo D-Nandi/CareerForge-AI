@@ -13,9 +13,9 @@
   --card-bg:              #ffffff;
 
   /* Typography / Text Colors */
-  --text:                 #1a1d26;
-  --text-muted:           #6b7280;
-  --text-sub:             #8b8ba0;
+  --text:                 #111827;
+  --text-muted:           #475467;
+  --text-sub:             #535868;
 
   /* Borders & Dividers */
   --border:               rgba(0, 0, 0, 0.06);
@@ -58,8 +58,8 @@
 
   /* Typography / Text Colors */
   --text:                 #f0eeff;
-  --text-muted:           #8b8ba0;
-  --text-sub:             #7a8196;
+  --text-muted:           #9ea2b6;
+  --text-sub:             #8b90a4;
 
   /* Borders & Dividers */
   --border:               rgba(255, 255, 255, 0.07);

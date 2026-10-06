@@ -1,0 +1,15 @@
+# robots.txt for Resumatic (https://resumatic.ai)
+User-agent: *
+Allow: /
+
+# Private, auth & internal utility routes
+Disallow: /growth-hub.html
+Disallow: /ad-landing.html
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /r.html
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://resumatic.ai/sitemap.xml

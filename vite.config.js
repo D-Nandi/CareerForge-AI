@@ -1,8 +1,79 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import fs from 'fs';
+import path from 'path';
+
+function copyStaticAssetsPlugin() {
+  return {
+    name: 'copy-client-static-assets',
+    closeBundle() {
+      const srcDir = resolve(__dirname, 'client');
+      const distDir = resolve(__dirname, 'dist');
+      if (!fs.existsSync(distDir)) return;
+
+      const filesToCopy = [
+        'theme.js',
+        'main.js',
+        'analytics.js',
+        'blog-data.js',
+        'roles-data.js',
+        'pricing-script.js',
+        'salary-benchmark-script.js',
+        'preview-script.js',
+        'pdf-renderer.js',
+        'ai-enhance.js',
+        'resume-import.js',
+        'dashboard-script.js',
+        'form-script.js',
+        'favicon.png',
+        'logo.png',
+        'og-preview.png',
+        'robots.txt',
+        'sitemap.xml',
+      ];
+
+      for (const file of filesToCopy) {
+        const srcFile = path.join(srcDir, file);
+        const distFile = path.join(distDir, file);
+        if (fs.existsSync(srcFile)) {
+          fs.copyFileSync(srcFile, distFile);
+        }
+      }
+
+      // Also copy js/ directory if it exists
+      const jsSrcDir = path.join(srcDir, 'js');
+      const jsDistDir = path.join(distDir, 'js');
+      if (fs.existsSync(jsSrcDir)) {
+        if (!fs.existsSync(jsDistDir)) fs.mkdirSync(jsDistDir, { recursive: true });
+        for (const item of fs.readdirSync(jsSrcDir)) {
+          const itemSrc = path.join(jsSrcDir, item);
+          if (fs.statSync(itemSrc).isFile()) {
+            fs.copyFileSync(itemSrc, path.join(jsDistDir, item));
+          }
+        }
+      }
+    },
+    transformIndexHtml: {
+      order: 'post',
+      handler(html) {
+        // Preload the main compiled CSS bundle right after viewport to eliminate critical request chaining delay
+        const cssMatch = html.match(/<link rel="stylesheet"[^>]*href="([^"]+\.css)"[^>]*>/);
+        if (cssMatch && cssMatch[1]) {
+          const cssHref = cssMatch[1];
+          const preloadTag = `\n  <link rel="preload" as="style" href="${cssHref}">`;
+          if (!html.includes(`as="style" href="${cssHref}"`)) {
+            return html.replace(/(<meta name="viewport"[^>]*>)/i, `$1${preloadTag}`);
+          }
+        }
+        return html;
+      }
+    }
+  };
+}
 
 export default defineConfig({
   root: 'client',
+  plugins: [copyStaticAssetsPlugin()],
   server: {
     port: 3000,
     open: '/preview.html',
