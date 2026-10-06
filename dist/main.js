@@ -1,9 +1,14 @@
-// ── NAVBAR SCROLL ──
+// ── NAVBAR SCROLL (Passive + state-guarded to avoid style recalculation) ──
 const navbar = document.getElementById('navbar');
 if (navbar) {
+  let isScrolled = false;
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 20);
-  });
+    const shouldBeScrolled = window.scrollY > 20;
+    if (shouldBeScrolled !== isScrolled) {
+      isScrolled = shouldBeScrolled;
+      navbar.classList.toggle('scrolled', isScrolled);
+    }
+  }, { passive: true });
 }
 
 // ── HAMBURGER & MOBILE MENU (Coordinated with theme.js) ──
@@ -30,28 +35,53 @@ if (hamburger && mobileMenu) {
   });
 }
 
-// ── SCROLL REVEAL ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+// ── SCROLL REVEAL (Deferred to idle/frame, zero forced reflow) ──
+function initScrollReveal() {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-document.querySelectorAll('.feature-card, .step, .stat').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(28px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(el);
-});
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+  // Batch DOM mutation in animation frame to eliminate layout thrashing
+  requestAnimationFrame(() => {
+    const targets = document.querySelectorAll('.feature-card, .step, .stat');
+    targets.forEach(el => {
+      el.classList.add('reveal-init');
+      observer.observe(el);
+    });
+  });
+}
+
+// Schedule after initial paint so FCP & LCP are never blocked
+if (document.readyState === 'complete') {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(initScrollReveal, { timeout: 1000 });
+  } else {
+    setTimeout(initScrollReveal, 200);
+  }
+} else {
+  window.addEventListener('load', () => {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initScrollReveal, { timeout: 1000 });
+    } else {
+      setTimeout(initScrollReveal, 200);
+    }
+  }, { once: true });
+}
 
 // ── SMOOTH SCROLL ──
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
-    const target = document.querySelector(anchor.getAttribute('href'));
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });

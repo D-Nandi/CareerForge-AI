@@ -28,10 +28,9 @@
 
   function applyTheme(theme) {
     const finalTheme = theme === 'dark' ? 'dark' : 'light';
-    if (finalTheme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    if (current !== finalTheme) {
+      document.documentElement.setAttribute('data-theme', finalTheme);
     }
 
     try {
@@ -39,11 +38,16 @@
       localStorage.setItem('resumatic-theme', finalTheme);
     } catch (e) {}
 
-    updateToggleAria(finalTheme);
+    if (document.readyState !== 'loading') {
+      updateToggleAria(finalTheme);
+    }
   }
 
-  // 1. Apply immediately in head / execution start to prevent flash
-  applyTheme(getInitialTheme());
+  // 1. Only apply if differs from initial head inline script to avoid style invalidation
+  const initialTheme = getInitialTheme();
+  if ((document.documentElement.getAttribute('data-theme') || 'light') !== initialTheme) {
+    applyTheme(initialTheme);
+  }
 
   // 2. Global Delegated Click Handler for Theme Toggles
   document.addEventListener('click', function (e) {
