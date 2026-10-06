@@ -492,22 +492,22 @@
 
     const tierBadgeMeta = {
       'it_services': {
-        badgeLabel: 'IT Services & Mass Recruiters',
+        badgeLabel: 'IT Services',
         badgeBg: 'rgba(234, 179, 8, 0.15)',
         badgeColor: '#b45309'
       },
       'product_mid': {
-        badgeLabel: 'Mid-Tier Product & Enterprise SaaS',
+        badgeLabel: 'Enterprise SaaS',
         badgeBg: 'rgba(59, 130, 246, 0.15)',
         badgeColor: '#2563eb'
       },
       'unicorn': {
-        badgeLabel: 'High-Growth Tech Unicorns & Startups',
+        badgeLabel: 'Tech Unicorns',
         badgeBg: 'rgba(108, 92, 231, 0.15)',
         badgeColor: '#6c5ce7'
       },
       'faang': {
-        badgeLabel: 'Tier-1 Tech MNCs & FAANG',
+        badgeLabel: 'Tier-1 & FAANG',
         badgeBg: 'rgba(139, 92, 246, 0.15)',
         badgeColor: '#7c3aed'
       }
@@ -524,6 +524,8 @@
         sentimentClass = 'sentiment-aggressive';
       } else if (sentiment.includes('active') || sentiment.includes('high')) {
         sentimentClass = 'sentiment-active';
+      } else if (sentiment.includes('moderate')) {
+        sentimentClass = 'sentiment-moderate';
       }
 
       const parts = (t.tierName || '').split('(');
@@ -531,7 +533,7 @@
       const companyExamples = parts[1] ? parts[1].replace(')', '').trim() : '';
 
       const meta = tierBadgeMeta[tKey] || {
-        badgeLabel: categoryName,
+        badgeLabel: categoryName.length > 18 ? categoryName.substring(0, 15) + '…' : categoryName,
         badgeBg: 'rgba(108, 92, 231, 0.12)',
         badgeColor: 'var(--accent)'
       };

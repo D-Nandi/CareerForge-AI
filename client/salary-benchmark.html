@@ -119,12 +119,13 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
-      padding: 22px;
+      padding: 20px 18px;
       display: flex;
       flex-direction: column;
       transition: transform var(--transition-fast), border-color var(--transition-fast);
       box-shadow: var(--shadow-sm);
       overflow: hidden;
+      min-width: 0;
     }
 
     .salary-tier-card:hover {
@@ -144,6 +145,15 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tier-card-header .badge {
+      max-width: 62%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
     }
 
     .tier-card-title {
@@ -266,6 +276,7 @@
       color: var(--blue);
     }
 
+    .sentiment-moderate,
     .sentiment-selective {
       background: rgba(234, 179, 8, 0.15);
       color: var(--yellow);
