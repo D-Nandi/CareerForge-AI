@@ -1,5 +1,5 @@
 /**
- * CareerForge AI — Authentication State Manager
+ * CareerNest — Authentication State Manager
  * Exposed globally as `window.auth`
  */
 (function () {

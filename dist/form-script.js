@@ -173,7 +173,7 @@ function persistState() {
   saveAllSteps();
   if (typeof syncLangProficiencyArray === 'function') syncLangProficiencyArray();
   try {
-    localStorage.setItem('resumatic_state', JSON.stringify({
+    const serialized = JSON.stringify({
       personal:        state.personal,
       experience:      state.experience,
       projects:        state.projects,
@@ -183,7 +183,10 @@ function persistState() {
       jobDescription:  state.jobDescription,
       tone:            state.tone,
       deletedSegments: state.deletedSegments || {},
-    }));
+    });
+    localStorage.setItem('careernest_state', serialized);
+    localStorage.setItem('careerforge_state', serialized);
+    localStorage.setItem('resumatic_state', serialized);
   } catch (e) {
     console.warn('Could not save to localStorage:', e);
   }
@@ -960,10 +963,10 @@ function initPrefill() {
 function loadFromStorage() {
   let saved = null;
   try {
-    const raw = localStorage.getItem('resumatic_state');
+    const raw = localStorage.getItem('careernest_state') || localStorage.getItem('careerforge_state') || localStorage.getItem('resumatic_state');
     if (raw) saved = JSON.parse(raw);
   } catch (e) {
-    console.warn('Could not parse resumatic_state:', e);
+    console.warn('Could not parse saved resume state:', e);
   }
   if (!saved) return false;
 

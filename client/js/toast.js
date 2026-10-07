@@ -1,5 +1,5 @@
 /**
- * CareerForge AI — Toast Notification System
+ * CareerNest — Toast Notification System
  * Exposed globally as `window.toast`
  */
 (function () {

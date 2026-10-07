@@ -1,5 +1,5 @@
 /**
- * CareerForge AI — API Client Utility
+ * CareerNest — API Client Utility
  * Exposed globally as `window.api`
  */
 (function () {

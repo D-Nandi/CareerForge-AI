@@ -6,11 +6,11 @@
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'careerforge-theme';
+  const STORAGE_KEY = 'careernest-theme';
 
   function getInitialTheme() {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('resumatic-theme');
+      const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('careerforge-theme') || localStorage.getItem('resumatic-theme');
       if (saved === 'dark' || saved === 'light') return saved;
     } catch (e) {}
     return 'light'; // Rule: default is ALWAYS light
@@ -35,6 +35,7 @@
 
     try {
       localStorage.setItem(STORAGE_KEY, finalTheme);
+      localStorage.setItem('careerforge-theme', finalTheme);
       localStorage.setItem('resumatic-theme', finalTheme);
     } catch (e) {}
 

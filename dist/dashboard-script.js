@@ -713,7 +713,7 @@ function renderDashboardSubscription(subData) {
       planBadge.style.color = 'var(--accent)';
       planBadge.style.borderColor = 'rgba(139, 92, 246, 0.3)';
     }
-    planTitle.textContent = 'CareerForge Pro';
+    planTitle.textContent = 'CareerNest Pro';
     planDesc.textContent = 'Unlimited ATS scans, full 4-phase career roadmap, and 15+ curated interview question bank.';
     if (btnPlanAction) {
       btnPlanAction.textContent = 'Upgrade to Career+ →';
@@ -871,7 +871,7 @@ async function loadReferralData() {
         };
       }
 
-      const shareText = encodeURIComponent(`Hey! I'm using CareerForge AI to benchmark my tech compensation, check my ATS score, and prep for top SDE interviews. Use my invite link to get 14 days of Pro free: ${data.referralLink}`);
+      const shareText = encodeURIComponent(`Hey! I'm using CareerNest to benchmark my tech compensation, check my ATS score, and prep for top SDE interviews. Use my invite link to get 14 days of Pro free: ${data.referralLink}`);
       if (btnWA) btnWA.href = `https://api.whatsapp.com/send?text=${shareText}`;
       if (btnLI) btnLI.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(data.referralLink)}`;
     }

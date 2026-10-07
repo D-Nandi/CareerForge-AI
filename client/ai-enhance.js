@@ -72,8 +72,9 @@
     if (jdEl && jdEl.value && jdEl.value.trim().length > 20) {
       return jdEl.value.trim();
     }
-    if (window.resumaticState && window.resumaticState.jobDescription) {
-      const stateJD = window.resumaticState.jobDescription.jobDescription;
+    const appState = window.careerNestState || window.careerforgeState || window.resumaticState;
+    if (appState && appState.jobDescription) {
+      const stateJD = appState.jobDescription.jobDescription;
       if (stateJD && stateJD.trim().length > 20) return stateJD.trim();
     }
     return '';

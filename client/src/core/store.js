@@ -7,6 +7,7 @@
 import { debounce } from '../utils/dom.js';
 
 const STORAGE_KEYS = [
+  'careernest_resume_data',
   'careerforge_resume_data',
   'resumatic_resume_data',
   'resumatic_form_data'

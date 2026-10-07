@@ -1,5 +1,5 @@
 /**
- * CareerForge AI — Modal Management System
+ * CareerNest — Modal Management System
  * Exposed globally as `window.modal`
  */
 (function () {

@@ -1,5 +1,5 @@
 /**
- * CareerForge AI — Paywall & Upgrade Modal System
+ * CareerNest — Paywall & Upgrade Modal System
  * Exposed globally as `window.paywall`
  */
 (function () {
@@ -36,7 +36,7 @@
 
           <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
-              <strong id="cfPaywallTierName" style="color: var(--text); font-size: 0.95rem;">CareerForge Pro</strong>
+              <strong id="cfPaywallTierName" style="color: var(--text); font-size: 0.95rem;">CareerNest Pro</strong>
               <span id="cfPaywallPrice" style="font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; color: var(--accent);">₹299 <small style="font-size: 0.75rem; font-weight: 500; color: var(--text-muted);">/ month</small></span>
             </div>
             <ul style="font-size: 0.8rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px; padding-left: 18px; list-style: disc;">
@@ -84,7 +84,7 @@
     } else {
       tierBadge.textContent = 'Pro Tier';
       tierBadge.className = 'badge badge-primary';
-      tierName.textContent = 'CareerForge Pro';
+      tierName.textContent = 'CareerNest Pro';
       priceEl.innerHTML = '₹299 <small style="font-size: 0.75rem; font-weight: 500; color: var(--text-muted);">/ month</small>';
       f1.textContent = 'Full ATS In-Depth Diagnosis & Checklist';
       f2.textContent = 'Targeted Keyword Gap Recommendations';

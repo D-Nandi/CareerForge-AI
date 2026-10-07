@@ -33,15 +33,16 @@
     } catch(e) {}
     
     // Dispatch custom event for debug viewers
+    window.dispatchEvent(new CustomEvent('careernest_track', { detail: event }));
     window.dispatchEvent(new CustomEvent('resumatic_track', { detail: event }));
-    console.log(`[Resumatic Analytics] ${eventName}`, event);
+    console.log(`[CareerNest Analytics] ${eventName}`, event);
   }
 
   // Auto-track page view
   trackEvent('page_view', { title: document.title });
 
   // Expose global tracker
-  window.resumaticAnalytics = {
+  const tracker = {
     track: trackEvent,
     getEvents: getEvents,
     getFunnelStats: function() {
@@ -53,4 +54,6 @@
       return counts;
     }
   };
+  window.careerNestAnalytics = tracker;
+  window.resumaticAnalytics = tracker;
 })();

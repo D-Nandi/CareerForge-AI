@@ -1,5 +1,5 @@
 /**
- * CareerForge AI — Firebase Client Configuration & Auth Helpers
+ * CareerNest — Firebase Client Configuration & Auth Helpers
  * Uses Firebase Modular SDK v10 over CDN
  */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";

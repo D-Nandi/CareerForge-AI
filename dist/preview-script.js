@@ -1618,7 +1618,7 @@ function openViralModal() {
     shareableLinkInput.value = `${window.location.origin}/r.html?id=${slug}`;
   }
   if (referralCodeInput) {
-    referralCodeInput.value = `https://resumatic.ai/?ref=${fName.toUpperCase()}_PRO`;
+    referralCodeInput.value = `https://careernest.ai/?ref=${fName.toUpperCase()}_PRO`;
   }
 
   viralModal.classList.add('visible');
@@ -1655,13 +1655,13 @@ if (btnSendBackup) {
     setTimeout(() => {
       // Save to localStorage for demo
       try {
-        localStorage.setItem('resumatic_lead_email', email);
+        localStorage.setItem('careernest_lead_email', email);
       } catch(e) {}
       
       btnSendBackup.textContent = 'Sent ✓';
       if (backupFeedback) {
         backupFeedback.style.display = 'block';
-        backupFeedback.textContent = `✅ Backup and 2025 Interview Guide sent to ${email}!`;
+        backupFeedback.textContent = `✅ Backup and Career Interview Guide sent to ${email}!`;
       }
     }, 600);
   });
@@ -1681,8 +1681,8 @@ if (btnCopyShareLink) {
 // Share on LinkedIn
 if (btnShareLinkedIn) {
   btnShareLinkedIn.addEventListener('click', () => {
-    const shareUrl = encodeURIComponent('https://resumatic.ai');
-    const text = encodeURIComponent("Just revamped my resume with @Resumatic AI! Check out their ATS-certified builder and generate tailored cover letters in seconds:");
+    const shareUrl = encodeURIComponent('https://careernest.ai');
+    const text = encodeURIComponent("Just revamped my resume with CareerNest! Check out their ATS-certified builder and career toolkit:");
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`, '_blank');
   });
 }
@@ -1690,8 +1690,8 @@ if (btnShareLinkedIn) {
 // Share on Twitter/X
 if (btnShareTwitter) {
   btnShareTwitter.addEventListener('click', () => {
-    const text = encodeURIComponent("Just built my ATS-optimized resume in under 2 minutes with @ResumaticAI! 🔥 Generate tailored resumes and cover letters for free:");
-    const url = encodeURIComponent('https://resumatic.ai');
+    const text = encodeURIComponent("Just built my ATS-optimized resume in under 2 minutes with @CareerNest! 🔥 Build resumes, check ATS scores, and prep for interviews:");
+    const url = encodeURIComponent('https://careernest.ai');
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
   });
 }
@@ -1699,7 +1699,7 @@ if (btnShareTwitter) {
 // Copy Referral Code
 if (btnCopyRefCode) {
   btnCopyRefCode.addEventListener('click', () => {
-    const refLink = referralCodeInput?.value || 'https://resumatic.ai/?ref=PRO_INVITE';
+    const refLink = referralCodeInput?.value || 'https://careernest.ai/?ref=PRO_INVITE';
     navigator.clipboard.writeText(refLink).then(() => {
       btnCopyRefCode.textContent = 'Invite Copied ✓';
       setTimeout(() => { btnCopyRefCode.textContent = 'Copy Invite'; }, 2000);

@@ -1,4 +1,4 @@
-# robots.txt for Resumatic (https://resumatic.ai)
+# robots.txt for CareerNest (https://careernest.ai)
 User-agent: *
 Allow: /
 
@@ -12,4 +12,5 @@ Disallow: /r.html
 Disallow: /api/
 
 # Sitemaps
-Sitemap: https://resumatic.ai/sitemap.xml
+Sitemap: https://careernest.ai/sitemap.xml
+

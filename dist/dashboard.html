@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preload" as="style" href="/assets/dashboard-Ck9PHntn.css">
-  <title>CareerForge AI — Dashboard</title>
+  <title>CareerNest — Dashboard</title>
   <meta name="description" content="Manage your saved resumes, career roadmaps, interview prep history, and subscription in one place." />
   <meta name="robots" content="noindex, nofollow" />
   <!-- Theme: Instant theme setter prevents flash without network roundtrip -->
   <script>
-    (function(){try{var s=localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+    (function(){try{var s=localStorage.getItem('careernest-theme')||localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
   </script>
 
   <!-- Fonts: Non-render-blocking async load -->
@@ -19,7 +19,14 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" media="print" onload="this.media='all'" />
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
-  </noscript>
+  </noscript>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon-B4-tUKZN.svg" />
+  <link rel="icon" type="image/png" href="/assets/favicon-D-6Y1rU6.png" />
+  <link rel="shortcut icon" href="/assets/favicon-D-6Y1rU6.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/favicon-D-6Y1rU6.png" />
+
   <link rel="stylesheet" crossorigin href="/assets/dashboard-Ck9PHntn.css">
   <link rel="stylesheet" crossorigin href="/assets/index-zt68Ayfi.css">
 </head>
@@ -31,8 +38,8 @@
 
   <!-- HEADER -->
   <header class="dash-header">
-    <a href="index.html" class="nav-logo">
-      <span class="logo-mark">CF</span><span class="logo-text">CareerForge</span>
+    <a href="index.html" class="nav-logo" aria-label="CareerNest Homepage">
+      <span class="logo-mark">C</span><span class="logo-text">areerNest</span>
     </a>
     <nav class="dash-nav">
       <a href="dashboard.html" class="dash-nav-link active">Dashboard</a>
@@ -210,7 +217,7 @@
           <div>
             <span style="display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; background: var(--surface2); color: var(--accent); border: 1px solid var(--border);">🎁 Peer Referral Engine</span>
             <h3 style="font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin-top: 6px;">Invite Fellow Engineers — Earn Complimentary Pro Months</h3>
-            <p style="font-size: 13px; color: var(--text-muted); max-width: 600px; margin-top: 4px;">Give your peers 14 days of free Pro access. Every peer who signs up through your link automatically grants you 1 free month of CareerForge Pro.</p>
+            <p style="font-size: 13px; color: var(--text-muted); max-width: 600px; margin-top: 4px;">Give your peers 14 days of free Pro access. Every peer who signs up through your link automatically grants you 1 free month of CareerNest Pro.</p>
           </div>
           <div style="text-align: right;">
             <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Your Rewards</div>
@@ -219,10 +226,10 @@
         </div>
 
         <div style="display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap;">
-          <input type="text" id="referralLinkInput" readonly value="https://careerforge.ai/signup.html?ref=CF-USER-PRO" style="flex: 1; min-width: 260px; font-size: 13px; padding: 8px 12px; border-radius: var(--radius); background: var(--surface2); border: 1px solid var(--border); color: var(--text);" />
+          <input type="text" id="referralLinkInput" readonly value="https://careernest.ai/signup.html?ref=CN-USER-PRO" style="flex: 1; min-width: 260px; font-size: 13px; padding: 8px 12px; border-radius: var(--radius); background: var(--surface2); border: 1px solid var(--border); color: var(--text);" />
           <button class="btn-new" id="btnCopyReferral" style="padding: 8px 16px;">📋 Copy Link</button>
-          <a href="https://api.whatsapp.com/send?text=Join%20me%20on%20Resumatic%20to%20build%20ATS%20resumes%20https%3A%2F%2Fresumatic.ai" target="_blank" rel="noopener noreferrer" id="btnShareWhatsApp" class="btn-new" style="background: #25D366; text-decoration: none; padding: 8px 16px; box-shadow: none;">💬 WhatsApp</a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fresumatic.ai" target="_blank" rel="noopener noreferrer" id="btnShareLinkedIn" class="btn-new" style="background: #0A66C2; text-decoration: none; padding: 8px 16px; box-shadow: none;">💼 LinkedIn</a>
+          <a href="https://api.whatsapp.com/send?text=Join%20me%20on%20CareerNest%20to%20build%20ATS%20resumes%20https%3A%2F%2Fcareernest.ai" target="_blank" rel="noopener noreferrer" id="btnShareWhatsApp" class="btn-new" style="background: #25D366; text-decoration: none; padding: 8px 16px; box-shadow: none;">💬 WhatsApp</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcareernest.ai" target="_blank" rel="noopener noreferrer" id="btnShareLinkedIn" class="btn-new" style="background: #0A66C2; text-decoration: none; padding: 8px 16px; box-shadow: none;">💼 LinkedIn</a>
         </div>
       </div>
     </div>
