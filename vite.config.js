@@ -25,6 +25,7 @@ function copyStaticAssetsPlugin() {
         'resume-import.js',
         'dashboard-script.js',
         'form-script.js',
+        'favicon.ico',
         'favicon.svg',
         'favicon.png',
         'logo.png',
