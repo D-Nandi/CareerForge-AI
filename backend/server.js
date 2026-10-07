@@ -29,8 +29,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// ── STATIC FILES ──
-app.use(express.static(path.join(__dirname, '../client'), { extensions: ['html'] }));
+// ── STATIC & SEO ROUTES ──
+const fs = require('fs');
+const staticDir = fs.existsSync(path.join(__dirname, '../dist'))
+  ? path.join(__dirname, '../dist')
+  : path.join(__dirname, '../client');
+
+app.get('/robots.txt', (req, res) => {
+  const robotsFile = path.join(staticDir, 'robots.txt');
+  res.type('text/plain').set('Cache-Control', 'public, max-age=86400, s-maxage=86400').sendFile(robotsFile);
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  const sitemapFile = path.join(staticDir, 'sitemap.xml');
+  res.type('application/xml').set('Cache-Control', 'public, max-age=86400, s-maxage=86400').sendFile(sitemapFile);
+});
+
+app.use(express.static(staticDir, { extensions: ['html'], maxAge: '1d' }));
 
 // ── ROUTES ──
 app.use('/api/auth',      authRoutes);

@@ -12,5 +12,6 @@ Disallow: /r.html
 Disallow: /api/
 
 # Sitemaps
+Sitemap: https://careernest.taqnik.in/sitemap.xml
 Sitemap: https://careernest.ai/sitemap.xml
 

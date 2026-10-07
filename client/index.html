@@ -40,8 +40,7 @@
     (function () { try { var s = localStorage.getItem('careernest-theme') || localStorage.getItem('careerforge-theme') || localStorage.getItem('resumatic-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { } })();
   </script>
 
-  <!-- Preload Critical CSS to avoid chaining latency -->
-  <link rel="preload" href="style.css" as="style" />
+  <!-- Master Stylesheet (inlined during build to eliminate critical request chains) -->
   <link rel="stylesheet" href="style.css" />
 
   <!-- Fonts: Non-render-blocking async load with preconnect -->

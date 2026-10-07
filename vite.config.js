@@ -56,14 +56,38 @@ function copyStaticAssetsPlugin() {
     },
     transformIndexHtml: {
       order: 'post',
-      handler(html) {
-        // Preload the main compiled CSS bundle right after viewport to eliminate critical request chaining delay
-        const cssMatch = html.match(/<link rel="stylesheet"[^>]*href="([^"]+\.css)"[^>]*>/);
-        if (cssMatch && cssMatch[1]) {
-          const cssHref = cssMatch[1];
-          const preloadTag = `\n  <link rel="preload" as="style" href="${cssHref}">`;
-          if (!html.includes(`as="style" href="${cssHref}"`)) {
-            return html.replace(/(<meta name="viewport"[^>]*>)/i, `$1${preloadTag}`);
+      handler(html, ctx) {
+        // Target index.html to eliminate render-blocking CSS critical request chains
+        const isIndexPage =
+          !ctx.path ||
+          ctx.path === '/' ||
+          ctx.path === '/index.html' ||
+          (ctx.filename && path.basename(ctx.filename) === 'index.html');
+
+        if (isIndexPage && ctx && ctx.bundle) {
+          let styleCssAsset = null;
+          let styleCssHref = null;
+
+          for (const [fileName, file] of Object.entries(ctx.bundle)) {
+            if (fileName.endsWith('.css') && fileName.includes('style-')) {
+              styleCssAsset = file;
+              styleCssHref = `/${fileName}`;
+              break;
+            }
+          }
+
+          if (styleCssAsset && typeof styleCssAsset.source === 'string') {
+            const inlineStyleTag = `<style id="critical-theme-style">\n${styleCssAsset.source}\n</style>`;
+            const prefetchTag = `\n  <link rel="prefetch" href="${styleCssHref}" as="style">`;
+
+            // Strip any render-blocking <link rel="stylesheet"> for the main style bundle
+            html = html.replace(/<link rel="stylesheet"[^>]*href="[^"]*assets\/style-[^"]+\.css"[^>]*>/gi, '');
+            // Strip any preload tags for the style bundle
+            html = html.replace(/<link rel="preload"[^>]*href="[^"]*assets\/style-[^"]+\.css"[^>]*>/gi, '');
+
+            // Insert inline style and background prefetch into <head>
+            html = html.replace('</head>', `  ${inlineStyleTag}${prefetchTag}\n</head>`);
+            return html;
           }
         }
         return html;
