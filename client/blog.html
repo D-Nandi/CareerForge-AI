@@ -250,55 +250,178 @@
   <script src="blog-data.js"></script>
   <script>
     const grid = document.getElementById('articlesGrid');
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterContainer = document.querySelector('.template-filters');
+    const featuredCard = document.getElementById('featuredPost');
+    let allPosts = [];
+    let activeFilter = 'all';
+
+    function renderFeatured(post) {
+      if (!featuredCard) return;
+      if (!post) {
+        featuredCard.style.display = 'none';
+        return;
+      }
+      featuredCard.style.display = 'grid';
+      featuredCard.innerHTML = `
+        <div>
+          <span class="featured-badge">★ FEATURED GUIDE</span>
+          <div class="article-meta">
+            <span>${post.category || 'Article'}</span> • <span>${post.readTime || '5 min read'}</span> • <span>${post.date || ''}</span>
+          </div>
+          <h2 style="font-family: var(--font-head); font-size: 1.75rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; color: var(--text);">
+            ${post.title}
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+            ${post.summary || ''}
+          </p>
+          <a href="blog-post.html?id=${encodeURIComponent(post.slug)}" class="btn-primary">Read Full Guide →</a>
+        </div>
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
+          ${post.heroImage ? `
+            <img src="${post.heroImage}" alt="${post.title}" style="width:100%; max-height:220px; object-fit:cover; border-radius:10px; margin-bottom:14px;" onerror="this.style.display='none'" />
+          ` : `
+            <h3 style="font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 10px;">Inside this guide:</h3>
+            <ul style="padding-left: 18px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.8;">
+              <li>Key frameworks &amp; industry benchmarks</li>
+              <li>Proven strategies to accelerate callbacks</li>
+              <li>Practical step-by-step guidance</li>
+            </ul>
+          `}
+          ${post.tags && post.tags.length ? `
+            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
+              ${post.tags.map(t => `<span style="font-size:0.75rem; background:rgba(108,92,231,0.12); color:var(--accent); padding:2px 8px; border-radius:12px; font-weight:600;">#${t}</span>`).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
 
     function renderArticles(filter = 'all') {
+      activeFilter = filter;
       grid.innerHTML = '';
-      Object.values(BLOG_POSTS).forEach(post => {
-        if (filter === 'all' || post.category === filter) {
-          const card = document.createElement('div');
-          card.className = 'blog-item-card';
-          card.innerHTML = `
-            <div class="article-meta">
-              <span style="color:var(--accent); font-weight:700;">${post.category}</span> • <span>${post.readTime}</span>
+      const filtered = allPosts.filter(p => filter === 'all' || p.category === filter);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 48px; color: var(--text-muted);">
+            <p style="font-size: 1.1rem; font-weight: 600;">No articles found in "${filter}".</p>
+            <p style="font-size: 0.9rem; margin-top: 6px;">Check back soon for new guides and insights!</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(post => {
+        const card = document.createElement('div');
+        card.className = 'blog-item-card';
+        card.innerHTML = `
+          ${post.heroImage ? `
+            <div style="margin:-26px -26px 16px -26px; height:180px; overflow:hidden; border-top-left-radius:16px; border-top-right-radius:16px;">
+              <img src="${post.heroImage}" alt="${post.title}" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.style.display='none'" />
             </div>
-            <h3 style="font-family:var(--font-head); font-size:1.25rem; font-weight:700; margin-bottom:10px; line-height:1.3; color:var(--text);">
-              ${post.title}
-            </h3>
-            <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5; margin-bottom:20px; flex:1;">
-              ${post.summary}
-            </p>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--border);">
-              <span style="font-size:0.8rem; color:var(--text-muted);">By ${post.author}</span>
-              <a href="blog-post.html?slug=${post.slug}" style="color:var(--accent); font-weight:700; text-decoration:none; font-size:0.88rem;">Read →</a>
+          ` : ''}
+          <div class="article-meta">
+            <span style="color:var(--accent); font-weight:700;">${post.category || 'Article'}</span> • <span>${post.readTime || '5 min read'}</span>
+          </div>
+          <h3 style="font-family:var(--font-head); font-size:1.25rem; font-weight:700; margin-bottom:10px; line-height:1.3; color:var(--text);">
+            ${post.title}
+          </h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5; margin-bottom:20px; flex:1;">
+            ${post.summary || ''}
+          </p>
+          ${post.tags && post.tags.length ? `
+            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;">
+              ${post.tags.map(t => `<span style="font-size:0.72rem; background:rgba(108,92,231,0.08); color:var(--accent); padding:2px 6px; border-radius:10px; font-weight:600;">#${t}</span>`).join('')}
             </div>
-          `;
-          grid.appendChild(card);
-        }
+          ` : ''}
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--border);">
+            <span style="font-size:0.8rem; color:var(--text-muted);">By ${post.author}</span>
+            <a href="blog-post.html?id=${encodeURIComponent(post.slug)}" style="color:var(--accent); font-weight:700; text-decoration:none; font-size:0.88rem;">Read →</a>
+          </div>
+        `;
+        grid.appendChild(card);
       });
     }
 
-    renderArticles();
+    function setupFilterButtons(posts) {
+      if (!filterContainer) return;
+      const corePillars = ['all', 'ATS Secrets', 'Resume Writing', 'Cover Letters', 'Interview Prep', 'Career Growth'];
+      const categories = ['all'];
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderArticles(btn.dataset.cat);
+      corePillars.slice(1).forEach(pillar => {
+        if (posts.some(p => p.category === pillar) && !categories.includes(pillar)) {
+          categories.push(pillar);
+        }
       });
-    });
 
-    document.getElementById('btnSubscribeNl').addEventListener('click', () => {
-      const email = document.getElementById('nlEmail').value.trim();
-      if (!email || !/@/.test(email)) {
-        alert('Please enter a valid email.');
-        return;
+      // Add any other existing category from posts if present
+      posts.forEach(p => {
+        if (p.category && !categories.includes(p.category)) {
+          categories.push(p.category);
+        }
+      });
+
+      filterContainer.innerHTML = '';
+      categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = `filter-btn ${cat === activeFilter ? 'active' : ''}`;
+        btn.dataset.cat = cat;
+        btn.textContent = cat === 'all' ? 'All Articles' : cat;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderArticles(cat);
+        });
+        filterContainer.appendChild(btn);
+      });
+    }
+
+    async function loadBlogPosts() {
+      try {
+        const res = await fetch('/api/blog');
+        if (res.ok) {
+          const json = await res.json();
+          if (Array.isArray(json.data) && json.data.length > 0) {
+            allPosts = json.data;
+            const featured = allPosts.find(p => p.featured) || allPosts[0];
+            renderFeatured(featured);
+            setupFilterButtons(allPosts);
+            renderArticles('all');
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('API fetch failed, falling back to static BLOG_POSTS:', err);
       }
-      const fb = document.getElementById('nlFeedback');
-      fb.style.display = 'block';
-      fb.textContent = '🎉 You are subscribed! Check your inbox for your free ATS Checklist.';
-      document.getElementById('nlEmail').value = '';
-    });
+
+      // Fallback to static blog-data.js if API unavailable
+      if (typeof BLOG_POSTS !== 'undefined') {
+        allPosts = Object.values(BLOG_POSTS);
+        const featured = allPosts.find(p => p.featured) || allPosts[0];
+        renderFeatured(featured);
+        setupFilterButtons(allPosts);
+        renderArticles('all');
+      }
+    }
+
+    loadBlogPosts();
+
+    const btnSub = document.getElementById('btnSubscribeNl');
+    if (btnSub) {
+      btnSub.addEventListener('click', () => {
+        const email = document.getElementById('nlEmail').value.trim();
+        if (!email || !/@/.test(email)) {
+          alert('Please enter a valid email.');
+          return;
+        }
+        const fb = document.getElementById('nlFeedback');
+        if (fb) {
+          fb.style.display = 'block';
+          fb.textContent = '🎉 You are subscribed! Check your inbox for your free ATS Checklist.';
+        }
+        document.getElementById('nlEmail').value = '';
+      });
+    }
   </script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+/* ══════════════════════════════════════════════════════
+   CAREERFORGE AI — Master Design System Stylesheet
+   Aggregates design tokens, reset, base, and UI atoms
+   ══════════════════════════════════════════════════════ */
+
+/* 1. Design Tokens */
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing-shadows.css';
+
+/* 2. Base & Reset */
+@import './base/reset.css';
+@import './base/noise.css';
+
+/* 3. Atomic Components */
+@import './atoms/buttons.css';
+@import './atoms/inputs.css';
+@import './atoms/badges.css';
+@import './atoms/cards.css';
+@import './atoms/chips.css';
+@import './atoms/nav.css';
+@import './atoms/modals.css';
+@import './atoms/score-gauge.css';
+@import './atoms/forms.css';
+@import './atoms/paywall.css';

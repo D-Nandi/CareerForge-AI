@@ -15,6 +15,9 @@ const roadmapRoutes   = require('./routes/roadmapRoutes');
 const interviewRoutes = require('./routes/interviewRoutes');
 const paymentRoutes   = require('./routes/paymentRoutes');
 const insightsRoutes  = require('./routes/insightsRoutes');
+const blogRoutes      = require('./routes/blogRoutes');
+const swaggerUi       = require('swagger-ui-express');
+const swaggerDoc      = require('./docs/swagger.json');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -23,7 +26,27 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 // ── MIDDLEWARE ──
-app.use(cors({ origin: true, credentials: true }));
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5000',
+  'http://localhost:5173',
+  'https://taqnik.com',
+  'https://www.careerforgeai.com',
+  'https://careernest.ai',
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+      return callback(null, true);
+    }
+    return callback(null, true); // Fallback to permissive to avoid breaking existing users
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+}));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -31,7 +54,8 @@ app.use(cookieParser());
 
 // ── STATIC & SEO ROUTES ──
 const fs = require('fs');
-const staticDir = fs.existsSync(path.join(__dirname, '../dist'))
+const isProd = process.env.NODE_ENV === 'production';
+const staticDir = (isProd && fs.existsSync(path.join(__dirname, '../dist')))
   ? path.join(__dirname, '../dist')
   : path.join(__dirname, '../client');
 
@@ -54,6 +78,9 @@ app.use('/api/roadmap',   roadmapRoutes);
 app.use('/api/interview', interviewRoutes);
 app.use('/api/payments',  paymentRoutes);
 app.use('/api/insights',  insightsRoutes);
+app.use('/api/blog',      blogRoutes);
+app.get('/api/docs/swagger.json', (req, res) => res.json(swaggerDoc));
+app.use('/api/docs',      swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 app.use('/api',           apiRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 

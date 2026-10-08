@@ -1,0 +1,487 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CareerForge AI - Blog & Content API (Taqnik CMS Integration)",
+    "description": "API contract for Taqnik CMS synchronization and public blog endpoints in CareerForge AI.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Local Development Server"
+    },
+    {
+      "url": "https://careernest.ai",
+      "description": "Production Server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "API Key",
+        "description": "Shared secret API Key exchanged with Taqnik CMS (matches TAQNIK_BLOG_API_KEY in .env)"
+      }
+    },
+    "schemas": {
+      "PublishBlogPostRequest": {
+        "type": "object",
+        "required": ["id", "title", "excerpt", "category", "publishDate", "author_name"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-_]+$",
+            "example": "how-to-write-a-killer-resume",
+            "description": "URL-safe unique identifier / slug. Lowercase letters, numbers, hyphens, and underscores only."
+          },
+          "title": {
+            "type": "string",
+            "example": "How to Write a Killer Resume in 2026",
+            "description": "Full title of the blog post"
+          },
+          "excerpt": {
+            "type": "string",
+            "example": "A concise summary of the blog post visible in listing cards.",
+            "description": "Short summary (~150 chars). Stored as summary in CareerForge."
+          },
+          "content": {
+            "type": "string",
+            "example": "## Introduction\n\nYour resume is your first impression...\n\n### Key Strategies\n* Quantify achievements\n* Use strong action verbs",
+            "description": "Full article body in Markdown format."
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800",
+            "description": "Cover hero image URL."
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "ATS Secrets",
+              "Resume Writing",
+              "Cover Letters",
+              "Interview Prep",
+              "Career Growth",
+              "Tutorials",
+              "Explainers",
+              "Best Practices",
+              "Products Review",
+              "Products Comparison"
+            ],
+            "example": "ATS Secrets",
+            "description": "Article category. CareerForge automatically normalizes generic Taqnik categories (Tutorials, Best Practices) into our career SEO pillars based on content & tags."
+          },
+          "publishDate": {
+            "type": "string",
+            "example": "October 8, 2026",
+            "description": "Human-readable publication date string."
+          },
+          "readTime": {
+            "type": "string",
+            "example": "6 min read",
+            "description": "Estimated reading time."
+          },
+          "author_name": {
+            "type": "string",
+            "example": "Elena Rostova",
+            "description": "Author display name."
+          },
+          "author_role": {
+            "type": "string",
+            "example": "Head of Career Intelligence",
+            "description": "Author professional title or role."
+          },
+          "author_avatar": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150",
+            "description": "Author avatar photo URL."
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "example": ["Resume", "Career", "Job Search"],
+            "description": "Array of tags."
+          },
+          "published": {
+            "type": "boolean",
+            "default": true,
+            "example": true,
+            "description": "Controls public visibility. Defaults to true."
+          }
+        }
+      },
+      "UpdateBlogPostRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Updated: How to Write a Killer Resume in 2026"
+          },
+          "excerpt": {
+            "type": "string",
+            "example": "Updated concise summary."
+          },
+          "content": {
+            "type": "string",
+            "example": "## Revised Introduction\n\nUpdated content body in Markdown..."
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://images.unsplash.com/photo-1586281380349-632531db7ed4"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "ATS Secrets",
+              "Resume Writing",
+              "Cover Letters",
+              "Interview Prep",
+              "Career Growth",
+              "Tutorials",
+              "Explainers",
+              "Best Practices",
+              "Products Review",
+              "Products Comparison"
+            ],
+            "example": "ATS Secrets"
+          },
+          "publishDate": {
+            "type": "string",
+            "example": "October 8, 2026"
+          },
+          "readTime": {
+            "type": "string",
+            "example": "7 min read"
+          },
+          "author_name": {
+            "type": "string",
+            "example": "Elena Rostova"
+          },
+          "author_role": {
+            "type": "string",
+            "example": "Senior Director of Talent"
+          },
+          "author_avatar": {
+            "type": "string",
+            "example": "https://images.unsplash.com/photo-1534528741775-53994a69daeb"
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "example": ["Resume", "AI", "2026 Guide"]
+          },
+          "published": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "BlogPostListItem": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string", "example": "653b1b9e8321a0012c89f101" },
+          "slug": { "type": "string", "example": "how-to-beat-ats-in-2025" },
+          "title": { "type": "string", "example": "How to Beat Applicant Tracking Systems (ATS) in 2025" },
+          "summary": { "type": "string", "example": "Over 75% of resumes are rejected before a human recruiter ever sees them..." },
+          "category": { "type": "string", "example": "Tutorials" },
+          "date": { "type": "string", "example": "Sep 28, 2025" },
+          "readTime": { "type": "string", "example": "6 min read" },
+          "author": { "type": "string", "example": "Elena Rostova" },
+          "authorRole": { "type": "string", "example": "Head of Recruiting Intelligence" },
+          "heroImage": { "type": "string", "example": "https://..." },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "featured": { "type": "boolean", "example": false },
+          "published": { "type": "boolean", "example": true },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "BlogPostDetail": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string", "example": "653b1b9e8321a0012c89f101" },
+          "slug": { "type": "string", "example": "how-to-beat-ats-in-2025" },
+          "title": { "type": "string", "example": "How to Beat Applicant Tracking Systems (ATS) in 2025" },
+          "summary": { "type": "string", "example": "Over 75% of resumes are rejected before a human recruiter ever sees them..." },
+          "content": { "type": "string", "example": "## 1. How Modern ATS Algorithms Actually Work..." },
+          "category": { "type": "string", "example": "Tutorials" },
+          "date": { "type": "string", "example": "Sep 28, 2025" },
+          "readTime": { "type": "string", "example": "6 min read" },
+          "author": { "type": "string", "example": "Elena Rostova" },
+          "authorRole": { "type": "string", "example": "Head of Recruiting Intelligence" },
+          "authorAvatar": { "type": "string", "example": "https://..." },
+          "heroImage": { "type": "string", "example": "https://..." },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "featured": { "type": "boolean", "example": true },
+          "published": { "type": "boolean", "example": true },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": { "type": "string", "example": "Validation failed" },
+          "details": { "type": "string", "example": "Required: id, title, excerpt, category, publishDate, author_name" }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/api/blog/publish": {
+      "post": {
+        "summary": "Publish a new blog post from Taqnik CMS",
+        "description": "Receives a published post payload from Taqnik CMS, validates slug formatting and required fields, and persists to MongoDB.",
+        "tags": ["Blog Admin (Taqnik CMS)"],
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PublishBlogPostRequest" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Post created successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "message": "Blog post received and saved",
+                  "data": {
+                    "slug": "how-to-write-a-killer-resume",
+                    "title": "How to Write a Killer Resume in 2026",
+                    "createdAt": "2026-10-08T06:15:00.000Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing required fields or invalid slug regex",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+                "example": {
+                  "error": "Validation failed",
+                  "details": "Required: id, title, excerpt, category, publishDate, author_name"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Unauthorized: Invalid or missing API key"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Post with this slug already exists",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Conflict: Post with slug 'how-to-write-a-killer-resume' already exists"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server or Database error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/blog/{slug}": {
+      "put": {
+        "summary": "Update an existing blog post",
+        "description": "Updates an existing post previously published by Taqnik CMS.",
+        "tags": ["Blog Admin (Taqnik CMS)"],
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "The unique slug identifier of the post",
+            "schema": { "type": "string", "example": "how-to-beat-ats-in-2025" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateBlogPostRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Post updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": { "$ref": "#/components/schemas/BlogPostDetail" }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "example": { "error": "Unauthorized: Invalid or missing API key" }
+              }
+            }
+          },
+          "404": {
+            "description": "Post not found",
+            "content": {
+              "application/json": {
+                "example": { "error": "Post not found: how-to-beat-ats-in-2025" }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "example": { "error": "Internal Server Error" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get a single published blog post (Public)",
+        "description": "Retrieves the full content and details for a single published blog post by its slug. Excludes internal __v field.",
+        "tags": ["Blog (Public)"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "The post slug",
+            "schema": { "type": "string", "example": "how-to-beat-ats-in-2025" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post found and returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": { "$ref": "#/components/schemas/BlogPostDetail" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Post not found",
+            "content": {
+              "application/json": {
+                "example": { "error": "Post not found" }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "example": { "error": "Internal Server Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/blog": {
+      "get": {
+        "summary": "List all published blog posts (Public)",
+        "description": "Returns a list of published blog posts sorted by createdAt descending. Excludes markdown content field for performance.",
+        "tags": ["Blog (Public)"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "description": "Filter by post category (e.g. Tutorials, Best Practices)",
+            "schema": { "type": "string", "example": "Tutorials" }
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "required": false,
+            "description": "Filter by tag string",
+            "schema": { "type": "string", "example": "ATS" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Number of posts to return (default 20)",
+            "schema": { "type": "integer", "default": 20, "example": 10 }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number (default 1)",
+            "schema": { "type": "integer", "default": 1, "example": 1 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of blog posts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/BlogPostListItem" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "example": { "error": "Internal Server Error" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

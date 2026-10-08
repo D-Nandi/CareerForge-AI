@@ -164,6 +164,7 @@
   <link rel="icon" href="/favicon.ico?v=3" sizes="32x32" />
   <link rel="shortcut icon" href="/favicon.png?v=3" type="image/png" />
   <link rel="apple-touch-icon" href="/favicon.png?v=3" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
@@ -288,103 +289,161 @@
   <script src="blog-data.js"></script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const slug = urlParams.get('slug') || 'how-to-beat-ats-in-2025';
-    const post = BLOG_POSTS[slug] || BLOG_POSTS['how-to-beat-ats-in-2025'];
+    const slug = urlParams.get('id') || urlParams.get('slug') || 'how-to-beat-ats-in-2025';
 
-    document.title = `${post.title} | CareerNest Career Guide`;
-    const canonicalUrl = `https://careernest.ai/blog-post.html?slug=${slug}`;
-    
-    // Dynamic SEO updates
-    const docTitleEl = document.getElementById('postDocTitle');
-    if (docTitleEl) docTitleEl.innerText = `${post.title} | CareerNest Career Guide`;
+    function renderPost(post) {
+      document.title = `${post.title} | CareerNest Career Guide`;
+      const canonicalUrl = `https://careernest.ai/blog-post.html?id=${encodeURIComponent(post.slug || slug)}`;
 
-    const metaDescEl = document.getElementById('postMetaDesc');
-    if (metaDescEl) metaDescEl.content = post.summary;
+      const docTitleEl = document.getElementById('postDocTitle');
+      if (docTitleEl) docTitleEl.innerText = `${post.title} | CareerNest Career Guide`;
 
-    const canEl = document.getElementById('postCanonical');
-    if (canEl) canEl.href = canonicalUrl;
+      const metaDescEl = document.getElementById('postMetaDesc');
+      if (metaDescEl) metaDescEl.content = post.summary || '';
 
-    const ogUrlEl = document.getElementById('postOgUrl');
-    if (ogUrlEl) ogUrlEl.content = canonicalUrl;
+      const canEl = document.getElementById('postCanonical');
+      if (canEl) canEl.href = canonicalUrl;
 
-    const ogTitleEl = document.getElementById('postOgTitle');
-    if (ogTitleEl) ogTitleEl.content = `${post.title} | CareerNest`;
+      const ogUrlEl = document.getElementById('postOgUrl');
+      if (ogUrlEl) ogUrlEl.content = canonicalUrl;
 
-    const ogDescEl = document.getElementById('postOgDesc');
-    if (ogDescEl) ogDescEl.content = post.summary;
+      const ogTitleEl = document.getElementById('postOgTitle');
+      if (ogTitleEl) ogTitleEl.content = `${post.title} | CareerNest`;
 
-    const twTitleEl = document.getElementById('postTwitterTitle');
-    if (twTitleEl) twTitleEl.content = `${post.title} | CareerNest`;
+      const ogDescEl = document.getElementById('postOgDesc');
+      if (ogDescEl) ogDescEl.content = post.summary || '';
 
-    const twDescEl = document.getElementById('postTwitterDesc');
-    if (twDescEl) twDescEl.content = post.summary;
+      const twTitleEl = document.getElementById('postTwitterTitle');
+      if (twTitleEl) twTitleEl.content = `${post.title} | CareerNest`;
 
-    // Update JSON-LD schema
-    const schemaEl = document.getElementById('postSchema');
-    if (schemaEl) {
-      schemaEl.textContent = JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "BlogPosting",
-            "headline": post.title,
-            "description": post.summary,
-            "author": {
-              "@type": "Person",
-              "name": post.author,
-              "jobTitle": post.authorRole
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "CareerNest",
-              "url": "https://careernest.ai/"
-            },
-            "datePublished": post.date,
-            "url": canonicalUrl
-          },
-          {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://careernest.ai/"
+      const twDescEl = document.getElementById('postTwitterDesc');
+      if (twDescEl) twDescEl.content = post.summary || '';
+
+      // Update JSON-LD schema
+      const schemaEl = document.getElementById('postSchema');
+      if (schemaEl) {
+        schemaEl.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "headline": post.title,
+              "description": post.summary,
+              "author": {
+                "@type": "Person",
+                "name": post.author,
+                "jobTitle": post.authorRole || ''
               },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Career Resources",
-                "item": "https://careernest.ai/blog.html"
+              "publisher": {
+                "@type": "Organization",
+                "name": "CareerNest",
+                "url": "https://careernest.ai/"
               },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": post.title,
-                "item": canonicalUrl
-              }
-            ]
-          }
-        ]
-      });
+              "datePublished": post.date,
+              "url": canonicalUrl
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://careernest.ai/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Career Resources",
+                  "item": "https://careernest.ai/blog.html"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": post.title,
+                  "item": canonicalUrl
+                }
+              ]
+            }
+          ]
+        });
+      }
+
+      if (document.getElementById('breadTitle')) document.getElementById('breadTitle').innerText = post.category || 'Article';
+      if (document.getElementById('postCat')) document.getElementById('postCat').innerText = post.category || 'Article';
+      if (document.getElementById('postTitle')) document.getElementById('postTitle').innerText = post.title;
+      if (document.getElementById('postSubtitle')) document.getElementById('postSubtitle').innerText = post.summary || post.subtitle || '';
+      if (document.getElementById('postAuthor')) document.getElementById('postAuthor').innerText = post.authorRole ? `${post.author} (${post.authorRole})` : post.author;
+      if (document.getElementById('postDate')) document.getElementById('postDate').innerText = `${post.date || ''} • ${post.readTime || ''}`;
+      
+      const avatarEl = document.getElementById('postAvatar');
+      if (avatarEl) {
+        if (post.authorAvatar) {
+          avatarEl.innerHTML = `<img src="${post.authorAvatar}" alt="${post.author}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" onerror="this.parentElement.textContent='${(post.author || 'A').charAt(0)}'" />`;
+        } else {
+          avatarEl.innerText = (post.author || 'A').split(' ').map(n => n[0]).join('').substring(0, 2);
+        }
+      }
+
+      const contentEl = document.getElementById('postContent');
+      if (contentEl) {
+        const raw = post.content || '';
+        // If content is Markdown or HTML, parse with marked if available
+        if (typeof marked !== 'undefined' && typeof marked.parse === 'function') {
+          contentEl.innerHTML = marked.parse(raw);
+        } else {
+          contentEl.innerHTML = raw;
+        }
+      }
     }
 
-    document.getElementById('breadTitle').innerText = post.category;
-    document.getElementById('postCat').innerText = post.category;
-    document.getElementById('postTitle').innerText = post.title;
-    document.getElementById('postSubtitle').innerText = post.subtitle;
-    document.getElementById('postAuthor').innerText = `${post.author} (${post.authorRole})`;
-    document.getElementById('postDate').innerText = `${post.date} • ${post.readTime}`;
-    document.getElementById('postAvatar').innerText = post.author.split(' ').map(n => n[0]).join('');
-    document.getElementById('postContent').innerHTML = post.content;
+    function renderNotFound() {
+      document.title = 'Article Not Found | CareerNest';
+      const wrap = document.querySelector('.article-wrap');
+      if (wrap) {
+        wrap.innerHTML = `
+          <div style="text-align:center; padding:80px 20px;">
+            <h1 style="font-size:2.4rem; font-family:var(--font-head); margin-bottom:14px; color:var(--text);">Article Not Found</h1>
+            <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:28px;">The blog post you requested does not exist or may have been unpublished.</p>
+            <a href="blog.html" class="btn-primary" style="padding:12px 28px;">← Return to All Articles</a>
+          </div>
+        `;
+      }
+    }
 
-    document.getElementById('btnShareArticle').addEventListener('click', () => {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        const btn = document.getElementById('btnShareArticle');
-        btn.textContent = '✅ Link Copied!';
-        setTimeout(() => { btn.textContent = '📢 Share'; }, 2000);
+    async function loadPost() {
+      try {
+        const res = await fetch(`/api/blog/${encodeURIComponent(slug)}`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json && json.data) {
+            renderPost(json.data);
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('API fetch failed, falling back to static BLOG_POSTS:', err);
+      }
+
+      // Fallback to static blog-data.js
+      if (typeof BLOG_POSTS !== 'undefined' && BLOG_POSTS[slug]) {
+        renderPost(BLOG_POSTS[slug]);
+      } else {
+        renderNotFound();
+      }
+    }
+
+    loadPost();
+
+    const btnShare = document.getElementById('btnShareArticle');
+    if (btnShare) {
+      btnShare.addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          btnShare.textContent = '✅ Link Copied!';
+          setTimeout(() => { btnShare.textContent = '📢 Share'; }, 2000);
+        });
       });
-    });
+    }
   </script>
 </body>
 </html>
