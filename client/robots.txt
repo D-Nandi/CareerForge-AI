@@ -1,17 +1,109 @@
-# robots.txt for CareerNest (https://careernest.ai)
+# ══════════════════════════════════════════════════════════════════════
+#  CareerNest (https://careernest.ai) — Robots.txt
+#  Optimized for Search Engine Indexing (Google, Bing)
+#  and AI Engines (ChatGPT, Gemini, Claude, Perplexity, Apple Intelligence)
+# ══════════════════════════════════════════════════════════════════════
+
+# ── 1. Default Rules for All Web Crawlers ──
 User-agent: *
 Allow: /
-
-# Private, auth & internal utility routes
-Disallow: /growth-hub.html
-Disallow: /ad-landing.html
+# Protect private user authentication & internal application state
 Disallow: /dashboard.html
 Disallow: /login.html
 Disallow: /signup.html
+Disallow: /growth-hub.html
+Disallow: /ad-landing.html
 Disallow: /r.html
 Disallow: /api/
 
-# Sitemaps
-Sitemap: https://careernest.taqnik.in/sitemap.xml
-Sitemap: https://careernest.ai/sitemap.xml
+# ── 2. OpenAI / ChatGPT (Training, Browsing & SearchGPT) ──
+User-agent: GPTBot
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /api/
 
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /api/
+
+# ── 3. Google (Googlebot & Gemini / AI Overviews) ──
+User-agent: Googlebot
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /api/
+
+# ── 4. Anthropic / Claude (ClaudeBot, anthropic-ai, Claude-Web) ──
+User-agent: ClaudeBot
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /api/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /api/
+
+# ── 5. Perplexity AI (PerplexityBot) ──
+User-agent: PerplexityBot
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /api/
+
+# ── 6. Apple Intelligence & Siri Knowledge ──
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ── 7. Meta AI & Frontier LLM Crawlers ──
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# ── 8. AI Knowledge Base & Sitemaps ──
+# Machine-readable product briefing for LLMs:
+# https://careernest.ai/llms.txt
+# https://careernest.ai/llms-full.txt
+
+Sitemap: https://careernest.ai/sitemap.xml
+Sitemap: https://careernest.taqnik.in/sitemap.xml

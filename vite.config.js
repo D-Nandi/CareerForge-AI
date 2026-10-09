@@ -34,6 +34,8 @@ function copyStaticAssetsPlugin() {
         'og-preview.png',
         'robots.txt',
         'sitemap.xml',
+        'llms.txt',
+        'llms-full.txt',
       ];
 
       for (const file of filesToCopy) {
