@@ -36,6 +36,7 @@ function copyStaticAssetsPlugin() {
         'sitemap.xml',
         'llms.txt',
         'llms-full.txt',
+        'badge-ats-ready.svg',
       ];
 
       for (const file of filesToCopy) {
