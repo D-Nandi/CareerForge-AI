@@ -89,7 +89,7 @@ Writing APIs is only half the battle; developers who consume your APIs need docu
                 │
                 ▼ (GET /api/blog)
 ┌────────────────────────────────┐
-│   Client (careernest.ai)       │
+│   Client (careernest.taqnik.in)       │
 │                                │
 │ • blog.html                    │ ──► Fetches posts, builds dynamic category tabs
 │ • blog-post.html               │ ──► Fetches single post, parses Markdown with marked.js

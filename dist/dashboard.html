@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CareerNest — Dashboard</title>
-  <meta name="description" content="Manage your saved resumes, career roadmaps, interview prep history, and subscription in one place." />
+  <meta name="description"
+    content="Manage your saved resumes, career roadmaps, interview prep history, and subscription in one place." />
   <meta name="robots" content="noindex, nofollow" />
   <!-- Theme: Instant theme setter prevents flash without network roundtrip -->
   <script>
-    (function(){try{var s=localStorage.getItem('careernest-theme')||localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+    (function () { try { var s = localStorage.getItem('careernest-theme') || localStorage.getItem('careerforge-theme') || localStorage.getItem('resumatic-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { } })();
   </script>
 
   <!-- Fonts: Non-render-blocking async load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" media="print" onload="this.media='all'" />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    media="print" onload="this.media='all'" />
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
   </noscript>
 
-    <!-- Favicon (CareerNest) -->
+  <!-- Favicon (CareerNest) -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32-B4yKA15a.png?v=3" />
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192-DWvAkh3u.png?v=3" />
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-0YVqpaxf.png?v=3" />
@@ -30,6 +36,7 @@
   <link rel="stylesheet" crossorigin href="/assets/dashboard-Ck9PHntn.css">
   <link rel="stylesheet" crossorigin href="/assets/index-zt68Ayfi.css">
 </head>
+
 <body>
 
   <div class="noise"></div>
@@ -51,14 +58,32 @@
     </nav>
     <div style="display: flex; align-items: center; gap: 10px;">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
       </button>
       <a href="form-index.html" class="btn-new">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
         New Resume
       </a>
-      <button class="btn btn-ghost btn-sm" id="btnDashLogout" style="color: var(--text-muted); padding: 8px 12px; cursor: pointer;" onclick="if(window.auth) window.auth.logout()">
+      <button class="btn btn-ghost btn-sm" id="btnDashLogout"
+        style="color: var(--text-muted); padding: 8px 12px; cursor: pointer;"
+        onclick="if(window.auth) window.auth.logout()">
         Sign Out
       </button>
     </div>
@@ -77,26 +102,38 @@
         <div class="stat-chip"><span id="statResumes">0</span> Resumes</div>
         <div class="stat-chip"><span id="statCLs">0</span> Cover Letters</div>
         <div class="stat-chip"><span id="statRoadmapPhase">Phase 1</span> Roadmap</div>
-        <div class="stat-chip">Plan: <span id="statTier" style="font-weight: 700; color: var(--accent);">Free</span></div>
+        <div class="stat-chip">Plan: <span id="statTier" style="font-weight: 700; color: var(--accent);">Free</span>
+        </div>
       </div>
     </div>
 
     <!-- TABS -->
     <div class="dash-tabs">
       <button class="tab-btn active" data-tab="resumes">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="1" width="10" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 4.5h5M4.5 7h5M4.5 9.5h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="2" y="1" width="10" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3" />
+          <path d="M4.5 4.5h5M4.5 7h5M4.5 9.5h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+        </svg>
         Resumes
       </button>
       <button class="tab-btn" data-tab="coverletters">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="3" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 5l5 3.5 5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="1.5" y="3" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3" />
+          <path d="M1.5 5l5 3.5 5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+        </svg>
         Cover Letters
       </button>
       <button class="tab-btn" data-tab="roadmap">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+        </svg>
         Career Roadmap
       </button>
       <button class="tab-btn" data-tab="plan">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+          <line x1="1" y1="10" x2="23" y2="10" />
+        </svg>
         Plan & Billing
       </button>
     </div>
@@ -108,7 +145,10 @@
       </div>
       <div class="empty-state" id="resumeEmpty" style="display:none;">
         <div class="empty-icon">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="4" width="28" height="32" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M13 13h14M13 19h14M13 25h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="6" y="4" width="28" height="32" rx="3" stroke="currentColor" stroke-width="1.5" />
+            <path d="M13 13h14M13 19h14M13 25h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
         </div>
         <div class="empty-title">No resumes yet</div>
         <div class="empty-sub">Create your first resume to get started.</div>
@@ -123,7 +163,10 @@
       </div>
       <div class="empty-state" id="clEmpty" style="display:none;">
         <div class="empty-icon">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 14l16 10 16-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="4" y="8" width="32" height="24" rx="3" stroke="currentColor" stroke-width="1.5" />
+            <path d="M4 14l16 10 16-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
         </div>
         <div class="empty-title">No cover letters yet</div>
         <div class="empty-sub">Generate a cover letter from the resume form.</div>
@@ -138,31 +181,45 @@
       </div>
       <div class="empty-state" id="roadmapEmpty" style="display:none;">
         <div class="empty-icon">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+            <polyline points="2 17 12 22 22 17" />
+            <polyline points="2 12 12 17 22 12" />
+          </svg>
         </div>
         <div class="empty-title">No Career Roadmap generated yet</div>
-        <div class="empty-sub">Set your target role, bridge skill gaps, and follow a verified 4-phase transition blueprint.</div>
+        <div class="empty-sub">Set your target role, bridge skill gaps, and follow a verified 4-phase transition
+          blueprint.</div>
         <a href="career-roadmap.html" class="btn-empty-action">Generate Career Roadmap →</a>
       </div>
     </div>
 
     <!-- PLAN & BILLING TAB -->
     <div class="tab-panel" id="tabPlan">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 32px;">
-        
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 32px;">
+
         <!-- Active Subscription Card -->
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px;">
+        <div
+          style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
             <div>
-              <span id="planBadge" style="display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: var(--surface2); color: var(--text-muted); border: 1px solid var(--border);">Free Starter</span>
-              <h2 id="planTitle" style="font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 700; margin-top: 6px;">Free Plan</h2>
+              <span id="planBadge"
+                style="display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: var(--surface2); color: var(--text-muted); border: 1px solid var(--border);">Free
+                Starter</span>
+              <h2 id="planTitle"
+                style="font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 700; margin-top: 6px;">Free Plan
+              </h2>
             </div>
-            <div id="planStatusTag" style="padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; background: rgba(74, 222, 128, 0.15); color: var(--green);">Active</div>
+            <div id="planStatusTag"
+              style="padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; background: rgba(74, 222, 128, 0.15); color: var(--green);">
+              Active</div>
           </div>
           <p id="planDesc" style="color: var(--text-muted); font-size: 13px; line-height: 1.5; margin-bottom: 20px;">
             Baseline diagnostic access with 5 monthly ATS checks, Phase 1 roadmap, and top 5 interview questions.
           </p>
-          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; margin-bottom: 24px; border-top: 1px solid var(--border); padding-top: 16px;">
+          <div
+            style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; margin-bottom: 24px; border-top: 1px solid var(--border); padding-top: 16px;">
             <div style="display: flex; justify-content: space-between;">
               <span style="color: var(--text-muted);">Billing Interval:</span>
               <strong id="planBillingCycle">Lifetime Free</strong>
@@ -173,23 +230,31 @@
             </div>
           </div>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="pricing.html" class="btn-new" id="btnPlanAction" style="text-decoration: none;">Upgrade to Pro / Career+ →</a>
-            <button class="btn-modal-cancel" id="btnCancelSub" style="display: none; padding: 8px 16px; border-radius: var(--radius); cursor: pointer; background: transparent; border: 1px solid var(--border); color: var(--text-muted);">Cancel Subscription</button>
+            <a href="pricing.html" class="btn-new" id="btnPlanAction" style="text-decoration: none;">Upgrade to Pro /
+              Career+ →</a>
+            <button class="btn-modal-cancel" id="btnCancelSub"
+              style="display: none; padding: 8px 16px; border-radius: var(--radius); cursor: pointer; background: transparent; border: 1px solid var(--border); color: var(--text-muted);">Cancel
+              Subscription</button>
           </div>
         </div>
 
         <!-- Plan Features List -->
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px;">
-          <h3 style="font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 16px;">Features & Privileges</h3>
-          <ul id="planFeaturesList" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 13px;">
+        <div
+          style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px;">
+          <h3 style="font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 16px;">Features
+            & Privileges</h3>
+          <ul id="planFeaturesList"
+            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 13px;">
             <!-- Injected by JS -->
           </ul>
         </div>
       </div>
 
       <!-- Payment & Invoices History -->
-      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px;">
-        <h3 style="font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 16px;">Billing & Payment History</h3>
+      <div
+        style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px;">
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 16px;">Billing &
+          Payment History</h3>
         <div id="invoiceTableWrapper" style="overflow-x: auto;">
           <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
             <thead>
@@ -205,31 +270,47 @@
               <!-- Injected by JS -->
             </tbody>
           </table>
-          <div id="invoiceEmptyState" style="text-align: center; padding: 32px 16px; color: var(--text-muted); font-size: 13px; display: none;">
+          <div id="invoiceEmptyState"
+            style="text-align: center; padding: 32px 16px; color: var(--text-muted); font-size: 13px; display: none;">
             No payment history yet. When you upgrade, your tax invoices and Razorpay order receipts will appear here.
           </div>
         </div>
       </div>
 
       <!-- VIRAL REFERRAL PROGRAM CARD -->
-      <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.08) 100%); border: 1px solid var(--accent); border-radius: var(--radius-lg); padding: 24px; margin-top: 24px;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+      <div
+        style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.08) 100%); border: 1px solid var(--accent); border-radius: var(--radius-lg); padding: 24px; margin-top: 24px;">
+        <div
+          style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
           <div>
-            <span style="display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; background: var(--surface2); color: var(--accent); border: 1px solid var(--border);">🎁 Peer Referral Engine</span>
-            <h3 style="font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin-top: 6px;">Invite Fellow Engineers — Earn Complimentary Pro Months</h3>
-            <p style="font-size: 13px; color: var(--text-muted); max-width: 600px; margin-top: 4px;">Give your peers 14 days of free Pro access. Every peer who signs up through your link automatically grants you 1 free month of CareerNest Pro.</p>
+            <span
+              style="display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; background: var(--surface2); color: var(--accent); border: 1px solid var(--border);">🎁
+              Peer Referral Engine</span>
+            <h3
+              style="font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin-top: 6px;">
+              Invite Fellow Engineers — Earn Complimentary Pro Months</h3>
+            <p style="font-size: 13px; color: var(--text-muted); max-width: 600px; margin-top: 4px;">Give your peers 14
+              days of free Pro access. Every peer who signs up through your link automatically grants you 1 free month
+              of CareerNest Pro.</p>
           </div>
           <div style="text-align: right;">
             <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Your Rewards</div>
-            <div style="font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--green);" id="referralStatsMonths">1 Month Free</div>
+            <div style="font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--green);"
+              id="referralStatsMonths">1 Month Free</div>
           </div>
         </div>
 
         <div style="display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap;">
-          <input type="text" id="referralLinkInput" readonly value="https://careernest.ai/signup.html?ref=CN-USER-PRO" style="flex: 1; min-width: 260px; font-size: 13px; padding: 8px 12px; border-radius: var(--radius); background: var(--surface2); border: 1px solid var(--border); color: var(--text);" />
+          <input type="text" id="referralLinkInput" readonly
+            value="https://careernest.taqnik.in/signup.html?ref=CN-USER-PRO"
+            style="flex: 1; min-width: 260px; font-size: 13px; padding: 8px 12px; border-radius: var(--radius); background: var(--surface2); border: 1px solid var(--border); color: var(--text);" />
           <button class="btn-new" id="btnCopyReferral" style="padding: 8px 16px;">📋 Copy Link</button>
-          <a href="https://api.whatsapp.com/send?text=Join%20me%20on%20CareerNest%20to%20build%20ATS%20resumes%20https%3A%2F%2Fcareernest.ai" target="_blank" rel="noopener noreferrer" id="btnShareWhatsApp" class="btn-new" style="background: #25D366; text-decoration: none; padding: 8px 16px; box-shadow: none;">💬 WhatsApp</a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcareernest.ai" target="_blank" rel="noopener noreferrer" id="btnShareLinkedIn" class="btn-new" style="background: #0A66C2; text-decoration: none; padding: 8px 16px; box-shadow: none;">💼 LinkedIn</a>
+          <a href="https://api.whatsapp.com/send?text=Join%20me%20on%20CareerNest%20to%20build%20ATS%20resumes%20https%3A%2F%2Fcareernest.taqnik.in"
+            target="_blank" rel="noopener noreferrer" id="btnShareWhatsApp" class="btn-new"
+            style="background: #25D366; text-decoration: none; padding: 8px 16px; box-shadow: none;">💬 WhatsApp</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcareernest.taqnik.in"
+            target="_blank" rel="noopener noreferrer" id="btnShareLinkedIn" class="btn-new"
+            style="background: #0A66C2; text-decoration: none; padding: 8px 16px; box-shadow: none;">💼 LinkedIn</a>
         </div>
       </div>
     </div>
@@ -240,7 +321,11 @@
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal-card" id="modalCard">
       <div class="modal-icon">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 8v5M11 15v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9.26 3.5a2 2 0 0 1 3.48 0l6.74 11.5A2 2 0 0 1 17.74 18H4.26a2 2 0 0 1-1.74-3L9.26 3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M11 8v5M11 15v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M9.26 3.5a2 2 0 0 1 3.48 0l6.74 11.5A2 2 0 0 1 17.74 18H4.26a2 2 0 0 1-1.74-3L9.26 3.5Z"
+            stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
       </div>
       <div class="modal-title">Delete Document</div>
       <div class="modal-body" id="modalBody">Are you sure you want to delete this document? This cannot be undone.</div>
@@ -263,4 +348,5 @@
   <script src="js/paywall.js"></script>
   <script src="dashboard-script.js"></script>
 </body>
+
 </html>

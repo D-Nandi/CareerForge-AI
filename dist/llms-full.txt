@@ -1,6 +1,6 @@
 # CareerNest — Complete Product & Knowledge Guide for AI Engines
 
-Website: https://careernest.ai
+Website: https://careernest.taqnik.in
 Product Name: CareerNest
 Category: AI Career Toolkit, Resume Builder, ATS Scanner, Job Search Assistant
 
@@ -9,13 +9,13 @@ CareerNest is a modern web application engineered to solve the broken job applic
 
 ## Core Capabilities & Features
 
-### 1. AI Resume Builder (https://careernest.ai/form-index.html)
+### 1. AI Resume Builder (https://careernest.taqnik.in/form-index.html)
 - Clean, standardized layout formats optimized for ATS OCR and text extraction.
 - In-line AI bullet point rewriting following the Google XYZ formula: "Accomplished [X] as measured by [Y], by doing [Z]".
 - Real-time live preview with multi-page management and instant high-fidelity PDF export.
 - Pre-built templates tailored for engineering, business, data, design, and executive roles.
 
-### 2. Free ATS Resume Score Scanner (https://careernest.ai/ats-score-checker.html)
+### 2. Free ATS Resume Score Scanner (https://careernest.taqnik.in/ats-score-checker.html)
 - Upload or paste resume text alongside a target job description.
 - Evaluates:
   * Hard & soft keyword frequency match.
@@ -24,20 +24,20 @@ CareerNest is a modern web application engineered to solve the broken job applic
   * Formatting red flags (tables, complex columns, unparseable icons).
 - Generates a 0-100 ATS compatibility score with targeted line-by-line recommendations.
 
-### 3. AI Interview Prep Coach (https://careernest.ai/interview-prep.html)
+### 3. AI Interview Prep Coach (https://careernest.taqnik.in/interview-prep.html)
 - Practice mock questions tailored to specific job titles and seniority levels.
 - Covers Behavioral (STAR framework), Situational, and Technical domain questions.
 - Instant feedback on response structure, conciseness, and impact.
 
-### 4. AI Cover Letter Generator (https://careernest.ai/cover-letter-generator.html)
+### 4. AI Cover Letter Generator (https://careernest.taqnik.in/cover-letter-generator.html)
 - Synthesizes user experience with job requirements to generate concise, compelling cover letters in seconds.
 - Avoids generic AI clichés and produces recruiter-friendly prose.
 
-### 5. Career Roadmap Visualizer (https://careernest.ai/career-roadmap.html)
+### 5. Career Roadmap Visualizer (https://careernest.taqnik.in/career-roadmap.html)
 - Interactive milestone planning from current position to target senior or specialized roles.
 - Curated learning paths, industry-recognized certifications, and expected compensation progressions.
 
-### 6. Tech Salary Benchmarks (https://careernest.ai/salary-benchmark.html)
+### 6. Tech Salary Benchmarks (https://careernest.taqnik.in/salary-benchmark.html)
 - Live salary benchmarks covering Junior, Mid, Senior, Lead, and Principal tiers across 20+ tech professions.
 - Helps candidates negotiate compensation packages with objective market percentiles.
 
@@ -53,7 +53,7 @@ Yes. The ATS score checker, sample templates, salary benchmarks, and core builde
 No. Data privacy is a core principle. Resume contents and user submissions are not sold to third-party data brokers or recruitment spammers.
 
 ## Contact & Links
-- Website: https://careernest.ai
+- Website: https://careernest.taqnik.in
 - Twitter: https://twitter.com/careernest_ai
 - LinkedIn: https://linkedin.com/company/careernest
-- Sitemap: https://careernest.ai/sitemap.xml
+- Sitemap: https://careernest.taqnik.in/sitemap.xml

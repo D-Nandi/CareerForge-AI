@@ -4,6 +4,7 @@ const path = require('path');
 const cors = require('cors');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
@@ -25,6 +26,21 @@ const PORT = process.env.PORT || 5000;
 // ── DATABASE ──
 connectDB();
 
+// ── HTTP COMPRESSION & PROTOCOL HEADERS ──
+app.use(compression({
+  filter: (req, res) => {
+    if (req.headers['x-no-compression']) return false;
+    return compression.filter(req, res);
+  },
+  threshold: 1024, // Only compress responses larger than 1KB
+}));
+
+// Alt-Svc header advertising HTTP/2 and HTTP/3 support
+app.use((req, res, next) => {
+  res.setHeader('Alt-Svc', 'h3=":443"; ma=86400, h2=":443"; ma=86400');
+  next();
+});
+
 // ── MIDDLEWARE ──
 const allowedOrigins = [
   'http://localhost:3000',
@@ -32,7 +48,7 @@ const allowedOrigins = [
   'http://localhost:5173',
   'https://taqnik.com',
   'https://www.careerforgeai.com',
-  'https://careernest.ai',
+  'https://careernest.taqnik.in',
 ];
 
 app.use(cors({

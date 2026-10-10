@@ -1,5 +1,5 @@
 # ══════════════════════════════════════════════════════════════════════
-#  CareerNest (https://careernest.ai) — Robots.txt
+#  CareerNest (https://careernest.taqnik.in) — Robots.txt
 #  Optimized for Search Engine Indexing (Google, Bing)
 #  and AI Engines (ChatGPT, Gemini, Claude, Perplexity, Apple Intelligence)
 # ══════════════════════════════════════════════════════════════════════
@@ -102,8 +102,8 @@ Allow: /
 
 # ── 8. AI Knowledge Base & Sitemaps ──
 # Machine-readable product briefing for LLMs:
-# https://careernest.ai/llms.txt
-# https://careernest.ai/llms-full.txt
+# https://careernest.taqnik.in/llms.txt
+# https://careernest.taqnik.in/llms-full.txt
 
-Sitemap: https://careernest.ai/sitemap.xml
+Sitemap: https://careernest.taqnik.in/sitemap.xml
 Sitemap: https://careernest.taqnik.in/sitemap.xml

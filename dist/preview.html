@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Live Resume Preview & PDF Export | CareerNest</title>
-  <meta name="description" content="Preview your AI-generated resume in real time. Switch between Classic, Modern, and Minimal ATS-compliant templates, customize styling, and export high-res PDFs." />
-  <meta name="keywords" content="resume preview, PDF resume export, live CV editor, ATS resume templates, AI cover letter preview" />
+  <meta name="description"
+    content="Preview your AI-generated resume in real time. Switch between Classic, Modern, and Minimal ATS-compliant templates, customize styling, and export high-res PDFs." />
+  <meta name="keywords"
+    content="resume preview, PDF resume export, live CV editor, ATS resume templates, AI cover letter preview" />
   <meta name="robots" content="noindex, follow" />
-  <link rel="canonical" href="https://careernest.ai/preview.html" />
+  <link rel="canonical" href="https://careernest.taqnik.in/preview.html" />
 
   <!-- Theme Color -->
   <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
@@ -15,33 +18,39 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://careernest.ai/preview.html" />
+  <meta property="og:url" content="https://careernest.taqnik.in/preview.html" />
   <meta property="og:title" content="Live Resume Preview & PDF Export | CareerNest" />
-  <meta property="og:description" content="Preview your AI-generated resume in real time with Classic, Modern, and Minimal templates. Free PDF download." />
-  <meta property="og:image" content="https://careernest.ai/og-preview.png" />
+  <meta property="og:description"
+    content="Preview your AI-generated resume in real time with Classic, Modern, and Minimal templates. Free PDF download." />
+  <meta property="og:image" content="https://careernest.taqnik.in/og-preview.png" />
   <meta property="og:site_name" content="CareerNest" />
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Live Resume Preview & PDF Export | CareerNest" />
-  <meta name="twitter:description" content="Preview and customize your ATS-optimized resume. Free instant PDF export." />
-  <meta name="twitter:image" content="https://careernest.ai/og-preview.png" />
+  <meta name="twitter:description"
+    content="Preview and customize your ATS-optimized resume. Free instant PDF export." />
+  <meta name="twitter:image" content="https://careernest.taqnik.in/og-preview.png" />
 
   <!-- Theme: Instant theme setter prevents flash without network roundtrip -->
   <script>
-    (function(){try{var s=localStorage.getItem('careernest-theme')||localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+    (function () { try { var s = localStorage.getItem('careernest-theme') || localStorage.getItem('careerforge-theme') || localStorage.getItem('resumatic-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { } })();
   </script>
 
   <!-- Fonts & Styles: Non-render-blocking async load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300&family=Space+Grotesk:wght@300;400;500;600&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300&family=Space+Grotesk:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300&family=Space+Grotesk:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300&family=Space+Grotesk:wght@300;400;500;600&display=swap"
+    media="print" onload="this.media='all'" />
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300&family=Space+Grotesk:wght@300;400;500;600&display=swap" />
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300&family=Space+Grotesk:wght@300;400;500;600&display=swap" />
   </noscript>
 
-    <!-- Favicon (CareerNest) -->
+  <!-- Favicon (CareerNest) -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32-B4yKA15a.png?v=3" />
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192-DWvAkh3u.png?v=3" />
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-0YVqpaxf.png?v=3" />
@@ -59,7 +68,7 @@
       {
         "@type": "WebApplication",
         "name": "CareerNest Resume Preview & PDF Exporter",
-        "url": "https://careernest.ai/preview.html",
+        "url": "https://careernest.taqnik.in/preview.html",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "All",
         "description": "Live interactive resume renderer with customizable typography, colors, and multi-template ATS export."
@@ -71,19 +80,19 @@
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://careernest.ai/"
+            "item": "https://careernest.taqnik.in/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Resume Builder",
-            "item": "https://careernest.ai/form-index.html"
+            "item": "https://careernest.taqnik.in/form-index.html"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Live Preview",
-            "item": "https://careernest.ai/preview.html"
+            "item": "https://careernest.taqnik.in/preview.html"
           }
         ]
       }
@@ -92,13 +101,16 @@
   </script>
   <link rel="stylesheet" crossorigin href="/assets/preview-TJX7FK_K.css">
 </head>
+
 <body>
 
   <div class="noise"></div>
 
   <!-- HEADER -->
   <header class="preview-header">
-    <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">Live Resume Preview &amp; PDF Export</h1>
+    <h1
+      style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">
+      Live Resume Preview &amp; PDF Export</h1>
     <div class="header-left">
       <a href="index.html" class="nav-logo" aria-label="CareerNest Homepage">
         <span class="logo-mark">C</span><span class="logo-text">areerNest</span>
@@ -115,13 +127,30 @@
     </div>
     <div class="header-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
       </button>
       <a href="form-index.html" class="btn-ghost" id="btnBack" title="Return to step-by-step form">Form Wizard →</a>
       <button class="btn-download" id="btnDownload">
         <span class="btn-download-icon">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </span>
         <span class="btn-download-label">Download PDF</span>
         <span class="btn-download-spinner" aria-hidden="true"></span>
@@ -147,15 +176,21 @@
   </header>
 
   <!-- POST-EXPORT INTERVIEW PREP BANNER -->
-  <div id="postExportInterviewBanner" style="display: none; background: linear-gradient(135deg, rgba(108, 92, 231, 0.95), rgba(124, 110, 245, 0.95)); color: #fff; padding: 12px 24px; text-align: center; position: sticky; top: 60px; z-index: 99; box-shadow: 0 4px 16px rgba(108, 92, 231, 0.25);">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+  <div id="postExportInterviewBanner"
+    style="display: none; background: linear-gradient(135deg, rgba(108, 92, 231, 0.95), rgba(124, 110, 245, 0.95)); color: #fff; padding: 12px 24px; text-align: center; position: sticky; top: 60px; z-index: 99; box-shadow: 0 4px 16px rgba(108, 92, 231, 0.25);">
+    <div
+      style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
       <div style="display: flex; align-items: center; gap: 10px;">
         <span style="font-size: 1.2rem;">🎯</span>
-        <span style="font-size: 0.88rem; font-weight: 500;">Resume downloaded! Next step in your hiring loop: <strong>Prepare for company technical rounds</strong>.</span>
+        <span style="font-size: 0.88rem; font-weight: 500;">Resume downloaded! Next step in your hiring loop:
+          <strong>Prepare for company technical rounds</strong>.</span>
       </div>
       <div style="display: flex; gap: 10px; align-items: center;">
-        <a href="interview-prep.html" class="btn btn-secondary btn-sm" style="background: #fff; color: var(--accent); font-weight: 700; border-radius: 99px; padding: 6px 16px; text-decoration: none;">Start Interview Prep →</a>
-        <button id="btnClosePostExportBanner" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.1rem; opacity: 0.8;">✕</button>
+        <a href="interview-prep.html" class="btn btn-secondary btn-sm"
+          style="background: #fff; color: var(--accent); font-weight: 700; border-radius: 99px; padding: 6px 16px; text-decoration: none;">Start
+          Interview Prep →</a>
+        <button id="btnClosePostExportBanner"
+          style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.1rem; opacity: 0.8;">✕</button>
       </div>
     </div>
   </div>
@@ -239,7 +274,9 @@
             <span class="arw-val" id="arwStructure">--%</span>
           </div>
         </div>
-        <div id="arwActionTip" style="display:none; margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(108,92,231,0.08); font-size: 0.74rem; font-weight: 600; color: var(--accent);"></div>
+        <div id="arwActionTip"
+          style="display:none; margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(108,92,231,0.08); font-size: 0.74rem; font-weight: 600; color: var(--accent);">
+        </div>
         <div class="arw-footer">
           <a href="ats-score-checker.html" class="arw-full-audit-link">Full ATS Breakdown &amp; Fixes →</a>
         </div>
@@ -266,13 +303,16 @@
               <label class="ech-label" for="epTargetFieldInput" id="epTargetFieldLabel">Selected Content</label>
               <span class="ep-target-sync-hint">⚡ Live sync</span>
             </div>
-            <textarea id="epTargetFieldInput" class="ep-target-textarea" rows="2" placeholder="Type to edit selected text..."></textarea>
+            <textarea id="epTargetFieldInput" class="ep-target-textarea" rows="2"
+              placeholder="Type to edit selected text..."></textarea>
           </div>
           <div class="ep-target-actions">
-            <button type="button" class="ech-action-btn ech-btn-danger" id="echDeleteElemBtn" style="display:none;" title="Delete selected entry or tag">
+            <button type="button" class="ech-action-btn ech-btn-danger" id="echDeleteElemBtn" style="display:none;"
+              title="Delete selected entry or tag">
               🗑️ Delete Element
             </button>
-            <button type="button" class="ech-tool-btn" id="echResetFormatting" title="Reset custom styles on selected element">
+            <button type="button" class="ech-tool-btn" id="echResetFormatting"
+              title="Reset custom styles on selected element">
               🧹 Reset Style
             </button>
           </div>
@@ -332,19 +372,33 @@
             <div class="ech-group">
               <button type="button" class="ech-tool-btn" id="echBtnBold" title="Bold (Ctrl+B)"><b>B</b></button>
               <button type="button" class="ech-tool-btn" id="echBtnItalic" title="Italic (Ctrl+I)"><i>I</i></button>
-              <button type="button" class="ech-tool-btn" id="echBtnUnderline" title="Underline (Ctrl+U)"><u>U</u></button>
-              <button type="button" class="ech-tool-btn" id="echBtnBullet" title="Insert Bullet Point (•)">• Bullet</button>
+              <button type="button" class="ech-tool-btn" id="echBtnUnderline"
+                title="Underline (Ctrl+U)"><u>U</u></button>
+              <button type="button" class="ech-tool-btn" id="echBtnBullet" title="Insert Bullet Point (•)">•
+                Bullet</button>
             </div>
 
             <div class="ech-group" style="margin-left: auto;">
               <button type="button" class="ech-tool-btn" id="echAlignLeft" title="Align Left">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="15" y2="12" />
+                  <line x1="3" y1="18" x2="18" y2="18" />
+                </svg>
               </button>
               <button type="button" class="ech-tool-btn" id="echAlignCenter" title="Align Center">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="6" y1="12" x2="18" y2="12" />
+                  <line x1="4" y1="18" x2="20" y2="18" />
+                </svg>
               </button>
               <button type="button" class="ech-tool-btn" id="echAlignRight" title="Align Right">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="9" y1="12" x2="21" y2="12" />
+                  <line x1="6" y1="18" x2="21" y2="18" />
+                </svg>
               </button>
             </div>
           </div>
@@ -354,12 +408,18 @@
             <div class="ech-group ech-color-group">
               <label class="ech-label">Color</label>
               <div class="ech-swatches">
-                <button type="button" class="ech-swatch" data-color="#1a1d26" style="background:#1a1d26;" title="Charcoal"></button>
-                <button type="button" class="ech-swatch" data-color="#2563eb" style="background:#2563eb;" title="Blue"></button>
-                <button type="button" class="ech-swatch" data-color="#6c5ce7" style="background:#6c5ce7;" title="Purple"></button>
-                <button type="button" class="ech-swatch" data-color="#059669" style="background:#059669;" title="Emerald"></button>
-                <button type="button" class="ech-swatch" data-color="#dc2626" style="background:#dc2626;" title="Red"></button>
-                <button type="button" class="ech-swatch" data-color="#d97706" style="background:#d97706;" title="Amber"></button>
+                <button type="button" class="ech-swatch" data-color="#1a1d26" style="background:#1a1d26;"
+                  title="Charcoal"></button>
+                <button type="button" class="ech-swatch" data-color="#2563eb" style="background:#2563eb;"
+                  title="Blue"></button>
+                <button type="button" class="ech-swatch" data-color="#6c5ce7" style="background:#6c5ce7;"
+                  title="Purple"></button>
+                <button type="button" class="ech-swatch" data-color="#059669" style="background:#059669;"
+                  title="Emerald"></button>
+                <button type="button" class="ech-swatch" data-color="#dc2626" style="background:#dc2626;"
+                  title="Red"></button>
+                <button type="button" class="ech-swatch" data-color="#d97706" style="background:#d97706;"
+                  title="Amber"></button>
                 <div class="ech-color-custom" title="Custom Color Picker">
                   <input type="color" id="echCustomColorPicker" value="#6c5ce7" />
                 </div>
@@ -392,11 +452,16 @@
             </div>
           </div>
           <div class="ep-actions-grid">
-            <button type="button" class="ech-action-btn" id="echAddExpBtn" title="Add work experience entry">💼 + Experience</button>
-            <button type="button" class="ech-action-btn" id="echAddProjectBtn" title="Add a new project">🚀 + Project</button>
-            <button type="button" class="ech-action-btn" id="echAddEduBtn" title="Add education entry">🎓 + Education</button>
-            <button type="button" class="ech-action-btn" id="echAddSkillBtn" title="Add a new technical skill tag">⚡ + Skill Tag</button>
-            <button type="button" class="ech-action-btn" id="echAddLangBtn" title="Add a spoken language">🌐 + Language</button>
+            <button type="button" class="ech-action-btn" id="echAddExpBtn" title="Add work experience entry">💼 +
+              Experience</button>
+            <button type="button" class="ech-action-btn" id="echAddProjectBtn" title="Add a new project">🚀 +
+              Project</button>
+            <button type="button" class="ech-action-btn" id="echAddEduBtn" title="Add education entry">🎓 +
+              Education</button>
+            <button type="button" class="ech-action-btn" id="echAddSkillBtn" title="Add a new technical skill tag">⚡ +
+              Skill Tag</button>
+            <button type="button" class="ech-action-btn" id="echAddLangBtn" title="Add a spoken language">🌐 +
+              Language</button>
           </div>
         </div>
 
@@ -432,7 +497,8 @@
 
     <!-- RIGHT: RESUME PREVIEW -->
     <div class="panel panel-preview" id="previewPanel">
-      <div class="panel-label" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+      <div class="panel-label"
+        style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
         <span>LIVE PREVIEW</span>
         <div class="canva-edit-pill" title="Click directly on any text on the resume to edit it like Canva">
           <span class="pulse-dot"></span>
@@ -623,74 +689,83 @@
       </div>
 
     </div><!-- end panel-preview -->
-  </div><!-- end split-screen -->
+    </div><!-- end split-screen -->
 
-  <!-- PDF EXPORT OVERLAY -->
-  <div class="pdf-overlay" id="pdfOverlay" aria-hidden="true">
-    <div class="pdf-overlay-card">
-      <div class="pdf-spinner"></div>
-      <div class="pdf-overlay-title">Generating PDF</div>
-      <div class="pdf-overlay-sub" id="pdfOverlaySub">Capturing resume…</div>
-      <div class="pdf-progress-track">
-        <div class="pdf-progress-fill" id="pdfProgressFill"></div>
+    <!-- PDF EXPORT OVERLAY -->
+    <div class="pdf-overlay" id="pdfOverlay" aria-hidden="true">
+      <div class="pdf-overlay-card">
+        <div class="pdf-spinner"></div>
+        <div class="pdf-overlay-title">Generating PDF</div>
+        <div class="pdf-overlay-sub" id="pdfOverlaySub">Capturing resume…</div>
+        <div class="pdf-progress-track">
+          <div class="pdf-progress-fill" id="pdfProgressFill"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- VIRAL POST-DOWNLOAD SHARE & REFERRAL MODAL -->
-  <div class="viral-modal-overlay" id="viralModal" aria-hidden="true">
-    <div class="viral-modal-card">
-      <button class="modal-close-btn" id="btnCloseViralModal" aria-label="Close modal">✕</button>
-      
-      <div class="modal-header-icon">🎉</div>
-      <h2 class="modal-title">Your Resume is Downloaded!</h2>
-      <p class="modal-subtitle">You're one step closer to your dream interview. Level up your job search below:</p>
+    <!-- VIRAL POST-DOWNLOAD SHARE & REFERRAL MODAL -->
+    <div class="viral-modal-overlay" id="viralModal" aria-hidden="true">
+      <div class="viral-modal-card">
+        <button class="modal-close-btn" id="btnCloseViralModal" aria-label="Close modal">✕</button>
 
-      <!-- EMAIL BACKUP CAPTURE -->
-      <div class="viral-section-box">
-        <label class="v-box-label">📧 Send Email Backup + Free Interview Guide</label>
-        <div class="email-capture-row">
-          <input type="email" id="backupEmailInput" placeholder="Enter your email address..." />
-          <button id="btnSendBackup" class="btn-primary" style="padding: 7px 14px; border-radius: 6px; font-size: 0.8rem;">Send Backup</button>
+        <div class="modal-header-icon">🎉</div>
+        <h2 class="modal-title">Your Resume is Downloaded!</h2>
+        <p class="modal-subtitle">You're one step closer to your dream interview. Level up your job search below:</p>
+
+        <!-- EMAIL BACKUP CAPTURE -->
+        <div class="viral-section-box">
+          <label class="v-box-label">📧 Send Email Backup + Free Interview Guide</label>
+          <div class="email-capture-row">
+            <input type="email" id="backupEmailInput" placeholder="Enter your email address..." />
+            <button id="btnSendBackup" class="btn-primary"
+              style="padding: 7px 14px; border-radius: 6px; font-size: 0.8rem;">Send Backup</button>
+          </div>
+          <div id="backupFeedback" class="v-feedback" style="display: none;"></div>
         </div>
-        <div id="backupFeedback" class="v-feedback" style="display: none;"></div>
-      </div>
 
-      <!-- SHAREABLE LINK -->
-      <div class="viral-section-box">
-        <label class="v-box-label">🔗 Your Public Shareable Resume Link</label>
-        <div class="share-link-row">
-          <input type="text" id="shareableLinkInput" readonly value="http://localhost:3000/r.html" />
-          <button id="btnCopyShareLink" class="btn-ghost" style="padding: 6px 12px; font-size: 0.8rem;">Copy</button>
+        <!-- SHAREABLE LINK -->
+        <div class="viral-section-box">
+          <label class="v-box-label">🔗 Your Public Shareable Resume Link</label>
+          <div class="share-link-row">
+            <input type="text" id="shareableLinkInput" readonly value="http://localhost:3000/r.html" />
+            <button id="btnCopyShareLink" class="btn-ghost" style="padding: 6px 12px; font-size: 0.8rem;">Copy</button>
+          </div>
         </div>
-      </div>
 
-      <!-- SOCIAL SHARE BUTTONS -->
-      <div style="margin-top: 6px;">
-        <label class="v-box-label">📢 Share & Inspire Your Network</label>
-        <div class="social-share-buttons">
-          <button id="btnShareLinkedIn" class="btn-social btn-linkedin">
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6c0-.88-.72-1.6-1.6-1.6Z"/></svg>
-            Share on LinkedIn
-          </button>
-          <button id="btnShareTwitter" class="btn-social btn-twitter">
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            Share on X
-          </button>
+        <!-- SOCIAL SHARE BUTTONS -->
+        <div style="margin-top: 6px;">
+          <label class="v-box-label">📢 Share & Inspire Your Network</label>
+          <div class="social-share-buttons">
+            <button id="btnShareLinkedIn" class="btn-social btn-linkedin">
+              <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6c0-.88-.72-1.6-1.6-1.6Z" />
+              </svg>
+              Share on LinkedIn
+            </button>
+            <button id="btnShareTwitter" class="btn-social btn-twitter">
+              <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              Share on X
+            </button>
+          </div>
         </div>
-      </div>
 
-      <!-- REFERRAL LOOP -->
-      <div class="referral-box">
-        <div class="ref-title">🎁 Invite Peers, Get 30 Days Free Pro AI</div>
-        <p class="ref-desc">Give your friends 1 free month of unlimited cover letter generations. Earn 30 days for every friend who signs up.</p>
-        <div class="share-link-row" style="margin-top: 6px;">
-          <input type="text" id="referralCodeInput" readonly value="https://careernest.ai/?ref=CAREER_PRO" />
-          <button id="btnCopyRefCode" class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem;">Copy Invite</button>
+        <!-- REFERRAL LOOP -->
+        <div class="referral-box">
+          <div class="ref-title">🎁 Invite Peers, Get 30 Days Free Pro AI</div>
+          <p class="ref-desc">Give your friends 1 free month of unlimited cover letter generations. Earn 30 days for
+            every friend who signs up.</p>
+          <div class="share-link-row" style="margin-top: 6px;">
+            <input type="text" id="referralCodeInput" readonly value="https://careernest.taqnik.in/?ref=CAREER_PRO" />
+            <button id="btnCopyRefCode" class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem;">Copy
+              Invite</button>
+          </div>
         </div>
-      </div>
 
-    </div>
+      </div>
   </main>
 
   <!-- FLOATING TEXT FORMATTING & STYLE TOOLBAR -->
@@ -731,12 +806,18 @@
 
     <!-- Color -->
     <div class="tst-group">
-      <button type="button" class="tst-color-swatch" data-color="#1a1d26" style="background:#1a1d26;" title="Charcoal"></button>
-      <button type="button" class="tst-color-swatch" data-color="#6c5ce7" style="background:#6c5ce7;" title="Purple"></button>
-      <button type="button" class="tst-color-swatch" data-color="#2563eb" style="background:#2563eb;" title="Blue"></button>
-      <button type="button" class="tst-color-swatch" data-color="#059669" style="background:#059669;" title="Emerald"></button>
-      <button type="button" class="tst-color-swatch" data-color="#dc2626" style="background:#dc2626;" title="Red"></button>
-      <button type="button" class="tst-color-swatch" data-color="#d97706" style="background:#d97706;" title="Amber"></button>
+      <button type="button" class="tst-color-swatch" data-color="#1a1d26" style="background:#1a1d26;"
+        title="Charcoal"></button>
+      <button type="button" class="tst-color-swatch" data-color="#6c5ce7" style="background:#6c5ce7;"
+        title="Purple"></button>
+      <button type="button" class="tst-color-swatch" data-color="#2563eb" style="background:#2563eb;"
+        title="Blue"></button>
+      <button type="button" class="tst-color-swatch" data-color="#059669" style="background:#059669;"
+        title="Emerald"></button>
+      <button type="button" class="tst-color-swatch" data-color="#dc2626" style="background:#dc2626;"
+        title="Red"></button>
+      <button type="button" class="tst-color-swatch" data-color="#d97706" style="background:#d97706;"
+        title="Amber"></button>
       <div class="tst-custom-color" title="Custom Color Picker">
         <input type="color" id="tstCustomColorPicker" value="#6c5ce7" />
       </div>
@@ -747,16 +828,32 @@
     <!-- Alignment -->
     <div class="tst-group">
       <button type="button" class="tst-btn" id="tstAlignLeft" title="Align Left">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="15" y2="12" />
+          <line x1="3" y1="18" x2="18" y2="18" />
+        </svg>
       </button>
       <button type="button" class="tst-btn" id="tstAlignCenter" title="Align Center">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="6" y1="12" x2="18" y2="12" />
+          <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
       </button>
       <button type="button" class="tst-btn" id="tstAlignRight" title="Align Right">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="9" y1="12" x2="21" y2="12" />
+          <line x1="6" y1="18" x2="21" y2="18" />
+        </svg>
       </button>
       <button type="button" class="tst-btn" id="tstAlignJustify" title="Justify">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
       </button>
     </div>
 
@@ -772,8 +869,9 @@
   </div>
 
 
-    <!-- SINGLE PAGE TIPS MODAL -->
-  <div id="singlePageTipsModal" class="sptm-overlay" role="dialog" aria-modal="true" aria-label="Single Page Resume Tips">
+  <!-- SINGLE PAGE TIPS MODAL -->
+  <div id="singlePageTipsModal" class="sptm-overlay" role="dialog" aria-modal="true"
+    aria-label="Single Page Resume Tips">
     <div class="sptm-box">
       <div class="sptm-header">
         <div class="sptm-icon-wrap">&#x1F4A1;</div>
@@ -781,18 +879,40 @@
           <div class="sptm-title">Single-Page Resume Tips</div>
           <div class="sptm-sub">Most recruiters spend &lt;30s per resume &mdash; keep it tight &amp; impactful!</div>
         </div>
-        <button class="sptm-close" onclick="document.getElementById('singlePageTipsModal').classList.remove('visible')" aria-label="Close modal">&times;</button>
+        <button class="sptm-close" onclick="document.getElementById('singlePageTipsModal').classList.remove('visible')"
+          aria-label="Close modal">&times;</button>
       </div>
       <ul class="sptm-list">
-        <li><span class="tip-icon">&#x26A1;</span><div><strong>Shorten bullets:</strong> Aim for 1-2 lines per bullet. Lead with strong action verbs and quantifiable metrics.</div></li>
-        <li><span class="tip-icon">&#x1F3AF;</span><div><strong>Reduce projects:</strong> Feature only 2-3 most relevant projects that highlight core competencies for target role.</div></li>
-        <li><span class="tip-icon">&#x1F4DD;</span><div><strong>Compress summary:</strong> Keep professional summary concise to 2-3 sentences (50-80 words max).</div></li>
-        <li><span class="tip-icon">&#x1F4CF;</span><div><strong>Reduce font size:</strong> Switch to Editor Canvas &rarr; Font Size &rarr; try 9.5px or 10px body font size.</div></li>
-        <li><span class="tip-icon">&#x1F6E0;</span><div><strong>Tighten skills:</strong> List only role-relevant technical and soft skills. Remove generic buzzwords.</div></li>
-        <li><span class="tip-icon">&#x1F4D0;</span><div><strong>Use compact layout:</strong> The Minimal template offers the highest text density layout.</div></li>
-        <li><span class="tip-icon">&#x1F4BC;</span><div><strong>2 pages is acceptable</strong> if you have 10+ years of experience or senior executive roles.</div></li>
+        <li><span class="tip-icon">&#x26A1;</span>
+          <div><strong>Shorten bullets:</strong> Aim for 1-2 lines per bullet. Lead with strong action verbs and
+            quantifiable metrics.</div>
+        </li>
+        <li><span class="tip-icon">&#x1F3AF;</span>
+          <div><strong>Reduce projects:</strong> Feature only 2-3 most relevant projects that highlight core
+            competencies for target role.</div>
+        </li>
+        <li><span class="tip-icon">&#x1F4DD;</span>
+          <div><strong>Compress summary:</strong> Keep professional summary concise to 2-3 sentences (50-80 words max).
+          </div>
+        </li>
+        <li><span class="tip-icon">&#x1F4CF;</span>
+          <div><strong>Reduce font size:</strong> Switch to Editor Canvas &rarr; Font Size &rarr; try 9.5px or 10px body
+            font size.</div>
+        </li>
+        <li><span class="tip-icon">&#x1F6E0;</span>
+          <div><strong>Tighten skills:</strong> List only role-relevant technical and soft skills. Remove generic
+            buzzwords.</div>
+        </li>
+        <li><span class="tip-icon">&#x1F4D0;</span>
+          <div><strong>Use compact layout:</strong> The Minimal template offers the highest text density layout.</div>
+        </li>
+        <li><span class="tip-icon">&#x1F4BC;</span>
+          <div><strong>2 pages is acceptable</strong> if you have 10+ years of experience or senior executive roles.
+          </div>
+        </li>
       </ul>
-      <button class="sptm-cta" onclick="document.getElementById('singlePageTipsModal').classList.remove('visible')">Got It, Let's Optimize!</button>
+      <button class="sptm-cta" onclick="document.getElementById('singlePageTipsModal').classList.remove('visible')">Got
+        It, Let's Optimize!</button>
     </div>
   </div>
   <script src="theme.js" defer></script>
@@ -801,4 +921,5 @@
   <script src="preview-script.js"></script>
   <script src="analytics.js" defer></script>
 </body>
+
 </html>

@@ -1,69 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="shareDocTitle">Alex Morgan — Professional Resume | CareerNest</title>
-  <meta id="shareDocDesc" name="description" content="View Alex Morgan's verified ATS resume. Built with CareerNest AI Resume Builder." />
+  <meta id="shareDocDesc" name="description"
+    content="View Alex Morgan's verified ATS resume. Built with CareerNest AI Resume Builder." />
   <meta name="robots" content="noindex, follow" />
-  
+
   <!-- Open Graph -->
   <meta property="og:type" content="profile" />
   <meta property="og:title" content="Verified ATS Resume | CareerNest" />
-  <meta property="og:description" content="View this verified ATS-optimized resume. Build your own professional resume for free." />
-  <meta property="og:image" content="https://careernest.ai/og-preview.png" />
+  <meta property="og:description"
+    content="View this verified ATS-optimized resume. Build your own professional resume for free." />
+  <meta property="og:image" content="https://careernest.taqnik.in/og-preview.png" />
 
   <!-- Theme: Instant theme setter prevents flash without network roundtrip -->
   <script>
-    (function(){try{var s=localStorage.getItem('careernest-theme')||localStorage.getItem('careerforge-theme')||localStorage.getItem('resumatic-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+    (function () { try { var s = localStorage.getItem('careernest-theme') || localStorage.getItem('careerforge-theme') || localStorage.getItem('resumatic-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { } })();
   </script>
 
   <!-- Fonts & Styles: Non-render-blocking async load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" media="print" onload="this.media='all'" />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    media="print" onload="this.media='all'" />
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
   </noscript>
 
   <style>
     .public-viewer-nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 32px; background: var(--nav-bg);
-      backdrop-filter: blur(14px); border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 32px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
+
     .verified-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.8rem; font-weight: 600; color: var(--green);
-      background: rgba(16,185,129,0.1); padding: 4px 12px; border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 4px 12px;
+      border-radius: 100px;
     }
+
     .public-sheet-wrap {
-      max-width: 820px; margin: 40px auto 80px; padding: 0 20px;
+      max-width: 820px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
     }
+
     .public-paper {
-      background: #ffffff; color: #111827; border-radius: 14px;
-      padding: 48px; box-shadow: var(--shadow-lg); border: 1px solid var(--border);
-      font-family: 'DM Sans', sans-serif; position: relative;
+      background: #ffffff;
+      color: #111827;
+      border-radius: 14px;
+      padding: 48px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      font-family: 'DM Sans', sans-serif;
+      position: relative;
     }
-    .public-paper-header { border-bottom: 2px solid #6c5ce7; padding-bottom: 20px; margin-bottom: 24px; }
-    .public-name { font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; color: #111827; line-height: 1.1; }
-    .public-role { font-size: 1.1rem; color: #6c5ce7; font-weight: 600; margin-top: 4px; }
-    .public-contact { font-size: 0.88rem; color: #64748b; margin-top: 8px; display: flex; gap: 16px; flex-wrap: wrap; }
-    .pub-sec { margin-top: 24px; }
+
+    .public-paper-header {
+      border-bottom: 2px solid #6c5ce7;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .public-name {
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.1;
+    }
+
+    .public-role {
+      font-size: 1.1rem;
+      color: #6c5ce7;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .public-contact {
+      font-size: 0.88rem;
+      color: #64748b;
+      margin-top: 8px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .pub-sec {
+      margin-top: 24px;
+    }
+
     .pub-head {
-      font-family: var(--font-head); font-size: 0.95rem; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.08em; color: #334155;
-      border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; margin-bottom: 12px;
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #334155;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
     }
-    .pub-exp-item { margin-bottom: 16px; }
-    .pub-exp-title { display: flex; justify-content: space-between; font-weight: 700; font-size: 1rem; color: #1e293b; }
-    .pub-bullets { padding-left: 20px; font-size: 0.9rem; color: #334155; line-height: 1.6; margin-top: 6px; }
+
+    .pub-exp-item {
+      margin-bottom: 16px;
+    }
+
+    .pub-exp-title {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1e293b;
+    }
+
+    .pub-bullets {
+      padding-left: 20px;
+      font-size: 0.9rem;
+      color: #334155;
+      line-height: 1.6;
+      margin-top: 6px;
+    }
+
     .watermark-banner {
-      margin-top: 36px; padding-top: 16px; border-top: 1px dashed #cbd5e1;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.8rem; color: #94a3b8;
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px dashed #cbd5e1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #94a3b8;
     }
   </style>
   <!-- Favicon (CareerNest) -->
@@ -75,6 +163,7 @@
   <link rel="apple-touch-icon" href="/assets/favicon-0YVqpaxf.png?v=3" />
   <link rel="stylesheet" crossorigin href="/assets/tools-style-BalY_yFK.css">
 </head>
+
 <body>
 
   <div class="noise"></div>
@@ -91,8 +180,22 @@
     </div>
     <div style="display: flex; align-items: center; gap: 12px;">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
       </button>
       <a href="form-index.html" class="btn-primary" style="font-size: 0.85rem; padding: 8px 18px;">
         ✨ Clone & Build Your Own
@@ -113,7 +216,7 @@
     let saved = null;
     try {
       saved = JSON.parse(localStorage.getItem('resumatic_state'));
-    } catch(e) {}
+    } catch (e) { }
 
     const paper = document.getElementById('publicPaper');
 
@@ -190,9 +293,10 @@
 
       <div class="watermark-banner">
         <span>Built with <strong>CareerNest</strong></span>
-        <a href="form-index.html" style="color: #6c5ce7; font-weight: 600; text-decoration: none;">Create your free resume at careernest.ai →</a>
+        <a href="form-index.html" style="color: #6c5ce7; font-weight: 600; text-decoration: none;">Create your free resume at careernest.taqnik.in →</a>
       </div>
     `;
   </script>
 </body>
+
 </html>

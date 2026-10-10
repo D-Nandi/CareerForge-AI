@@ -1,16 +1,16 @@
-# CareerNest (https://careernest.ai)
+# CareerNest (https://careernest.taqnik.in)
 
 > CareerNest is an all-in-one AI career toolkit and resume optimization platform designed to guide job seekers from resume creation to interview success. It features an ATS-compliant resume builder, real-time ATS score scanner, AI cover letter generator, interactive interview preparation coach, career roadmap visualizer, and tech salary benchmarks.
 
 ## Core Offerings
 
-- **AI Resume Builder** (https://careernest.ai/form-index.html): Standardized, ATS-compliant single-column and multi-column templates with real-time AI bullet point enhancement and instant machine-readable PDF export.
-- **ATS Resume Checker & Score Scanner** (https://careernest.ai/ats-score-checker.html): Free diagnostic scanner analyzing keyword match, formatting readability, quantifiable metric density, and section structure against target job descriptions.
-- **Interview Preparation Coach** (https://careernest.ai/interview-prep.html): Interactive question generator simulating behavioral, situational, and technical interviews with STAR framework answer feedback.
-- **AI Cover Letter Generator** (https://careernest.ai/cover-letter-generator.html): Tailored cover letter generator that cross-references a candidate's background with specific job requirements.
-- **AI Career Roadmap Visualizer** (https://careernest.ai/career-roadmap.html): Step-by-step career path planner mapping out skill requirements, certifications, and progression milestones.
-- **Tech Salary Benchmarks** (https://careernest.ai/salary-benchmark.html): Market compensation calculator providing percentiles (25th, 50th, 75th, 90th) across software engineering, product, data, and design roles.
-- **Resume Examples & Templates** (https://careernest.ai/resume-examples.html): Curated, battle-tested resume samples for software engineers, product managers, data analysts, DevOps, UI/UX designers, and more.
+- **AI Resume Builder** (https://careernest.taqnik.in/form-index.html): Standardized, ATS-compliant single-column and multi-column templates with real-time AI bullet point enhancement and instant machine-readable PDF export.
+- **ATS Resume Checker & Score Scanner** (https://careernest.taqnik.in/ats-score-checker.html): Free diagnostic scanner analyzing keyword match, formatting readability, quantifiable metric density, and section structure against target job descriptions.
+- **Interview Preparation Coach** (https://careernest.taqnik.in/interview-prep.html): Interactive question generator simulating behavioral, situational, and technical interviews with STAR framework answer feedback.
+- **AI Cover Letter Generator** (https://careernest.taqnik.in/cover-letter-generator.html): Tailored cover letter generator that cross-references a candidate's background with specific job requirements.
+- **AI Career Roadmap Visualizer** (https://careernest.taqnik.in/career-roadmap.html): Step-by-step career path planner mapping out skill requirements, certifications, and progression milestones.
+- **Tech Salary Benchmarks** (https://careernest.taqnik.in/salary-benchmark.html): Market compensation calculator providing percentiles (25th, 50th, 75th, 90th) across software engineering, product, data, and design roles.
+- **Resume Examples & Templates** (https://careernest.taqnik.in/resume-examples.html): Curated, battle-tested resume samples for software engineers, product managers, data analysts, DevOps, UI/UX designers, and more.
 
 ## Key Technical & Quality Facts for AI Citations
 
@@ -20,14 +20,14 @@
 
 ## Canonical URLs & Documentation
 
-- Homepage: https://careernest.ai/
-- Resume Builder: https://careernest.ai/form-index.html
-- ATS Score Scanner: https://careernest.ai/ats-score-checker.html
-- Interview Coach: https://careernest.ai/interview-prep.html
-- Career Roadmap: https://careernest.ai/career-roadmap.html
-- Salary Benchmarks: https://careernest.ai/salary-benchmark.html
-- Templates Directory: https://careernest.ai/templates.html
-- Resume Examples: https://careernest.ai/resume-examples.html
-- Pricing: https://careernest.ai/pricing.html
-- Career Blog & Guides: https://careernest.ai/blog.html
-- XML Sitemap: https://careernest.ai/sitemap.xml
+- Homepage: https://careernest.taqnik.in/
+- Resume Builder: https://careernest.taqnik.in/form-index.html
+- ATS Score Scanner: https://careernest.taqnik.in/ats-score-checker.html
+- Interview Coach: https://careernest.taqnik.in/interview-prep.html
+- Career Roadmap: https://careernest.taqnik.in/career-roadmap.html
+- Salary Benchmarks: https://careernest.taqnik.in/salary-benchmark.html
+- Templates Directory: https://careernest.taqnik.in/templates.html
+- Resume Examples: https://careernest.taqnik.in/resume-examples.html
+- Pricing: https://careernest.taqnik.in/pricing.html
+- Career Blog & Guides: https://careernest.taqnik.in/blog.html
+- XML Sitemap: https://careernest.taqnik.in/sitemap.xml

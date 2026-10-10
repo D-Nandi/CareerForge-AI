@@ -9,7 +9,7 @@
 
 ## 1. Context & Requirement
 
-CareerForge's content architecture (`careernest.ai/blog.html`) is structured around **5 core career and job-search SEO pillars**:
+CareerForge's content architecture (`careernest.taqnik.in/blog.html`) is structured around **5 core career and job-search SEO pillars**:
 
 1. **`ATS Secrets`** — Content covering Applicant Tracking Systems, parsing algorithms, and keyword scoring.
 2. **`Resume Writing`** — Guides on bullet point formulas, power verbs, and resume formatting.

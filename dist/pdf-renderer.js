@@ -123,7 +123,7 @@ function createPDFRenderer() {
     pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(7);
     pdf.setTextColor(148, 163, 184);
-    pdf.text('Built with CareerNest \u2022 careernest.ai (Free AI Resume Builder & Career Toolkit)', PAGE_W / 2, curY, { align: 'center' });
+    pdf.text('Built with CareerNest \u2022 careernest.taqnik.in (Free AI Resume Builder & Career Toolkit)', PAGE_W / 2, curY, { align: 'center' });
   }
 
   /** Set PDF document metadata for ATS parsers */
@@ -839,7 +839,7 @@ function renderModernPDF(r, state) {
   r.pdf.setFont('helvetica', 'normal');
   r.pdf.setFontSize(7);
   r.pdf.setTextColor(148, 163, 184);
-  r.pdf.text('Built with CareerNest \u2022 careernest.ai (Free AI Resume Builder & Career Toolkit)', PW / 2, r.y, { align: 'center' });
+  r.pdf.text('Built with CareerNest \u2022 careernest.taqnik.in (Free AI Resume Builder & Career Toolkit)', PW / 2, r.y, { align: 'center' });
 }
 
 /**

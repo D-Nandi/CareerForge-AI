@@ -11,7 +11,7 @@
       "description": "Local Development Server"
     },
     {
-      "url": "https://careernest.ai",
+      "url": "https://careernest.taqnik.in",
       "description": "Production Server"
     }
   ],
@@ -27,7 +27,14 @@
     "schemas": {
       "PublishBlogPostRequest": {
         "type": "object",
-        "required": ["id", "title", "excerpt", "category", "publishDate", "author_name"],
+        "required": [
+          "id",
+          "title",
+          "excerpt",
+          "category",
+          "publishDate",
+          "author_name"
+        ],
         "properties": {
           "id": {
             "type": "string",
@@ -101,8 +108,14 @@
           },
           "tags": {
             "type": "array",
-            "items": { "type": "string" },
-            "example": ["Resume", "Career", "Job Search"],
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Resume",
+              "Career",
+              "Job Search"
+            ],
             "description": "Array of tags."
           },
           "published": {
@@ -171,8 +184,14 @@
           },
           "tags": {
             "type": "array",
-            "items": { "type": "string" },
-            "example": ["Resume", "AI", "2026 Guide"]
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Resume",
+              "AI",
+              "2026 Guide"
+            ]
           },
           "published": {
             "type": "boolean",
@@ -183,50 +202,156 @@
       "BlogPostListItem": {
         "type": "object",
         "properties": {
-          "_id": { "type": "string", "example": "653b1b9e8321a0012c89f101" },
-          "slug": { "type": "string", "example": "how-to-beat-ats-in-2025" },
-          "title": { "type": "string", "example": "How to Beat Applicant Tracking Systems (ATS) in 2025" },
-          "summary": { "type": "string", "example": "Over 75% of resumes are rejected before a human recruiter ever sees them..." },
-          "category": { "type": "string", "example": "Tutorials" },
-          "date": { "type": "string", "example": "Sep 28, 2025" },
-          "readTime": { "type": "string", "example": "6 min read" },
-          "author": { "type": "string", "example": "Elena Rostova" },
-          "authorRole": { "type": "string", "example": "Head of Recruiting Intelligence" },
-          "heroImage": { "type": "string", "example": "https://..." },
-          "tags": { "type": "array", "items": { "type": "string" } },
-          "featured": { "type": "boolean", "example": false },
-          "published": { "type": "boolean", "example": true },
-          "createdAt": { "type": "string", "format": "date-time" },
-          "updatedAt": { "type": "string", "format": "date-time" }
+          "_id": {
+            "type": "string",
+            "example": "653b1b9e8321a0012c89f101"
+          },
+          "slug": {
+            "type": "string",
+            "example": "how-to-beat-ats-in-2025"
+          },
+          "title": {
+            "type": "string",
+            "example": "How to Beat Applicant Tracking Systems (ATS) in 2025"
+          },
+          "summary": {
+            "type": "string",
+            "example": "Over 75% of resumes are rejected before a human recruiter ever sees them..."
+          },
+          "category": {
+            "type": "string",
+            "example": "Tutorials"
+          },
+          "date": {
+            "type": "string",
+            "example": "Sep 28, 2025"
+          },
+          "readTime": {
+            "type": "string",
+            "example": "6 min read"
+          },
+          "author": {
+            "type": "string",
+            "example": "Elena Rostova"
+          },
+          "authorRole": {
+            "type": "string",
+            "example": "Head of Recruiting Intelligence"
+          },
+          "heroImage": {
+            "type": "string",
+            "example": "https://..."
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "featured": {
+            "type": "boolean",
+            "example": false
+          },
+          "published": {
+            "type": "boolean",
+            "example": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       },
       "BlogPostDetail": {
         "type": "object",
         "properties": {
-          "_id": { "type": "string", "example": "653b1b9e8321a0012c89f101" },
-          "slug": { "type": "string", "example": "how-to-beat-ats-in-2025" },
-          "title": { "type": "string", "example": "How to Beat Applicant Tracking Systems (ATS) in 2025" },
-          "summary": { "type": "string", "example": "Over 75% of resumes are rejected before a human recruiter ever sees them..." },
-          "content": { "type": "string", "example": "## 1. How Modern ATS Algorithms Actually Work..." },
-          "category": { "type": "string", "example": "Tutorials" },
-          "date": { "type": "string", "example": "Sep 28, 2025" },
-          "readTime": { "type": "string", "example": "6 min read" },
-          "author": { "type": "string", "example": "Elena Rostova" },
-          "authorRole": { "type": "string", "example": "Head of Recruiting Intelligence" },
-          "authorAvatar": { "type": "string", "example": "https://..." },
-          "heroImage": { "type": "string", "example": "https://..." },
-          "tags": { "type": "array", "items": { "type": "string" } },
-          "featured": { "type": "boolean", "example": true },
-          "published": { "type": "boolean", "example": true },
-          "createdAt": { "type": "string", "format": "date-time" },
-          "updatedAt": { "type": "string", "format": "date-time" }
+          "_id": {
+            "type": "string",
+            "example": "653b1b9e8321a0012c89f101"
+          },
+          "slug": {
+            "type": "string",
+            "example": "how-to-beat-ats-in-2025"
+          },
+          "title": {
+            "type": "string",
+            "example": "How to Beat Applicant Tracking Systems (ATS) in 2025"
+          },
+          "summary": {
+            "type": "string",
+            "example": "Over 75% of resumes are rejected before a human recruiter ever sees them..."
+          },
+          "content": {
+            "type": "string",
+            "example": "## 1. How Modern ATS Algorithms Actually Work..."
+          },
+          "category": {
+            "type": "string",
+            "example": "Tutorials"
+          },
+          "date": {
+            "type": "string",
+            "example": "Sep 28, 2025"
+          },
+          "readTime": {
+            "type": "string",
+            "example": "6 min read"
+          },
+          "author": {
+            "type": "string",
+            "example": "Elena Rostova"
+          },
+          "authorRole": {
+            "type": "string",
+            "example": "Head of Recruiting Intelligence"
+          },
+          "authorAvatar": {
+            "type": "string",
+            "example": "https://..."
+          },
+          "heroImage": {
+            "type": "string",
+            "example": "https://..."
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "featured": {
+            "type": "boolean",
+            "example": true
+          },
+          "published": {
+            "type": "boolean",
+            "example": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       },
       "ErrorResponse": {
         "type": "object",
         "properties": {
-          "error": { "type": "string", "example": "Validation failed" },
-          "details": { "type": "string", "example": "Required: id, title, excerpt, category, publishDate, author_name" }
+          "error": {
+            "type": "string",
+            "example": "Validation failed"
+          },
+          "details": {
+            "type": "string",
+            "example": "Required: id, title, excerpt, category, publishDate, author_name"
+          }
         }
       }
     }
@@ -236,13 +361,21 @@
       "post": {
         "summary": "Publish a new blog post from Taqnik CMS",
         "description": "Receives a published post payload from Taqnik CMS, validates slug formatting and required fields, and persists to MongoDB.",
-        "tags": ["Blog Admin (Taqnik CMS)"],
-        "security": [{ "BearerAuth": [] }],
+        "tags": [
+          "Blog Admin (Taqnik CMS)"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/PublishBlogPostRequest" }
+              "schema": {
+                "$ref": "#/components/schemas/PublishBlogPostRequest"
+              }
             }
           }
         },
@@ -267,7 +400,9 @@
             "description": "Missing required fields or invalid slug regex",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
                 "example": {
                   "error": "Validation failed",
                   "details": "Required: id, title, excerpt, category, publishDate, author_name"
@@ -312,22 +447,33 @@
       "put": {
         "summary": "Update an existing blog post",
         "description": "Updates an existing post previously published by Taqnik CMS.",
-        "tags": ["Blog Admin (Taqnik CMS)"],
-        "security": [{ "BearerAuth": [] }],
+        "tags": [
+          "Blog Admin (Taqnik CMS)"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "slug",
             "in": "path",
             "required": true,
             "description": "The unique slug identifier of the post",
-            "schema": { "type": "string", "example": "how-to-beat-ats-in-2025" }
+            "schema": {
+              "type": "string",
+              "example": "how-to-beat-ats-in-2025"
+            }
           }
         ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/UpdateBlogPostRequest" }
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBlogPostRequest"
+              }
             }
           }
         },
@@ -339,8 +485,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean", "example": true },
-                    "data": { "$ref": "#/components/schemas/BlogPostDetail" }
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/BlogPostDetail"
+                    }
                   }
                 }
               }
@@ -350,7 +501,9 @@
             "description": "Unauthorized",
             "content": {
               "application/json": {
-                "example": { "error": "Unauthorized: Invalid or missing API key" }
+                "example": {
+                  "error": "Unauthorized: Invalid or missing API key"
+                }
               }
             }
           },
@@ -358,7 +511,9 @@
             "description": "Post not found",
             "content": {
               "application/json": {
-                "example": { "error": "Post not found: how-to-beat-ats-in-2025" }
+                "example": {
+                  "error": "Post not found: how-to-beat-ats-in-2025"
+                }
               }
             }
           },
@@ -366,7 +521,9 @@
             "description": "Internal Server Error",
             "content": {
               "application/json": {
-                "example": { "error": "Internal Server Error" }
+                "example": {
+                  "error": "Internal Server Error"
+                }
               }
             }
           }
@@ -375,14 +532,19 @@
       "get": {
         "summary": "Get a single published blog post (Public)",
         "description": "Retrieves the full content and details for a single published blog post by its slug. Excludes internal __v field.",
-        "tags": ["Blog (Public)"],
+        "tags": [
+          "Blog (Public)"
+        ],
         "parameters": [
           {
             "name": "slug",
             "in": "path",
             "required": true,
             "description": "The post slug",
-            "schema": { "type": "string", "example": "how-to-beat-ats-in-2025" }
+            "schema": {
+              "type": "string",
+              "example": "how-to-beat-ats-in-2025"
+            }
           }
         ],
         "responses": {
@@ -393,8 +555,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean", "example": true },
-                    "data": { "$ref": "#/components/schemas/BlogPostDetail" }
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/BlogPostDetail"
+                    }
                   }
                 }
               }
@@ -404,7 +571,9 @@
             "description": "Post not found",
             "content": {
               "application/json": {
-                "example": { "error": "Post not found" }
+                "example": {
+                  "error": "Post not found"
+                }
               }
             }
           },
@@ -412,7 +581,9 @@
             "description": "Internal Server Error",
             "content": {
               "application/json": {
-                "example": { "error": "Internal Server Error" }
+                "example": {
+                  "error": "Internal Server Error"
+                }
               }
             }
           }
@@ -423,35 +594,51 @@
       "get": {
         "summary": "List all published blog posts (Public)",
         "description": "Returns a list of published blog posts sorted by createdAt descending. Excludes markdown content field for performance.",
-        "tags": ["Blog (Public)"],
+        "tags": [
+          "Blog (Public)"
+        ],
         "parameters": [
           {
             "name": "category",
             "in": "query",
             "required": false,
             "description": "Filter by post category (e.g. Tutorials, Best Practices)",
-            "schema": { "type": "string", "example": "Tutorials" }
+            "schema": {
+              "type": "string",
+              "example": "Tutorials"
+            }
           },
           {
             "name": "tag",
             "in": "query",
             "required": false,
             "description": "Filter by tag string",
-            "schema": { "type": "string", "example": "ATS" }
+            "schema": {
+              "type": "string",
+              "example": "ATS"
+            }
           },
           {
             "name": "limit",
             "in": "query",
             "required": false,
             "description": "Number of posts to return (default 20)",
-            "schema": { "type": "integer", "default": 20, "example": 10 }
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "example": 10
+            }
           },
           {
             "name": "page",
             "in": "query",
             "required": false,
             "description": "Page number (default 1)",
-            "schema": { "type": "integer", "default": 1, "example": 1 }
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "example": 1
+            }
           }
         ],
         "responses": {
@@ -462,10 +649,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean", "example": true },
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
                     "data": {
                       "type": "array",
-                      "items": { "$ref": "#/components/schemas/BlogPostListItem" }
+                      "items": {
+                        "$ref": "#/components/schemas/BlogPostListItem"
+                      }
                     }
                   }
                 }
@@ -476,7 +668,9 @@
             "description": "Internal Server Error",
             "content": {
               "application/json": {
-                "example": { "error": "Internal Server Error" }
+                "example": {
+                  "error": "Internal Server Error"
+                }
               }
             }
           }

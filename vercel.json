@@ -79,6 +79,15 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Alt-Svc",
+          "value": "h3=\":443\"; ma=86400, h2=\":443\"; ma=86400"
+        }
+      ]
     }
   ]
 }
