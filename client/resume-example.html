@@ -295,11 +295,18 @@
     </div>
   </main>
 
-  <script src="theme.js" defer></script>
-  <script src="roles-data.js"></script>
+  <script src="/theme.js" defer></script>
+  <script src="/roles-data.js"></script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const roleSlug = urlParams.get('role') || 'software-engineer';
+    let roleSlug = urlParams.get('role');
+    if (!roleSlug) {
+      const parts = window.location.pathname.split('/').filter(Boolean);
+      if (parts[0] === 'resume-examples' && parts[1]) {
+        roleSlug = decodeURIComponent(parts[1].replace(/\.html$/, ''));
+      }
+    }
+    if (!roleSlug) roleSlug = 'software-engineer';
     const role = ROLES_DATABASE[roleSlug] || ROLES_DATABASE['software-engineer'];
 
     // Update Meta & Headings

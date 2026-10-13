@@ -85,6 +85,30 @@ app.get('/sitemap.xml', (req, res) => {
   res.type('application/xml').set('Cache-Control', 'public, max-age=86400, s-maxage=86400').sendFile(sitemapFile);
 });
 
+app.get('/blog/:slug', (req, res, next) => {
+  const staticFile = path.join(staticDir, 'blog', `${req.params.slug}.html`);
+  if (fs.existsSync(staticFile)) {
+    return res.sendFile(staticFile);
+  }
+  const fallbackFile = path.join(staticDir, 'blog-post.html');
+  if (fs.existsSync(fallbackFile)) {
+    return res.sendFile(fallbackFile);
+  }
+  next();
+});
+
+app.get('/resume-examples/:role', (req, res, next) => {
+  const staticFile = path.join(staticDir, 'resume-examples', `${req.params.role}.html`);
+  if (fs.existsSync(staticFile)) {
+    return res.sendFile(staticFile);
+  }
+  const fallbackFile = path.join(staticDir, 'resume-example.html');
+  if (fs.existsSync(fallbackFile)) {
+    return res.sendFile(fallbackFile);
+  }
+  next();
+});
+
 app.use(express.static(staticDir, { extensions: ['html'], maxAge: '1d' }));
 
 // ── ROUTES ──

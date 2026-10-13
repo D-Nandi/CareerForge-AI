@@ -294,8 +294,8 @@
 
   </main>
 
-  <script src="theme.js" defer></script>
-  <script src="blog-data.js"></script>
+  <script src="/theme.js" defer></script>
+  <script src="/blog-data.js"></script>
   <script>
     const grid = document.getElementById('articlesGrid');
     const filterContainer = document.querySelector('.template-filters');
@@ -425,26 +425,34 @@
     }
 
     async function loadBlogPosts() {
+      let apiPosts = [];
       try {
         const res = await fetch('/api/blog');
         if (res.ok) {
           const json = await res.json();
           if (Array.isArray(json.data) && json.data.length > 0) {
-            allPosts = json.data;
-            const featured = allPosts.find(p => p.featured) || allPosts[0];
-            renderFeatured(featured);
-            setupFilterButtons(allPosts);
-            renderArticles('all');
-            return;
+            apiPosts = json.data;
           }
         }
       } catch (err) {
         console.warn('API fetch failed, falling back to static BLOG_POSTS:', err);
       }
 
-      // Fallback to static blog-data.js if API unavailable
+      // Merge API posts and static BLOG_POSTS so no articles are ever lost
+      const postMap = new Map();
       if (typeof BLOG_POSTS !== 'undefined') {
-        allPosts = Object.values(BLOG_POSTS);
+        Object.values(BLOG_POSTS).forEach(p => {
+          if (p && p.slug) postMap.set(p.slug, p);
+        });
+      }
+      apiPosts.forEach(p => {
+        if (p && p.slug) {
+          postMap.set(p.slug, { ...(postMap.get(p.slug) || {}), ...p });
+        }
+      });
+
+      allPosts = Array.from(postMap.values());
+      if (allPosts.length > 0) {
         const featured = allPosts.find(p => p.featured) || allPosts[0];
         renderFeatured(featured);
         setupFilterButtons(allPosts);

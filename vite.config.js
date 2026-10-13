@@ -120,6 +120,12 @@ function cleanUrlsDevPlugin() {
             const htmlFile = resolve(__dirname, 'client', `${pathname.slice(1)}.html`);
             if (fs.existsSync(htmlFile)) {
               req.url = pathname + '.html' + urlObj.search;
+            } else if (pathname.startsWith('/blog/')) {
+              const slug = pathname.replace('/blog/', '');
+              req.url = `/blog-post.html?slug=${encodeURIComponent(slug)}`;
+            } else if (pathname.startsWith('/resume-examples/')) {
+              const role = pathname.replace('/resume-examples/', '');
+              req.url = `/resume-example.html?role=${encodeURIComponent(role)}`;
             }
           }
         }
