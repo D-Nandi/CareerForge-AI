@@ -32,6 +32,12 @@ function copyStaticAssetsPlugin() {
         'favicon.svg',
         'logo.png',
         'og-preview.png',
+        'og-ats-checker.png',
+        'og-templates.png',
+        'og-resume-examples.png',
+        'og-salary-benchmark.png',
+        'og-cover-letter.png',
+        'og-roadmap.png',
         'robots.txt',
         'sitemap.xml',
         'llms.txt',
@@ -102,9 +108,30 @@ function copyStaticAssetsPlugin() {
   };
 }
 
+function cleanUrlsDevPlugin() {
+  return {
+    name: 'clean-urls-dev',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (req.url && !req.url.includes('.') && !req.url.startsWith('/api')) {
+          const urlObj = new URL(req.url, 'http://localhost:3000');
+          const pathname = urlObj.pathname.replace(/\/$/, '');
+          if (pathname && pathname !== '') {
+            const htmlFile = resolve(__dirname, 'client', `${pathname.slice(1)}.html`);
+            if (fs.existsSync(htmlFile)) {
+              req.url = pathname + '.html' + urlObj.search;
+            }
+          }
+        }
+        next();
+      });
+    }
+  };
+}
+
 export default defineConfig({
   root: 'client',
-  plugins: [copyStaticAssetsPlugin()],
+  plugins: [copyStaticAssetsPlugin(), cleanUrlsDevPlugin()],
   server: {
     port: 3000,
     open: '/preview.html',
@@ -155,6 +182,18 @@ export default defineConfig({
         login: resolve(__dirname, 'client/login.html'),
         signup: resolve(__dirname, 'client/signup.html'),
         notFound: resolve(__dirname, 'client/404.html'),
+        // Static Programmatic Blog Articles
+        blogBeatAts: resolve(__dirname, 'client/blog/how-to-beat-ats-in-2025.html'),
+        blogPowerVerbs: resolve(__dirname, 'client/blog/best-resume-power-verbs.html'),
+        blogCoverLetterSecrets: resolve(__dirname, 'client/blog/cover-letter-secrets-2025.html'),
+        blogResumeInfo: resolve(__dirname, 'client/blog/what-information-should-you-put-on-a-resume.html'),
+        // Static Programmatic Resume Examples
+        roleSoftwareEngineer: resolve(__dirname, 'client/resume-examples/software-engineer.html'),
+        roleDataAnalyst: resolve(__dirname, 'client/resume-examples/data-analyst.html'),
+        roleProductManager: resolve(__dirname, 'client/resume-examples/product-manager.html'),
+        roleUiUxDesigner: resolve(__dirname, 'client/resume-examples/ui-ux-designer.html'),
+        roleMarketingSpecialist: resolve(__dirname, 'client/resume-examples/digital-marketing-specialist.html'),
+        roleFullStackDev: resolve(__dirname, 'client/resume-examples/full-stack-developer.html'),
       },
     },
   },

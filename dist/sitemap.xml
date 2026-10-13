@@ -7,145 +7,152 @@
   <!-- Core Pages -->
   <url>
     <loc>https://careernest.taqnik.in/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>https://careernest.taqnik.in/form-index.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/form-index</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- High-Intent Free Career Tools -->
   <url>
-    <loc>https://careernest.taqnik.in/ats-score-checker.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/ats-score-checker</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/career-roadmap.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/career-roadmap</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/interview-prep.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/interview-prep</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/salary-benchmark.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/salary-benchmark</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/pricing.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/pricing</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/cover-letter-generator.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/cover-letter-generator</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/templates.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/templates</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <!-- Programmatic SEO Pages & Directories -->
   <url>
-    <loc>https://careernest.taqnik.in/resume-examples.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/resume-examples</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/resume-example.html?role=software-engineer</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/resume-examples/software-engineer</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/resume-example.html?role=data-analyst</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/resume-examples/data-analyst</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/resume-example.html?role=product-manager</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/resume-examples/product-manager</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/resume-example.html?role=ui-ux-designer</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/resume-examples/ui-ux-designer</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/resume-example.html?role=digital-marketing-specialist</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/resume-examples/digital-marketing-specialist</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/resume-example.html?role=full-stack-developer</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/resume-examples/full-stack-developer</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog & Content Engine -->
   <url>
-    <loc>https://careernest.taqnik.in/blog.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/blog</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/blog-post.html?slug=how-to-beat-ats-in-2025</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/blog/how-to-beat-ats-in-2025</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/blog-post.html?slug=best-resume-power-verbs</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/blog/best-resume-power-verbs</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://careernest.taqnik.in/blog-post.html?slug=cover-letter-secrets-2025</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://careernest.taqnik.in/blog/cover-letter-secrets-2025</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://careernest.taqnik.in/blog/what-information-should-you-put-on-a-resume</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 
 </urlset>

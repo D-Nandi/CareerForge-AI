@@ -109,6 +109,125 @@ Nobody wants to read a 2-page essay. The most effective cover letters are crisp,
 * **Paragraph 2: Quantified Proof:** 1-2 major career wins directly addressing the core requirements from the job description.
 * **Paragraph 3: Confident Closing:** Express eagerness to discuss further and thank the hiring team.
     `.trim()
+  },
+  "what-information-should-you-put-on-a-resume": {
+    slug: "what-information-should-you-put-on-a-resume",
+    title: "What to Put on a Resume in 2026 (Guide) | CareerNest",
+    subtitle: "Learn the 5 essential resume sections, key additions, and ATS formatting rules needed to pass automated filters and impress recruiters in 2026.",
+    category: "Resume Writing",
+    readTime: "7 min read",
+    date: "Oct 13, 2026",
+    author: "Marcus Vance",
+    authorRole: "Senior Career Coach",
+    featured: false,
+    summary: "Learn the 5 essential resume sections, key additions, and ATS formatting rules needed to pass automated filters and impress recruiters in 2026.",
+    heroImage: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80",
+    tags: ["Resume Writing", "Resume Tips", "ATS", "Career Advice", "Job Search"],
+    faqs: [
+      {
+        question: "Should I Include a Photo on My Resume?",
+        answer: "In the United States, India, and most Western tech markets, including a photo is unnecessary and can introduce unconscious hiring bias. Furthermore, image layers often cause parsing errors in automated Applicant Tracking Systems like Workday and Taleo."
+      },
+      {
+        question: "How Many Pages Should a Resume Be?",
+        answer: "A single-page resume is optimal for students, recent college graduates, and professionals with under 5 years of experience. Experienced specialists, technical architects, and senior managers can use two pages provided every line conveys quantifiable impact."
+      },
+      {
+        question: "Do I Need a Skills-Based Resume?",
+        answer: "Reverse-chronological resumes remain the gold standard for 95% of corporate hiring workflows because enterprise ATS parsers map experience linearly. A functional or hybrid format should only be used for severe career pivots."
+      }
+    ],
+    content: `
+Modern corporate hiring in 2026 is governed by automated screening engines. Before a recruiter spends an average of 7.4 seconds skimming your credentials, Applicant Tracking Systems (ATS) such as Workday, Greenhouse, Taleo, Lever, and iCIMS parse your document via Natural Language Processing (NLP) tokenization. 
+
+To secure interview shortlists, your resume must balance machine-readable UTF-8 layout standards with compelling, metric-backed professional storytelling.
+
+---
+
+## The 5 Essential Resume Sections
+
+> **What belongs on a modern resume?**  
+> In 2026, an effective resume contains five non-negotiable sections: **Contact Header**, **Professional Summary**, **Work Experience**, **Skills**, and **Education**. Additional sections like Certifications, Technical Projects, and Languages should only be included when they directly map to job description keywords.
+
+---
+
+### 1. Header and Contact Information
+
+Your header must sit in the main document canvas. Avoid placing contact info inside Word or PDF header and footer zones, as legacy optical character recognition (OCR) engines frequently bypass margins.
+
+* **Full Name:** Prominently formatted in 16–20pt bold font.
+* **Phone Number:** Mobile contact with country code.
+* **Email Address:** Clean, professional address (e.g., \`firstname.lastname@email.com\`).
+* **Location:** City, State, or Country (full street addresses are obsolete and pose privacy risks).
+* **Digital Footprint:** Live hyperlinks to your verified LinkedIn profile, GitHub repository, or online portfolio.
+
+---
+
+### 2. Professional Summary
+
+Replace outdated "Objective" statements with a targeted, 3-to-4 sentence value proposition. Synthesize your years in the industry, primary technical stack, and signature quantifiable achievement.
+
+#### Examples by Career Stage:
+
+* **Junior Software Engineer:**  
+  *"Full-Stack Developer with 2+ years of experience building scalable TypeScript and Node.js microservices. Engineered REST APIs handling 400k+ daily requests and reduced query latency by 32% across cloud databases."*
+* **Senior Operations Lead:**  
+  *"Cross-functional Operations Director with 9+ years optimizing tech supply chains and agile logistics. Directed 14-member teams, reduced operational overhead by $1.4M, and spearheaded ERP automation across 3 regional hubs."*
+
+---
+
+### 3. Work Experience (Reverse-Chronological)
+
+Present your roles starting with your current or most recent engagement. Frame every bullet point around business outcomes using the **Google X-Y-Z formula**: *"Accomplished [X], as measured by [Y], by doing [Z]."*
+
+| Typical Weak Duty | ATS-Optimized Metric-Driven Bullet |
+|---|---|
+| *Responsible for resolving software customer tickets.* | *Maintained 99.4% SLA resolution rate across 1,200+ Zendesk tickets, improving client CSAT score from 84% to 96%.* |
+| *Managed social media accounts and posted updates.* | *Spearheaded multi-channel B2B content campaign across LinkedIn and YouTube, boosting inbound demo signups by 44% in Q3.* |
+| *Built backend database queries for internal dashboards.* | *Refactored PostgreSQL indexing layers, slashing query response times by 58% for 8,500 active dashboard users.* |
+
+Pair your drafted bullets with our [100+ High-Impact Action Verbs](/blog-post?slug=best-resume-power-verbs) to eliminate passive language, and run your draft through our [Free ATS Resume Checker](/ats-score-checker) to verify keyword parsing scores.
+
+---
+
+### 4. Technical & Strategic Skills Taxonomy
+
+Organize your abilities into structured clusters so recruiters and algorithm spiders can verify core competencies within milliseconds:
+
+* **Hard Skills & Tools (ATS Parsing Signals):** Python, React, AWS Lambda, Docker, SQL, Kubernetes, Figma, Tableau.
+* **Methodologies & Domain Knowledge:** Agile/Scrum, CI/CD Pipelines, System Architecture, Financial Modeling.
+* **Workplace Collaboration (Interview Verification):** Stakeholder Alignment, Technical Mentorship, Cross-Functional Team Leadership.
+
+> ⚠️ **Crucial ATS Warning:** Never engage in "white-fonting" (pasting hidden job description text in white fonts). Modern NLP parsers extract text regardless of font color and automatically flag candidate submissions for deceptive keyword manipulation.
+
+To benchmark compensation against your current skill repertoire, explore our real-time [Tech Salary Benchmark Tool](/salary-benchmark) or review recommended skills on the [Career Roadmap](/career-roadmap).
+
+---
+
+### 5. Education & Academic Credentials
+
+Keep your academic background concise:
+* **Degree & Field of Study** (e.g., *B.S. in Computer Science*)
+* **Institution Name & Graduation Year**
+* **Academic Honors / CGPA** (only include GPA if $\\ge$ 3.5/4.0 or within 3 years of graduation)
+
+---
+
+## Strategic Resume Additions: When to Go Beyond the Basics
+
+| Section | Best Suited For | Core ATS Benefit |
+|---|---|---|
+| **Industry Certifications** | AWS, CISSP, PMP, Scrum Master | Validates standardized skills for automated filter gates. |
+| **Independent Projects** | Freshers, Campus Placements, Bootcamps | Demonstrates applied execution without formal employer history. |
+| **Publications & Patents** | R&D, PhDs, AI/ML Engineers | Exceptional authority signal for senior research positions. |
+| **Languages** | Global Enterprises, Client Success | Differentiates candidates in multinational accounts. |
+
+For tested single-column layouts that pass automated parser tests, browse our [ATS-Friendly Resume Templates](/templates).
+
+---
+
+**Does your current resume pass automated ATS screening?** Don't let formatting mistakes cost you an interview. Use our [Free ATS Resume Checker](/ats-score-checker) or build a verified recruiter-ready CV using our [AI Resume Builder](/form-index).
+    `.trim()
   }
 };
 
@@ -142,14 +261,15 @@ async function seed() {
       title:        post.title,
       summary:      post.summary || post.subtitle || '',
       content:      post.content || '',
-      heroImage:    '',
+      heroImage:    post.heroImage || '',
       category:     post.category || 'Tutorials',
       date:         post.date,
       readTime:     post.readTime || '',
       author:       post.author,
       authorRole:   post.authorRole || '',
-      authorAvatar: '',
-      tags:         [],
+      authorAvatar: post.authorAvatar || '',
+      tags:         post.tags || [],
+      faqs:         post.faqs || [],
       featured:     post.featured || false,
       published:    true,
     });

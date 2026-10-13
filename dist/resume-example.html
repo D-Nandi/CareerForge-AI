@@ -10,7 +10,7 @@
   <meta name="robots" content="index, follow" />
 
   <link rel="canonical" id="roleCanonical"
-    href="https://careernest.taqnik.in/resume-example.html?role=software-engineer" />
+    href="https://careernest.taqnik.in/resume-example?role=software-engineer" />
 
   <!-- Theme Color -->
   <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
@@ -19,7 +19,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:url" id="roleOgUrl"
-    content="https://careernest.taqnik.in/resume-example.html?role=software-engineer" />
+    content="https://careernest.taqnik.in/resume-example?role=software-engineer" />
   <meta property="og:title" id="roleOgTitle" content="Software Engineer Resume Example & Guide | CareerNest" />
   <meta property="og:description" id="roleOgDesc"
     content="Recruiter-tested resume example with ATS keywords, high-impact bullet points, and salary benchmarks. Build your resume in 2 minutes." />
@@ -42,7 +42,7 @@
         "@type": "TechArticle",
         "headline": "Software Engineer Resume Example & ATS Guide",
         "description": "Battle-tested software engineering resume example highlighting system architecture, performance optimization, and scalable backend/frontend systems.",
-        "url": "https://careernest.taqnik.in/resume-example.html?role=software-engineer",
+        "url": "https://careernest.taqnik.in/resume-example?role=software-engineer",
         "publisher": {
           "@type": "Organization",
           "name": "CareerNest",
@@ -62,13 +62,13 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Resume Examples",
-            "item": "https://careernest.taqnik.in/resume-examples.html"
+            "item": "https://careernest.taqnik.in/resume-examples"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Software Engineer",
-            "item": "https://careernest.taqnik.in/resume-example.html?role=software-engineer"
+            "item": "https://careernest.taqnik.in/resume-example?role=software-engineer"
           }
         ]
       }
@@ -178,14 +178,14 @@
   <!-- HEADER -->
   <header class="tool-header">
     <div class="header-left">
-      <a href="index.html" class="nav-logo" aria-label="CareerNest Homepage">
+      <a href="/" class="nav-logo" aria-label="CareerNest Homepage">
         <span class="logo-mark">C</span><span class="logo-text">areerNest</span>
       </a>
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li aria-hidden="true">/</li>
-          <li><a href="resume-examples.html">Examples</a></li>
+          <li><a href="/resume-examples">Examples</a></li>
           <li aria-hidden="true">/</li>
           <li id="breadRole" aria-current="page">Role</li>
         </ol>
@@ -210,23 +210,23 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
-      <a id="btnTopCustomize" href="form-index.html" class="btn-primary">Customize This Resume →</a>
+      <a id="btnTopCustomize" href="/form-index" class="btn-primary">Customize This Resume →</a>
       <button class="hamburger drawer-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="tool-drawer">
       <ul class="tool-drawer-links">
-        <li><a href="resume-examples.html">← All Resume Examples <span>→</span></a></li>
-        <li><a href="templates.html">Resume Templates <span>→</span></a></li>
-        <li><a href="ats-score-checker.html">ATS Resume Checker <span>→</span></a></li>
-        <li><a href="career-roadmap.html">AI Career Roadmap <span>→</span></a></li>
-        <li><a href="interview-prep.html">Interview Prep Coach <span>→</span></a></li>
-        <li><a href="salary-benchmark.html">Salary Calculator <span>→</span></a></li>
-        <li><a href="pricing.html">Pricing Plans <span>→</span></a></li>
+        <li><a href="/resume-examples">← All Resume Examples <span>→</span></a></li>
+        <li><a href="/templates">Resume Templates <span>→</span></a></li>
+        <li><a href="/ats-score-checker">ATS Resume Checker <span>→</span></a></li>
+        <li><a href="/career-roadmap">AI Career Roadmap <span>→</span></a></li>
+        <li><a href="/interview-prep">Interview Prep Coach <span>→</span></a></li>
+        <li><a href="/salary-benchmark">Salary Calculator <span>→</span></a></li>
+        <li><a href="/pricing">Pricing Plans <span>→</span></a></li>
       </ul>
       <div class="tool-drawer-actions">
-        <a href="form-index.html" class="btn btn-primary btn-block">Customize in Builder →</a>
+        <a href="/form-index" class="btn btn-primary btn-block">Customize in Builder →</a>
       </div>
     </div>
   </header>
@@ -279,7 +279,7 @@
           <div id="roleKeywordsList" class="keyword-chips" style="margin-top: 8px;"></div>
         </div>
 
-        <a id="btnUseTemplate" href="form-index.html" class="btn-primary"
+        <a id="btnUseTemplate" href="/form-index" class="btn-primary"
           style="width: 100%; justify-content: center; margin-top: 22px; padding: 14px; font-size: 0.95rem;">
           🚀 Customize In Resume Builder
         </a>
@@ -303,7 +303,7 @@
     const role = ROLES_DATABASE[roleSlug] || ROLES_DATABASE['software-engineer'];
 
     // Update Meta & Headings
-    const canonicalUrl = `https://careernest.taqnik.in/resume-example.html?role=${role.slug}`;
+    const canonicalUrl = `https://careernest.taqnik.in/resume-examples/${role.slug}`;
     document.title = `${role.title} Resume Example & ATS Guide | CareerNest`;
     document.getElementById('pageTitle').innerText = `${role.title} Resume Example & Guide | CareerNest`;
     document.getElementById('metaDesc').content = `Real ${role.title} resume example. High-impact bullet points, essential ATS keywords, and instant customization in CareerNest builder.`;
@@ -367,7 +367,7 @@
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Resume Examples",
-                "item": "https://careernest.taqnik.in/resume-examples.html"
+                "item": "https://careernest.taqnik.in/resume-examples"
               },
               {
                 "@type": "ListItem",

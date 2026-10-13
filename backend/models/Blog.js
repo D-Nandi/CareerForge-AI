@@ -89,6 +89,13 @@ const blogSchema = new mongoose.Schema(
       default: [],
     },
 
+    faqs: [
+      {
+        question: { type: String, trim: true },
+        answer:   { type: String, trim: true },
+      },
+    ],
+
     // Internal CareerForge field — NOT sent by Taqnik, manage via your own admin
     featured: {
       type:    Boolean,

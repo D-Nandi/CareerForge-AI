@@ -69,6 +69,7 @@ function mapTaqnikPayload(body) {
     tags:         tags,
     published:    body.published !== undefined ? body.published : true,
     ...(body.featured !== undefined && { featured: body.featured }),
+    ...(body.faqs !== undefined && { faqs: body.faqs }),
   };
 }
 

@@ -1,0 +1,3473 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerNest Backlink &amp; Authority Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #090d16;
+      --bg-secondary: #0f172a;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(99, 102, 241, 0.3);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-primary: #6366f1;
+      --accent-primary-hover: #4f46e5;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-sky: #0ea5e9;
+      --accent-violet: #8b5cf6;
+      --status-not-started: #475569;
+      --status-in-progress: #0ea5e9;
+      --status-pitched: #f59e0b;
+      --status-live: #10b981;
+      --status-hold: #ef4444;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: #ffffff;
+      --border-color: rgba(0, 0, 0, 0.08);
+      --border-highlight: rgba(99, 102, 241, 0.4);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #94a3b8;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(217, 70, 239, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.07) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    /* Container */
+    .app-container {
+      max-width: 1540px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+    }
+
+    /* Header */
+    header.app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 24px;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+    }
+
+    .brand-titles h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .version-tag {
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--accent-primary);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-titles p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-main);
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn:hover {
+      border-color: var(--border-highlight);
+      background: var(--bg-card-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-primary-hover);
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-emerald:hover {
+      background: var(--accent-emerald);
+      color: #fff;
+    }
+
+    .btn-icon-only {
+      padding: 8px;
+      border-radius: var(--radius-md);
+    }
+
+    /* KPI Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-highlight);
+    }
+
+    .kpi-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--card-accent, var(--accent-primary));
+    }
+
+    .kpi-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .kpi-val {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .kpi-sub {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--accent-gradient);
+      border-radius: var(--radius-full);
+      transition: width 0.4s ease;
+    }
+
+    /* Navigation & Tabs */
+    .tabs-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-tab-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .nav-tab-btn:hover {
+      color: var(--text-main);
+      background: var(--bg-card-hover);
+    }
+
+    .nav-tab-btn.active {
+      background: var(--accent-primary);
+      color: #fff;
+      border-color: var(--accent-primary);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    .tab-badge {
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.15);
+      color: inherit;
+    }
+
+    .view-mode-group {
+      display: flex;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .view-btn {
+      padding: 6px 12px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .view-btn.active {
+      background: var(--accent-primary);
+      color: #fff;
+    }
+
+    /* Filter Toolbar */
+    .filter-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(8px);
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 9px 12px 9px 36px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      pointer-events: none;
+    }
+
+    .filter-select {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 9px 12px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .filter-select:focus {
+      border-color: var(--accent-primary);
+    }
+
+    /* Table View */
+    .table-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px);
+    }
+
+    table.tasks-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    thead th {
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.15s ease;
+    }
+
+    tbody tr:hover {
+      background-color: var(--bg-card-hover);
+    }
+
+    tbody td {
+      padding: 13px 16px;
+      vertical-align: middle;
+    }
+
+    .task-id-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .task-title-cell {
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      max-width: 320px;
+    }
+
+    .task-desc {
+      font-size: 11.5px;
+      font-weight: 400;
+      color: var(--text-dim);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-tier {
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .badge-p0 {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+    .badge-p1 {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fde68a;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .badge-p2 {
+      background: rgba(14, 165, 233, 0.15);
+      color: #bae6fd;
+      border: 1px solid rgba(14, 165, 233, 0.3);
+    }
+    .badge-p3 {
+      background: rgba(148, 163, 184, 0.15);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .target-url-link {
+      color: var(--accent-sky);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      max-width: 220px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .target-url-link:hover {
+      text-decoration: underline;
+    }
+
+    .status-select {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .status-select[data-val="not_started"] {
+      border-color: rgba(71, 85, 105, 0.5);
+      color: #94a3b8;
+    }
+    .status-select[data-val="in_progress"] {
+      border-color: rgba(14, 165, 233, 0.6);
+      background: rgba(14, 165, 233, 0.1);
+      color: #38bdf8;
+    }
+    .status-select[data-val="pitched"] {
+      border-color: rgba(245, 158, 11, 0.6);
+      background: rgba(245, 158, 11, 0.1);
+      color: #fbbf24;
+    }
+    .status-select[data-val="live"] {
+      border-color: rgba(16, 185, 129, 0.6);
+      background: rgba(16, 185, 129, 0.1);
+      color: #34d399;
+    }
+    .status-select[data-val="hold"] {
+      border-color: rgba(239, 68, 68, 0.6);
+      background: rgba(239, 68, 68, 0.1);
+      color: #f87171;
+    }
+
+    .live-url-input {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      width: 170px;
+      transition: border-color 0.2s ease;
+    }
+
+    .live-url-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+
+    .table-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Kanban View */
+    .kanban-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+    }
+
+    .kanban-column {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 480px;
+      backdrop-filter: blur(8px);
+    }
+
+    .kanban-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .kanban-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .kanban-count {
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+
+    .kanban-cards-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+      max-height: 720px;
+      padding-right: 2px;
+    }
+
+    .kanban-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .kanban-card:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .kanban-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .kanban-card-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+
+    .kanban-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      font-size: 11.5px;
+      color: var(--text-dim);
+    }
+
+    /* Modal / Drawer */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 14px;
+    }
+
+    .modal-title-wrap h2 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-top: 4px;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .close-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .modal-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .form-input, .form-textarea {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      outline: none;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent-primary);
+    }
+
+    .form-textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .audit-notes-box {
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      font-size: 12.5px;
+      color: #c7d2fe;
+      line-height: 1.5;
+    }
+
+    /* Templates / Scripts Tab */
+    .templates-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .template-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .template-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .template-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .template-code {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      white-space: pre-wrap;
+      position: relative;
+    }
+
+    /* Calendar / Roadmap Tab */
+    .roadmap-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .roadmap-week {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+
+    .week-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-sky);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .week-task-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .week-task-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13.5px;
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--accent-primary);
+      color: var(--text-main);
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      font-size: 13px;
+      font-weight: 600;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      z-index: 2000;
+      animation: slideIn 0.25s ease-out;
+    }
+
+    .toast.show {
+      display: flex;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Utility */
+    .empty-state {
+      padding: 48px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .modal-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="logo-badge">C</div>
+        <div class="brand-titles">
+          <h1>CareerNest Backlink &amp; Authority Engine <span class="version-tag">Audit Execution</span></h1>
+          <p>Granular Backlinking Tracker • Indian Career Ecosystem &amp; AI Tools Directory Strategy</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-emerald" id="exportCsvBtn" title="Export to CSV for Excel/Google Sheets">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export CSV
+        </button>
+        <button class="btn" id="exportJsonBtn" title="Export complete database backup">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Backup JSON
+        </button>
+        <button class="btn" id="importJsonBtn" title="Restore database from JSON">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Import JSON
+        </button>
+        <input type="file" id="jsonFileInput" accept=".json" style="display:none;">
+        <button class="btn" id="resetDataBtn" title="Reset all statuses to defaults">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+          Reset
+        </button>
+        <button class="btn btn-icon-only" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- EXECUTIVE KPI STATS -->
+    <section class="kpi-grid">
+      <div class="kpi-card" style="--card-accent: var(--accent-primary);">
+        <div class="kpi-label">
+          <span>Overall Progress</span>
+          <span id="kpiPercent">0%</span>
+        </div>
+        <div class="kpi-val" id="kpiCompletedRatio">0 / 0</div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="kpiProgressBar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="kpi-card" style="--card-accent: var(--accent-emerald);">
+        <div class="kpi-label">Live Backlinks Won</div>
+        <div class="kpi-val" id="kpiLiveVal">0</div>
+        <div class="kpi-sub" id="kpiLiveSub">0 Dofollow • 0 Nofollow</div>
+      </div>
+
+      <div class="kpi-card" style="--card-accent: var(--accent-amber);">
+        <div class="kpi-label">Submitted / Pitched</div>
+        <div class="kpi-val" id="kpiPitchedVal">0</div>
+        <div class="kpi-sub">Awaiting editorial review</div>
+      </div>
+
+      <div class="kpi-card" style="--card-accent: var(--accent-sky);">
+        <div class="kpi-label">In Progress</div>
+        <div class="kpi-val" id="kpiInProgressVal">0</div>
+        <div class="kpi-sub">Drafting &amp; preparation</div>
+      </div>
+
+      <div class="kpi-card" style="--card-accent: var(--accent-rose);">
+        <div class="kpi-label">High Priority (P0 / P1)</div>
+        <div class="kpi-val" id="kpiHighPriorityVal">0</div>
+        <div class="kpi-sub" id="kpiHighPrioritySub">Pending core tasks</div>
+      </div>
+    </section>
+
+    <!-- TABS AND VIEW SELECTOR -->
+    <div class="tabs-wrapper">
+      <div class="nav-tabs" id="tierTabs">
+        <button class="nav-tab-btn active" data-tier="all">All Tasks <span class="tab-badge" id="badgeAll">0</span></button>
+        <button class="nav-tab-btn" data-tier="tech">Console &amp; Tech <span class="tab-badge" id="badgeTech">0</span></button>
+        <button class="nav-tab-btn" data-tier="tier_a">Tier A: Quick Wins <span class="tab-badge" id="badgeTierA">0</span></button>
+        <button class="nav-tab-btn" data-tier="tier_b">Tier B: Editorial &amp; PR <span class="tab-badge" id="badgeTierB">0</span></button>
+        <button class="nav-tab-btn" data-tier="tier_c">Tier C: Community <span class="tab-badge" id="badgeTierC">0</span></button>
+        <button class="nav-tab-btn" data-tier="tier_d">Tier D: Colleges (.ac.in) <span class="tab-badge" id="badgeTierD">0</span></button>
+        <button class="nav-tab-btn" data-tier="tier_e">Tier E: Local Citations <span class="tab-badge" id="badgeTierE">0</span></button>
+        <button class="nav-tab-btn" data-tier="assets">Linkable Assets <span class="tab-badge" id="badgeAssets">0</span></button>
+        <button class="nav-tab-btn" data-tier="templates_tab">Pitch Scripts</button>
+        <button class="nav-tab-btn" data-tier="roadmap_tab">30-Day Plan</button>
+      </div>
+
+      <div class="view-mode-group" id="viewModeGroup">
+        <button class="view-btn active" data-view="table">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Table
+        </button>
+        <button class="view-btn" data-view="kanban">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/></svg>
+          Kanban
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN TRACKER CONTENT -->
+    <div id="trackerMainView">
+
+      <!-- FILTER TOOLBAR -->
+      <div class="filter-bar">
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="search-input" id="searchFilter" placeholder="Search tasks, platforms, URLs, keywords...">
+        </div>
+
+        <select class="filter-select" id="statusFilter">
+          <option value="all">All Statuses</option>
+          <option value="not_started">Not Started</option>
+          <option value="in_progress">In Progress</option>
+          <option value="pitched">Submitted / Pitched</option>
+          <option value="live">Live / Won</option>
+          <option value="hold">On Hold</option>
+        </select>
+
+        <select class="filter-select" id="priorityFilter">
+          <option value="all">All Priorities</option>
+          <option value="P0">P0 - Critical</option>
+          <option value="P1">P1 - High</option>
+          <option value="P2">P2 - Medium</option>
+          <option value="P3">P3 - Low</option>
+        </select>
+
+        <select class="filter-select" id="linkTypeFilter">
+          <option value="all">All Link Types</option>
+          <option value="dofollow">Dofollow</option>
+          <option value="nofollow">Nofollow</option>
+          <option value="directory">Directory Profile</option>
+          <option value="edu_gov">Edu / Gov (.ac.in / .gov.in)</option>
+        </select>
+      </div>
+
+      <!-- TABLE CONTAINER -->
+      <div class="table-container" id="tableViewContainer">
+        <table class="tasks-table">
+          <thead>
+            <tr>
+              <th style="width: 80px;">ID</th>
+              <th>Task &amp; Platform</th>
+              <th>Category</th>
+              <th>Priority</th>
+              <th>Target URL</th>
+              <th>Status</th>
+              <th>Live Backlink URL</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="tasksTableBody">
+            <!-- Dynamic task rows rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- KANBAN CONTAINER -->
+      <div class="kanban-grid" id="kanbanViewContainer" style="display: none;">
+        <div class="kanban-column" data-status="not_started">
+          <div class="kanban-header">
+            <span class="kanban-title"><span style="color:var(--status-not-started);">●</span> Not Started</span>
+            <span class="kanban-count" id="countNotStarted">0</span>
+          </div>
+          <div class="kanban-cards-wrapper" id="kanbanNotStarted"></div>
+        </div>
+
+        <div class="kanban-column" data-status="in_progress">
+          <div class="kanban-header">
+            <span class="kanban-title"><span style="color:var(--status-in-progress);">●</span> In Progress</span>
+            <span class="kanban-count" id="countInProgress">0</span>
+          </div>
+          <div class="kanban-cards-wrapper" id="kanbanInProgress"></div>
+        </div>
+
+        <div class="kanban-column" data-status="pitched">
+          <div class="kanban-header">
+            <span class="kanban-title"><span style="color:var(--status-pitched);">●</span> Pitched / Submitted</span>
+            <span class="kanban-count" id="countPitched">0</span>
+          </div>
+          <div class="kanban-cards-wrapper" id="kanbanPitched"></div>
+        </div>
+
+        <div class="kanban-column" data-status="live">
+          <div class="kanban-header">
+            <span class="kanban-title"><span style="color:var(--status-live);">●</span> Live / Won</span>
+            <span class="kanban-count" id="countLive">0</span>
+          </div>
+          <div class="kanban-cards-wrapper" id="kanbanLive"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- OUTREACH SCRIPTS / TEMPLATES VIEW -->
+    <div id="templatesMainView" class="templates-section" style="display: none;">
+      
+      <div class="template-card">
+        <div class="template-header">
+          <h3 class="template-title">1. College Placement Cell &amp; T&amp;P Officer Outreach (.ac.in / .edu.in Links)</h3>
+          <button class="btn btn-emerald btn-copy-script" data-target="scriptPlacement">Copy Script</button>
+        </div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Use for targeting Training &amp; Placement officers at Indian engineering and management universities.</p>
+        <pre class="template-code" id="scriptPlacement">Subject: Free ATS Resume Checker &amp; Workshop for [College Name] Placement Season 2026
+
+Dear Professor [Placement Officer Name] / Training &amp; Placement Cell,
+
+Greetings from CareerNest (by Taqnik).
+
+With the 2026 campus placement drive commencing for companies like TCS, Infosys, Wipro, and Accenture, over 65% of student resumes are filtered out at the initial Applicant Tracking System (ATS) stage due to unparsed multi-column layouts and missing keyword taxonomies.
+
+To support your students in maximizing shortlisting rates, we would love to offer [College Name] free institutional access to our AI ATS Resume Checker:
+- Instant parsing simulation matching top corporate ATS algorithms
+- Indian market salary benchmarking &amp; role-wise keyword insights
+- 100% free with no paywall or watermarks for students
+
+Could your team list CareerNest under the "Recommended Student Career Resources" section on your official placement portal ([Insert placement page URL])?
+
+Additionally, we are delighted to host a complimentary 45-minute virtual workshop on "ATS Compliance &amp; Tech Resume Engineering" for your pre-final and final-year students.
+
+Looking forward to supporting [College Name] this hiring season.
+
+Warm regards,
+[Your Name]
+CareerNest Platform Lead
+https://careernest.taqnik.in/</pre>
+      </div>
+
+      <div class="template-card">
+        <div class="template-header">
+          <h3 class="template-title">2. Naukri.com / Jobify India Editorial Guest Post Pitch</h3>
+          <button class="btn btn-emerald btn-copy-script" data-target="scriptGuest">Copy Script</button>
+        </div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Send to guestpostnaukri@gmail.com, info@tbdjobs.in, or Jobify editorial teams.</p>
+        <pre class="template-code" id="scriptGuest">Subject: Editorial Guest Post Pitch: "Why 70% of Fresher Tech Resumes Fail ATS Filters in 2026 (And How to Fix It)"
+
+Hi [Editorial Team Name],
+
+I am an engineering lead and hiring researcher at CareerNest (https://careernest.taqnik.in/), an Indian AI career toolkit.
+
+I've been following your career insights and noticed your audience of Indian job seekers actively seeks actionable guidance on cracking modern automated recruitment filters.
+
+I have outlined an exclusive 1,400-word data-backed guide titled:
+"Why 70% of Fresher Tech Resumes Fail ATS Filters in 2026: An Analysis of 10,000 Indian Candidate Submissions"
+
+Key points covered:
+1. Taleo vs. Workday vs. Greenhouse parsing rules in Indian IT hiring
+2. The fallacy of Canva two-column graphics vs plain text ATS parsers
+3. How to structure quantifiable STAR metrics for Tier-2/3 college freshers
+4. A concrete step-by-step checklist for 2026 campus drives
+
+The draft is 100% original, thoroughly researched, and formatted with actionable subheadings.
+
+Would you like me to send over the complete Google Doc draft for your review?
+
+Best regards,
+[Your Name]
+CareerNest | https://careernest.taqnik.in/</pre>
+      </div>
+
+      <div class="template-card">
+        <div class="template-header">
+          <h3 class="template-title">3. Journalist Soundbite / Expert Quote Pitch (#JournoRequest / Featured.com / Qwoted)</h3>
+          <button class="btn btn-emerald btn-copy-script" data-target="scriptJournalist">Copy Script</button>
+        </div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Fast-turnaround responses for HR &amp; tech queries on X (#JournoRequest) and Featured.com.</p>
+        <pre class="template-code" id="scriptJournalist">Hi [Reporter Name],
+
+Regarding your inquiry on [Query Topic, e.g. "How AI is changing fresher hiring in India"]:
+
+"The biggest misconception in 2026 is that recruiters read resumes first. Today, over 80% of volume hiring in India uses AI parsing filters that discard resumes with tables, icons, and non-standard fonts before a human recruiter spends 6 seconds on them. Candidates who tailor hard metrics to specific job description taxonomies see a 4x increase in interview call-backs."
+
+- [Your Name], Founder &amp; Career Tech Researcher at CareerNest (https://careernest.taqnik.in)
+
+Feel free to use this quote directly or reach out if you need additional hiring data or commentary.
+
+Best,
+[Your Name]</pre>
+      </div>
+
+      <div class="template-card">
+        <div class="template-header">
+          <h3 class="template-title">4. Broken Link Building Replacement Pitch</h3>
+          <button class="btn btn-emerald btn-copy-script" data-target="scriptBroken">Copy Script</button>
+        </div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Pitch to university career webmasters or blog editors when a dead resume builder link is found.</p>
+        <pre class="template-code" id="scriptBroken">Subject: Broken resource link on [Page Title / URL]
+
+Hi [Webmaster Name],
+
+I was browsing your excellent career resource guide at [Target Page URL] and noticed that the link to [Dead Tool Name] (pointing to [Dead URL]) is returning a 404 dead link error.
+
+If you are looking for an up-to-date, active replacement, our team maintains CareerNest (https://careernest.taqnik.in/), a free AI ATS Resume Checker and builder specifically formatted for modern corporate parsing algorithms.
+
+It might make a helpful addition for your readers!
+
+Either way, keep up the great work with the resource library.
+
+Cheers,
+[Your Name]</pre>
+      </div>
+
+    </div>
+
+    <!-- 30-DAY ROADMAP VIEW -->
+    <div id="roadmapMainView" class="roadmap-timeline" style="display: none;">
+      
+      <div class="roadmap-week">
+        <h3 class="week-title">Week 1: Technical SEO Remediation &amp; Search Engine Verification</h3>
+        <ul class="week-task-list">
+          <li class="week-task-item">
+            <span class="badge badge-p0">P0</span>
+            <strong>GSC-01 &amp; GSC-02:</strong> Connect Google Search Console, verify domain ownership, and submit clean extensionless sitemap.
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p0">P0</span>
+            <strong>BWT-01 &amp; BWT-02:</strong> Import Bing Webmaster Tools verification, submit sitemap, and configure IndexNow key.
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p0">P0</span>
+            <strong>Codebase Phase 1:</strong> Reconcile all canonical tags and internal links to clean extensionless URLs (eliminate 308 redirect loops).
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p1">P1</span>
+            <strong>Codebase Phase 2:</strong> Pre-render static HTML versions of blog posts and 6 resume-example role pages.
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p2">P2</span>
+            <strong>PRF-03 &amp; Social Audit:</strong> Register @careernest_ai or update social links in footer &amp; schema sameAs array.
+          </li>
+        </ul>
+      </div>
+
+      <div class="roadmap-week">
+        <h3 class="week-title">Week 2: Tier A Quick-Win Submissions &amp; Product Hunt Launch Prep</h3>
+        <ul class="week-task-list">
+          <li class="week-task-item">
+            <span class="badge badge-p1">P1</span>
+            <strong>DIR-01 to DIR-04:</strong> Submit verified listings to TechProductIndia and App Advisor (track 2-day approval).
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p1">P1</span>
+            <strong>DIR-05 to DIR-06:</strong> Complete Koncept AI directory listing (integrate badge or choose listing).
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p1">P1</span>
+            <strong>DIR-11 to DIR-13:</strong> Submit to major AI directories (There's An AI For That, Futurepedia, Toolify.ai).
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p2">P2</span>
+            <strong>PRF-01 to PRF-06:</strong> Complete official brand profiles on LinkedIn Company Page, Crunchbase, GitHub, and YouTube.
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p2">P2</span>
+            <strong>DIR-07 to DIR-10:</strong> Build Product Hunt upcoming teaser page, gather assets, and schedule official launch day.
+          </li>
+        </ul>
+      </div>
+
+      <div class="roadmap-week">
+        <h3 class="week-title">Week 3: Tier B Editorial Pitches &amp; Journalist Network Activation</h3>
+        <ul class="week-task-list">
+          <li class="week-task-item">
+            <span class="badge badge-p1">P1</span>
+            <strong>GST-01 to GST-03:</strong> Pitch guest article to Naukri.com Blog (via Google Form / guestpostnaukri@gmail.com).
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p1">P1</span>
+            <strong>GST-04 to GST-09:</strong> Submit editorial pitches to Jobify India and TBD Jobs (800–1,500 words).
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p1">P1</span>
+            <strong>JRN-01 to JRN-06:</strong> Set up daily source alerts on Featured.com, Qwoted, and Source of Sources (SOS).
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p2">P2</span>
+            <strong>JRN-07 &amp; JRN-08:</strong> Monitor #JournoRequest on X twice daily for urgent HR &amp; tech queries.
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p2">P2</span>
+            <strong>MED-01 to MED-05:</strong> Draft Indian startup press pitch for YourStory, Inc42, and Entrackr.
+          </li>
+        </ul>
+      </div>
+
+      <div class="roadmap-week">
+        <h3 class="week-title">Week 4: College Partnerships (.ac.in Links) &amp; Linkable Asset Launch</h3>
+        <ul class="week-task-list">
+          <li class="week-task-item">
+            <span class="badge badge-p0">P0</span>
+            <strong>COL-01 to COL-04:</strong> Run Google dork prospecting for 50 Indian college T&amp;P resource pages.
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p1">P1</span>
+            <strong>COL-05 &amp; COL-06:</strong> Send targeted outreach batch to 20 engineering college placement officers.
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p1">P1</span>
+            <strong>AST-01 &amp; AST-02:</strong> Publish "India Fresher Salary Report 2026" and distribute press release.
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p2">P2</span>
+            <strong>AST-08:</strong> Deploy "CTC to In-Hand Salary Calculator (New Tax Regime)" interactive tool for natural link acquisition.
+          </li>
+          <li class="week-task-item">
+            <span class="badge badge-p2">P2</span>
+            <strong>LOC-05 &amp; LOC-06:</strong> Review Google Alerts for unlinked brand mentions and request backlink inclusions.
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TASK DETAIL MODAL -->
+  <div class="modal-backdrop" id="taskModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="task-id-badge" id="modalTaskId">TASK-00</span>
+          <h2 id="modalTaskTitle">Task Title</h2>
+        </div>
+        <button class="close-btn" id="modalCloseBtn">&times;</button>
+      </div>
+
+      <div class="audit-notes-box" id="modalAuditNotes">
+        Audit notes and verification details.
+      </div>
+
+      <div class="modal-form-grid">
+        <div class="form-group">
+          <label class="form-label">Category / Tier</label>
+          <input type="text" class="form-input" id="modalTier" readonly>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Priority</label>
+          <input type="text" class="form-input" id="modalPriority" readonly>
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label">Target Website / Platform URL</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" class="form-input" id="modalTargetUrl" readonly style="flex:1;">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="modalOpenUrlBtn">Open Link ↗</a>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Task Status</label>
+          <select class="form-input" id="modalStatusSelect">
+            <option value="not_started">Not Started</option>
+            <option value="in_progress">In Progress</option>
+            <option value="pitched">Submitted / Pitched</option>
+            <option value="live">Live / Won</option>
+            <option value="hold">On Hold</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Link Type</label>
+          <input type="text" class="form-input" id="modalLinkType" readonly>
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label">Live Backlink URL (Proof of Backlink)</label>
+          <input type="url" class="form-input" id="modalLiveUrl" placeholder="https://external-site.com/link-to-careernest">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Anchor Text Used</label>
+          <input type="text" class="form-input" id="modalAnchorText" placeholder="e.g. CareerNest ATS Resume Checker">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Target Landing Page</label>
+          <input type="text" class="form-input" id="modalLandingPage" placeholder="e.g. https://careernest.taqnik.in/">
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label">Execution Notes &amp; Outreach Log</label>
+          <textarea class="form-textarea" id="modalNotes" placeholder="Enter contact person, submission date, ticket ID, or editorial notes..."></textarea>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+        <button class="btn" id="modalCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="modalSaveBtn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST ALERT -->
+  <div class="toast" id="toastAlert">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toastMessage">Success</span>
+  </div>
+
+  <!-- EMBEDDED DATABASE & SCRIPT -->
+  <script>
+    // Master granular dataset based on CareerNest SEO Audit & Backlink Plan (13 Oct 2026)
+    const DEFAULT_TASKS = [
+      // 1. Technical & Search Console (Prerequisites) - Kept Granular
+      {
+        id: "GSC-01",
+        title: "Google Search Console - Domain & URL Prefix Property Setup",
+        tier: "tech",
+        tierLabel: "Search Console",
+        priority: "P0",
+        platform: "Google Search Console",
+        targetUrl: "https://search.google.com/search-console",
+        linkType: "tech",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "N/A",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Required before link building. Verify domain or URL prefix via existing HTML meta tag or DNS TXT.",
+        auditNotes: "Audit Finding: Core Web Vitals and GSC not connected. Essential prerequisite to track crawler index status and indexation requests."
+      },
+      {
+        id: "GSC-02",
+        title: "Google Search Console - Submit Clean XML Sitemap",
+        tier: "tech",
+        tierLabel: "Search Console",
+        priority: "P0",
+        platform: "Google Search Console",
+        targetUrl: "https://search.google.com/search-console",
+        linkType: "tech",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "N/A",
+        landingPage: "https://careernest.taqnik.in/sitemap.xml",
+        notes: "Submit https://careernest.taqnik.in/sitemap.xml once canonical extensionless URLs are fixed.",
+        auditNotes: "Audit Finding: Sitemaps previously contained redirecting .html URLs. Re-submit only after Phase 1 clean URL fix."
+      },
+      {
+        id: "GSC-03",
+        title: "Google Search Console - Priority URL Inspection & Indexing Request",
+        tier: "tech",
+        tierLabel: "Search Console",
+        priority: "P1",
+        platform: "Google Search Console",
+        targetUrl: "https://search.google.com/search-console",
+        linkType: "tech",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "N/A",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Request live indexing for homepage, /ats-score-checker, /form-index, and /templates.",
+        auditNotes: "Forces Googlebot to fetch the freshly aligned canonical tags without waiting for next scheduled crawl cycle."
+      },
+      {
+        id: "BWT-01",
+        title: "Bing Webmaster Tools - Account Setup & Verification",
+        tier: "tech",
+        tierLabel: "Search Console",
+        priority: "P0",
+        platform: "Bing Webmaster Tools",
+        targetUrl: "https://www.bing.com/webmasters",
+        linkType: "tech",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "N/A",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Finding #1 Note: Connect Bing Webmaster Tools. Can import site directly from Google Search Console in 1 click.",
+        auditNotes: "Bing powers Yahoo and Copilot search. Must be treated as a separate dedicated task from Google Search Console."
+      },
+      {
+        id: "BWT-02",
+        title: "Bing Webmaster Tools - Submit Clean XML Sitemap",
+        tier: "tech",
+        tierLabel: "Search Console",
+        priority: "P0",
+        platform: "Bing Webmaster Tools",
+        targetUrl: "https://www.bing.com/webmasters",
+        linkType: "tech",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "N/A",
+        landingPage: "https://careernest.taqnik.in/sitemap.xml",
+        notes: "Submit clean sitemap to Bing crawler queue.",
+        auditNotes: "Ensures Bingbot crawls extensionless canonical targets."
+      },
+      {
+        id: "BWT-03",
+        title: "Bing Webmaster Tools - IndexNow API Integration",
+        tier: "tech",
+        tierLabel: "Search Console",
+        priority: "P1",
+        platform: "IndexNow / Bing",
+        targetUrl: "https://www.bing.com/indexnow",
+        linkType: "tech",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "N/A",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Generate IndexNow key text file in client root to enable instant real-time URL push on new post publish.",
+        auditNotes: "Accelerates discovery of programmatic resume and blog pages across Bing and Yandex."
+      },
+      {
+        id: "CWV-01",
+        title: "Google PageSpeed Insights & Core Web Vitals Lab Run",
+        tier: "tech",
+        tierLabel: "Performance",
+        priority: "P1",
+        platform: "PageSpeed Insights",
+        targetUrl: "https://pagespeed.web.dev/",
+        linkType: "tech",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "N/A",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Measure LCP, FID/INP, and CLS for desktop and mobile.",
+        auditNotes: "Audit Finding: 'Core Web Vitals were not measured (no browser lab run). Run PageSpeed Insights.'"
+      },
+      {
+        id: "INF-01",
+        title: "HTTP to HTTPS Port 80 Unconditional Redirect Verification",
+        tier: "tech",
+        tierLabel: "Security & DNS",
+        priority: "P1",
+        platform: "Vercel / DNS",
+        targetUrl: "http://careernest.taqnik.in/",
+        linkType: "tech",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "N/A",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Check in external browser and curl to verify port 80 properly redirects to 443 with HSTS (2 years).",
+        auditNotes: "Audit Finding: 'http:// to https:// redirect: couldn't verify from the test box (port 80 timed out). Please check it in a browser.'"
+      },
+
+      // 2. Tier A: Quick Wins (Low Effort, Indian Platforms & AI Directories)
+      {
+        id: "TIRA-01",
+        title: "TechProductIndia - Submit Free Indian-Made Product Profile",
+        tier: "tier_a",
+        tierLabel: "Tier A: Quick Wins",
+        priority: "P0",
+        platform: "TechProductIndia",
+        targetUrl: "https://techproductindia.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest - AI Career & Resume Platform",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Verified in audit: Free, permanent SEO-indexed page showcasing Indian-made SaaS & tech tools.",
+        auditNotes: "Audit Note #2: Verified free, permanent SEO-indexed page."
+      },
+      {
+        id: "TIRA-02",
+        title: "TechProductIndia - Follow-up & Live Link Verification",
+        tier: "tier_a",
+        tierLabel: "Tier A: Quick Wins",
+        priority: "P2",
+        platform: "TechProductIndia",
+        targetUrl: "https://techproductindia.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Verify indexed URL and confirm dofollow status once live.",
+        auditNotes: "Ensures backlink is crawled and not trapped in pending moderation."
+      },
+      {
+        id: "TIRA-03",
+        title: "App Advisor - Submit 'Launch Your AI Tool' Application",
+        tier: "tier_a",
+        tierLabel: "Tier A: Quick Wins",
+        priority: "P0",
+        platform: "App Advisor",
+        targetUrl: "https://appadvisor.in/launch-your-ai-tool",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest AI Resume Builder",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Verified in audit: Free submission, reviewed within 2 working days.",
+        auditNotes: "Audit Note #3: Verified: free, reviewed in 2 working days."
+      },
+      {
+        id: "TIRA-04",
+        title: "App Advisor - Verify Live Tool Directory Page",
+        tier: "tier_a",
+        tierLabel: "Tier A: Quick Wins",
+        priority: "P2",
+        platform: "App Advisor",
+        targetUrl: "https://appadvisor.in/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Check listing after 48 hours and log final URL.",
+        auditNotes: "Confirm listing page is public and indexed."
+      },
+      {
+        id: "TIRA-05",
+        title: "Koncept AI Directory - Submission & Badge Terms Review",
+        tier: "tier_a",
+        tierLabel: "Tier A: Quick Wins",
+        priority: "P1",
+        platform: "Koncept AI",
+        targetUrl: "https://konceptai.in/directory/submit",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest ATS Scanner",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Verified in audit: Free only if you show their badge (or ₹399 one-time). Decide whether to host badge or pay.",
+        auditNotes: "Audit Note #4: Verified: free only if you show their badge (or ₹399)."
+      },
+      {
+        id: "TIRA-06",
+        title: "Koncept AI Directory - Listing Execution & URL Check",
+        tier: "tier_a",
+        tierLabel: "Tier A: Quick Wins",
+        priority: "P2",
+        platform: "Koncept AI",
+        targetUrl: "https://konceptai.in/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Submit tool details, screenshots, and record live backlink.",
+        auditNotes: "Verified directory entry."
+      },
+      {
+        id: "TIRA-07",
+        title: "Product Hunt - Creator Profile Setup & Brand Registration",
+        tier: "tier_a",
+        tierLabel: "Product Platforms",
+        priority: "P1",
+        platform: "Product Hunt",
+        targetUrl: "https://www.producthunt.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Create founder profile, link Twitter and LinkedIn, and claim product profile.",
+        auditNotes: "Audit Note #5: Plan the launch day. Good for referrals plus a high-authority profile link."
+      },
+      {
+        id: "TIRA-08",
+        title: "Product Hunt - Upcoming Product Page Launch",
+        tier: "tier_a",
+        tierLabel: "Product Platforms",
+        priority: "P1",
+        platform: "Product Hunt Upcoming",
+        targetUrl: "https://www.producthunt.com/ship",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest - AI Career & Resume Toolkit",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Publish teaser page with headline: 'Go from Resume to Offer with AI'.",
+        auditNotes: "Gains early subscriber links and an active Product Hunt indexable page."
+      },
+      {
+        id: "TIRA-09",
+        title: "Product Hunt - Launch Day Execution & Referral Tracking",
+        tier: "tier_a",
+        tierLabel: "Product Platforms",
+        priority: "P2",
+        platform: "Product Hunt",
+        targetUrl: "https://www.producthunt.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Execute Tuesday/Wednesday launch schedule. Drive community support.",
+        auditNotes: "Generates high initial referral traffic and permanent high-DA backlink."
+      },
+      {
+        id: "TIRA-10",
+        title: "There's An AI For That (TAAFT) - Submit Tool Profile",
+        tier: "tier_a",
+        tierLabel: "AI Directories",
+        priority: "P1",
+        platform: "There's An AI For That",
+        targetUrl: "https://theresanaiforthat.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest AI Resume Builder",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #6: Well-known AI directory. Submit for 'Resume', 'Job Search', 'Career Coaching' categories.",
+        auditNotes: "Massive search volume and authoritative domain in AI tool discovery."
+      },
+      {
+        id: "TIRA-11",
+        title: "Futurepedia - Submit AI Career Tool Listing",
+        tier: "tier_a",
+        tierLabel: "AI Directories",
+        priority: "P1",
+        platform: "Futurepedia",
+        targetUrl: "https://www.futurepedia.io/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #6: Leading curated directory for generative AI tools. Submit under free tier.",
+        auditNotes: "High domain rating (DR 75+)."
+      },
+      {
+        id: "TIRA-12",
+        title: "Toolify.ai - Submit Tool Profile & Category Tags",
+        tier: "tier_a",
+        tierLabel: "AI Directories",
+        priority: "P1",
+        platform: "Toolify.ai",
+        targetUrl: "https://www.toolify.ai/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest AI",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #6: Submit product description, feature tags (ATS Check, Cover Letter, Resume Builder).",
+        auditNotes: "Fast indexing directory with global reach."
+      },
+      {
+        id: "TIRA-13",
+        title: "Startup India Portal - Complete Official Profile (DPIIT)",
+        tier: "tier_a",
+        tierLabel: "Government & Authority",
+        priority: "P1",
+        platform: "Startup India",
+        targetUrl: "https://www.startupindia.gov.in/",
+        linkType: "edu_gov",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest / Taqnik",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #8: If DPIIT-registered, create/update official profile on Startup India portal (.gov.in authority).",
+        auditNotes: "Highest possible domain trust in India. Crucial for government tenders and SuperLaunch."
+      },
+      {
+        id: "TIRA-14",
+        title: "SuperLaunch - Submit Startup Profile (DPIIT Verified)",
+        tier: "tier_a",
+        tierLabel: "Startup Portals",
+        priority: "P1",
+        platform: "SuperLaunch",
+        targetUrl: "https://superlaunch.in/submit",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #8: Verified: free, needs a DPIIT certificate. Submit certificate and product URL.",
+        auditNotes: "Direct permanent link on verified Indian startup index."
+      },
+
+      // 3. Brand Authority Profiles (Separated Individually)
+      {
+        id: "PRF-01",
+        title: "LinkedIn Company Page - Complete Setup & Bio Link",
+        tier: "tier_a",
+        tierLabel: "Brand Authority",
+        priority: "P0",
+        platform: "LinkedIn",
+        targetUrl: "https://linkedin.com/company/careernest",
+        linkType: "directory",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest Website",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #7: Create/claim official company page, link to careernest.taqnik.in, add logo and banner.",
+        auditNotes: "Foundational entity signal for Google Knowledge Graph and Organization schema."
+      },
+      {
+        id: "PRF-02",
+        title: "Crunchbase - Create CareerNest Organization Profile",
+        tier: "tier_a",
+        tierLabel: "Brand Authority",
+        priority: "P0",
+        platform: "Crunchbase",
+        targetUrl: "https://www.crunchbase.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest Website",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #7: Profile links; also add them to schema sameAs. Essential tech entity citation.",
+        auditNotes: "High DR (91+). One of the strongest corporate entity signals."
+      },
+      {
+        id: "PRF-03",
+        title: "X (Twitter) - Claim/Verify @careernest_ai & Bio URL",
+        tier: "tier_a",
+        tierLabel: "Brand Authority",
+        priority: "P0",
+        platform: "X (Twitter)",
+        targetUrl: "https://x.com/careernest_ai",
+        linkType: "directory",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "careernest.taqnik.in",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "CRITICAL AUDIT FIX: Footer and schema currently link to https://twitter.com/careernest_ai which returns 404. Register handle or update link.",
+        auditNotes: "Audit Finding: 'The footer/schema links to https://twitter.com/careernest_ai, which returns 404. Create that handle or remove the link.'"
+      },
+      {
+        id: "PRF-04",
+        title: "Instagram - Create @careernest.ai Business Profile",
+        tier: "tier_a",
+        tierLabel: "Brand Authority",
+        priority: "P2",
+        platform: "Instagram",
+        targetUrl: "https://www.instagram.com/",
+        linkType: "directory",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest Toolkit",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #7: Set up company Instagram, add website URL in bio and link to schema.",
+        auditNotes: "Provides social citation and visual branding for campus student demographics."
+      },
+      {
+        id: "PRF-05",
+        title: "YouTube - Create Official Brand Channel with Bio Link",
+        tier: "tier_a",
+        tierLabel: "Brand Authority",
+        priority: "P2",
+        platform: "YouTube",
+        targetUrl: "https://www.youtube.com/",
+        linkType: "directory",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #7: Create YouTube channel for ATS resume tutorials. Add verified link in channel About tab.",
+        auditNotes: "Google-owned domain. Crucial for video rich snippets in SERPs."
+      },
+      {
+        id: "PRF-06",
+        title: "GitHub - Organization / Public Repo Profile Link",
+        tier: "tier_a",
+        tierLabel: "Brand Authority",
+        priority: "P1",
+        platform: "GitHub",
+        targetUrl: "https://github.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest AI",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #7: Create GitHub Org profile with website link and release open-source resume template.",
+        auditNotes: "DR 96 backlink. Huge trust signal for technical ATS software applications."
+      },
+      {
+        id: "PRF-07",
+        title: "Organization Schema JSON-LD - Audit & Update sameAs Array",
+        tier: "tier_a",
+        tierLabel: "Codebase & Schema",
+        priority: "P0",
+        platform: "Codebase (client/index.html)",
+        targetUrl: "https://careernest.taqnik.in/",
+        linkType: "tech",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "N/A",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #5 & #7: Update sameAs array in Organization JSON-LD with only HTTP 200 live social profile URLs.",
+        auditNotes: "Removes broken links from structured data."
+      },
+
+      // 4. SaaS Review Sites
+      {
+        id: "REV-01",
+        title: "G2 - Claim Vendor Profile & Software Listing",
+        tier: "tier_a",
+        tierLabel: "SaaS Reviews",
+        priority: "P1",
+        platform: "G2",
+        targetUrl: "https://www.g2.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #9: Free vendor listing on premier B2B/SaaS software review directory.",
+        auditNotes: "DR 90+. High buyer intent and Google review snippet eligibility."
+      },
+      {
+        id: "REV-02",
+        title: "Capterra - Submit Software Profile (Gartner Digital Markets)",
+        tier: "tier_a",
+        tierLabel: "SaaS Reviews",
+        priority: "P1",
+        platform: "Capterra",
+        targetUrl: "https://www.capterra.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #9: Submit free listing across Capterra, Software Advice, and GetApp networks.",
+        auditNotes: "Gartner network provides massive authority boost."
+      },
+      {
+        id: "REV-03",
+        title: "SaaSworthy - Create Free Vendor Profile",
+        tier: "tier_a",
+        tierLabel: "SaaS Reviews",
+        priority: "P2",
+        platform: "SaaSworthy",
+        targetUrl: "https://www.saasworthy.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #9: Fast-growing Indian/global SaaS directory. Free vendor profile listing.",
+        auditNotes: "Solid DR 70+ directory link."
+      },
+      {
+        id: "REV-04",
+        title: "GoodFirms - Submit Free Software Profile",
+        tier: "tier_a",
+        tierLabel: "SaaS Reviews",
+        priority: "P2",
+        platform: "GoodFirms",
+        targetUrl: "https://www.goodfirms.co/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #9: Submit company profile under AI Tools / HR Tech software categories.",
+        auditNotes: "Established Indian B2B review catalog."
+      },
+
+      // 5. Tier B: Content & PR (Guest Posts & Editorial Backlinks)
+      {
+        id: "GST-01",
+        title: "Write for Naukri - Review Guidelines & Formulate Pitch",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P0",
+        platform: "Naukri.com",
+        targetUrl: "https://www.naukri.com/blog/write-for-naukri/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "ATS Resume Checker",
+        landingPage: "https://careernest.taqnik.in/ats-score-checker",
+        notes: "Audit Note #10: Verified: Google Form or guestpostnaukri@gmail.com. Top authority in Indian careers.",
+        auditNotes: "Naukri has DR 85+ and is the undisputed #1 job authority in India. A single link here is game-changing."
+      },
+      {
+        id: "GST-02",
+        title: "Write for Naukri - Submit Pitch via Google Form / Email",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P1",
+        platform: "Naukri.com",
+        targetUrl: "https://www.naukri.com/blog/write-for-naukri/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest ATS tool",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Send pitch on 'How AI ATS Screening Rejects Fresher Tech Resumes in 2026'.",
+        auditNotes: "Follow up after 7 business days."
+      },
+      {
+        id: "GST-03",
+        title: "Write for Naukri - Draft & Publish 1,400-Word Guest Post",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P1",
+        platform: "Naukri.com Blog",
+        targetUrl: "https://www.naukri.com/blog/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "free ATS score checker",
+        landingPage: "https://careernest.taqnik.in/ats-score-checker",
+        notes: "Deliver polished, non-promotional editorial with contextual tool citation.",
+        auditNotes: "Highest-value tier B asset."
+      },
+      {
+        id: "GST-04",
+        title: "Jobify India - Review Guidelines & Pitch Editorial Topics",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P1",
+        platform: "Jobify India",
+        targetUrl: "https://jobifyindia.com/write-for-us/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "resume builder for freshers",
+        landingPage: "https://careernest.taqnik.in/form-index",
+        notes: "Audit Note #11: Verified: accepts resume, interview, and ATS/HR-tech topics.",
+        auditNotes: "Fast approval turnaround."
+      },
+      {
+        id: "GST-05",
+        title: "Jobify India - Draft & Submit 1,000-Word Article",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P2",
+        platform: "Jobify India",
+        targetUrl: "https://jobifyindia.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest AI resume maker",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Submit draft covering interview prep STAR methodology and ATS formats.",
+        auditNotes: "Contextual in-content backlink."
+      },
+      {
+        id: "GST-06",
+        title: "TBD Jobs - Editorial Pitch via Email (info@tbdjobs.in)",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P1",
+        platform: "TBD Jobs",
+        targetUrl: "https://www.tbdjobs.in/writeforus",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "ATS-friendly templates",
+        landingPage: "https://careernest.taqnik.in/templates",
+        notes: "Audit Note #12: Verified: 800–1,500 words, contact info@tbdjobs.in.",
+        auditNotes: "Target niche job portal."
+      },
+      {
+        id: "GST-07",
+        title: "TBD Jobs - Deliver Article & Verify Dofollow Backlink",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P2",
+        platform: "TBD Jobs",
+        targetUrl: "https://www.tbdjobs.in/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Confirm publishing and verify indexed link.",
+        auditNotes: "Dofollow in-content link."
+      },
+      {
+        id: "GST-08",
+        title: "Alliance International - Submit 'Write for Us' Pitch",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P1",
+        platform: "Alliance International",
+        targetUrl: "https://www.allianceinternational.co.in/write-for-us/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "salary benchmarking India",
+        landingPage: "https://careernest.taqnik.in/salary-benchmark",
+        notes: "Audit Note #13: Verified: 900+ words, resume/career topics accepted.",
+        auditNotes: "Major Indian recruitment and staffing agency."
+      },
+      {
+        id: "GST-09",
+        title: "Alliance International - Article Delivery & Link Check",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P2",
+        platform: "Alliance International",
+        targetUrl: "https://www.allianceinternational.co.in/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest salary calculator",
+        landingPage: "https://careernest.taqnik.in/salary-benchmark",
+        notes: "Submit 1,000-word draft on tech compensation and career trajectory in India.",
+        auditNotes: "Permanent corporate backlink."
+      },
+      {
+        id: "GST-10",
+        title: "HireBH - Send Long-Form Outline Pitch (1,900-2,500 words)",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P2",
+        platform: "HireBH",
+        targetUrl: "https://hirebh.com/write-for-us/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "interview preparation guide",
+        landingPage: "https://careernest.taqnik.in/interview-prep",
+        notes: "Audit Note #14: Verified: 1,900–2,500 words, pitch first.",
+        auditNotes: "High word count requirement, requires in-depth guide."
+      },
+      {
+        id: "GST-11",
+        title: "HireBH - Submit Comprehensive Guide & Track Publication",
+        tier: "tier_b",
+        tierLabel: "Tier B: Editorial & PR",
+        priority: "P2",
+        platform: "HireBH",
+        targetUrl: "https://hirebh.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest career roadmap",
+        landingPage: "https://careernest.taqnik.in/career-roadmap",
+        notes: "Deliver 2,000-word authoritative guide with contextual tool links.",
+        auditNotes: "Long-form editorial backlink."
+      },
+
+      // 6. Tier B: Journalist Request Platforms & PR
+      {
+        id: "JRN-01",
+        title: "Featured.com (HARO) - Register Expert Source Account",
+        tier: "tier_b",
+        tierLabel: "Journalist Platforms",
+        priority: "P0",
+        platform: "Featured.com",
+        targetUrl: "https://featured.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #15: Verified via 2026 reviews: free tiers exist. Pitch as careers/ATS/hiring expert.",
+        auditNotes: "Featured.com syndicates answers directly to Fast Company, GoBankingRates, etc."
+      },
+      {
+        id: "JRN-02",
+        title: "Featured.com - Daily Query Scan & Respond to 3 HR Queries",
+        tier: "tier_b",
+        tierLabel: "Journalist Platforms",
+        priority: "P1",
+        platform: "Featured.com",
+        targetUrl: "https://featured.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest AI",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Answer queries on 'Resume red flags', 'ATS filtering', 'Tech hiring 2026'.",
+        auditNotes: "Fast-track path to DA 80+ media links."
+      },
+      {
+        id: "JRN-03",
+        title: "Qwoted - Set Up Verified Expert Profile",
+        tier: "tier_b",
+        tierLabel: "Journalist Platforms",
+        priority: "P1",
+        platform: "Qwoted",
+        targetUrl: "https://www.qwoted.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #15: Free expert profile. Direct journalist messaging in business & tech.",
+        auditNotes: "High-trust media network."
+      },
+      {
+        id: "JRN-04",
+        title: "Qwoted - Pitch Tier-1 Reporters on Career & Hiring Trends",
+        tier: "tier_b",
+        tierLabel: "Journalist Platforms",
+        priority: "P2",
+        platform: "Qwoted",
+        targetUrl: "https://www.qwoted.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Respond within 2 hours of inquiry broadcast for maximum pick-up rate.",
+        auditNotes: "Speed is critical for PR placement."
+      },
+      {
+        id: "JRN-05",
+        title: "Source of Sources (SOS) - Source Registration & Newsletter Tracking",
+        tier: "tier_b",
+        tierLabel: "Journalist Platforms",
+        priority: "P2",
+        platform: "Source of Sources",
+        targetUrl: "https://www.sourceofsources.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #15: Free newsletter alerting sources of journalist requests.",
+        auditNotes: "Alternative to HARO."
+      },
+      {
+        id: "JRN-06",
+        title: "MentionMatch (Help a B2B Writer) - Source Registration",
+        tier: "tier_b",
+        tierLabel: "Journalist Platforms",
+        priority: "P2",
+        platform: "MentionMatch",
+        targetUrl: "https://helpab2bwriter.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #15: Set categories to HR Tech, Recruiting, Career Advice.",
+        auditNotes: "High-quality B2B blogs with high DA."
+      },
+      {
+        id: "JRN-07",
+        title: "#JournoRequest on X - Create Saved Search Query & Daily Alert",
+        tier: "tier_b",
+        tierLabel: "PR & Media",
+        priority: "P1",
+        platform: "X (Twitter)",
+        targetUrl: "https://x.com/search?q=%23journorequest",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #17: Free, speed matters. Search '#JournoRequest resume OR hiring OR fresher'.",
+        auditNotes: "Immediate quote insertion."
+      },
+      {
+        id: "JRN-08",
+        title: "LinkedIn HR Journalists - Direct Outreach to 10 Indian Writers",
+        tier: "tier_b",
+        tierLabel: "PR & Media",
+        priority: "P2",
+        platform: "LinkedIn",
+        targetUrl: "https://www.linkedin.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #17: Connect with Indian business journalists covering HR tech and campus placements.",
+        auditNotes: "Long-term relationships for press mentions."
+      },
+      {
+        id: "MED-01",
+        title: "YourStory - Draft Founder Story & Placement Data Angle",
+        tier: "tier_b",
+        tierLabel: "Indian Startup Media",
+        priority: "P1",
+        platform: "YourStory",
+        targetUrl: "https://yourstory.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #16: Pitch a data angle (e.g. ATS Resume Study findings). Premier Indian startup media.",
+        auditNotes: "Massive brand trust in India (DR 84+)."
+      },
+      {
+        id: "MED-02",
+        title: "Inc42 - Editorial Pitch on AI Resumes in Indian Job Market",
+        tier: "tier_b",
+        tierLabel: "Indian Startup Media",
+        priority: "P2",
+        platform: "Inc42",
+        targetUrl: "https://inc42.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #16: Pitch early-stage startup feature or data study.",
+        auditNotes: "Top-tier Indian tech startup outlet."
+      },
+      {
+        id: "MED-03",
+        title: "Entrackr - Submit Startup Launch News Brief",
+        tier: "tier_b",
+        tierLabel: "Indian Startup Media",
+        priority: "P2",
+        platform: "Entrackr",
+        targetUrl: "https://entrackr.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Note #16: Submit funding/launch news release to news desk.",
+        auditNotes: "Respected Indian tech intelligence publication."
+      },
+
+      // 7. Tier C: Community & Traffic (Nofollow + High Qualified Traffic)
+      {
+        id: "COM-01",
+        title: "Quora - Answer 5 Top Ranking 'ATS Resume' Questions",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P1",
+        platform: "Quora",
+        targetUrl: "https://www.quora.com/",
+        linkType: "nofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "free ATS score checker",
+        landingPage: "https://careernest.taqnik.in/ats-score-checker",
+        notes: "Audit Tier C: Answer 'How does an ATS parse a resume?', 'Best resume format for freshers', linking free ATS checker.",
+        auditNotes: "Quora answers rank heavily on Google for long-tail career queries."
+      },
+      {
+        id: "COM-02",
+        title: "Reddit r/developersIndia - Value-Add Guide on ATS Resumes",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P1",
+        platform: "Reddit (r/developersIndia)",
+        targetUrl: "https://www.reddit.com/r/developersIndia/",
+        linkType: "nofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest ATS checker",
+        landingPage: "https://careernest.taqnik.in/ats-score-checker",
+        notes: "Audit Tier C: Post technical breakdown of how parsers read LaTeX vs DOCX vs PDF. Follow subreddit self-promo rules.",
+        auditNotes: "India's largest tech community. Can drive thousands of engaged users."
+      },
+      {
+        id: "COM-03",
+        title: "Reddit r/Indian_Academia - Resume Advice for Students",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P2",
+        platform: "Reddit (r/Indian_Academia)",
+        targetUrl: "https://www.reddit.com/r/Indian_Academia/",
+        linkType: "nofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "fresher resume templates",
+        landingPage: "https://careernest.taqnik.in/templates",
+        notes: "Audit Tier C: Help college students formatting their first CV for placement drives.",
+        auditNotes: "Niche target audience of college students."
+      },
+      {
+        id: "COM-04",
+        title: "Reddit r/resumes - Participate in Weekly Feedback Threads",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P2",
+        platform: "Reddit (r/resumes)",
+        targetUrl: "https://www.reddit.com/r/resumes/",
+        linkType: "nofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "ATS compliance checker",
+        landingPage: "https://careernest.taqnik.in/ats-score-checker",
+        notes: "Audit Tier C: Provide genuine bullet feedback using STAR method, recommend tools when requested.",
+        auditNotes: "Largest resume critique community on the web."
+      },
+      {
+        id: "COM-05",
+        title: "Reddit r/cscareerquestionsIN - Fresher Placement Discussions",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P2",
+        platform: "Reddit (r/cscareerquestionsIN)",
+        targetUrl: "https://www.reddit.com/r/cscareerquestionsIN/",
+        linkType: "nofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest Roadmap",
+        landingPage: "https://careernest.taqnik.in/career-roadmap",
+        notes: "Audit Tier C: Share salary negotiation tips and campus preparation guides.",
+        auditNotes: "Targeted Indian CS student base."
+      },
+      {
+        id: "COM-06",
+        title: "LinkedIn Articles & Newsletter - Weekly Guide Syndication",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P2",
+        platform: "LinkedIn Pulse",
+        targetUrl: "https://www.linkedin.com/pulse/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "Originally published on CareerNest",
+        landingPage: "https://careernest.taqnik.in/blog",
+        notes: "Audit Tier C: Republish blog guides with an explicit canonical link back to careernest.taqnik.in.",
+        auditNotes: "Builds topical authority and direct corporate reach."
+      },
+      {
+        id: "COM-07",
+        title: "Medium - CareerNest Publication & Canonical Cross-Post",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P2",
+        platform: "Medium",
+        targetUrl: "https://medium.com/",
+        linkType: "nofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest Guide",
+        landingPage: "https://careernest.taqnik.in/blog",
+        notes: "Audit Tier C: Use Medium's built-in 'Import a story' feature to preserve rel='canonical' tag to our site.",
+        auditNotes: "Passes indexing equity and drives Medium readers to original domain."
+      },
+      {
+        id: "COM-08",
+        title: "Dev.to - Publish Engineering Deep Dive on ATS Parsing",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P2",
+        platform: "Dev.to",
+        targetUrl: "https://dev.to/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest ATS Scanner",
+        landingPage: "https://careernest.taqnik.in/ats-score-checker",
+        notes: "Audit Tier C: Write 'Building a Browser-Based ATS Resume Parser with Gemini AI' with canonical URL.",
+        auditNotes: "Dev.to gives clean dofollow canonical attribution."
+      },
+      {
+        id: "COM-09",
+        title: "Hashnode - Cross-Post Technical Blog with Custom Domain Canonical",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P2",
+        platform: "Hashnode",
+        targetUrl: "https://hashnode.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier C: Publish developer and AI engineering articles.",
+        auditNotes: "Strict canonical adherence."
+      },
+      {
+        id: "COM-10",
+        title: "Indie Hackers - Build-in-Public Product Listing & Milestones",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P2",
+        platform: "Indie Hackers",
+        targetUrl: "https://www.indiehackers.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier C: Create product profile, share traffic milestones and user feedback.",
+        auditNotes: "High-DA community profile."
+      },
+      {
+        id: "COM-11",
+        title: "BetaList - Submit Early Access Listing",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P2",
+        platform: "BetaList",
+        targetUrl: "https://betalist.com/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier C: Submit for early-stage startup directory feature.",
+        auditNotes: "Dofollow backlink + early adopter audience."
+      },
+      {
+        id: "COM-12",
+        title: "Telegram & WhatsApp Placement Channels - Tool Distribution",
+        tier: "tier_c",
+        tierLabel: "Tier C: Community",
+        priority: "P2",
+        platform: "Telegram / WhatsApp",
+        targetUrl: "https://telegram.org/",
+        linkType: "traffic",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "Free ATS Score Scanner",
+        landingPage: "https://careernest.taqnik.in/ats-score-checker",
+        notes: "Audit Tier C: Partner with student placement leads to share free ATS tool in campus groups.",
+        auditNotes: "Drives direct usage and organic brand searches, triggering Google rank ascents."
+      },
+
+      // 8. Tier D: College Partnerships (.ac.in / .edu.in Links)
+      {
+        id: "COL-01",
+        title: "Develop 'CareerNest for Campus' Outreach Kit (PDF + Workshop Offer)",
+        tier: "tier_d",
+        tierLabel: "Tier D: Colleges (.ac.in)",
+        priority: "P0",
+        platform: "Placement Cells (.ac.in)",
+        targetUrl: "https://careernest.taqnik.in/",
+        linkType: "edu_gov",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest for Campus",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier D: Prepare 1-page proposal offering free ATS check + placement workshop in exchange for placement resources link.",
+        auditNotes: ".ac.in and .edu.in links carry massive algorithmic weight in Google's ranking algorithms."
+      },
+      {
+        id: "COL-02",
+        title: "Google Dork Target Scraping: site:ac.in 'training and placement' resources",
+        tier: "tier_d",
+        tierLabel: "Tier D: Colleges (.ac.in)",
+        priority: "P1",
+        platform: "Google Search Dorks",
+        targetUrl: "https://www.google.com/search?q=site%3Aac.in+%22training+and+placement%22+resources",
+        linkType: "edu_gov",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "Career Resources",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier D: Collect 30 Indian university placement resource page URLs.",
+        auditNotes: "High-relevance edu targets."
+      },
+      {
+        id: "COL-03",
+        title: "Google Dork Target Scraping: site:edu.in 'placement cell' 'resume'",
+        tier: "tier_d",
+        tierLabel: "Tier D: Colleges (.ac.in)",
+        priority: "P1",
+        platform: "Google Search Dorks",
+        targetUrl: "https://www.google.com/search?q=site%3Aedu.in+%22placement+cell%22+%22resume%22",
+        linkType: "edu_gov",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "Resume Tools",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier D: Extract contacts for T&P coordinators.",
+        auditNotes: "Identifies colleges with existing external resource links."
+      },
+      {
+        id: "COL-04",
+        title: "Google Dork Target Scraping: site:ac.in 'career resources' links",
+        tier: "tier_d",
+        tierLabel: "Tier D: Colleges (.ac.in)",
+        priority: "P1",
+        platform: "Google Search Dorks",
+        targetUrl: "https://www.google.com/search?q=site%3Aac.in+%22career+resources%22+links",
+        linkType: "edu_gov",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "Career Resources",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier D: Collect university library and student service links pages.",
+        auditNotes: "University resource page targets."
+      },
+      {
+        id: "COL-05",
+        title: "College Outreach Batch 1: Cold Email 20 T&P Officers",
+        tier: "tier_d",
+        tierLabel: "Tier D: Colleges (.ac.in)",
+        priority: "P1",
+        platform: "Indian Universities",
+        targetUrl: "https://careernest.taqnik.in/",
+        linkType: "edu_gov",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest ATS Resume Scanner",
+        landingPage: "https://careernest.taqnik.in/ats-score-checker",
+        notes: "Audit Tier D: Send personalized emails using outreach template #1 to 20 Tier-2/3 college T&P cells.",
+        auditNotes: "Ask for a link on their placement resources page."
+      },
+      {
+        id: "COL-06",
+        title: "College Outreach Batch 2: Cold Email 30 Additional T&P Officers",
+        tier: "tier_d",
+        tierLabel: "Tier D: Colleges (.ac.in)",
+        priority: "P2",
+        platform: "Indian Universities",
+        targetUrl: "https://careernest.taqnik.in/",
+        linkType: "edu_gov",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "ATS Resume Builder",
+        landingPage: "https://careernest.taqnik.in/form-index",
+        notes: "Audit Tier D: Follow up on batch 1 and dispatch batch 2 outreach.",
+        auditNotes: "Scale outreach to achieve 3-5 confirmed .ac.in links."
+      },
+      {
+        id: "COL-07",
+        title: "Pitch Student Clubs: E-Cells, Coding Clubs & Alumni Pages",
+        tier: "tier_d",
+        tierLabel: "Tier D: Colleges (.ac.in)",
+        priority: "P2",
+        platform: "Student Clubs / E-Cells",
+        targetUrl: "https://careernest.taqnik.in/",
+        linkType: "edu_gov",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier D: Offer free resume tool support for hackathons and club websites.",
+        auditNotes: "Student-run sites on university domains often add tool sponsor links readily."
+      },
+      {
+        id: "COL-08",
+        title: "College Fest Sponsorship: Inquire for Website Partner Backlink",
+        tier: "tier_d",
+        tierLabel: "Tier D: Colleges (.ac.in)",
+        priority: "P3",
+        platform: "College Tech Fests",
+        targetUrl: "https://careernest.taqnik.in/",
+        linkType: "edu_gov",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest Official Career Partner",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier D: Pitch small in-kind / tool sponsorships to college fests in exchange for website footer/partner backlink.",
+        auditNotes: "High ROI source for verified .ac.in event links."
+      },
+
+      // 9. Tier E: Local Citations, Mentions & Broken-Link Building
+      {
+        id: "LOC-01",
+        title: "Google Business Profile - Setup & Address Verification",
+        tier: "tier_e",
+        tierLabel: "Tier E: Local Citations",
+        priority: "P1",
+        platform: "Google Business Profile",
+        targetUrl: "https://business.google.com/",
+        linkType: "directory",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest Website",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier E: If office address exists, set up verified GBP with consistent NAP (Name, Address, Phone).",
+        auditNotes: "Establishes Google local entity credibility."
+      },
+      {
+        id: "LOC-02",
+        title: "Justdial - Create Free Business Profile Listing",
+        tier: "tier_e",
+        tierLabel: "Tier E: Local Citations",
+        priority: "P2",
+        platform: "Justdial",
+        targetUrl: "https://www.justdial.com/",
+        linkType: "directory",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier E: Submit listing under 'Career Counselling & Resume Services'.",
+        auditNotes: "High-volume Indian directory."
+      },
+      {
+        id: "LOC-03",
+        title: "Sulekha - Create Career Services Business Listing",
+        tier: "tier_e",
+        tierLabel: "Tier E: Local Citations",
+        priority: "P2",
+        platform: "Sulekha",
+        targetUrl: "https://www.sulekha.com/",
+        linkType: "directory",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier E: Keep NAP identical to Google Business Profile.",
+        auditNotes: "Reinforces Indian local citation cluster."
+      },
+      {
+        id: "LOC-04",
+        title: "IndiaMART - Setup Company Profile & Service Catalog",
+        tier: "tier_e",
+        tierLabel: "Tier E: Local Citations",
+        priority: "P2",
+        platform: "IndiaMART",
+        targetUrl: "https://www.indiamart.com/",
+        linkType: "directory",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier E: Register verified vendor listing with website URL.",
+        auditNotes: "Dominant Indian B2B marketplace."
+      },
+      {
+        id: "LOC-05",
+        title: "Google Alerts - Set Up Alerts for 'CareerNest' & 'careernest.taqnik.in'",
+        tier: "tier_e",
+        tierLabel: "Tier E: Mentions",
+        priority: "P1",
+        platform: "Google Alerts",
+        targetUrl: "https://www.google.com/alerts",
+        linkType: "tech",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "N/A",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier E: Set up instant daily alert for brand keywords to catch unlinked mentions immediately.",
+        auditNotes: "Audit Finding: 'Unlinked brand mentions: set up a Google Alert for \"CareerNest\" and ask the sites that mention you to add a link.'"
+      },
+      {
+        id: "LOC-06",
+        title: "Unlinked Brand Mentions - Outreach Campaign Execution",
+        tier: "tier_e",
+        tierLabel: "Tier E: Mentions",
+        priority: "P2",
+        platform: "Outreach",
+        targetUrl: "https://careernest.taqnik.in/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier E: Email webmasters who mention CareerNest without hyperlinking. Use outreach template #4.",
+        auditNotes: "Highest conversion outreach tactic because the site already knows the brand."
+      },
+      {
+        id: "LOC-07",
+        title: "Broken Link Building: Identify Dead Resume Links on Career Pages",
+        tier: "tier_e",
+        tierLabel: "Tier E: Broken Links",
+        priority: "P2",
+        platform: "Ahrefs / Check My Links",
+        targetUrl: "https://careernest.taqnik.in/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "free resume tool",
+        landingPage: "https://careernest.taqnik.in/ats-score-checker",
+        notes: "Audit Tier E: Find dead 'resume builder' links on college/job resource pages.",
+        auditNotes: "Audit Finding: 'Broken-link building: find dead \"resume builder\" links on career resource pages and suggest your matching tool.'"
+      },
+      {
+        id: "LOC-08",
+        title: "Broken Link Outreach: Email Webmasters with CareerNest Replacement",
+        tier: "tier_e",
+        tierLabel: "Tier E: Broken Links",
+        priority: "P2",
+        platform: "Target Webmasters",
+        targetUrl: "https://careernest.taqnik.in/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest ATS Resume Builder",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Tier E: Send email notifying webmaster of 404 dead link and propose CareerNest as working substitute.",
+        auditNotes: "Effective white-hat link acquisition technique."
+      },
+
+      // 10. Linkable Assets (Development & Promotion)
+      {
+        id: "AST-01",
+        title: "Linkable Asset #1: Produce 'India Fresher Salary Report 2026'",
+        tier: "assets",
+        tierLabel: "Linkable Assets",
+        priority: "P0",
+        platform: "Content / Research",
+        targetUrl: "https://careernest.taqnik.in/salary-benchmark",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "India Fresher Salary Report 2026",
+        landingPage: "https://careernest.taqnik.in/salary-benchmark",
+        notes: "Audit Section 4, Item 1: Built from salary-benchmark data plus public sources. Prime asset for journalists and colleges.",
+        auditNotes: "Data reports earn the highest number of passive editorial citations."
+      },
+      {
+        id: "AST-02",
+        title: "Linkable Asset #1 PR: Distribute Salary Report to Tech Media",
+        tier: "assets",
+        tierLabel: "Linkable Assets",
+        priority: "P1",
+        platform: "Media Outreach",
+        targetUrl: "https://careernest.taqnik.in/",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest Fresher Salary Survey",
+        landingPage: "https://careernest.taqnik.in/salary-benchmark",
+        notes: "Pitch findings to LiveMint, Economic Times tech desk, and EdTech bloggers.",
+        auditNotes: "High-value media asset."
+      },
+      {
+        id: "AST-03",
+        title: "Linkable Asset #2: Publish 'ATS Resume Rejection Patterns Study'",
+        tier: "assets",
+        tierLabel: "Linkable Assets",
+        priority: "P1",
+        platform: "Research Study",
+        targetUrl: "https://careernest.taqnik.in/blog",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CareerNest ATS Resume Study",
+        landingPage: "https://careernest.taqnik.in/blog",
+        notes: "Audit Section 4, Item 2: 'We analysed N anonymised resumes. X% fail ATS parsing because of tables or columns.' Original PR data.",
+        auditNotes: "High viral quotation potential."
+      },
+      {
+        id: "AST-04",
+        title: "Linkable Asset #3: Build Free Embeddable 'Resume Checked by CareerNest' Badge",
+        tier: "assets",
+        tierLabel: "Linkable Assets",
+        priority: "P1",
+        platform: "Product / Widget",
+        targetUrl: "https://careernest.taqnik.in/badge-ats-ready.svg",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "ATS Checked by CareerNest",
+        landingPage: "https://careernest.taqnik.in/",
+        notes: "Audit Section 4, Item 3: Free embeddable ATS score widget / badge for student portfolios and college sites.",
+        auditNotes: "Generates organic product-led backlinks with every student portfolio deployment."
+      },
+      {
+        id: "AST-05",
+        title: "Linkable Asset #4: Campus Placement Calendar & MNC Interview Question Bank",
+        tier: "assets",
+        tierLabel: "Linkable Assets",
+        priority: "P1",
+        platform: "Content Resource",
+        targetUrl: "https://careernest.taqnik.in/interview-prep",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "Campus Placement Question Bank",
+        landingPage: "https://careernest.taqnik.in/interview-prep",
+        notes: "Audit Section 4, Item 4: Curate TCS NQT, Infosys, Wipro, Accenture questions refreshed every hiring season.",
+        auditNotes: "High student search volume during placement cycles."
+      },
+      {
+        id: "AST-06",
+        title: "Linkable Asset #6: Free Downloadable ATS Resume Templates (DOCX/Docs)",
+        tier: "assets",
+        tierLabel: "Linkable Assets",
+        priority: "P1",
+        platform: "Templates",
+        targetUrl: "https://careernest.taqnik.in/templates",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "Free ATS Resume Templates DOCX",
+        landingPage: "https://careernest.taqnik.in/templates",
+        notes: "Audit Section 4, Item 6: Dedicated landing pages offering 1-click Google Docs and Word copies.",
+        auditNotes: "Natural target for resource lists and blogger recommendations."
+      },
+      {
+        id: "AST-07",
+        title: "Linkable Asset #7: Indian Corporate & Career Glossary Page",
+        tier: "assets",
+        tierLabel: "Linkable Assets",
+        priority: "P2",
+        platform: "Glossary Tool",
+        targetUrl: "https://careernest.taqnik.in/growth-hub",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "Career Glossary",
+        landingPage: "https://careernest.taqnik.in/growth-hub",
+        notes: "Audit Section 4, Item 7: Definitions for ATS, CTC vs in-hand, notice period, employment bonds in India.",
+        auditNotes: "People naturally link to concise definition references."
+      },
+      {
+        id: "AST-08",
+        title: "Linkable Asset #8: CTC to In-Hand Salary Calculator (New Tax Regime)",
+        tier: "assets",
+        tierLabel: "Linkable Assets",
+        priority: "P0",
+        platform: "Interactive Tool",
+        targetUrl: "https://careernest.taqnik.in/salary-benchmark",
+        linkType: "dofollow",
+        status: "not_started",
+        liveUrl: "",
+        anchorText: "CTC to In-Hand Salary Calculator",
+        landingPage: "https://careernest.taqnik.in/salary-benchmark",
+        notes: "Audit Section 4, Item 8: High-utility Indian tax calculator. A tool people link to continually.",
+        auditNotes: "Massive passive link magnet for Indian salary seekers."
+      }
+    ];
+
+    // Local Storage Management
+    const STORAGE_KEY = 'careernest_backlink_tasks_v2';
+
+    function loadTasks() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            // Merge with DEFAULT_TASKS to ensure schema completeness
+            return DEFAULT_TASKS.map(def => {
+              const found = parsed.find(p => p.id === def.id);
+              return found ? { ...def, ...found } : def;
+            });
+          }
+        }
+      } catch (e) {
+        console.error('Failed to parse stored tasks:', e);
+      }
+      return JSON.parse(JSON.stringify(DEFAULT_TASKS));
+    }
+
+    let tasksData = loadTasks();
+    let currentTier = 'all';
+    let currentView = 'table';
+    let activeModalTaskId = null;
+
+    function saveTasks() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasksData));
+      updateKPIs();
+      renderCurrentView();
+    }
+
+    // KPI & Stats Calculator
+    function updateKPIs() {
+      const total = tasksData.length;
+      const completed = tasksData.filter(t => t.status === 'live').length;
+      const pitched = tasksData.filter(t => t.status === 'pitched').length;
+      const inProgress = tasksData.filter(t => t.status === 'in_progress').length;
+      const highPriority = tasksData.filter(t => (t.priority === 'P0' || t.priority === 'P1') && t.status !== 'live').length;
+      
+      const dofollowWon = tasksData.filter(t => t.status === 'live' && t.linkType === 'dofollow').length;
+      const nofollowWon = tasksData.filter(t => t.status === 'live' && (t.linkType === 'nofollow' || t.linkType === 'directory')).length;
+
+      const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+      document.getElementById('kpiPercent').textContent = percent + '%';
+      document.getElementById('kpiCompletedRatio').textContent = `${completed} / ${total}`;
+      document.getElementById('kpiProgressBar').style.width = percent + '%';
+      document.getElementById('kpiLiveVal').textContent = completed;
+      document.getElementById('kpiLiveSub').textContent = `${dofollowWon} Dofollow • ${nofollowWon} Nofollow / Profile`;
+      document.getElementById('kpiPitchedVal').textContent = pitched;
+      document.getElementById('kpiInProgressVal').textContent = inProgress;
+      document.getElementById('kpiHighPriorityVal').textContent = highPriority;
+      document.getElementById('kpiHighPrioritySub').textContent = `${highPriority} critical/high tasks pending`;
+
+      // Tab badges
+      document.getElementById('badgeAll').textContent = total;
+      document.getElementById('badgeTech').textContent = tasksData.filter(t => t.tier === 'tech').length;
+      document.getElementById('badgeTierA').textContent = tasksData.filter(t => t.tier === 'tier_a').length;
+      document.getElementById('badgeTierB').textContent = tasksData.filter(t => t.tier === 'tier_b').length;
+      document.getElementById('badgeTierC').textContent = tasksData.filter(t => t.tier === 'tier_c').length;
+      document.getElementById('badgeTierD').textContent = tasksData.filter(t => t.tier === 'tier_d').length;
+      document.getElementById('badgeTierE').textContent = tasksData.filter(t => t.tier === 'tier_e').length;
+      document.getElementById('badgeAssets').textContent = tasksData.filter(t => t.tier === 'assets').length;
+    }
+
+    // Filter Logic
+    function getFilteredTasks() {
+      const search = document.getElementById('searchFilter').value.toLowerCase().trim();
+      const statusF = document.getElementById('statusFilter').value;
+      const priorityF = document.getElementById('priorityFilter').value;
+      const linkTypeF = document.getElementById('linkTypeFilter').value;
+
+      return tasksData.filter(task => {
+        // Tier Tab filter
+        if (currentTier !== 'all' && task.tier !== currentTier) {
+          return false;
+        }
+
+        // Search
+        if (search) {
+          const matchTitle = task.title.toLowerCase().includes(search);
+          const matchPlatform = task.platform.toLowerCase().includes(search);
+          const matchUrl = task.targetUrl.toLowerCase().includes(search);
+          const matchNotes = (task.notes || '').toLowerCase().includes(search);
+          const matchId = task.id.toLowerCase().includes(search);
+          if (!matchTitle && !matchPlatform && !matchUrl && !matchNotes && !matchId) {
+            return false;
+          }
+        }
+
+        // Status
+        if (statusF !== 'all' && task.status !== statusF) return false;
+
+        // Priority
+        if (priorityF !== 'all' && task.priority !== priorityF) return false;
+
+        // Link Type
+        if (linkTypeF !== 'all') {
+          if (linkTypeF === 'edu_gov' && task.linkType !== 'edu_gov') return false;
+          if (linkTypeF === 'dofollow' && task.linkType !== 'dofollow') return false;
+          if (linkTypeF === 'nofollow' && task.linkType !== 'nofollow') return false;
+          if (linkTypeF === 'directory' && task.linkType !== 'directory') return false;
+        }
+
+        return true;
+      });
+    }
+
+    // Render Table
+    function renderTableView(tasks) {
+      const tbody = document.getElementById('tasksTableBody');
+      tbody.innerHTML = '';
+
+      if (tasks.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="empty-state">No matching backlink tasks found for current filter criteria.</td></tr>`;
+        return;
+      }
+
+      tasks.forEach(task => {
+        const tr = document.createElement('tr');
+
+        // Priority badge class
+        let pClass = 'badge-p3';
+        if (task.priority === 'P0') pClass = 'badge-p0';
+        else if (task.priority === 'P1') pClass = 'badge-p1';
+        else if (task.priority === 'P2') pClass = 'badge-p2';
+
+        tr.innerHTML = `
+          <td><span class="task-id-badge">${task.id}</span></td>
+          <td>
+            <div class="task-title-cell">
+              <span>${task.title}</span>
+              <span class="task-desc">${task.platform}</span>
+            </div>
+          </td>
+          <td><span class="badge badge-tier">${task.tierLabel}</span></td>
+          <td><span class="badge ${pClass}">${task.priority}</span></td>
+          <td>
+            <a href="${task.targetUrl}" target="_blank" rel="noopener noreferrer" class="target-url-link" title="${task.targetUrl}">
+              ${task.targetUrl.replace(/^https?:\/\//, '').substring(0, 24)}... ↗
+            </a>
+          </td>
+          <td>
+            <select class="status-select" data-id="${task.id}" data-val="${task.status}">
+              <option value="not_started" ${task.status === 'not_started' ? 'selected' : ''}>Not Started</option>
+              <option value="in_progress" ${task.status === 'in_progress' ? 'selected' : ''}>In Progress</option>
+              <option value="pitched" ${task.status === 'pitched' ? 'selected' : ''}>Pitched</option>
+              <option value="live" ${task.status === 'live' ? 'selected' : ''}>Live / Won</option>
+              <option value="hold" ${task.status === 'hold' ? 'selected' : ''}>On Hold</option>
+            </select>
+          </td>
+          <td>
+            <input type="text" class="live-url-input" data-id="${task.id}" placeholder="Paste live link..." value="${task.liveUrl || ''}">
+          </td>
+          <td style="text-align: right;">
+            <div class="table-actions" style="justify-content: flex-end;">
+              <button class="btn btn-icon-only open-modal-btn" data-id="${task.id}" title="Edit Task &amp; View Audit Notes">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+            </div>
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+
+      // Attach inline status change listeners
+      tbody.querySelectorAll('.status-select').forEach(sel => {
+        sel.addEventListener('change', (e) => {
+          const id = e.target.getAttribute('data-id');
+          const newVal = e.target.value;
+          e.target.setAttribute('data-val', newVal);
+          const item = tasksData.find(t => t.id === id);
+          if (item) {
+            item.status = newVal;
+            saveTasks();
+            showToast(`Status updated: ${item.id} → ${newVal.replace('_', ' ').toUpperCase()}`);
+          }
+        });
+      });
+
+      // Attach inline live url input listeners
+      tbody.querySelectorAll('.live-url-input').forEach(inp => {
+        inp.addEventListener('change', (e) => {
+          const id = e.target.getAttribute('data-id');
+          const val = e.target.value.trim();
+          const item = tasksData.find(t => t.id === id);
+          if (item) {
+            item.liveUrl = val;
+            if (val && item.status !== 'live') {
+              item.status = 'live'; // auto-upgrade to live if link provided
+            }
+            saveTasks();
+            showToast(`Saved live backlink for ${item.id}`);
+          }
+        });
+      });
+
+      // Attach open modal buttons
+      tbody.querySelectorAll('.open-modal-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = btn.getAttribute('data-id');
+          openTaskModal(id);
+        });
+      });
+    }
+
+    // Render Kanban
+    function renderKanbanView(tasks) {
+      const colNotStarted = document.getElementById('kanbanNotStarted');
+      const colInProgress = document.getElementById('kanbanInProgress');
+      const colPitched = document.getElementById('kanbanPitched');
+      const colLive = document.getElementById('kanbanLive');
+
+      colNotStarted.innerHTML = '';
+      colInProgress.innerHTML = '';
+      colPitched.innerHTML = '';
+      colLive.innerHTML = '';
+
+      let c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+
+      tasks.forEach(task => {
+        const card = document.createElement('div');
+        card.className = 'kanban-card';
+        card.setAttribute('data-id', task.id);
+
+        let pClass = 'badge-p3';
+        if (task.priority === 'P0') pClass = 'badge-p0';
+        else if (task.priority === 'P1') pClass = 'badge-p1';
+        else if (task.priority === 'P2') pClass = 'badge-p2';
+
+        card.innerHTML = `
+          <div class="kanban-card-top">
+            <span class="task-id-badge">${task.id}</span>
+            <span class="badge ${pClass}">${task.priority}</span>
+          </div>
+          <div class="kanban-card-title">${task.title}</div>
+          <div class="kanban-card-meta">
+            <span>${task.platform}</span>
+            <span class="badge badge-tier" style="font-size:10px;">${task.tierLabel}</span>
+          </div>
+          ${task.liveUrl ? `<div style="font-size:11px; color:var(--accent-emerald); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">✓ ${task.liveUrl}</div>` : ''}
+        `;
+
+        card.addEventListener('click', () => {
+          openTaskModal(task.id);
+        });
+
+        if (task.status === 'not_started') {
+          colNotStarted.appendChild(card);
+          c1++;
+        } else if (task.status === 'in_progress') {
+          colInProgress.appendChild(card);
+          c2++;
+        } else if (task.status === 'pitched') {
+          colPitched.appendChild(card);
+          c3++;
+        } else if (task.status === 'live') {
+          colLive.appendChild(card);
+          c4++;
+        } else {
+          colNotStarted.appendChild(card);
+          c1++;
+        }
+      });
+
+      document.getElementById('countNotStarted').textContent = c1;
+      document.getElementById('countInProgress').textContent = c2;
+      document.getElementById('countPitched').textContent = c3;
+      document.getElementById('countLive').textContent = c4;
+    }
+
+    // View dispatcher
+    function renderCurrentView() {
+      // Toggle top-level container visibility
+      const trackerMain = document.getElementById('trackerMainView');
+      const templatesMain = document.getElementById('templatesMainView');
+      const roadmapMain = document.getElementById('roadmapMainView');
+
+      if (currentTier === 'templates_tab') {
+        trackerMain.style.display = 'none';
+        templatesMain.style.display = 'flex';
+        roadmapMain.style.display = 'none';
+        return;
+      } else if (currentTier === 'roadmap_tab') {
+        trackerMain.style.display = 'none';
+        templatesMain.style.display = 'none';
+        roadmapMain.style.display = 'flex';
+        return;
+      } else {
+        trackerMain.style.display = 'block';
+        templatesMain.style.display = 'none';
+        roadmapMain.style.display = 'none';
+      }
+
+      const tasks = getFilteredTasks();
+
+      const tableContainer = document.getElementById('tableViewContainer');
+      const kanbanContainer = document.getElementById('kanbanViewContainer');
+
+      if (currentView === 'table') {
+        tableContainer.style.display = 'block';
+        kanbanContainer.style.display = 'none';
+        renderTableView(tasks);
+      } else {
+        tableContainer.style.display = 'none';
+        kanbanContainer.style.display = 'grid';
+        renderKanbanView(tasks);
+      }
+    }
+
+    // Modal Operations
+    function openTaskModal(taskId) {
+      const task = tasksData.find(t => t.id === taskId);
+      if (!task) return;
+
+      activeModalTaskId = taskId;
+      document.getElementById('modalTaskId').textContent = task.id;
+      document.getElementById('modalTaskTitle').textContent = task.title;
+      document.getElementById('modalAuditNotes').textContent = task.auditNotes || task.notes;
+      document.getElementById('modalTier').value = task.tierLabel || task.tier;
+      document.getElementById('modalPriority').value = task.priority;
+      document.getElementById('modalTargetUrl').value = task.targetUrl;
+      document.getElementById('modalOpenUrlBtn').href = task.targetUrl;
+      document.getElementById('modalStatusSelect').value = task.status;
+      document.getElementById('modalLinkType').value = (task.linkType || '').toUpperCase();
+      document.getElementById('modalLiveUrl').value = task.liveUrl || '';
+      document.getElementById('modalAnchorText').value = task.anchorText || '';
+      document.getElementById('modalLandingPage').value = task.landingPage || '';
+      document.getElementById('modalNotes').value = task.notes || '';
+
+      document.getElementById('taskModal').classList.add('active');
+    }
+
+    function closeTaskModal() {
+      document.getElementById('taskModal').classList.remove('active');
+      activeModalTaskId = null;
+    }
+
+    function saveTaskModal() {
+      if (!activeModalTaskId) return;
+      const task = tasksData.find(t => t.id === activeModalTaskId);
+      if (task) {
+        task.status = document.getElementById('modalStatusSelect').value;
+        task.liveUrl = document.getElementById('modalLiveUrl').value.trim();
+        task.anchorText = document.getElementById('modalAnchorText').value.trim();
+        task.landingPage = document.getElementById('modalLandingPage').value.trim();
+        task.notes = document.getElementById('modalNotes').value.trim();
+
+        saveTasks();
+        closeTaskModal();
+        showToast(`Saved task details: ${task.id}`);
+      }
+    }
+
+    // Toast alert
+    function showToast(msg) {
+      const toast = document.getElementById('toastAlert');
+      document.getElementById('toastMessage').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // CSV Exporter
+    function exportToCsv() {
+      const headers = ['ID', 'Title', 'Tier', 'Priority', 'Platform', 'Target URL', 'Status', 'Live URL', 'Anchor Text', 'Landing Page', 'Notes'];
+      const rows = tasksData.map(t => [
+        `"${t.id}"`,
+        `"${(t.title || '').replace(/"/g, '""')}"`,
+        `"${t.tierLabel || t.tier}"`,
+        `"${t.priority}"`,
+        `"${t.platform}"`,
+        `"${t.targetUrl}"`,
+        `"${t.status}"`,
+        `"${t.liveUrl || ''}"`,
+        `"${(t.anchorText || '').replace(/"/g, '""')}"`,
+        `"${t.landingPage || ''}"`,
+        `"${(t.notes || '').replace(/"/g, '""')}"`
+      ]);
+
+      const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `careernest_backlink_tracker_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Exported CSV successfully!');
+    }
+
+    // JSON Exporter & Importer
+    function exportToJson() {
+      const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(tasksData, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute('href', dataStr);
+      downloadAnchor.setAttribute('download', `careernest_backlinks_backup_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast('JSON Backup downloaded!');
+    }
+
+    function importFromJson(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        try {
+          const imported = JSON.parse(event.target.result);
+          if (Array.isArray(imported)) {
+            tasksData = imported;
+            saveTasks();
+            showToast('Database imported successfully!');
+          } else {
+            alert('Invalid JSON file format.');
+          }
+        } catch (err) {
+          alert('Error parsing JSON file.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Reset Defaults
+    function resetData() {
+      if (confirm('Are you sure you want to reset all tasks to initial audit defaults? Custom notes and live link URLs will be erased.')) {
+        localStorage.removeItem(STORAGE_KEY);
+        tasksData = JSON.parse(JSON.stringify(DEFAULT_TASKS));
+        saveTasks();
+        showToast('Tracker reset to audit defaults.');
+      }
+    }
+
+    // Theme Switcher
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('careernest-theme', next);
+      showToast(`Switched to ${next} theme`);
+    }
+
+    // Event Listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      // Restore theme
+      const savedTheme = localStorage.getItem('careernest-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+
+      updateKPIs();
+      renderCurrentView();
+
+      // Tier tabs
+      document.querySelectorAll('#tierTabs .nav-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#tierTabs .nav-tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTier = btn.getAttribute('data-tier');
+          renderCurrentView();
+        });
+      });
+
+      // View mode buttons
+      document.querySelectorAll('#viewModeGroup .view-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#viewModeGroup .view-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentView = btn.getAttribute('data-view');
+          renderCurrentView();
+        });
+      });
+
+      // Search and Filter controls
+      document.getElementById('searchFilter').addEventListener('input', renderCurrentView);
+      document.getElementById('statusFilter').addEventListener('change', renderCurrentView);
+      document.getElementById('priorityFilter').addEventListener('change', renderCurrentView);
+      document.getElementById('linkTypeFilter').addEventListener('change', renderCurrentView);
+
+      // Modal controls
+      document.getElementById('modalCloseBtn').addEventListener('click', closeTaskModal);
+      document.getElementById('modalCancelBtn').addEventListener('click', closeTaskModal);
+      document.getElementById('modalSaveBtn').addEventListener('click', saveTaskModal);
+      document.getElementById('taskModal').addEventListener('click', (e) => {
+        if (e.target.id === 'taskModal') closeTaskModal();
+      });
+
+      // Copy script buttons in templates tab
+      document.querySelectorAll('.btn-copy-script').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target');
+          const pre = document.getElementById(targetId);
+          if (pre) {
+            navigator.clipboard.writeText(pre.innerText).then(() => {
+              showToast('Pitch script copied to clipboard!');
+            });
+          }
+        });
+      });
+
+      // Export / Import / Reset / Theme
+      document.getElementById('exportCsvBtn').addEventListener('click', exportToCsv);
+      document.getElementById('exportJsonBtn').addEventListener('click', exportToJson);
+      document.getElementById('importJsonBtn').addEventListener('click', () => {
+        document.getElementById('jsonFileInput').click();
+      });
+      document.getElementById('jsonFileInput').addEventListener('change', importFromJson);
+      document.getElementById('resetDataBtn').addEventListener('click', resetData);
+      document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
+    });
+  </script>
+</body>
+</html>

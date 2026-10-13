@@ -10,7 +10,7 @@
   <meta name="robots" content="index, follow" />
 
   <link rel="canonical" id="postCanonical"
-    href="https://careernest.taqnik.in/blog-post.html?slug=how-to-beat-ats-in-2025" />
+    href="https://careernest.taqnik.in/blog-post?slug=how-to-beat-ats-in-2025" />
 
   <!-- Theme Color -->
   <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
@@ -19,7 +19,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:url" id="postOgUrl"
-    content="https://careernest.taqnik.in/blog-post.html?slug=how-to-beat-ats-in-2025" />
+    content="https://careernest.taqnik.in/blog-post?slug=how-to-beat-ats-in-2025" />
   <meta property="og:title" id="postOgTitle" content="How to Beat ATS | CareerNest Career Guide" />
   <meta property="og:description" id="postOgDesc"
     content="Discover how modern AI ATS algorithms parse resumes, why formatting tables fail, and the exact keyword matching techniques top candidates use." />
@@ -53,7 +53,7 @@
           "url": "https://careernest.taqnik.in/"
         },
         "datePublished": "2025-09-28",
-        "url": "https://careernest.taqnik.in/blog-post.html?slug=how-to-beat-ats-in-2025"
+        "url": "https://careernest.taqnik.in/blog-post?slug=how-to-beat-ats-in-2025"
       },
       {
         "@type": "BreadcrumbList",
@@ -68,13 +68,13 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Career Resources",
-            "item": "https://careernest.taqnik.in/blog.html"
+            "item": "https://careernest.taqnik.in/blog"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Article",
-            "item": "https://careernest.taqnik.in/blog-post.html?slug=how-to-beat-ats-in-2025"
+            "item": "https://careernest.taqnik.in/blog-post?slug=how-to-beat-ats-in-2025"
           }
         ]
       }
@@ -98,9 +98,34 @@
   <noscript>
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" />
-  </noscript>
+  </noscript>
+  <!-- Preconnect CDN Hints -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
   <style>
+    .theme-toggle {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #btnShareArticle {
+      min-height: 44px;
+      padding: 10px 18px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .breadcrumbs ol li a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 4px;
+    }
+
     .article-wrap {
       max-width: 820px;
       margin: 40px auto 100px;
@@ -193,6 +218,81 @@
       margin-bottom: 8px;
     }
 
+    .article-body h3 {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+
+    .article-body hr {
+      border: 0;
+      height: 1px;
+      background: var(--border);
+      margin: 36px 0;
+    }
+
+    .article-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 14px 20px;
+      margin: 20px 0;
+      color: var(--text);
+      font-style: italic;
+      background: rgba(108, 92, 231, 0.05);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .article-body a {
+      color: var(--accent);
+      text-decoration: underline;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .article-body a:hover {
+      opacity: 0.85;
+    }
+
+    /* Table styles for markdown tables */
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0 32px;
+      font-size: 0.95rem;
+      background: var(--card-bg, rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: table;
+    }
+
+    .article-body th {
+      background: rgba(108, 92, 231, 0.08);
+      color: var(--text);
+      font-weight: 700;
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+      font-family: var(--font-head);
+    }
+
+    .article-body td {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      line-height: 1.6;
+      vertical-align: top;
+    }
+
+    .article-body tr:last-child td {
+      border-bottom: none;
+    }
+
+    .article-body tr:hover td {
+      background: rgba(108, 92, 231, 0.03);
+    }
+
     /* In-Article Conversion Banner */
     .in-article-cta {
       background: linear-gradient(135deg, rgba(108, 92, 231, 0.08), rgba(16, 185, 129, 0.06));
@@ -215,7 +315,6 @@
   <link rel="shortcut icon" href="/assets/favicon-0YVqpaxf.png?v=3" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/favicon-0YVqpaxf.png?v=3" />
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/tools-style-BalY_yFK.css">
 </head>
 
 <body>
@@ -227,14 +326,14 @@
   <!-- HEADER -->
   <header class="tool-header">
     <div class="header-left">
-      <a href="index.html" class="nav-logo" aria-label="CareerNest Homepage">
+      <a href="/" class="nav-logo" aria-label="CareerNest Homepage">
         <span class="logo-mark">C</span><span class="logo-text">areerNest</span>
       </a>
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li aria-hidden="true">/</li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="/blog">Blog</a></li>
           <li aria-hidden="true">/</li>
           <li id="breadTitle" aria-current="page">Article</li>
         </ol>
@@ -259,23 +358,23 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
-      <a href="form-index.html" class="btn-primary">Create Your Resume →</a>
+      <a href="/form-index" class="btn-primary">Create Your Resume →</a>
       <button class="hamburger drawer-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="tool-drawer">
       <ul class="tool-drawer-links">
-        <li><a href="blog.html">← Back to All Articles <span>→</span></a></li>
-        <li><a href="templates.html">Resume Templates <span>→</span></a></li>
-        <li><a href="ats-score-checker.html">ATS Resume Checker <span>→</span></a></li>
-        <li><a href="career-roadmap.html">AI Career Roadmap <span>→</span></a></li>
-        <li><a href="interview-prep.html">Interview Prep Coach <span>→</span></a></li>
-        <li><a href="salary-benchmark.html">Salary Calculator <span>→</span></a></li>
-        <li><a href="pricing.html">Pricing Plans <span>→</span></a></li>
+        <li><a href="/blog">← Back to All Articles <span>→</span></a></li>
+        <li><a href="/templates">Resume Templates <span>→</span></a></li>
+        <li><a href="/ats-score-checker">ATS Resume Checker <span>→</span></a></li>
+        <li><a href="/career-roadmap">AI Career Roadmap <span>→</span></a></li>
+        <li><a href="/interview-prep">Interview Prep Coach <span>→</span></a></li>
+        <li><a href="/salary-benchmark">Salary Calculator <span>→</span></a></li>
+        <li><a href="/pricing">Pricing Plans <span>→</span></a></li>
       </ul>
       <div class="tool-drawer-actions">
-        <a href="form-index.html" class="btn btn-primary btn-block">Create Your Resume Free</a>
+        <a href="/form-index" class="btn btn-primary btn-block">Create Your Resume Free</a>
       </div>
     </div>
   </header>
@@ -361,24 +460,25 @@
         <p style="font-size:0.88rem; color:var(--text-muted); margin-top:4px;">Scan your resume for free and spot
           missing keywords before recruiters do.</p>
       </div>
-      <a href="ats-score-checker.html" class="btn-primary" style="padding:10px 22px;">Scan Resume Free →</a>
+      <a href="/ats-score-checker" class="btn-primary" style="padding:10px 22px;">Scan Resume Free →</a>
     </div>
 
     <!-- BACK TO BLOG -->
     <div style="text-align:center; margin-top:40px;">
-      <a href="blog.html" class="btn-ghost" style="padding:10px 20px;">← Back to All Articles</a>
+      <a href="/blog" class="btn-ghost" style="padding:10px 20px;">← Back to All Articles</a>
     </div>
   </main>
 
   <script src="theme.js" defer></script>
-  <script src="blog-data.js"></script>
+  <script src="blog-data.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/marked.min.js" integrity="sha384-Hpb4/4l4CqM7/G2FqKjR0JgVbL6sWc9tK+6lqLd1hK5z7N3jX1x1p5r7Q4t7h9b" crossorigin="anonymous" defer></script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const slug = urlParams.get('id') || urlParams.get('slug') || 'how-to-beat-ats-in-2025';
+    const slug = urlParams.get('slug') || urlParams.get('id') || 'how-to-beat-ats-in-2025';
 
     function renderPost(post) {
       document.title = `${post.title} | CareerNest Career Guide`;
-      const canonicalUrl = `https://careernest.taqnik.in/blog-post.html?id=${encodeURIComponent(post.slug || slug)}`;
+      const canonicalUrl = `https://careernest.taqnik.in/blog/${encodeURIComponent(post.slug || slug)}`;
 
       const docTitleEl = document.getElementById('postDocTitle');
       if (docTitleEl) docTitleEl.innerText = `${post.title} | CareerNest Career Guide`;
@@ -407,50 +507,66 @@
       // Update JSON-LD schema
       const schemaEl = document.getElementById('postSchema');
       if (schemaEl) {
+        const schemaGraph = [
+          {
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.summary,
+            "author": {
+              "@type": "Person",
+              "name": post.author,
+              "jobTitle": post.authorRole || ''
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "CareerNest",
+              "url": "https://careernest.taqnik.in/"
+            },
+            "datePublished": post.date,
+            "url": canonicalUrl
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://careernest.taqnik.in/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Career Resources",
+                "item": "https://careernest.taqnik.in/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": post.title,
+                "item": canonicalUrl
+              }
+            ]
+          }
+        ];
+
+        if (post.faqs && Array.isArray(post.faqs) && post.faqs.length > 0) {
+          schemaGraph.push({
+            "@type": "FAQPage",
+            "mainEntity": post.faqs.map(f => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f.answer
+              }
+            }))
+          });
+        }
+
         schemaEl.textContent = JSON.stringify({
           "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "BlogPosting",
-              "headline": post.title,
-              "description": post.summary,
-              "author": {
-                "@type": "Person",
-                "name": post.author,
-                "jobTitle": post.authorRole || ''
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "CareerNest",
-                "url": "https://careernest.taqnik.in/"
-              },
-              "datePublished": post.date,
-              "url": canonicalUrl
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://careernest.taqnik.in/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Career Resources",
-                  "item": "https://careernest.taqnik.in/blog.html"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": post.title,
-                  "item": canonicalUrl
-                }
-              ]
-            }
-          ]
+          "@graph": schemaGraph
         });
       }
 
@@ -490,7 +606,7 @@
           <div style="text-align:center; padding:80px 20px;">
             <h1 style="font-size:2.4rem; font-family:var(--font-head); margin-bottom:14px; color:var(--text);">Article Not Found</h1>
             <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:28px;">The blog post you requested does not exist or may have been unpublished.</p>
-            <a href="blog.html" class="btn-primary" style="padding:12px 28px;">← Return to All Articles</a>
+            <a href="/blog" class="btn-primary" style="padding:12px 28px;">← Return to All Articles</a>
           </div>
         `;
       }
@@ -518,16 +634,24 @@
       }
     }
 
-    loadPost();
+    function init() {
+      loadPost();
 
-    const btnShare = document.getElementById('btnShareArticle');
-    if (btnShare) {
-      btnShare.addEventListener('click', () => {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          btnShare.textContent = '✅ Link Copied!';
-          setTimeout(() => { btnShare.textContent = '📢 Share'; }, 2000);
+      const btnShare = document.getElementById('btnShareArticle');
+      if (btnShare) {
+        btnShare.addEventListener('click', () => {
+          navigator.clipboard.writeText(window.location.href).then(() => {
+            btnShare.textContent = '✅ Link Copied!';
+            setTimeout(() => { btnShare.textContent = '📢 Share'; }, 2000);
+          });
         });
-      });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
     }
   </script>
 </body>

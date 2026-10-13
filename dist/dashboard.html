@@ -45,16 +45,16 @@
 
   <!-- HEADER -->
   <header class="dash-header">
-    <a href="index.html" class="nav-logo" aria-label="CareerNest Homepage">
+    <a href="/" class="nav-logo" aria-label="CareerNest Homepage">
       <span class="logo-mark">C</span><span class="logo-text">areerNest</span>
     </a>
     <nav class="dash-nav">
-      <a href="dashboard.html" class="dash-nav-link active">Dashboard</a>
-      <a href="ats-score-checker.html" class="dash-nav-link">ATS Scanner</a>
-      <a href="career-roadmap.html" class="dash-nav-link">Roadmap</a>
-      <a href="interview-prep.html" class="dash-nav-link">Interview Prep</a>
-      <a href="salary-benchmark.html" class="dash-nav-link">Salary Calculator</a>
-      <a href="pricing.html" class="dash-nav-link">Pricing</a>
+      <a href="/dashboard" class="dash-nav-link active">Dashboard</a>
+      <a href="/ats-score-checker" class="dash-nav-link">ATS Scanner</a>
+      <a href="/career-roadmap" class="dash-nav-link">Roadmap</a>
+      <a href="/interview-prep" class="dash-nav-link">Interview Prep</a>
+      <a href="/salary-benchmark" class="dash-nav-link">Salary Calculator</a>
+      <a href="/pricing" class="dash-nav-link">Pricing</a>
     </nav>
     <div style="display: flex; align-items: center; gap: 10px;">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -75,7 +75,7 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
-      <a href="form-index.html" class="btn-new">
+      <a href="/form-index" class="btn-new">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
         </svg>
@@ -152,7 +152,7 @@
         </div>
         <div class="empty-title">No resumes yet</div>
         <div class="empty-sub">Create your first resume to get started.</div>
-        <a href="form-index.html" class="btn-empty-action">Create Resume</a>
+        <a href="/form-index" class="btn-empty-action">Create Resume</a>
       </div>
     </div>
 
@@ -170,7 +170,7 @@
         </div>
         <div class="empty-title">No cover letters yet</div>
         <div class="empty-sub">Generate a cover letter from the resume form.</div>
-        <a href="form-index.html" class="btn-empty-action">Create Resume</a>
+        <a href="/form-index" class="btn-empty-action">Create Resume</a>
       </div>
     </div>
 
@@ -190,7 +190,7 @@
         <div class="empty-title">No Career Roadmap generated yet</div>
         <div class="empty-sub">Set your target role, bridge skill gaps, and follow a verified 4-phase transition
           blueprint.</div>
-        <a href="career-roadmap.html" class="btn-empty-action">Generate Career Roadmap →</a>
+        <a href="/career-roadmap" class="btn-empty-action">Generate Career Roadmap →</a>
       </div>
     </div>
 
@@ -230,7 +230,7 @@
             </div>
           </div>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="pricing.html" class="btn-new" id="btnPlanAction" style="text-decoration: none;">Upgrade to Pro /
+            <a href="/pricing" class="btn-new" id="btnPlanAction" style="text-decoration: none;">Upgrade to Pro /
               Career+ →</a>
             <button class="btn-modal-cancel" id="btnCancelSub"
               style="display: none; padding: 8px 16px; border-radius: var(--radius); cursor: pointer; background: transparent; border: 1px solid var(--border); color: var(--text-muted);">Cancel
@@ -302,7 +302,7 @@
 
         <div style="display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap;">
           <input type="text" id="referralLinkInput" readonly
-            value="https://careernest.taqnik.in/signup.html?ref=CN-USER-PRO"
+            value="https://careernest.taqnik.in/signup?ref=CN-USER-PRO"
             style="flex: 1; min-width: 260px; font-size: 13px; padding: 8px 12px; border-radius: var(--radius); background: var(--surface2); border: 1px solid var(--border); color: var(--text);" />
           <button class="btn-new" id="btnCopyReferral" style="padding: 8px 16px;">📋 Copy Link</button>
           <a href="https://api.whatsapp.com/send?text=Join%20me%20on%20CareerNest%20to%20build%20ATS%20resumes%20https%3A%2F%2Fcareernest.taqnik.in"
