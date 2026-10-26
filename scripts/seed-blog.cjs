@@ -23,93 +23,6 @@ dotenv.config({ path: path.join(backendDir, '.env') });
 const Blog = require('../backend/models/Blog');
 
 const BLOG_POSTS = {
-  "how-to-beat-ats-in-2025": {
-    slug: "how-to-beat-ats-in-2025",
-    title: "How to Beat Applicant Tracking Systems (ATS) in 2025: The Definitive Guide",
-    subtitle: "Over 75% of resumes are rejected before a human recruiter ever sees them. Here is how to pass the robots.",
-    category: "ATS Secrets",
-    readTime: "6 min read",
-    date: "Sep 28, 2025",
-    author: "Elena Rostova",
-    authorRole: "Head of Recruiting Intelligence",
-    featured: true,
-    summary: "Discover how modern AI-powered ATS algorithms parse resumes, why formatting tables fail, and the exact keyword matching techniques top candidates use.",
-    content: `
-## 1. How Modern ATS Algorithms Actually Work
-
-Applicant Tracking Systems (ATS) like Workday, Taleo, Greenhouse, and Lever don't just search for exact words anymore—they use natural language processing (NLP) to parse your career trajectory, skills density, and quantified outcomes.
-
-When you submit a resume, the parser performs three sequential steps:
-* **Text Extraction:** Converts your document into raw text strings. Complex multi-layer tables and graphic text boxes frequently get scrambled here.
-* **Entity Recognition:** Identifies sections like Experience, Education, and Skills.
-* **Semantic Keyword Scoring:** Compares your qualifications against the hiring manager's job requisition query.
-
-> 💡 **Pro Tip:** Always use standard section headings like *"Work Experience"* and *"Technical Skills"*. Creative titles like *"Where I've Been"* confuse ATS parsers.
-
-## 2. The 4 Fatal Formatting Mistakes to Avoid
-
-Even the most accomplished candidates get automatically disqualified due to subtle document formatting traps:
-1. **Putting Contact Info in Headers/Footers:** Older parsers ignore Word and PDF header/footer zones entirely. Keep your name and email in the main document body.
-2. **Using Custom Icons Instead of Text:** Never replace the word "Phone" or "Email" solely with an SVG icon without fallback text.
-3. **Low-Contrast Colors & Unreadable Fonts:** Stick to standard web fonts like Syne, Inter, Roboto, or Arial.
-4. **Images of Text:** Never paste charts or certificates as static images expecting text parsers to OCR them.
-
-## 3. The Exact Formula for High-Scoring Bullet Points
-
-Recruiters and AI screening algorithms look for the **Google X-Y-Z Formula**:
-> *"Accomplished [X], as measured by [Y], by doing [Z]."*
-
-* **Weak Bullet:** Responsible for speeding up the company website.
-* **Strong ATS Bullet:** Optimized frontend bundle size and caching layers, cutting initial page load times by 42% and increasing mobile checkout conversion by 14%.
-    `.trim()
-  },
-  "best-resume-power-verbs": {
-    slug: "best-resume-power-verbs",
-    title: "100+ High-Impact Action Verbs That Will Transform Your Resume",
-    subtitle: "Ditch 'responsible for' and 'assisted with'. Use these powerful verbs categorized by industry and impact.",
-    category: "Resume Writing",
-    readTime: "5 min read",
-    date: "Sep 24, 2025",
-    author: "Marcus Vance",
-    authorRole: "Senior Career Coach",
-    featured: false,
-    summary: "A curated master list of executive action verbs proven to increase recruiter callbacks and pass semantic ATS keyword scoring.",
-    content: `
-## Why Action Verbs Make or Break First Impressions
-
-Recruiters spend an average of 6 to 7 seconds scanning a resume during initial triage. Starting your bullet points with dynamic, decisive verbs immediately conveys ownership and impact.
-
-## Top Verbs for Engineering & Architecture
-Architected, Spearheaded, Engineered, Automated, Deployed, Refactored, Accelerated, Scaled, Overhauled, Optimized, Integrated, Debugged.
-
-## Top Verbs for Leadership & Management
-Directed, Orchestrated, Mobilized, Championed, Mentored, Negotiated, Aligned, Cultivated, Delegated, Galvanized.
-
-## Top Verbs for Growth & Revenue
-Generated, Maximized, Outperformed, Expanded, Captured, Boosted, Monetized, Propelled, Doubled.
-    `.trim()
-  },
-  "cover-letter-secrets-2025": {
-    slug: "cover-letter-secrets-2025",
-    title: "How to Write a Tailored Cover Letter in Under 5 Minutes with AI",
-    subtitle: "Stop writing generic cover letters that end up in the trash. Here is the 3-paragraph formula that gets replies.",
-    category: "Cover Letters",
-    readTime: "4 min read",
-    date: "Sep 18, 2025",
-    author: "Sarah Jenkins",
-    authorRole: "Tech Talent Lead",
-    featured: false,
-    summary: "The step-by-step framework to pair with Google Gemini AI to draft compelling, bespoke cover letters for any application.",
-    content: `
-## The 3-Paragraph High-Conversion Blueprint
-
-Nobody wants to read a 2-page essay. The most effective cover letters are crisp, personalized, and focus entirely on how you can solve the company's biggest challenges.
-
-* **Paragraph 1: The Hook & Enthusiasm:** State the exact role, why their mission excites you, and your high-level value proposition.
-* **Paragraph 2: Quantified Proof:** 1-2 major career wins directly addressing the core requirements from the job description.
-* **Paragraph 3: Confident Closing:** Express eagerness to discuss further and thank the hiring team.
-    `.trim()
-  },
   "what-information-should-you-put-on-a-resume": {
     slug: "what-information-should-you-put-on-a-resume",
     title: "What to Put on a Resume in 2026 (Guide) | CareerNest",
@@ -119,7 +32,7 @@ Nobody wants to read a 2-page essay. The most effective cover letters are crisp,
     date: "Oct 13, 2026",
     author: "Marcus Vance",
     authorRole: "Senior Career Coach",
-    featured: false,
+    featured: true,
     summary: "Learn the 5 essential resume sections, key additions, and ATS formatting rules needed to pass automated filters and impress recruiters in 2026.",
     heroImage: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80",
     tags: ["Resume Writing", "Resume Tips", "ATS", "Career Advice", "Job Search"],
@@ -137,6 +50,14 @@ Nobody wants to read a 2-page essay. The most effective cover letters are crisp,
         answer: "Reverse-chronological resumes remain the gold standard for 95% of corporate hiring workflows because enterprise ATS parsers map experience linearly. A functional or hybrid format should only be used for severe career pivots."
       }
     ],
+        video: {
+      title: "How to Make a Resume (Step-by-Step with Real Examples)",
+      description: "Step-by-step masterclass covering what essential sections to include on a modern resume, how to format bullet points, and how to pass automated ATS filters.",
+      thumbnailUrl: "https://i.ytimg.com/vi/Tt08KmFfIYQ/maxresdefault.jpg",
+      uploadDate: "2024-01-15T08:00:00+00:00",
+      url: "https://www.youtube.com/watch?v=Tt08KmFfIYQ",
+      embedUrl: "https://www.youtube-nocookie.com/embed/Tt08KmFfIYQ"
+    },
     content: `
 Modern corporate hiring in 2026 is governed by automated screening engines. Before a recruiter spends an average of 7.4 seconds skimming your credentials, Applicant Tracking Systems (ATS) such as Workday, Greenhouse, Taleo, Lever, and iCIMS parse your document via Natural Language Processing (NLP) tokenization. 
 
@@ -148,6 +69,11 @@ To secure interview shortlists, your resume must balance machine-readable UTF-8 
 
 > **What belongs on a modern resume?**  
 > In 2026, an effective resume contains five non-negotiable sections: **Contact Header**, **Professional Summary**, **Work Experience**, **Skills**, and **Education**. Additional sections like Certifications, Technical Projects, and Languages should only be included when they directly map to job description keywords.
+
+<figure>
+  <img src="/img/blog/ats-resume-anatomy-2026.svg" alt="Anatomy of an ATS compliant resume layout showing 5 essential sections in 2026" width="760" height="456" loading="lazy" />
+  <figcaption>Visual Guide: The 5 core sections required for automated parsing and human recruiter review in 2026.</figcaption>
+</figure>
 
 ---
 
@@ -226,7 +152,162 @@ For tested single-column layouts that pass automated parser tests, browse our [A
 
 ---
 
+## Video Guide: Modern Resume Masterclass & ATS Walkthrough
+
+<div class="video-container">
+  <iframe src="https://www.youtube-nocookie.com/embed/Tt08KmFfIYQ" title="How to Make a Resume (Step-by-Step with Real Examples)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+---
+
 **Does your current resume pass automated ATS screening?** Don't let formatting mistakes cost you an interview. Use our [Free ATS Resume Checker](/ats-score-checker) or build a verified recruiter-ready CV using our [AI Resume Builder](/form-index).
+    `.trim()
+  },
+  "what-is-a-resume-and-what-is-it-used-for": {
+    slug: "what-is-a-resume-and-what-is-it-used-for",
+    title: "What Is a Resume and What Is It Used For? (Guide) | CareerNest",
+    subtitle: "A resume is a targeted marketing document that summarizes your career trajectory, skills, and business impact to secure job interviews in 2026.",
+    category: "Resume Writing",
+    readTime: "5 min read",
+    date: "Oct 26, 2026",
+    author: "Marcus Vance",
+    authorRole: "Senior Career Coach",
+    featured: false,
+    summary: "A resume is a targeted marketing document that summarizes your career trajectory, skills, and business impact to secure job interviews in 2026.",
+    heroImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    tags: ["Resume Writing", "Resume Basics", "ATS", "Career Advice", "CV vs Resume"],
+    faqs: [
+      {
+        question: "How does a CV differ from a resume?",
+        answer: "A resume is a customizable marketing document for corporate job seekers, usually limited to two pages. A CV is a comprehensive, static record of your academic or scientific history used primarily for research or teaching roles where full historical documentation is required."
+      },
+      {
+        question: "What are the common resume formats I can use?",
+        answer: "The three primary types are chronological, which lists work history in date order; functional, which organizes content by skill sets rather than timelines; and hybrid, which merges both structures to highlight specific achievements alongside a standard employment history."
+      },
+      {
+        question: "What is the ideal resume length?",
+        answer: "Unless you are a senior executive or an academic with extensive research publications, a resume should be one to two pages. Modern trends favor extreme brevity; recruiters value clarity and high-impact, actionable data over long-form descriptions of past daily routines."
+      },
+      {
+        question: "How do ATS platforms scan my file?",
+        answer: "An ATS is software that screens and sorts applications. It uses Optical Character Recognition (OCR) and semantic parsing to extract your skills and employment history into a database, looking for contextual connections between your content and the job description requirements."
+      },
+      {
+        question: "Which resume section matters most?",
+        answer: "The \"Professional Summary\" and your most recent employment experience are the most vital segments. These areas occupy the \"golden triangle\" of eye-tracking patterns, serving as the first points of interaction for both AI screening tools and human recruiters making a quick decision to proceed."
+      }
+    ],
+    video: {
+      title: "Curriculum Vitae (CV) vs Resumé | What You Need to Know",
+      description: "A clear breakdown of what a resume is, what hiring managers use it for, and key differences between a corporate resume and an academic CV.",
+      thumbnailUrl: "https://i.ytimg.com/vi/tHQXZJ2f00Y/maxresdefault.jpg",
+      uploadDate: "2021-06-19T08:00:00+00:00",
+      url: "https://www.youtube.com/watch?v=tHQXZJ2f00Y",
+      embedUrl: "https://www.youtube-nocookie.com/embed/tHQXZJ2f00Y"
+    },
+    content: `
+A resume is a targeted marketing document that summarizes your career trajectory, technical abilities, and unique value propositions. Its primary function is to serve as a high-level bridge between your history and a recruiter’s needs, specifically designed to secure an interview rather than to function as an exhaustive biography.
+
+---
+
+## What Exactly Is a Resume?
+
+A resume is a concise summary of your employment history, educational background, and skill sets intended to pique the interest of hiring managers. It acts as a curated highlight reel that showcases your ability to solve specific business problems rather than simply functioning as a chronological record of tasks performed.
+
+Moving away from the legacy "list of duties" model remains vital for modern applicants. Recruiters prioritize quantified achievements over static responsibilities. A weak entry looks like: *"Responsible for managing a team."* A strong, results-driven entry reads: *"Increased quarterly department output by 22% through the implementation of agile workflows."* This shift from process-oriented descriptions to results-driven data helps you stand out. Consider your document a persuasive sales brochure for your labor, emphasizing the value you generate rather than the time you have spent in previous seats.
+
+---
+
+## Why Do You Need a Resume?
+
+A resume functions as the critical gatekeeper between your talent and a company’s internal hiring workflow, including Applicant Tracking Systems (ATS) like Workday or Greenhouse. It is the primary data source that facilitates an initial semantic screening, determining whether your qualifications warrant a human review by a talent acquisition lead.
+
+The **7-second rule** highlights the reality of candidate screening. Recruiters perform a rapid visual scan to extract data points like job titles, tenure, and high-impact keywords. If your document uses complex graphics, non-standard fonts, or nested tables, an ATS may fail to parse your data, leading to a "ghosting" scenario where your credentials are never read. Furthermore, your resume acts as the foundational blueprint for your professional brand, matching the narrative found on your LinkedIn profile. Inconsistency between these digital touchpoints often raises flags regarding your attention to detail.
+
+<figure>
+  <img src="/img/blog/ats-scanning-pipeline.svg" alt="Step-by-step ATS scanning workflow from resume parsing to semantic keyword ranking" width="760" height="400" loading="lazy" />
+  <figcaption>The 4-stage automated ATS screening pipeline: document intake, entity parsing, semantic scoring, and candidate shortlisting.</figcaption>
+</figure>
+
+---
+
+## What Information Should You Include?
+
+Standard resume sections provide a structured framework that allows AI-powered parsing engines to accurately index your data. While basic contact details and employment history are universal, high-impact documents incorporate modern sections such as technical certifications, hyper-linked project portfolios, and language proficiencies to demonstrate versatile, adaptable skill sets.
+
+* **Header:** Include your name, city/state, phone number, and a \`name@example.com\` address.
+* **Professional Summary:** Use a three-sentence pitch covering your domain expertise and core business impact.
+* **Experience:** List roles in reverse-chronological order, focusing on bullet points that describe specific outcomes.
+* **Skills:** Differentiate between hard technical skills—like SQL or Python—and broad industry competencies.
+* **Education:** Keep this brief if you have more than three years of experience, prioritizing degrees and specific certifications.
+
+Candidates with non-traditional paths, such as career gaps or freelance transitions, should utilize a "Functional" layout that highlights core competencies over timeline continuity. If you have completed international certifications, create a dedicated "Credentials" section to ensure those global standards are immediately visible to local hiring authorities. Check out our comprehensive guide on [What to Put on a Resume in 2026](/blog/what-information-should-you-put-on-a-resume) for full section-by-section walkthroughs.
+
+---
+
+## Resume vs. CV: What’s the Difference?
+
+A resume is a brief, 1-2 page document emphasizing specific accomplishments and skills, while a Curriculum Vitae (CV) is an exhaustive, document-length account of your academic and professional history. Resumes are the standard for corporate roles globally, whereas CVs are typically requested for scientific, academic, or high-level international medical placements.
+
+| Feature | Resume | Curriculum Vitae (CV) |
+|---|---|---|
+| **Typical Length** | 1–2 pages | Unlimited (often 3+) |
+| **Primary Focus** | Skills and achievements | Academic and research history |
+| **Geographic Usage** | North America, parts of Asia | Europe, Middle East, Academia |
+| **Updates** | Frequent (job-specific) | Rare (career-wide) |
+| **Primary Goal** | Getting an interview | Comprehensive data disclosure |
+
+<figure>
+  <img src="/img/blog/resume-vs-cv-infographic.svg" alt="Infographic comparing Resume vs CV differences in length, purpose, and regional usage" width="760" height="400" loading="lazy" />
+  <figcaption>Strategic differences: Resumes focus on 1–2 page quantified corporate outcomes; CVs provide comprehensive academic and research history.</figcaption>
+</figure>
+
+---
+
+## How to Build a Modern Resume
+
+Building a modern resume requires a balance between human readability and machine-readable optimization, utilizing clean typography and clear headings to facilitate quick parsing. You must leverage semantic keyword positioning—placing your most critical certifications and industry-standard technical tools in the top third of the document to capture immediate attention.
+
+Avoid "keyword stuffing," a tactic where applicants list dozens of terms in white text to trick an ATS. AI-driven screening now uses vector similarity to understand context; the system looks for the relationship between the tool and your application of that tool. If you claim proficiency in Kubernetes, your experience section must show where you deployed it. By using standard formats, such as a clean, text-based PDF or UTF-8 encoded file, you optimize your chances of passing through sophisticated parsing layers. Explore our tested [ATS-Friendly Resume Templates](/templates) to start with a verified layout.
+
+---
+
+## Video Guide: Resume vs. CV Explained
+
+<div class="video-container">
+  <iframe src="https://www.youtube-nocookie.com/embed/tHQXZJ2f00Y" title="Curriculum Vitae (CV) vs Resumé | What You Need to Know" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+---
+
+## Frequently Asked Questions
+
+### How does a CV differ from a resume?
+A resume is a customizable marketing document for corporate job seekers, usually limited to two pages. A CV is a comprehensive, static record of your academic or scientific history used primarily for research or teaching roles where full historical documentation is required.
+
+### What are the common resume formats I can use?
+The three primary types are chronological, which lists work history in date order; functional, which organizes content by skill sets rather than timelines; and hybrid, which merges both structures to highlight specific achievements alongside a standard employment history.
+
+### What is the ideal resume length?
+Unless you are a senior executive or an academic with extensive research publications, a resume should be one to two pages. Modern trends favor extreme brevity; recruiters value clarity and high-impact, actionable data over long-form descriptions of past daily routines.
+
+### How do ATS platforms scan my file?
+An ATS is software that screens and sorts applications. It uses Optical Character Recognition (OCR) and semantic parsing to extract your skills and employment history into a database, looking for contextual connections between your content and the job description requirements.
+
+### Which resume section matters most?
+The "Professional Summary" and your most recent employment experience are the most vital segments. These areas occupy the "golden triangle" of eye-tracking patterns, serving as the first points of interaction for both AI screening tools and human recruiters making a quick decision to proceed.
+
+---
+
+<div style="background:linear-gradient(135deg, rgba(99,102,241,0.1), rgba(16,185,129,0.08)); border:1px solid rgba(99,102,241,0.3); border-radius:14px; padding:24px; margin:36px 0; display:flex; flex-direction:column; gap:12px;">
+  <strong style="color:var(--text); font-size:1.15rem; font-family:var(--font-head);">Ready to elevate your job search strategy?</strong>
+  <p style="color:var(--text-muted); font-size:0.92rem; margin:0; line-height:1.6;">Our tools are built to help you navigate the 2026 hiring landscape with precision. Start crafting your high-conversion document today with our AI Resume Builder to pass the screen and secure your next interview.</p>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px;">
+    <a href="/form-index" class="btn-primary" style="display:inline-block; padding:10px 22px; text-decoration:none; color:#ffffff !important;">Build AI Resume Free →</a>
+    <a href="/ats-score-checker" class="btn-ghost" style="display:inline-block; padding:10px 22px; text-decoration:none; color:var(--text) !important;">Check ATS Score →</a>
+  </div>
+</div>
     `.trim()
   }
 };
@@ -250,13 +331,7 @@ async function seed() {
   }
 
   for (const [slug, post] of Object.entries(BLOG_POSTS)) {
-    const existing = await Blog.findOne({ slug });
-    if (existing) {
-      console.log(`[SKIP] Already exists: ${slug}`);
-      continue;
-    }
-
-    await Blog.create({
+    const payload = {
       slug,
       title:        post.title,
       summary:      post.summary || post.subtitle || '',
@@ -272,8 +347,17 @@ async function seed() {
       faqs:         post.faqs || [],
       featured:     post.featured || false,
       published:    true,
-    });
-    console.log(`[SEEDED] ${slug}`);
+    };
+
+    await Blog.findOneAndUpdate({ slug }, { $set: payload }, { upsert: true });
+    console.log(`[SYNCED] ${slug}`);
+  }
+
+  // Remove any legacy dummy blog posts from MongoDB
+  const keepSlugs = Object.keys(BLOG_POSTS);
+  const deleted = await Blog.deleteMany({ slug: { $nin: keepSlugs } });
+  if (deleted.deletedCount > 0) {
+    console.log(`[CLEANED] Removed ${deleted.deletedCount} legacy dummy blog posts from MongoDB.`);
   }
 
   await mongoose.disconnect();

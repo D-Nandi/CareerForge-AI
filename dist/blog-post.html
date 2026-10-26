@@ -10,7 +10,7 @@
   <meta name="robots" content="index, follow" />
 
   <link rel="canonical" id="postCanonical"
-    href="https://careernest.taqnik.in/blog-post?slug=how-to-beat-ats-in-2025" />
+    href="https://careernest.taqnik.in/blog/what-information-should-you-put-on-a-resume" />
 
   <!-- Theme Color -->
   <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
@@ -19,10 +19,10 @@
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:url" id="postOgUrl"
-    content="https://careernest.taqnik.in/blog-post?slug=how-to-beat-ats-in-2025" />
-  <meta property="og:title" id="postOgTitle" content="How to Beat ATS | CareerNest Career Guide" />
+    content="https://careernest.taqnik.in/blog/what-information-should-you-put-on-a-resume" />
+  <meta property="og:title" id="postOgTitle" content="What to Put on a Resume in 2026 | CareerNest" />
   <meta property="og:description" id="postOgDesc"
-    content="Discover how modern AI ATS algorithms parse resumes, why formatting tables fail, and the exact keyword matching techniques top candidates use." />
+    content="Learn the 5 essential resume sections, key additions, and ATS formatting rules needed to pass automated filters and impress recruiters in 2026." />
   <meta property="og:image" content="https://careernest.taqnik.in/og-preview.png" />
   <meta property="og:site_name" content="CareerNest" />
 
@@ -52,8 +52,8 @@
           "name": "CareerNest",
           "url": "https://careernest.taqnik.in/"
         },
-        "datePublished": "2025-09-28",
-        "url": "https://careernest.taqnik.in/blog-post?slug=how-to-beat-ats-in-2025"
+        "datePublished": "2026-10-13",
+        "url": "https://careernest.taqnik.in/blog/what-information-should-you-put-on-a-resume"
       },
       {
         "@type": "BreadcrumbList",
@@ -74,7 +74,7 @@
             "@type": "ListItem",
             "position": 3,
             "name": "Article",
-            "item": "https://careernest.taqnik.in/blog-post?slug=how-to-beat-ats-in-2025"
+            "item": "https://careernest.taqnik.in/blog/what-information-should-you-put-on-a-resume"
           }
         ]
       }
@@ -252,6 +252,21 @@
 
     .article-body a:hover {
       opacity: 0.85;
+    }
+
+    .article-body a.btn-primary,
+    .article-body a.btn-primary:hover {
+      color: #ffffff !important;
+      text-decoration: none !important;
+    }
+
+    .article-body a.btn-ghost {
+      color: var(--text) !important;
+      text-decoration: none !important;
+    }
+
+    .article-body a.btn-ghost:hover {
+      color: var(--accent) !important;
     }
 
     /* Table styles for markdown tables */
@@ -481,7 +496,7 @@
         slug = decodeURIComponent(parts[1].replace(/\.html$/, ''));
       }
     }
-    if (!slug) slug = 'how-to-beat-ats-in-2025';
+    if (!slug) slug = 'what-information-should-you-put-on-a-resume';
 
     function renderPost(post) {
       document.title = `${post.title} | CareerNest Career Guide`;
@@ -568,6 +583,18 @@
                 "text": f.answer
               }
             }))
+          });
+        }
+
+        if (post.video) {
+          schemaGraph.push({
+            "@type": "VideoObject",
+            "name": post.video.title,
+            "description": post.video.description,
+            "thumbnailUrl": post.video.thumbnailUrl,
+            "uploadDate": post.video.uploadDate,
+            "contentUrl": post.video.url,
+            "embedUrl": post.video.embedUrl
           });
         }
 

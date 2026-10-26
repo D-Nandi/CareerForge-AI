@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f111a"/>
+      <stop offset="100%" stop-color="#181a27"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f2338"/>
+      <stop offset="100%" stop-color="#17192a"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="100%" stop-color="#a29bfe"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="800" height="480" rx="16" fill="url(#bgGrad)" stroke="#2b2f4a" stroke-width="1"/>
+
+  <!-- Top Title Bar -->
+  <text x="40" y="44" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">Anatomy of an ATS-Compliant Resume (2026 Blueprint)</text>
+  <text x="40" y="68" fill="#9ca3af" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Engineered for Natural Language Processing (NLP) Parsers &amp; 7-Second Recruiter Scans</text>
+
+  <!-- Left: Resume Canvas Mockup -->
+  <g transform="translate(40, 90)" filter="url(#shadow)">
+    <rect width="320" height="350" rx="10" fill="#ffffff"/>
+    
+    <!-- Header -->
+    <rect x="20" y="18" width="140" height="12" rx="3" fill="#1e293b"/>
+    <rect x="20" y="34" width="200" height="6" rx="2" fill="#64748b"/>
+    <line x1="20" y1="48" x2="300" y2="48" stroke="#e2e8f0" stroke-width="1"/>
+
+    <!-- Summary Section -->
+    <rect x="20" y="58" width="80" height="7" rx="2" fill="#6c5ce7"/>
+    <rect x="20" y="70" width="280" height="5" rx="2" fill="#94a3b8"/>
+    <rect x="20" y="79" width="260" height="5" rx="2" fill="#94a3b8"/>
+
+    <!-- Experience Section -->
+    <rect x="20" y="98" width="95" height="7" rx="2" fill="#6c5ce7"/>
+    <rect x="20" y="112" width="160" height="6" rx="2" fill="#1e293b"/>
+    <rect x="20" y="122" width="275" height="5" rx="2" fill="#cbd5e1"/>
+    <rect x="20" y="131" width="250" height="5" rx="2" fill="#cbd5e1"/>
+    <rect x="20" y="140" width="265" height="5" rx="2" fill="#cbd5e1"/>
+    
+    <rect x="20" y="156" width="140" height="6" rx="2" fill="#1e293b"/>
+    <rect x="20" y="166" width="270" height="5" rx="2" fill="#cbd5e1"/>
+    <rect x="20" y="175" width="240" height="5" rx="2" fill="#cbd5e1"/>
+
+    <!-- Skills Section -->
+    <rect x="20" y="195" width="70" height="7" rx="2" fill="#6c5ce7"/>
+    <rect x="20" y="209" width="55" height="14" rx="4" fill="#f1f5f9"/>
+    <rect x="80" y="209" width="60" height="14" rx="4" fill="#f1f5f9"/>
+    <rect x="145" y="209" width="50" height="14" rx="4" fill="#f1f5f9"/>
+    <rect x="200" y="209" width="65" height="14" rx="4" fill="#f1f5f9"/>
+    
+    <!-- Education & Certs -->
+    <rect x="20" y="238" width="75" height="7" rx="2" fill="#6c5ce7"/>
+    <rect x="20" y="252" width="180" height="6" rx="2" fill="#1e293b"/>
+    <rect x="20" y="262" width="120" height="5" rx="2" fill="#94a3b8"/>
+
+    <!-- Section Indicator Lines -->
+    <circle cx="310" cy="24" r="9" fill="#6c5ce7"/>
+    <text x="310" y="28" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">1</text>
+
+    <circle cx="310" cy="74" r="9" fill="#6c5ce7"/>
+    <text x="310" y="78" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">2</text>
+
+    <circle cx="310" cy="130" r="9" fill="#6c5ce7"/>
+    <text x="310" y="134" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">3</text>
+
+    <circle cx="310" cy="216" r="9" fill="#6c5ce7"/>
+    <text x="310" y="220" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">4</text>
+
+    <circle cx="310" cy="256" r="9" fill="#6c5ce7"/>
+    <text x="310" y="260" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">5</text>
+  </g>
+
+  <!-- Right: 5 Section Callout Cards -->
+  <g transform="translate(390, 90)">
+    <!-- 1. Header -->
+    <g transform="translate(0, 0)">
+      <rect width="370" height="58" rx="8" fill="url(#cardGrad)" stroke="#2b2f4a"/>
+      <circle cx="24" cy="29" r="12" fill="url(#accentGrad)"/>
+      <text x="24" y="34" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">1</text>
+      <text x="46" y="24" fill="#ffffff" font-size="13" font-weight="700">Contact Header (Canvas Body)</text>
+      <text x="46" y="42" fill="#94a3b8" font-size="11">Kept outside Word/PDF margins to prevent OCR dropouts.</text>
+    </g>
+
+    <!-- 2. Summary -->
+    <g transform="translate(0, 70)">
+      <rect width="370" height="58" rx="8" fill="url(#cardGrad)" stroke="#2b2f4a"/>
+      <circle cx="24" cy="29" r="12" fill="url(#accentGrad)"/>
+      <text x="24" y="34" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">2</text>
+      <text x="46" y="24" fill="#ffffff" font-size="13" font-weight="700">Value-Proposition Summary</text>
+      <text x="46" y="42" fill="#94a3b8" font-size="11">3–4 lines stating domain years, core stack &amp; signature impact.</text>
+    </g>
+
+    <!-- 3. Work Experience -->
+    <g transform="translate(0, 140)">
+      <rect width="370" height="58" rx="8" fill="url(#cardGrad)" stroke="#2b2f4a"/>
+      <circle cx="24" cy="29" r="12" fill="url(#accentGrad)"/>
+      <text x="24" y="34" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">3</text>
+      <text x="46" y="24" fill="#ffffff" font-size="13" font-weight="700">Metric-Backed Experience</text>
+      <text x="46" y="42" fill="#94a3b8" font-size="11">Google X-Y-Z formula: "Accomplished [X], measured by [Y]".</text>
+    </g>
+
+    <!-- 4. Skills Taxonomy -->
+    <g transform="translate(0, 210)">
+      <rect width="370" height="58" rx="8" fill="url(#cardGrad)" stroke="#2b2f4a"/>
+      <circle cx="24" cy="29" r="12" fill="url(#accentGrad)"/>
+      <text x="24" y="34" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">4</text>
+      <text x="46" y="24" fill="#ffffff" font-size="13" font-weight="700">Clustered Skills Taxonomy</text>
+      <text x="46" y="42" fill="#94a3b8" font-size="11">Hard technical tools + methodologies for semantic matching.</text>
+    </g>
+
+    <!-- 5. Education -->
+    <g transform="translate(0, 280)">
+      <rect width="370" height="58" rx="8" fill="url(#cardGrad)" stroke="#2b2f4a"/>
+      <circle cx="24" cy="29" r="12" fill="url(#accentGrad)"/>
+      <text x="24" y="34" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">5</text>
+      <text x="46" y="24" fill="#ffffff" font-size="13" font-weight="700">Concise Education &amp; Credentials</text>
+      <text x="46" y="42" fill="#94a3b8" font-size="11">Degree, institution, graduation year, and top certifications.</text>
+    </g>
+  </g>
+</svg>

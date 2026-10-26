@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f111a"/>
+      <stop offset="100%" stop-color="#161826"/>
+    </linearGradient>
+    <linearGradient id="resumeCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f233a"/>
+      <stop offset="100%" stop-color="#161827"/>
+    </linearGradient>
+    <linearGradient id="cvCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#232238"/>
+      <stop offset="100%" stop-color="#181726"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="420" rx="16" fill="url(#bg3)" stroke="#2b2f4a" stroke-width="1"/>
+
+  <text x="40" y="44" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">Resume vs. Curriculum Vitae (CV): Strategic Differences</text>
+  <text x="40" y="68" fill="#9ca3af" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Choosing the right format based on target geography, role type, and recruitment gatekeepers</text>
+
+  <!-- Left: Resume Column -->
+  <g transform="translate(40, 95)">
+    <rect width="345" height="295" rx="12" fill="url(#resumeCard)" stroke="#6c5ce7" stroke-width="1.5"/>
+    <rect x="20" y="20" width="80" height="24" rx="12" fill="rgba(108,92,231,0.2)"/>
+    <text x="60" y="36" fill="#a29bfe" font-size="11" font-weight="700" text-anchor="middle">RESUME</text>
+    
+    <text x="20" y="70" fill="#ffffff" font-size="16" font-weight="700">Corporate &amp; Tech Focus</text>
+    <text x="20" y="92" fill="#94a3b8" font-size="12">Targeted marketing brochure customized for 1 job.</text>
+
+    <!-- Specs -->
+    <g transform="translate(20, 115)">
+      <circle cx="6" cy="6" r="4" fill="#6c5ce7"/>
+      <text x="20" y="10" fill="#cbd5e1" font-size="12"><strong>Length:</strong> 1 to 2 Pages Max</text>
+
+      <circle cx="6" cy="36" r="4" fill="#6c5ce7"/>
+      <text x="20" y="40" fill="#cbd5e1" font-size="12"><strong>Core Metric:</strong> Business outcomes &amp; XYZ impact</text>
+
+      <circle cx="6" cy="66" r="4" fill="#6c5ce7"/>
+      <text x="20" y="70" fill="#cbd5e1" font-size="12"><strong>Audience:</strong> Corporate recruiters &amp; ATS software</text>
+
+      <circle cx="6" cy="96" r="4" fill="#6c5ce7"/>
+      <text x="20" y="100" fill="#cbd5e1" font-size="12"><strong>Updates:</strong> Tailored for each role application</text>
+
+      <circle cx="6" cy="126" r="4" fill="#6c5ce7"/>
+      <text x="20" y="130" fill="#cbd5e1" font-size="12"><strong>Region:</strong> US, Canada, Asia corporate markets</text>
+    </g>
+  </g>
+
+  <!-- Right: CV Column -->
+  <g transform="translate(415, 95)">
+    <rect width="345" height="295" rx="12" fill="url(#cvCard)" stroke="#3b82f6" stroke-width="1.5"/>
+    <rect x="20" y="20" width="165" height="24" rx="12" fill="rgba(59,130,246,0.2)"/>
+    <text x="102" y="36" fill="#60a5fa" font-size="11" font-weight="700" text-anchor="middle">CURRICULUM VITAE (CV)</text>
+
+    <text x="20" y="70" fill="#ffffff" font-size="16" font-weight="700">Academic &amp; Research Focus</text>
+    <text x="20" y="92" fill="#94a3b8" font-size="12">Comprehensive historical archive of all career credentials.</text>
+
+    <!-- Specs -->
+    <g transform="translate(20, 115)">
+      <circle cx="6" cy="6" r="4" fill="#3b82f6"/>
+      <text x="20" y="10" fill="#cbd5e1" font-size="12"><strong>Length:</strong> Unlimited (3 to 10+ pages)</text>
+
+      <circle cx="6" cy="36" r="4" fill="#3b82f6"/>
+      <text x="20" y="40" fill="#cbd5e1" font-size="12"><strong>Core Metric:</strong> Publications, grants, teaching</text>
+
+      <circle cx="6" cy="66" r="4" fill="#3b82f6"/>
+      <text x="20" y="70" fill="#cbd5e1" font-size="12"><strong>Audience:</strong> Academic committees, medical boards</text>
+
+      <circle cx="6" cy="96" r="4" fill="#3b82f6"/>
+      <text x="20" y="100" fill="#cbd5e1" font-size="12"><strong>Updates:</strong> Static record added to continuously</text>
+
+      <circle cx="6" cy="126" r="4" fill="#3b82f6"/>
+      <text x="20" y="130" fill="#cbd5e1" font-size="12"><strong>Region:</strong> UK/EU corporate, Global Academia</text>
+    </g>
+  </g>
+</svg>

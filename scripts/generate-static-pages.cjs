@@ -72,7 +72,7 @@ function markdownToHtml(md) {
     if (!b) return '';
     if (b.startsWith('<h') || b.startsWith('<ul') || b.startsWith('<ol') || 
         b.startsWith('<table') || b.startsWith('<blockquote') || b.startsWith('<hr') || 
-        b.startsWith('<div')) {
+        b.startsWith('<div') || b.startsWith('<figure')) {
       return b;
     }
     return `<p>${b.replace(/\n/g, '<br />')}</p>`;
@@ -95,7 +95,7 @@ function inlineFormat(str) {
 // ─────────────────────────────────────────────────────────────
 for (const [slug, post] of Object.entries(BLOG_POSTS)) {
   const canonicalUrl = `https://careernest.taqnik.in/blog/${slug}`;
-  const docTitle = `${post.title} | CareerNest`;
+  const docTitle = post.title.includes('CareerNest') ? post.title : `${post.title} | CareerNest`;
   const metaDesc = post.summary || post.subtitle || '';
   const postHtmlContent = markdownToHtml(post.content);
 
@@ -153,6 +153,18 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
           "text": f.answer
         }
       }))
+    });
+  }
+
+  if (post.video) {
+    schemaGraph.push({
+      "@type": "VideoObject",
+      "name": post.video.title,
+      "description": post.video.description,
+      "thumbnailUrl": post.video.thumbnailUrl,
+      "uploadDate": post.video.uploadDate,
+      "contentUrl": post.video.url,
+      "embedUrl": post.video.embedUrl
     });
   }
 
@@ -355,6 +367,21 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
       opacity: 0.85;
     }
 
+    .article-body a.btn-primary,
+    .article-body a.btn-primary:hover {
+      color: #ffffff !important;
+      text-decoration: none !important;
+    }
+
+    .article-body a.btn-ghost {
+      color: var(--text) !important;
+      text-decoration: none !important;
+    }
+
+    .article-body a.btn-ghost:hover {
+      color: var(--accent) !important;
+    }
+
     .article-body table {
       width: 100%;
       border-collapse: collapse;
@@ -404,6 +431,47 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 18px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border);
+      margin: 28px 0;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .article-body figure {
+      margin: 32px 0;
+      text-align: center;
+    }
+
+    .article-body figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-card);
+    }
+
+    .article-body figcaption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      line-height: 1.5;
     }
   </style>
 

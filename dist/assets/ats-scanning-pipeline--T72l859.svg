@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d0f18"/>
+      <stop offset="100%" stop-color="#161825"/>
+    </linearGradient>
+    <linearGradient id="stepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f2338"/>
+      <stop offset="100%" stop-color="#141624"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="100%" stop-color="#8c7ae6"/>
+    </linearGradient>
+    <linearGradient id="green2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="420" rx="16" fill="url(#bg2)" stroke="#2b2f4a" stroke-width="1"/>
+
+  <text x="40" y="44" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">How ATS Engines Parse &amp; Screen Resumes in 2026</text>
+  <text x="40" y="68" fill="#9ca3af" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">The 4-stage pipeline determining whether your file reaches human recruiter review</text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 100)">
+    <rect width="160" height="230" rx="12" fill="url(#stepGrad)" stroke="#2b2f4a"/>
+    <circle cx="30" cy="30" r="14" fill="url(#accent2)"/>
+    <text x="30" y="35" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">1</text>
+    <text x="20" y="75" fill="#ffffff" font-size="14" font-weight="700">Document Intake</text>
+    <text x="20" y="98" fill="#94a3b8" font-size="11" line-height="1.4">
+      <tspan x="20" dy="0">• UTF-8 Plain Text</tspan>
+      <tspan x="20" dy="18">• Clean PDF or DOCX</tspan>
+      <tspan x="20" dy="18">• Strips non-standard</tspan>
+      <tspan x="20" dy="16">  nested tables</tspan>
+    </text>
+    <rect x="20" y="180" width="120" height="26" rx="6" fill="rgba(108,92,231,0.15)"/>
+    <text x="80" y="197" fill="#a29bfe" font-size="10" font-weight="bold" text-anchor="middle">Text Extraction</text>
+  </g>
+
+  <!-- Arrow 1-2 -->
+  <path d="M 205 215 L 225 215" stroke="#6c5ce7" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="225,210 235,215 225,220" fill="#6c5ce7"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(240, 100)">
+    <rect width="160" height="230" rx="12" fill="url(#stepGrad)" stroke="#2b2f4a"/>
+    <circle cx="30" cy="30" r="14" fill="url(#accent2)"/>
+    <text x="30" y="35" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">2</text>
+    <text x="20" y="75" fill="#ffffff" font-size="14" font-weight="700">Entity Parsing</text>
+    <text x="20" y="98" fill="#94a3b8" font-size="11">
+      <tspan x="20" dy="0">• Job Titles &amp; Tenure</tspan>
+      <tspan x="20" dy="18">• Companies &amp; Dates</tspan>
+      <tspan x="20" dy="18">• Education &amp; Degrees</tspan>
+      <tspan x="20" dy="18">• Hard Skills Index</tspan>
+    </text>
+    <rect x="20" y="180" width="120" height="26" rx="6" fill="rgba(108,92,231,0.15)"/>
+    <text x="80" y="197" fill="#a29bfe" font-size="10" font-weight="bold" text-anchor="middle">NLP Categorization</text>
+  </g>
+
+  <!-- Arrow 2-3 -->
+  <path d="M 405 215 L 425 215" stroke="#6c5ce7" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="425,210 435,215 425,220" fill="#6c5ce7"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(440, 100)">
+    <rect width="160" height="230" rx="12" fill="url(#stepGrad)" stroke="#2b2f4a"/>
+    <circle cx="30" cy="30" r="14" fill="url(#accent2)"/>
+    <text x="30" y="35" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">3</text>
+    <text x="20" y="75" fill="#ffffff" font-size="14" font-weight="700">Semantic Vector</text>
+    <text x="20" y="98" fill="#94a3b8" font-size="11">
+      <tspan x="20" dy="0">• Context Similarity</tspan>
+      <tspan x="20" dy="18">• Keyword Density</tspan>
+      <tspan x="20" dy="18">• Requisition Match</tspan>
+      <tspan x="20" dy="18">• Catches White-fonts</tspan>
+    </text>
+    <rect x="20" y="180" width="120" height="26" rx="6" fill="rgba(108,92,231,0.15)"/>
+    <text x="80" y="197" fill="#a29bfe" font-size="10" font-weight="bold" text-anchor="middle">Algorithm Scoring</text>
+  </g>
+
+  <!-- Arrow 3-4 -->
+  <path d="M 605 215 L 625 215" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="625,210 635,215 625,220" fill="#10b981"/>
+
+  <!-- Step 4 -->
+  <g transform="translate(640, 100)">
+    <rect width="120" height="230" rx="12" fill="url(#stepGrad)" stroke="rgba(16,185,129,0.5)"/>
+    <circle cx="30" cy="30" r="14" fill="url(#green2)"/>
+    <text x="30" y="35" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">4</text>
+    <text x="16" y="75" fill="#34d399" font-size="13" font-weight="700">Shortlist</text>
+    <text x="16" y="98" fill="#94a3b8" font-size="10">
+      <tspan x="16" dy="0">High-scoring</tspan>
+      <tspan x="16" dy="16">profiles sent</tspan>
+      <tspan x="16" dy="16">to Recruiter</tspan>
+      <tspan x="16" dy="16">dashboard.</tspan>
+    </text>
+    <rect x="12" y="180" width="96" height="26" rx="6" fill="rgba(16,185,129,0.2)"/>
+    <text x="60" y="197" fill="#34d399" font-size="10" font-weight="bold" text-anchor="middle">Interview Gate</text>
+  </g>
+
+  <!-- Bottom Pro Tip -->
+  <g transform="translate(40, 355)">
+    <rect width="720" height="40" rx="8" fill="rgba(108,92,231,0.08)" stroke="rgba(108,92,231,0.2)"/>
+    <text x="20" y="25" fill="#a29bfe" font-size="12" font-weight="700">💡 ATS Key Takeaway:</text>
+    <text x="165" y="25" fill="#cbd5e1" font-size="12">Modern parsers use semantic vector search — keyword context matters more than raw frequency.</text>
+  </g>
+</svg>

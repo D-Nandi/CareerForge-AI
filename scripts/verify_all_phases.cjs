@@ -82,10 +82,8 @@ for (const target of targetPages) {
 // 3. Audit Static Generated Pages
 console.log('\n--- 3. STATIC PROGRAMMATIC PAGES EXISTENCE ---');
 const expectedStaticPages = [
-  'blog/how-to-beat-ats-in-2025.html',
-  'blog/best-resume-power-verbs.html',
-  'blog/cover-letter-secrets-2025.html',
   'blog/what-information-should-you-put-on-a-resume.html',
+  'blog/what-is-a-resume-and-what-is-it-used-for.html',
   'resume-examples/software-engineer.html',
   'resume-examples/data-analyst.html',
   'resume-examples/product-manager.html',

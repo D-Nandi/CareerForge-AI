@@ -478,3 +478,61 @@ body {
   .breadcrumbs { display: none; }
   .header-actions .btn-ghost { display: none; }
 }
+
+/* Article Media & Responsive Video Embeds */
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card, 0 10px 25px rgba(0,0,0,0.1));
+  border: 1px solid var(--border, rgba(255,255,255,0.1));
+  margin: 28px 0;
+  background: #000;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.article-body figure {
+  margin: 32px 0;
+  text-align: center;
+}
+
+.article-body figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border, rgba(255,255,255,0.1));
+  box-shadow: var(--shadow-card, 0 10px 25px rgba(0,0,0,0.1));
+}
+
+.article-body figcaption {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.article-body a.btn-primary,
+.article-body a.btn-primary:hover {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.article-body a.btn-ghost {
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
+
+.article-body a.btn-ghost:hover {
+  color: var(--accent) !important;
+}
+

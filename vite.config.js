@@ -65,6 +65,22 @@ function copyStaticAssetsPlugin() {
           }
         }
       }
+
+      // Also copy img/ directory recursively if it exists
+      function copyDirRecursive(source, target) {
+        if (!fs.existsSync(source)) return;
+        if (!fs.existsSync(target)) fs.mkdirSync(target, { recursive: true });
+        for (const item of fs.readdirSync(source)) {
+          const s = path.join(source, item);
+          const t = path.join(target, item);
+          if (fs.statSync(s).isDirectory()) {
+            copyDirRecursive(s, t);
+          } else {
+            fs.copyFileSync(s, t);
+          }
+        }
+      }
+      copyDirRecursive(path.join(srcDir, 'img'), path.join(distDir, 'img'));
     },
     transformIndexHtml: {
       order: 'post',
@@ -189,10 +205,8 @@ export default defineConfig({
         signup: resolve(__dirname, 'client/signup.html'),
         notFound: resolve(__dirname, 'client/404.html'),
         // Static Programmatic Blog Articles
-        blogBeatAts: resolve(__dirname, 'client/blog/how-to-beat-ats-in-2025.html'),
-        blogPowerVerbs: resolve(__dirname, 'client/blog/best-resume-power-verbs.html'),
-        blogCoverLetterSecrets: resolve(__dirname, 'client/blog/cover-letter-secrets-2025.html'),
         blogResumeInfo: resolve(__dirname, 'client/blog/what-information-should-you-put-on-a-resume.html'),
+        blogWhatIsResume: resolve(__dirname, 'client/blog/what-is-a-resume-and-what-is-it-used-for.html'),
         // Static Programmatic Resume Examples
         roleSoftwareEngineer: resolve(__dirname, 'client/resume-examples/software-engineer.html'),
         roleDataAnalyst: resolve(__dirname, 'client/resume-examples/data-analyst.html'),

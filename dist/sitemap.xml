@@ -127,30 +127,17 @@
     <priority>0.85</priority>
   </url>
 
-  <url>
-    <loc>https://careernest.taqnik.in/blog/how-to-beat-ats-in-2025</loc>
-    <lastmod>2026-10-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://careernest.taqnik.in/blog/best-resume-power-verbs</loc>
-    <lastmod>2026-10-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://careernest.taqnik.in/blog/cover-letter-secrets-2025</loc>
-    <lastmod>2026-10-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
   <url>
     <loc>https://careernest.taqnik.in/blog/what-information-should-you-put-on-a-resume</loc>
     <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://careernest.taqnik.in/blog/what-is-a-resume-and-what-is-it-used-for</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
