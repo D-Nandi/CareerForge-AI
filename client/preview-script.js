@@ -983,7 +983,7 @@ function navigateBackToWizard() {
   try {
     localStorage.setItem('resumatic_state', JSON.stringify(state));
   } catch (e) {}
-  window.location.href = 'form-index.html';
+  window.location.href = '/resume-builder';
 }
 
 const btnBack = document.getElementById('btnBack');

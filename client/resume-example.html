@@ -210,7 +210,7 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
-      <a id="btnTopCustomize" href="/form-index" class="btn-primary">Customize This Resume →</a>
+      <a id="btnTopCustomize" href="/resume-builder" class="btn-primary">Customize This Resume →</a>
       <button class="hamburger drawer-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -226,7 +226,7 @@
         <li><a href="/pricing">Pricing Plans <span>→</span></a></li>
       </ul>
       <div class="tool-drawer-actions">
-        <a href="/form-index" class="btn btn-primary btn-block">Customize in Builder →</a>
+        <a href="/resume-builder" class="btn btn-primary btn-block">Customize in Builder →</a>
       </div>
     </div>
   </header>
@@ -279,7 +279,7 @@
           <div id="roleKeywordsList" class="keyword-chips" style="margin-top: 8px;"></div>
         </div>
 
-        <a id="btnUseTemplate" href="/form-index" class="btn-primary"
+        <a id="btnUseTemplate" href="/resume-builder" class="btn-primary"
           style="width: 100%; justify-content: center; margin-top: 22px; padding: 14px; font-size: 0.95rem;">
           🚀 Customize In Resume Builder
         </a>
@@ -397,8 +397,8 @@
     document.getElementById('statAts').innerText = role.atsScore;
 
     // CTA links
-    document.getElementById('btnTopCustomize').href = `form-index.html?prefill=${role.slug}`;
-    document.getElementById('btnUseTemplate').href = `form-index.html?prefill=${role.slug}`;
+    document.getElementById('btnTopCustomize').href = `/resume-builder?prefill=${role.slug}`;
+    document.getElementById('btnUseTemplate').href = `/resume-builder?prefill=${role.slug}`;
 
     // Keywords
     const kwContainer = document.getElementById('roleKeywordsList');

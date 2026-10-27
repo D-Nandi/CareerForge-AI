@@ -144,7 +144,7 @@ For tested single-column layouts that pass automated parser tests, browse our [A
   <p style="color:var(--text-muted); font-size:0.92rem; margin:0; line-height:1.6;">Don't let formatting mistakes or missing keywords cost you an interview. Upload your PDF or DOCX file to see your instant ATS compatibility score and missing keyword analysis.</p>
   <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px;">
     <a href="/ats-score-checker" class="btn-primary" style="display:inline-block; padding:10px 22px; text-decoration:none; color:#ffffff !important;">Check ATS Score Free →</a>
-    <a href="/form-index" class="btn-ghost" style="display:inline-block; padding:10px 22px; text-decoration:none; color:var(--text) !important;">Build New Resume →</a>
+    <a href="/resume-builder" class="btn-ghost" style="display:inline-block; padding:10px 22px; text-decoration:none; color:var(--text) !important;">Build New Resume →</a>
   </div>
 </div>
     `.trim()
@@ -290,7 +290,7 @@ The "Professional Summary" and your most recent employment experience are the mo
   <strong style="color:var(--text); font-size:1.15rem; font-family:var(--font-head);">Ready to elevate your job search strategy?</strong>
   <p style="color:var(--text-muted); font-size:0.92rem; margin:0; line-height:1.6;">Our tools are built to help you navigate the 2026 hiring landscape with precision. Start crafting your high-conversion document today with our AI Resume Builder to pass the screen and secure your next interview.</p>
   <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px;">
-    <a href="/form-index" class="btn-primary" style="display:inline-block; padding:10px 22px; text-decoration:none; color:#ffffff !important;">Build AI Resume Free →</a>
+    <a href="/resume-builder" class="btn-primary" style="display:inline-block; padding:10px 22px; text-decoration:none; color:#ffffff !important;">Build AI Resume Free →</a>
     <a href="/ats-score-checker" class="btn-ghost" style="display:inline-block; padding:10px 22px; text-decoration:none; color:var(--text) !important;">Check ATS Score →</a>
   </div>
 </div>

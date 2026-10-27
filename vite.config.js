@@ -186,6 +186,7 @@ export default defineConfig({
         main: resolve(__dirname, 'client/index.html'),
         preview: resolve(__dirname, 'client/preview.html'),
         form: resolve(__dirname, 'client/form-index.html'),
+        resumeBuilder: resolve(__dirname, 'client/resume-builder.html'),
         ats: resolve(__dirname, 'client/ats-score-checker.html'),
         careerRoadmap: resolve(__dirname, 'client/career-roadmap.html'),
         coverLetter: resolve(__dirname, 'client/cover-letter-generator.html'),

@@ -870,7 +870,7 @@ for (const [slug, role] of Object.entries(ROLES_DATABASE)) {
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
-      <a href="/form-index?prefill=${role.slug}" class="btn-primary">Customize This Resume →</a>
+      <a href="/resume-builder?prefill=${role.slug}" class="btn-primary">Customize This Resume →</a>
       <button class="hamburger drawer-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -886,7 +886,7 @@ for (const [slug, role] of Object.entries(ROLES_DATABASE)) {
         <li><a href="/pricing">Pricing Plans <span>→</span></a></li>
       </ul>
       <div class="tool-drawer-actions">
-        <a href="/form-index?prefill=${role.slug}" class="btn btn-primary btn-block">Customize in Builder →</a>
+        <a href="/resume-builder?prefill=${role.slug}" class="btn btn-primary btn-block">Customize in Builder →</a>
       </div>
     </div>
   </header>
@@ -962,7 +962,7 @@ for (const [slug, role] of Object.entries(ROLES_DATABASE)) {
           </div>
         </div>
 
-        <a href="/form-index?prefill=${role.slug}" class="btn-primary"
+        <a href="/resume-builder?prefill=${role.slug}" class="btn-primary"
           style="width: 100%; justify-content: center; margin-top: 22px; padding: 14px; font-size: 0.95rem;">
           🚀 Customize In Resume Builder
         </a>

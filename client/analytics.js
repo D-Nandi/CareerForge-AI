@@ -112,7 +112,7 @@
     const path = window.location.pathname.toLowerCase();
     let currentIntent = profile.primaryIntent;
     if (path.includes('ats-score-checker')) currentIntent = 'ats_score_audit';
-    else if (path.includes('form-index') || path.includes('preview')) currentIntent = 'resume_builder';
+    else if (path.includes('resume-builder') || path.includes('form-index') || path.includes('preview')) currentIntent = 'resume_builder';
     else if (path.includes('interview-prep')) currentIntent = 'interview_coach';
     else if (path.includes('career-roadmap')) currentIntent = 'career_roadmap';
     else if (path.includes('salary-benchmark')) currentIntent = 'salary_research';

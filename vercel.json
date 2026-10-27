@@ -2,7 +2,23 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/form-index",
+      "destination": "/resume-builder",
+      "permanent": true
+    },
+    {
+      "source": "/form-index.html",
+      "destination": "/resume-builder",
+      "permanent": true
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/resume-builder",
+      "destination": "/resume-builder.html"
+    },
     {
       "source": "/blog/:slug",
       "destination": "/blog-post.html?slug=:slug"
