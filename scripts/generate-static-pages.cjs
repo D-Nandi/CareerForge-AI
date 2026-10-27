@@ -624,13 +624,13 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
 // ─────────────────────────────────────────────────────────────
 for (const [slug, role] of Object.entries(ROLES_DATABASE)) {
   const canonicalUrl = `https://careernest.taqnik.in/resume-examples/${slug}`;
-  const docTitle = `${role.title} Resume Example & ATS Guide | CareerNest`;
+  const docTitle = `${role.title} Resume Example | CareerNest`;
   const metaDesc = `Real ${role.title} resume example. High-impact bullet points, essential ATS keywords (${role.keywords.slice(0, 4).join(', ')}), and instant customization in CareerNest builder.`;
 
   const schemaGraph = [
     {
       "@type": "CollectionPage",
-      "name": `${role.title} Resume Example & Guide`,
+      "name": `${role.title} Resume Example`,
       "url": canonicalUrl,
       "description": role.description,
       "offers": {
