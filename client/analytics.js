@@ -225,10 +225,10 @@
     function scheduleIdleLoad() {
       if ('requestIdleCallback' in window) {
         requestIdleCallback(function() {
-          setTimeout(triggerLoad, 2000);
-        }, { timeout: 3500 });
+          setTimeout(triggerLoad, 4000);
+        }, { timeout: 6000 });
       } else {
-        setTimeout(triggerLoad, 2500);
+        setTimeout(triggerLoad, 4500);
       }
     }
 
