@@ -97,7 +97,7 @@ function copyStaticAssetsPlugin() {
           let styleCssHref = null;
 
           for (const [fileName, file] of Object.entries(ctx.bundle)) {
-            if (fileName.endsWith('.css') && fileName.includes('style-')) {
+            if (fileName.endsWith('.css') && path.basename(fileName).startsWith('style-')) {
               styleCssAsset = file;
               styleCssHref = `/${fileName}`;
               break;

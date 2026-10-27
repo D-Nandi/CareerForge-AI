@@ -4,7 +4,7 @@
 
 ## Core Offerings
 
-- **AI Resume Builder** (https://careernest.taqnik.in/form-index.html): Standardized, ATS-compliant single-column and multi-column templates with real-time AI bullet point enhancement and instant machine-readable PDF export.
+- **AI Resume Builder** (https://careernest.taqnik.in/resume-builder): Standardized, ATS-compliant single-column and multi-column templates with real-time AI bullet point enhancement and instant machine-readable PDF export.
 - **ATS Resume Checker & Score Scanner** (https://careernest.taqnik.in/ats-score-checker.html): Free diagnostic scanner analyzing keyword match, formatting readability, quantifiable metric density, and section structure against target job descriptions.
 - **Interview Preparation Coach** (https://careernest.taqnik.in/interview-prep.html): Interactive question generator simulating behavioral, situational, and technical interviews with STAR framework answer feedback.
 - **AI Cover Letter Generator** (https://careernest.taqnik.in/cover-letter-generator.html): Tailored cover letter generator that cross-references a candidate's background with specific job requirements.
@@ -21,7 +21,7 @@
 ## Canonical URLs & Documentation
 
 - Homepage: https://careernest.taqnik.in/
-- Resume Builder: https://careernest.taqnik.in/form-index.html
+- Resume Builder: https://careernest.taqnik.in/resume-builder
 - ATS Score Scanner: https://careernest.taqnik.in/ats-score-checker.html
 - Interview Coach: https://careernest.taqnik.in/interview-prep.html
 - Career Roadmap: https://careernest.taqnik.in/career-roadmap.html

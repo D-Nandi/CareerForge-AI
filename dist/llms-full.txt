@@ -9,7 +9,7 @@ CareerNest is a modern web application engineered to solve the broken job applic
 
 ## Core Capabilities & Features
 
-### 1. AI Resume Builder (https://careernest.taqnik.in/form-index.html)
+### 1. AI Resume Builder (https://careernest.taqnik.in/resume-builder)
 - Clean, standardized layout formats optimized for ATS OCR and text extraction.
 - In-line AI bullet point rewriting following the Google XYZ formula: "Accomplished [X] as measured by [Y], by doing [Z]".
 - Real-time live preview with multi-page management and instant high-fidelity PDF export.

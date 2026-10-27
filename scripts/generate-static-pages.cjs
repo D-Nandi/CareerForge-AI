@@ -525,7 +525,7 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       </button>
-      <a href="/form-index" class="btn-primary">Create Your Resume →</a>
+      <a href="/resume-builder" class="btn-primary">Create Your Resume →</a>
       <button class="hamburger drawer-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -541,7 +541,7 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
         <li><a href="/pricing">Pricing Plans <span>→</span></a></li>
       </ul>
       <div class="tool-drawer-actions">
-        <a href="/form-index" class="btn btn-primary btn-block">Create Your Resume Free</a>
+        <a href="/resume-builder" class="btn btn-primary btn-block">Create Your Resume Free</a>
       </div>
     </div>
   </header>
