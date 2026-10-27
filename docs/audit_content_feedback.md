@@ -6,7 +6,7 @@
 **NLP Model Employed:** `Xenova/multilingual-e5-small` (E5 Prefixing, 384 Dim)  
 **Primary Pillar:** `Resume Writing`  
 **Word Count:** 1,321 words | **Reading Time:** ~6–7 minutes
-
+̥
 ---
 
 ## 1. Executive Summary: Content & Neuro Performance

@@ -51,7 +51,7 @@ function initScrollReveal() {
 
   // Batch DOM mutation in animation frame to eliminate layout thrashing
   requestAnimationFrame(() => {
-    const targets = document.querySelectorAll('.feature-card, .step, .stat');
+    const targets = document.querySelectorAll('.features-grid .feature-card, .steps .step, .faq-card, .guide-card');
     targets.forEach(el => {
       el.classList.add('reveal-init');
       observer.observe(el);

@@ -372,7 +372,7 @@ ul { list-style: none; }
   border-radius: 100px;
   font-size: 0.8rem; color: var(--accent);
   margin-bottom: 32px;
-  animation: fadeUp 0.6s ease both;
+  animation: heroSlideIn 0.45s ease both;
   transition: background 0.35s, border-color 0.35s;
 }
 [data-theme="dark"] .hero-badge {
@@ -402,25 +402,30 @@ ul { list-style: none; }
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-.line-1 { animation: fadeUp 0.7s 0.1s ease both; }
-.line-2 { animation: fadeUp 0.7s 0.2s ease both; }
-.line-3 { animation: fadeUp 0.7s 0.3s ease both; }
+@keyframes heroSlideIn {
+  from { transform: translateY(12px); }
+  to   { transform: translateY(0); }
+}
+
+.line-1 { animation: heroSlideIn 0.45s 0.05s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.line-2 { animation: heroSlideIn 0.45s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.line-3 { animation: heroSlideIn 0.45s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 .hero-sub {
   color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;
   margin-bottom: 36px;
-  animation: fadeUp 0.7s 0.4s ease both;
+  animation: heroSlideIn 0.45s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-actions {
   display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
   margin-bottom: 52px;
-  animation: fadeUp 0.7s 0.5s ease both;
+  animation: heroSlideIn 0.45s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-stats {
   display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
-  animation: fadeUp 0.7s 0.6s ease both;
+  animation: heroSlideIn 0.45s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .stat { display: flex; flex-direction: column; }
 .stat-num {
@@ -431,7 +436,7 @@ ul { list-style: none; }
 .stat-divider { width: 1px; height: 36px; background: var(--border-2); }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 

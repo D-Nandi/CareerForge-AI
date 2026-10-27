@@ -152,13 +152,41 @@
 
   const visitorProfile = getOrCreateVisitorProfile();
 
-  // 4. Initialize Google Analytics (gtag.js)
-  function initGoogleAnalytics(measurementId) {
-    if (!measurementId || measurementId === 'G-XXXXXXXXXX') {
-      console.log('%c[CareerNest Analytics]%c Running in dev/local mode. Replace G-XXXXXXXXXX with your GA4 Measurement ID in client/analytics.js or <meta name="google-analytics-id" content="G-...">', 'color: #3b82f6; font-weight: bold;', 'color: inherit;');
+  // 4. Initialize Google Analytics (gtag.js) with Performance-First Deferred Loading
+  let gtagScriptLoaded = false;
+  function loadGtagScript(measurementId) {
+    if (gtagScriptLoaded) return;
+    if (!measurementId || !measurementId.startsWith('G-') || measurementId === 'G-XXXXXXXXXX') return;
+    
+    // Prevent duplicate scripts if already injected in head or elsewhere
+    if (document.getElementById('google-analytics-gtag') || document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
+      gtagScriptLoaded = true;
+      return;
     }
 
-    // Ensure dataLayer exists
+    gtagScriptLoaded = true;
+
+    // Remove interaction event listeners
+    const events = ['pointerdown', 'touchstart', 'scroll', 'keydown'];
+    events.forEach(function(evt) {
+      window.removeEventListener(evt, triggerLoad, { passive: true });
+    });
+
+    const script = document.createElement('script');
+    script.id = 'google-analytics-gtag';
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    document.head.appendChild(script);
+  }
+
+  let triggerLoad = null;
+
+  function initGoogleAnalytics(measurementId) {
+    if (!measurementId || measurementId === 'G-XXXXXXXXXX') {
+      console.log('%c[CareerNest Analytics]%c Running in dev/local mode. Replace G-XXXXXXXXXX with your GA4 Measurement ID in client/analytics.js or <meta name="google-analytics-id" content="G-...">' , 'color: #3b82f6; font-weight: bold;', 'color: inherit;');
+    }
+
+    // Ensure dataLayer exists immediately (in-memory queue, 0ms blocking time)
     window.dataLayer = window.dataLayer || [];
     function gtag() { window.dataLayer.push(arguments); }
     window.gtag = gtag;
@@ -182,13 +210,32 @@
       tool_usage_count: visitorProfile.toolsUsed.length
     });
 
-    // Load gtag.js asynchronously if not already injected
-    if (!document.getElementById('google-analytics-gtag') && measurementId && measurementId.startsWith('G-') && measurementId !== 'G-XXXXXXXXXX') {
-      const script = document.createElement('script');
-      script.id = 'google-analytics-gtag';
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-      document.head.appendChild(script);
+    // Defer loading of heavy external gtag.js until user interaction or idle time
+    // This eliminates unused JS diagnostics, drops Total Blocking Time to 0, and accelerates FCP & LCP.
+    triggerLoad = function() {
+      loadGtagScript(measurementId);
+    };
+
+    const interactionEvents = ['pointerdown', 'touchstart', 'scroll', 'keydown'];
+    interactionEvents.forEach(function(evt) {
+      window.addEventListener(evt, triggerLoad, { once: true, passive: true });
+    });
+
+    // Fallback: If no interaction, load during idle period after window load
+    function scheduleIdleLoad() {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() {
+          setTimeout(triggerLoad, 2000);
+        }, { timeout: 3500 });
+      } else {
+        setTimeout(triggerLoad, 2500);
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      scheduleIdleLoad();
+    } else {
+      window.addEventListener('load', scheduleIdleLoad, { once: true });
     }
   }
 
@@ -221,7 +268,7 @@
       ...properties
     };
 
-    // 1. Dispatch to GA4
+    // 1. Dispatch to GA4 (queued in dataLayer until script is active)
     if (typeof window.gtag === 'function') {
       window.gtag('event', eventName, payload);
     }
@@ -255,16 +302,20 @@
     ai_bot_source: aiBotReferrer
   });
 
-  // 7. Auto-track High-Intent User Actions (Delegated Click Handlers)
+  // 7. Auto-track High-Intent User Actions (Delegated Click Handlers without Forced Reflow)
   document.addEventListener('click', function(e) {
     const target = e.target.closest('a, button, [data-track-event]');
     if (!target) return;
+
+    // Use textContent instead of innerText to eliminate forced reflows / layout thrashing
+    const elementText = (target.textContent || '').trim();
+    const lowerText = elementText.toLowerCase();
 
     // Explicit data-track-event
     const explicitEvent = target.getAttribute('data-track-event');
     if (explicitEvent) {
       trackEvent(explicitEvent, {
-        element_text: target.innerText.trim().substring(0, 50),
+        element_text: elementText.substring(0, 50),
         element_id: target.id || null
       });
       return;
@@ -274,28 +325,28 @@
     if (target.tagName === 'A' && target.href && !target.href.startsWith(window.location.origin) && !target.href.startsWith('/') && !target.href.startsWith('#')) {
       trackEvent('outbound_click', {
         destination_url: target.href,
-        link_text: target.innerText.trim().substring(0, 50)
+        link_text: elementText.substring(0, 50)
       });
       return;
     }
 
     // Resume Builder CTAs
-    if (target.innerText.toLowerCase().includes('build my resume') || target.innerText.toLowerCase().includes('create resume') || target.id === 'cta-build') {
-      trackEvent('funnel_start_resume', { cta_text: target.innerText.trim() });
+    if (lowerText.includes('build my resume') || lowerText.includes('create resume') || target.id === 'cta-build') {
+      trackEvent('funnel_start_resume', { cta_text: elementText });
     }
 
     // Download/Export PDF
-    if (target.innerText.toLowerCase().includes('download pdf') || target.id === 'downloadPdfBtn' || target.id === 'download-pdf') {
+    if (lowerText.includes('download pdf') || target.id === 'downloadPdfBtn' || target.id === 'download-pdf') {
       trackEvent('resume_export_pdf', { action: 'download' });
     }
 
     // ATS Scan Trigger
-    if (target.innerText.toLowerCase().includes('check ats score') || target.innerText.toLowerCase().includes('scan resume') || target.id === 'scanBtn') {
+    if (lowerText.includes('check ats score') || lowerText.includes('scan resume') || target.id === 'scanBtn') {
       trackEvent('ats_scan_initiated', { source: 'ats_tool' });
     }
 
     // Pricing / Upgrade CTA
-    if (target.innerText.toLowerCase().includes('upgrade') || target.innerText.toLowerCase().includes('get pro') || target.href && target.href.includes('pricing.html')) {
+    if (lowerText.includes('upgrade') || lowerText.includes('get pro') || (target.href && target.href.includes('pricing.html'))) {
       trackEvent('pricing_cta_click', { plan: target.getAttribute('data-plan') || 'pro' });
     }
   }, { passive: true });
