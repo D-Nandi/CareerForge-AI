@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgAi" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0e17"/>
+      <stop offset="100%" stop-color="#141726"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1e30"/>
+      <stop offset="100%" stop-color="#121422"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="purpleG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="820" height="440" rx="16" fill="url(#bgAi)" stroke="#262a40" stroke-width="1"/>
+
+  <!-- Header -->
+  <text x="36" y="42" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">The 2026 AI-to-AI Resume Screening Lifecycle</text>
+  <text x="36" y="66" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Navigating the dual gauntlet of modern algorithmic vector parsers and the 6-second recruiter screen</text>
+
+  <!-- Phase 1: Machine-Ready Formatting -->
+  <g transform="translate(36, 94)">
+    <rect width="232" height="250" rx="12" fill="url(#cardBg)" stroke="#2d334e"/>
+    <rect x="16" y="16" width="76" height="24" rx="12" fill="rgba(56,189,248,0.18)" stroke="#38bdf8" stroke-width="1"/>
+    <text x="54" y="32" fill="#7dd3fc" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">PHASE 1</text>
+    
+    <text x="16" y="70" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="700">Clean Machine Intake</text>
+    <text x="16" y="90" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="600">Zero Parsing Friction</text>
+
+    <line x1="16" y1="104" x2="216" y2="104" stroke="#252a42" stroke-width="1"/>
+
+    <text x="16" y="126" fill="#cbd5e1" font-family="sans-serif" font-size="11">
+      <tspan x="16" dy="0">• Standard UTF-8 Text Layer</tspan>
+      <tspan x="16" dy="20">• Single-Column Hierarchy</tspan>
+      <tspan x="16" dy="20">• No Floating Text Boxes</tspan>
+      <tspan x="16" dy="20">• Standard Section Labels</tspan>
+      <tspan x="16" dy="20">• Machine-Readable PDF</tspan>
+    </text>
+
+    <rect x="16" y="206" width="200" height="28" rx="6" fill="rgba(56,189,248,0.12)"/>
+    <text x="116" y="224" fill="#bae6fd" font-family="sans-serif" font-size="11" font-weight="600" text-anchor="middle">Passes Ingestion Gate</text>
+  </g>
+
+  <!-- Flow Arrow 1-2 -->
+  <path d="M 272 219 L 290 219" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="290,215 298,219 290,223" fill="#6366f1"/>
+
+  <!-- Phase 2: AI & Semantic Vectors -->
+  <g transform="translate(294, 94)">
+    <rect width="232" height="250" rx="12" fill="url(#cardBg)" stroke="rgba(99,102,241,0.5)"/>
+    <rect x="16" y="16" width="76" height="24" rx="12" fill="rgba(99,102,241,0.2)" stroke="#6366f1" stroke-width="1"/>
+    <text x="54" y="32" fill="#a5b4fc" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">PHASE 2</text>
+    
+    <text x="16" y="70" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="700">Semantic Matching</text>
+    <text x="16" y="90" fill="#818cf8" font-family="sans-serif" font-size="12" font-weight="600">Context &amp; Skill Vectors</text>
+
+    <line x1="16" y1="104" x2="216" y2="104" stroke="#252a42" stroke-width="1"/>
+
+    <text x="16" y="126" fill="#cbd5e1" font-family="sans-serif" font-size="11">
+      <tspan x="16" dy="0">• NLP Context Association</tspan>
+      <tspan x="16" dy="20">• Job Description Alignment</tspan>
+      <tspan x="16" dy="20">• Hard Skills in Action</tspan>
+      <tspan x="16" dy="20">• Zero Keyword Stuffing</tspan>
+      <tspan x="16" dy="20">• Google X-Y-Z Metrics</tspan>
+    </text>
+
+    <rect x="16" y="206" width="200" height="28" rx="6" fill="rgba(99,102,241,0.14)"/>
+    <text x="116" y="224" fill="#c7d2fe" font-family="sans-serif" font-size="11" font-weight="600" text-anchor="middle">Achieves 90+ Match Score</text>
+  </g>
+
+  <!-- Flow Arrow 2-3 -->
+  <path d="M 530 219 L 548 219" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="548,215 556,219 548,223" fill="#10b981"/>
+
+  <!-- Phase 3: 6-Second Human Scan -->
+  <g transform="translate(552, 94)">
+    <rect width="232" height="250" rx="12" fill="url(#cardBg)" stroke="rgba(16,185,129,0.5)"/>
+    <rect x="16" y="16" width="76" height="24" rx="12" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="1"/>
+    <text x="54" y="32" fill="#6ee7b7" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">PHASE 3</text>
+    
+    <text x="16" y="70" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="700">6-Second Human Look</text>
+    <text x="16" y="90" fill="#34d399" font-family="sans-serif" font-size="12" font-weight="600">Recruiter Decision Gate</text>
+
+    <line x1="16" y1="104" x2="216" y2="104" stroke="#252a42" stroke-width="1"/>
+
+    <text x="16" y="126" fill="#cbd5e1" font-family="sans-serif" font-size="11">
+      <tspan x="16" dy="0">• Top 1/3 Golden Hook</tspan>
+      <tspan x="16" dy="20">• Delta Outcomes ($ / % / hrs)</tspan>
+      <tspan x="16" dy="20">• Clear Career Trajectory</tspan>
+      <tspan x="16" dy="20">• Clean Typography &amp; Space</tspan>
+      <tspan x="16" dy="20">• Direct Portfolio / Repos</tspan>
+    </text>
+
+    <rect x="16" y="206" width="200" height="28" rx="6" fill="rgba(16,185,129,0.14)"/>
+    <text x="116" y="224" fill="#a7f3d0" font-family="sans-serif" font-size="11" font-weight="600" text-anchor="middle">Interview Shortlist Secured</text>
+  </g>
+
+  <!-- Bottom Pro Tip Banner -->
+  <g transform="translate(36, 362)">
+    <rect width="748" height="56" rx="10" fill="rgba(99,102,241,0.08)" stroke="#353a59"/>
+    <circle cx="28" cy="28" r="14" fill="#6366f1"/>
+    <text x="28" y="34" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">💡</text>
+    <text x="54" y="25" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="700">The 2026 Core Rule:</text>
+    <text x="175" y="25" fill="#cbd5e1" font-family="sans-serif" font-size="12">Format for machine parsers (UTF-8, single column), but write for human psychology.</text>
+    <text x="54" y="44" fill="#94a3b8" font-family="sans-serif" font-size="11">Lead each bullet with quantifiable business impact: what was the delta before and after your contribution?</text>
+  </g>
+</svg>
