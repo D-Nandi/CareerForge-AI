@@ -112,7 +112,8 @@ Present your roles starting with your current or most recent engagement. Frame e
 | *Managed social media accounts and posted updates.* | *Spearheaded multi-channel B2B content campaign across LinkedIn and YouTube, boosting inbound demo signups by 44% in Q3.* |
 | *Built backend database queries for internal dashboards.* | *Refactored PostgreSQL indexing layers, slashing query response times by 58% for 8,500 active dashboard users.* |
 
-Pair your drafted bullets with our [100+ High-Impact Action Verbs](/blog-post?slug=best-resume-power-verbs) to eliminate passive language, and run your draft through our [Free ATS Resume Checker](/ats-score-checker) to verify keyword parsing scores.
+Lead every bullet with strong, high-impact action verbs (such as *Spearheaded*, *Orchestrated*, *Engineered*, and *Accelerated*) to eliminate passive language, and run your draft through our [Free ATS Resume Checker](/ats-score-checker) to verify keyword parsing scores.
+
 
 ---
 

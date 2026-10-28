@@ -265,6 +265,125 @@
   border-top: 1px solid var(--border-2);
 }
 
+/* ── DRAWER THEME TOGGLE (MOBILE / HAMBURGER) ── */
+.tool-drawer-theme,
+.mobile-menu-theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.85rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.drawer-theme-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.drawer-theme-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.drawer-theme-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.drawer-theme-btn {
+  width: auto !important;
+  height: auto !important;
+  min-height: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 6px 16px 6px 12px !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-2) !important;
+  border-radius: 100px !important;
+  cursor: pointer;
+  color: var(--text) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  user-select: none;
+  white-space: nowrap !important;
+}
+
+.drawer-theme-btn:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.drawer-theme-icon {
+  position: relative !important;
+  width: 22px !important;
+  height: 22px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.drawer-theme-icon svg {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 16px !important;
+  height: 16px !important;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+}
+
+.drawer-theme-icon .icon-sun {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1) !important;
+}
+
+.drawer-theme-icon .icon-moon {
+  opacity: 0 !important;
+  transform: translate(-50%, -50%) rotate(-90deg) scale(0.5) !important;
+}
+
+[data-theme="dark"] .drawer-theme-icon .icon-sun {
+  opacity: 0 !important;
+  transform: translate(-50%, -50%) rotate(90deg) scale(0.5) !important;
+}
+
+[data-theme="dark"] .drawer-theme-icon .icon-moon {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1) !important;
+  color: #fbbf24 !important;
+}
+
+
+.drawer-theme-text-light {
+  display: inline;
+}
+
+.drawer-theme-text-dark {
+  display: none;
+}
+
+[data-theme="dark"] .drawer-theme-text-light {
+  display: none;
+}
+
+[data-theme="dark"] .drawer-theme-text-dark {
+  display: inline;
+}
+
 body.nav-drawer-open {
   overflow: hidden;
 }
@@ -303,23 +422,39 @@ body.nav-drawer-open::after {
   }
 }
 
-@media (max-width: 480px) {
-  .tool-header {
-    padding: 0.65rem 0.85rem;
+/* Hide top header theme toggle on mobile/tablet to avoid congestion */
+@media (max-width: 768px) {
+  .header-actions > .theme-toggle,
+  .nav-actions > .theme-toggle {
+    display: none !important;
   }
-  .header-actions .btn-primary {
-    padding: 0.5rem 0.75rem;
-    font-size: var(--text-xs);
-  }
-  .logo-text {
-    font-size: 1rem;
-  }
-  .theme-toggle {
-    width: 36px;
-    height: 36px;
-  }
-  .theme-toggle svg {
-    width: 16px;
-    height: 16px;
+  .header-actions {
+    gap: 8px;
   }
 }
+
+@media (max-width: 480px) {
+  .tool-header {
+    padding: 0.6rem 0.85rem;
+  }
+  .header-left {
+    gap: 8px;
+  }
+  .header-actions {
+    gap: 6px;
+  }
+  .header-actions .btn-primary {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+  .logo-text {
+    font-size: 1.05rem;
+  }
+  .hamburger {
+    width: 38px;
+    height: 38px;
+    margin-left: 0;
+  }
+}
+
