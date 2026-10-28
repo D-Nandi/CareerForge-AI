@@ -208,6 +208,7 @@ export default defineConfig({
         // Static Programmatic Blog Articles
         blogResumeInfo: resolve(__dirname, 'client/blog/what-information-should-you-put-on-a-resume.html'),
         blogWhatIsResume: resolve(__dirname, 'client/blog/what-is-a-resume-and-what-is-it-used-for.html'),
+        blogResumeLength: resolve(__dirname, 'client/blog/how-long-should-a-resume-be.html'),
         // Static Programmatic Resume Examples
         roleSoftwareEngineer: resolve(__dirname, 'client/resume-examples/software-engineer.html'),
         roleDataAnalyst: resolve(__dirname, 'client/resume-examples/data-analyst.html'),

@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgMat" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0d14"/>
+      <stop offset="100%" stop-color="#151826"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b1f32"/>
+      <stop offset="100%" stop-color="#121422"/>
+    </linearGradient>
+    <linearGradient id="purpleG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="amberG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="820" height="440" rx="16" fill="url(#bgMat)" stroke="#272b42" stroke-width="1"/>
+
+  <!-- Title & Subtitle -->
+  <text x="36" y="42" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">Resume Length Decision Matrix (2026 Guidelines)</text>
+  <text x="36" y="66" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Select the ideal page length based on your career trajectory and technical seniority</text>
+
+  <!-- Column 1: 1 Page -->
+  <g transform="translate(36, 92)">
+    <rect width="232" height="252" rx="12" fill="url(#cardGrad)" stroke="#2e3452"/>
+    <rect x="16" y="18" width="80" height="24" rx="12" fill="rgba(99,102,241,0.2)" stroke="#6366f1" stroke-width="1"/>
+    <text x="56" y="34" fill="#a5b4fc" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">1 PAGE</text>
+    
+    <text x="16" y="72" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="700">Entry &amp; Early Career</text>
+    <text x="16" y="92" fill="#818cf8" font-family="sans-serif" font-size="12" font-weight="600">0 – 5 Years Experience</text>
+
+    <line x1="16" y1="106" x2="216" y2="106" stroke="#252a42" stroke-width="1"/>
+
+    <text x="16" y="128" fill="#cbd5e1" font-family="sans-serif" font-size="11">
+      <tspan x="16" dy="0">• Recent College Graduates</tspan>
+      <tspan x="16" dy="20">• Bootcamp &amp; Career Starters</tspan>
+      <tspan x="16" dy="20">• Single-function Contributors</tspan>
+      <tspan x="16" dy="20">• Career Changers (Pivots)</tspan>
+    </text>
+
+    <rect x="16" y="208" width="200" height="28" rx="6" fill="rgba(99,102,241,0.12)"/>
+    <text x="116" y="226" fill="#c7d2fe" font-family="sans-serif" font-size="11" font-weight="600" text-anchor="middle">Gold Standard for Early Roles</text>
+  </g>
+
+  <!-- Column 2: 2 Pages -->
+  <g transform="translate(294, 92)">
+    <rect width="232" height="252" rx="12" fill="url(#cardGrad)" stroke="rgba(16,185,129,0.5)"/>
+    <rect x="16" y="18" width="84" height="24" rx="12" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="1"/>
+    <text x="58" y="34" fill="#6ee7b7" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">2 PAGES</text>
+    
+    <text x="16" y="72" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="700">Mid-Level &amp; Leaders</text>
+    <text x="16" y="92" fill="#34d399" font-family="sans-serif" font-size="12" font-weight="600">5 – 15+ Years Experience</text>
+
+    <line x1="16" y1="106" x2="216" y2="106" stroke="#252a42" stroke-width="1"/>
+
+    <text x="16" y="128" fill="#cbd5e1" font-family="sans-serif" font-size="11">
+      <tspan x="16" dy="0">• Senior Engineers &amp; Tech Leads</tspan>
+      <tspan x="16" dy="20">• Directors, VPs, Executives</tspan>
+      <tspan x="16" dy="20">• Extensive Project Portfolios</tspan>
+      <tspan x="16" dy="20">• Quantified Business ROI</tspan>
+    </text>
+
+    <rect x="16" y="208" width="200" height="28" rx="6" fill="rgba(16,185,129,0.14)"/>
+    <text x="116" y="226" fill="#a7f3d0" font-family="sans-serif" font-size="11" font-weight="600" text-anchor="middle">Standard for Seasoned Pros</text>
+  </g>
+
+  <!-- Column 3: 3+ Pages -->
+  <g transform="translate(552, 92)">
+    <rect width="232" height="252" rx="12" fill="url(#cardGrad)" stroke="#2e3452"/>
+    <rect x="16" y="18" width="86" height="24" rx="12" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" stroke-width="1"/>
+    <text x="59" y="34" fill="#fcd34d" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">3+ PAGES</text>
+    
+    <text x="16" y="72" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="700">Academic &amp; Medical CV</text>
+    <text x="16" y="92" fill="#fbbf24" font-family="sans-serif" font-size="12" font-weight="600">Specialized History Only</text>
+
+    <line x1="16" y1="106" x2="216" y2="106" stroke="#252a42" stroke-width="1"/>
+
+    <text x="16" y="128" fill="#cbd5e1" font-family="sans-serif" font-size="11">
+      <tspan x="16" dy="0">• PhDs &amp; Research Scientists</tspan>
+      <tspan x="16" dy="20">• Medical Doctors &amp; Surgeons</tspan>
+      <tspan x="16" dy="20">• Tenured Academic Faculty</tspan>
+      <tspan x="16" dy="20">• Federal Government Roles</tspan>
+    </text>
+
+    <rect x="16" y="208" width="200" height="28" rx="6" fill="rgba(245,158,11,0.12)"/>
+    <text x="116" y="226" fill="#fde68a" font-family="sans-serif" font-size="11" font-weight="600" text-anchor="middle">Curriculum Vitae (CV) Format</text>
+  </g>
+
+  <!-- Bottom ATS Reality Banner -->
+  <g transform="translate(36, 362)">
+    <rect width="748" height="56" rx="10" fill="rgba(99,102,241,0.08)" stroke="#393e63"/>
+    <circle cx="28" cy="28" r="14" fill="#6366f1"/>
+    <text x="28" y="34" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold" text-anchor="middle">✓</text>
+    <text x="54" y="25" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="700">ATS Parsing Truth:</text>
+    <text x="180" y="25" fill="#cbd5e1" font-family="sans-serif" font-size="12">Applicant Tracking Systems index text linearly and do not penalize two-page files.</text>
+    <text x="54" y="44" fill="#94a3b8" font-family="sans-serif" font-size="11">Recruiters spend 6–7 seconds on initial scan: prioritize impact density, clean headers, and quantified metrics.</text>
+  </g>
+</svg>
