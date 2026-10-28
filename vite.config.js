@@ -210,6 +210,9 @@ export default defineConfig({
         blogWhatIsResume: resolve(__dirname, 'client/blog/what-is-a-resume-and-what-is-it-used-for.html'),
         blogResumeLength: resolve(__dirname, 'client/blog/how-long-should-a-resume-be.html'),
         blogWriteResume2026: resolve(__dirname, 'client/blog/how-to-write-a-resume-for-2026.html'),
+        blogBestFormat: resolve(__dirname, 'client/blog/what-is-the-best-resume-format.html'),
+        blogWriteStepByStep: resolve(__dirname, 'client/blog/how-to-write-a-resume-step-by-step.html'),
+        blogResumeNoExp: resolve(__dirname, 'client/blog/how-to-write-a-resume-with-no-work-experience.html'),
         // Static Programmatic Resume Examples
         roleSoftwareEngineer: resolve(__dirname, 'client/resume-examples/software-engineer.html'),
         roleDataAnalyst: resolve(__dirname, 'client/resume-examples/data-analyst.html'),
