@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#141c2e"/>
+    </linearGradient>
+    <linearGradient id="verbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="taskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="resultGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <filter id="glowShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="860" height="480" rx="16" fill="url(#bgGrad2)"/>
+
+  <!-- Title -->
+  <text x="430" y="44" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" text-anchor="middle" letter-spacing="-0.5">The Anatomy of a High-Impact Resume Bullet</text>
+  <text x="430" y="70" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" text-anchor="middle">Transforming passive duty statements into quantified executive achievements</text>
+
+  <!-- 3 Pillars Formula Box -->
+  <g transform="translate(40, 96)">
+    <!-- Pillar 1: Action Verb -->
+    <g transform="translate(0, 0)" filter="url(#glowShadow)">
+      <rect width="240" height="130" rx="12" fill="#1e293b" stroke="#6366f1" stroke-width="1.5"/>
+      <rect x="16" y="16" width="32" height="32" rx="8" fill="url(#verbGrad)"/>
+      <text x="32" y="38" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="800" text-anchor="middle">1</text>
+      <text x="60" y="32" fill="#c7d2fe" font-family="sans-serif" font-size="11" font-weight="700">COMPONENT 1</text>
+      <text x="60" y="48" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="800">Power Action Verb</text>
+      <text x="16" y="80" fill="#94a3b8" font-family="sans-serif" font-size="11" line-height="1.4">Eliminate passive verbs ("assisted", "responsible for"). Use active ownership.</text>
+      <rect x="16" y="98" width="208" height="20" rx="4" fill="#312e81"/>
+      <text x="120" y="112" fill="#a5b4fc" font-family="sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">Spearheaded • Orchestrated • Engineered</text>
+    </g>
+
+    <!-- Plus 1 -->
+    <text x="260" y="72" fill="#6366f1" font-family="sans-serif" font-size="24" font-weight="900" text-anchor="middle">+</text>
+
+    <!-- Pillar 2: Task & Context -->
+    <g transform="translate(270, 0)" filter="url(#glowShadow)">
+      <rect width="240" height="130" rx="12" fill="#1e293b" stroke="#0284c7" stroke-width="1.5"/>
+      <rect x="16" y="16" width="32" height="32" rx="8" fill="url(#taskGrad)"/>
+      <text x="32" y="38" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="800" text-anchor="middle">2</text>
+      <text x="60" y="32" fill="#bae6fd" font-family="sans-serif" font-size="11" font-weight="700">COMPONENT 2</text>
+      <text x="60" y="48" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="800">Scope &amp; Technology</text>
+      <text x="16" y="80" fill="#94a3b8" font-family="sans-serif" font-size="11">The specific project, team size, tools, or architectural challenge tackled.</text>
+      <rect x="16" y="98" width="208" height="20" rx="4" fill="#0c4a6e"/>
+      <text x="120" y="112" fill="#7dd3fc" font-family="sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">PostgreSQL Migration • 12-Person Agile Pod</text>
+    </g>
+
+    <!-- Plus 2 -->
+    <text x="530" y="72" fill="#10b981" font-family="sans-serif" font-size="24" font-weight="900" text-anchor="middle">+</text>
+
+    <!-- Pillar 3: Quantifiable Result -->
+    <g transform="translate(540, 0)" filter="url(#glowShadow)">
+      <rect width="240" height="130" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+      <rect x="16" y="16" width="32" height="32" rx="8" fill="url(#resultGrad)"/>
+      <text x="32" y="38" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="800" text-anchor="middle">3</text>
+      <text x="60" y="32" fill="#a7f3d0" font-family="sans-serif" font-size="11" font-weight="700">COMPONENT 3</text>
+      <text x="60" y="48" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="800">Measurable Outcome</text>
+      <text x="16" y="80" fill="#94a3b8" font-family="sans-serif" font-size="11">Metrics ($, %, hours, retention) that prove tangible bottom-line value.</text>
+      <rect x="16" y="98" width="208" height="20" rx="4" fill="#064e3b"/>
+      <text x="120" y="112" fill="#6ee7b7" font-family="sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">Cut Latency 58% • +$120K ARR</text>
+    </g>
+  </g>
+
+  <!-- Real-World Transformation Case Study -->
+  <g transform="translate(40, 252)" filter="url(#glowShadow)">
+    <rect width="780" height="192" rx="12" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+
+    <!-- Weak Bullet Header -->
+    <rect x="20" y="18" width="80" height="22" rx="4" fill="#7f1d1d"/>
+    <text x="60" y="33" fill="#fca5a5" font-family="sans-serif" font-size="10.5" font-weight="800" text-anchor="middle">WEAK DUTY</text>
+    <text x="114" y="34" fill="#ef4444" font-family="sans-serif" font-size="13.5" font-weight="600">❌ "Responsible for managing social media accounts and doing content updates."</text>
+    <text x="24" y="62" fill="#9ca3af" font-family="sans-serif" font-size="11">Critique: Zero ownership verbs, no metrics, passive phrasing that sounds like a generic job description.</text>
+
+    <!-- Divider -->
+    <line x1="20" y1="78" x2="760" y2="78" stroke="#1f2937" stroke-width="1.5"/>
+
+    <!-- Strong Bullet Header -->
+    <rect x="20" y="96" width="112" height="22" rx="4" fill="#064e3b"/>
+    <text x="76" y="111" fill="#6ee7b7" font-family="sans-serif" font-size="10.5" font-weight="800" text-anchor="middle">ATS OPTIMIZED</text>
+    <text x="144" y="112" fill="#34d399" font-family="sans-serif" font-size="13.5" font-weight="700">✓ "Spearheaded B2B LinkedIn &amp; YouTube video campaign across 3 channels,</text>
+    <text x="144" y="132" fill="#34d399" font-family="sans-serif" font-size="13.5" font-weight="700">    boosting organic inbound demo signups by 44% ($180K pipeline) in Q3."</text>
+
+    <!-- Metric Badges below -->
+    <rect x="144" y="148" width="130" height="22" rx="11" fill="#312e81"/>
+    <text x="209" y="163" fill="#c7d2fe" font-family="sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">Action: Spearheaded</text>
+
+    <rect x="284" y="148" width="140" height="22" rx="11" fill="#0c4a6e"/>
+    <text x="354" y="163" fill="#bae6fd" font-family="sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">Scope: 3 B2B Channels</text>
+
+    <rect x="434" y="148" width="150" height="22" rx="11" fill="#064e3b"/>
+    <text x="509" y="163" fill="#6ee7b7" font-family="sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">Result: +44% Inbound Demos</text>
+  </g>
+</svg>

@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="primaryPill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="greenPill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="amberPill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="860" height="480" rx="16" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="430" y="44" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" text-anchor="middle" letter-spacing="-0.5">Resume Format Strategic Comparison</text>
+  <text x="430" y="70" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" text-anchor="middle">Selecting the ideal framework based on career trajectory, ATS parsing, and seniority</text>
+
+  <!-- Format 1: Reverse-Chronological -->
+  <g transform="translate(36, 96)" filter="url(#cardShadow)">
+    <rect width="244" height="348" rx="12" fill="url(#cardGrad1)" stroke="#334155" stroke-width="1.5"/>
+    <rect x="18" y="18" width="130" height="26" rx="13" fill="url(#greenPill)"/>
+    <text x="83" y="35" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">ATS STANDARD</text>
+    
+    <text x="18" y="72" fill="#f8fafc" font-family="sans-serif" font-size="17" font-weight="800">Reverse-Chrono</text>
+    <text x="18" y="94" fill="#cbd5e1" font-family="sans-serif" font-size="12" font-weight="500">Timeline-First Structure</text>
+
+    <!-- Mini Wireframe -->
+    <rect x="18" y="112" width="208" height="110" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="28" y="122" width="90" height="6" rx="3" fill="#6366f1"/>
+    <rect x="28" y="134" width="188" height="4" rx="2" fill="#334155"/>
+    <rect x="28" y="148" width="110" height="6" rx="3" fill="#10b981"/>
+    <rect x="28" y="160" width="188" height="4" rx="2" fill="#475569"/>
+    <rect x="28" y="168" width="160" height="4" rx="2" fill="#475569"/>
+    <rect x="28" y="182" width="110" height="6" rx="3" fill="#10b981"/>
+    <rect x="28" y="194" width="188" height="4" rx="2" fill="#475569"/>
+    <rect x="28" y="202" width="140" height="4" rx="2" fill="#475569"/>
+
+    <!-- Best For -->
+    <text x="18" y="246" fill="#64748b" font-family="sans-serif" font-size="11" font-weight="700">OPTIMAL CANDIDATE:</text>
+    <text x="18" y="266" fill="#e2e8f0" font-family="sans-serif" font-size="12">• Consistent employment</text>
+    <text x="18" y="286" fill="#e2e8f0" font-family="sans-serif" font-size="12">• Upward career growth</text>
+    <text x="18" y="306" fill="#e2e8f0" font-family="sans-serif" font-size="12">• Direct industry alignment</text>
+    <rect x="18" y="322" width="208" height="18" rx="4" fill="#064e3b"/>
+    <text x="122" y="335" fill="#34d399" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">99% ATS Pass Compatibility</text>
+  </g>
+
+  <!-- Format 2: Hybrid / Combination -->
+  <g transform="translate(308, 96)" filter="url(#cardShadow)">
+    <rect width="244" height="348" rx="12" fill="url(#cardGrad1)" stroke="#6366f1" stroke-width="2"/>
+    <rect x="18" y="18" width="144" height="26" rx="13" fill="url(#primaryPill)"/>
+    <text x="90" y="35" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">MODERN FAVORED</text>
+    
+    <text x="18" y="72" fill="#f8fafc" font-family="sans-serif" font-size="17" font-weight="800">Hybrid / Combo</text>
+    <text x="18" y="94" fill="#c7d2fe" font-family="sans-serif" font-size="12" font-weight="500">Skills + Timeline Blend</text>
+
+    <!-- Mini Wireframe -->
+    <rect x="18" y="112" width="208" height="110" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="28" y="122" width="90" height="6" rx="3" fill="#6366f1"/>
+    <rect x="28" y="134" width="188" height="4" rx="2" fill="#334155"/>
+    <rect x="28" y="146" width="130" height="6" rx="3" fill="#818cf8"/>
+    <!-- Skill Chips -->
+    <rect x="28" y="158" width="56" height="12" rx="3" fill="#312e81"/>
+    <rect x="90" y="158" width="60" height="12" rx="3" fill="#312e81"/>
+    <rect x="156" y="158" width="50" height="12" rx="3" fill="#312e81"/>
+    <rect x="28" y="178" width="100" height="6" rx="3" fill="#6366f1"/>
+    <rect x="28" y="190" width="188" height="4" rx="2" fill="#475569"/>
+    <rect x="28" y="198" width="150" height="4" rx="2" fill="#475569"/>
+
+    <!-- Best For -->
+    <text x="18" y="246" fill="#818cf8" font-family="sans-serif" font-size="11" font-weight="700">OPTIMAL CANDIDATE:</text>
+    <text x="18" y="266" fill="#e2e8f0" font-family="sans-serif" font-size="12">• Career transitioners</text>
+    <text x="18" y="286" fill="#e2e8f0" font-family="sans-serif" font-size="12">• Transferable skills showcase</text>
+    <text x="18" y="306" fill="#e2e8f0" font-family="sans-serif" font-size="12">• Senior leaders &amp; pivoting pros</text>
+    <rect x="18" y="322" width="208" height="18" rx="4" fill="#312e81"/>
+    <text x="122" y="335" fill="#a5b4fc" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">95% ATS Pass Compatibility</text>
+  </g>
+
+  <!-- Format 3: Functional / Skills-Based -->
+  <g transform="translate(580, 96)" filter="url(#cardShadow)">
+    <rect width="244" height="348" rx="12" fill="url(#cardGrad1)" stroke="#334155" stroke-width="1.5"/>
+    <rect x="18" y="18" width="124" height="26" rx="13" fill="url(#amberPill)"/>
+    <text x="80" y="35" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">USE CAUTION</text>
+    
+    <text x="18" y="72" fill="#f8fafc" font-family="sans-serif" font-size="17" font-weight="800">Functional Only</text>
+    <text x="18" y="94" fill="#fed7aa" font-family="sans-serif" font-size="12" font-weight="500">Skills Without Context</text>
+
+    <!-- Mini Wireframe -->
+    <rect x="18" y="112" width="208" height="110" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="28" y="122" width="90" height="6" rx="3" fill="#f59e0b"/>
+    <rect x="28" y="134" width="188" height="4" rx="2" fill="#334155"/>
+    <rect x="28" y="148" width="150" height="6" rx="3" fill="#f59e0b"/>
+    <rect x="28" y="160" width="188" height="4" rx="2" fill="#475569"/>
+    <rect x="28" y="172" width="150" height="6" rx="3" fill="#f59e0b"/>
+    <rect x="28" y="184" width="188" height="4" rx="2" fill="#475569"/>
+    <rect x="28" y="196" width="110" height="4" rx="2" fill="#334155"/>
+
+    <!-- Best For -->
+    <text x="18" y="246" fill="#d97706" font-family="sans-serif" font-size="11" font-weight="700">OPTIMAL CANDIDATE:</text>
+    <text x="18" y="266" fill="#e2e8f0" font-family="sans-serif" font-size="12">• Massive employment gaps</text>
+    <text x="18" y="286" fill="#e2e8f0" font-family="sans-serif" font-size="12">• Extreme career changes</text>
+    <text x="18" y="306" fill="#fca5a5" font-family="sans-serif" font-size="12">⚠️ Flagged by corporate ATS</text>
+    <rect x="18" y="322" width="208" height="18" rx="4" fill="#7c2d12"/>
+    <text x="122" y="335" fill="#fdba74" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">55% ATS Pass Compatibility</text>
+  </g>
+</svg>

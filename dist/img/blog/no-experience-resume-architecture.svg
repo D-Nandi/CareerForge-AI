@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1e38"/>
+    </linearGradient>
+    <linearGradient id="secHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="860" height="480" rx="16" fill="url(#bgGrad3)"/>
+
+  <!-- Title -->
+  <text x="430" y="42" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" text-anchor="middle" letter-spacing="-0.5">Resume Stacking Architecture: No Prior Experience</text>
+  <text x="430" y="68" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" text-anchor="middle">How freshers, college students, and career changers structure a 100% ATS-compliant document</text>
+
+  <!-- Left: Blueprint Stack (5 Blocks) -->
+  <g transform="translate(40, 94)">
+    <!-- Section 1 -->
+    <g transform="translate(0, 0)" filter="url(#boxShadow)">
+      <rect width="360" height="54" rx="8" fill="#1e293b" stroke="#6366f1" stroke-width="1.5"/>
+      <rect x="12" y="12" width="30" height="30" rx="6" fill="#6366f1"/>
+      <text x="27" y="32" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="800" text-anchor="middle">1</text>
+      <text x="52" y="27" fill="#ffffff" font-family="sans-serif" font-size="13.5" font-weight="700">Contact Header + Portfolio Links</text>
+      <text x="52" y="43" fill="#94a3b8" font-family="sans-serif" font-size="11">Clean plain text, GitHub, LinkedIn &amp; Digital Portfolio URL</text>
+    </g>
+
+    <!-- Section 2 -->
+    <g transform="translate(0, 66)" filter="url(#boxShadow)">
+      <rect width="360" height="54" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+      <rect x="12" y="12" width="30" height="30" rx="6" fill="#3b82f6"/>
+      <text x="27" y="32" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="800" text-anchor="middle">2</text>
+      <text x="52" y="27" fill="#ffffff" font-family="sans-serif" font-size="13.5" font-weight="700">Education &amp; Relevant Coursework</text>
+      <text x="52" y="43" fill="#94a3b8" font-family="sans-serif" font-size="11">Degree, GPA (if 3.5+), Honors, Relevant target modules</text>
+    </g>
+
+    <!-- Section 3 -->
+    <g transform="translate(0, 132)" filter="url(#boxShadow)">
+      <rect width="360" height="64" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+      <rect x="12" y="16" width="30" height="32" rx="6" fill="#10b981"/>
+      <text x="27" y="37" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="800" text-anchor="middle">3</text>
+      <text x="52" y="28" fill="#34d399" font-family="sans-serif" font-size="14" font-weight="800">Academic &amp; Independent Projects ★</text>
+      <text x="52" y="44" fill="#cbd5e1" font-family="sans-serif" font-size="11.5" font-weight="600">Primary Core Anchor: Capstone, Client apps, Open Source</text>
+      <text x="52" y="58" fill="#94a3b8" font-family="sans-serif" font-size="10.5">Bullet points with quantifiable metrics and tech stack</text>
+    </g>
+
+    <!-- Section 4 -->
+    <g transform="translate(0, 208)" filter="url(#boxShadow)">
+      <rect width="360" height="54" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+      <rect x="12" y="12" width="30" height="30" rx="6" fill="#06b6d4"/>
+      <text x="27" y="32" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="800" text-anchor="middle">4</text>
+      <text x="52" y="27" fill="#ffffff" font-family="sans-serif" font-size="13.5" font-weight="700">Categorized Technical &amp; Soft Skills</text>
+      <text x="52" y="43" fill="#94a3b8" font-family="sans-serif" font-size="11">Programming, frameworks, CRM/tools, transferable soft skills</text>
+    </g>
+
+    <!-- Section 5 -->
+    <g transform="translate(0, 274)" filter="url(#boxShadow)">
+      <rect width="360" height="54" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+      <rect x="12" y="12" width="30" height="30" rx="6" fill="#8b5cf6"/>
+      <text x="27" y="32" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="800" text-anchor="middle">5</text>
+      <text x="52" y="27" fill="#ffffff" font-family="sans-serif" font-size="13.5" font-weight="700">Leadership, Volunteering &amp; Activities</text>
+      <text x="52" y="43" fill="#94a3b8" font-family="sans-serif" font-size="11">Proves soft skills, teamwork, initiative, and responsibility</text>
+    </g>
+  </g>
+
+  <!-- Right: 3 Golden Rules For Candidates with No Experience -->
+  <g transform="translate(440, 94)">
+    <rect width="380" height="328" rx="12" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+    
+    <text x="24" y="36" fill="#f8fafc" font-family="sans-serif" font-size="16" font-weight="800">3 Strategy Rules That Get Interviews</text>
+    <line x1="24" y1="50" x2="356" y2="50" stroke="#1f2937" stroke-width="1.5"/>
+
+    <!-- Rule 1 -->
+    <g transform="translate(24, 66)">
+      <circle cx="12" cy="12" r="12" fill="#312e81"/>
+      <text x="12" y="16" fill="#a5b4fc" font-family="sans-serif" font-size="11" font-weight="800" text-anchor="middle">A</text>
+      <text x="34" y="12" fill="#c7d2fe" font-family="sans-serif" font-size="13" font-weight="700">Treat Projects Like Full-Time Jobs</text>
+      <text x="34" y="30" fill="#94a3b8" font-family="sans-serif" font-size="11.5" line-height="1.5">Write detailed Google X-Y-Z bullets for capstone work. Highlight the problem, your solution, and metrics.</text>
+    </g>
+
+    <!-- Rule 2 -->
+    <g transform="translate(24, 150)">
+      <circle cx="12" cy="12" r="12" fill="#064e3b"/>
+      <text x="12" y="16" fill="#6ee7b7" font-family="sans-serif" font-size="11" font-weight="800" text-anchor="middle">B</text>
+      <text x="34" y="12" fill="#a7f3d0" font-family="sans-serif" font-size="13" font-weight="700">Digital Proof Beats Plain Words</text>
+      <text x="34" y="30" fill="#94a3b8" font-family="sans-serif" font-size="11.5" line-height="1.5">A link to a live deployed app, GitHub repo, or design case study gives recruiters instant tangible evidence.</text>
+    </g>
+
+    <!-- Rule 3 -->
+    <g transform="translate(24, 234)">
+      <circle cx="12" cy="12" r="12" fill="#083344"/>
+      <text x="12" y="16" fill="#67e8f9" font-family="sans-serif" font-size="11" font-weight="800" text-anchor="middle">C</text>
+      <text x="34" y="12" fill="#a5f3fc" font-family="sans-serif" font-size="13" font-weight="700">Strict Single-Page Discipline</text>
+      <text x="34" y="30" fill="#94a3b8" font-family="sans-serif" font-size="11.5" line-height="1.5">Never exceed 1 page. High information density proves to hiring managers you can prioritize and edit.</text>
+    </g>
+  </g>
+</svg>
