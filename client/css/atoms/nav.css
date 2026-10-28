@@ -458,3 +458,23 @@ body.nav-drawer-open::after {
   }
 }
 
+@media (max-width: 380px) {
+  .tool-header {
+    padding: 0.5rem 0.65rem;
+  }
+  .header-actions .btn-primary {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.74rem;
+  }
+  .logo-text {
+    font-size: 0.96rem;
+  }
+  .logo-mark {
+    font-size: 18px;
+  }
+  .hamburger {
+    width: 36px;
+    height: 36px;
+  }
+}
+

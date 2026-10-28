@@ -321,6 +321,32 @@
       flex-wrap: wrap;
       gap: 18px;
     }
+
+    @media (max-width: 768px) {
+      .article-wrap {
+        padding: 0 16px;
+        margin: 24px auto 60px;
+      }
+      .article-h1 {
+        font-size: clamp(1.75rem, 6vw, 2.3rem);
+      }
+      .article-sub {
+        font-size: 1rem;
+      }
+      .article-body table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .article-body td,
+      .article-body th {
+        min-width: 130px;
+      }
+      .in-article-cta {
+        padding: 20px 16px;
+      }
+    }
   </style>
   <!-- Favicon (CareerNest) -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32-B4yKA15a.png?v=3" />
@@ -330,7 +356,7 @@
   <link rel="shortcut icon" href="/assets/favicon-0YVqpaxf.png?v=3" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/favicon-0YVqpaxf.png?v=3" />
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/tools-style-BN5DIiS7.css">
+  <link rel="stylesheet" crossorigin href="/assets/tools-style-BwgURR6M.css">
 </head>
 
 <body>

@@ -480,6 +480,32 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
       margin-top: 10px;
       line-height: 1.5;
     }
+
+    @media (max-width: 768px) {
+      .article-wrap {
+        padding: 0 16px;
+        margin: 24px auto 60px;
+      }
+      .article-h1 {
+        font-size: clamp(1.75rem, 6vw, 2.3rem);
+      }
+      .article-sub {
+        font-size: 1rem;
+      }
+      .article-body table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .article-body td,
+      .article-body th {
+        min-width: 130px;
+      }
+      .in-article-cta {
+        padding: 20px 16px;
+      }
+    }
   </style>
 
   <!-- Favicon -->
