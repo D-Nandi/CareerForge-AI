@@ -55,7 +55,7 @@
   <link rel="icon" href="/assets/favicon-DnxgTwMm.ico?v=3" sizes="32x32" />
   <link rel="shortcut icon" href="/assets/favicon-0YVqpaxf.png?v=3" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/favicon-0YVqpaxf.png?v=3" />
-  <!-- Design System Master File -->
+  <!-- Design System Master File -->
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -354,16 +354,18 @@
 
   <!-- Header -->
   <header class="tool-header" role="banner">
-    <a href="/" class="nav-logo" aria-label="CareerNest Homepage">
-      <span class="logo-mark">C</span>
-      <span class="logo-text">areerNest</span>
-    </a>
-
-    <nav class="tool-breadcrumbs" aria-label="Breadcrumb">
-      <a href="/" class="crumb-link">Home</a>
-      <span class="crumb-sep">/</span>
-      <span class="crumb-current">Salary Calculator</span>
-    </nav>
+    <div class="header-left">
+      <a href="/" class="nav-logo" aria-label="CareerNest Homepage">
+        <span class="logo-mark">C</span><span class="logo-text">areerNest</span>
+      </a>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">Salary Calculator</li>
+        </ol>
+      </nav>
+    </div>
 
     <div class="header-actions">
       <a href="/ats-score-checker" class="btn btn-ghost btn-sm">ATS Scanner</a>

@@ -7,80 +7,144 @@
 # ── 1. Default Rules for All Web Crawlers ──
 User-agent: *
 Allow: /
-# Protect private user authentication & internal application state
+# Protect private user authentication, app state, & admin utilities
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login
 Disallow: /login.html
+Disallow: /signup
 Disallow: /signup.html
+Disallow: /preview
+Disallow: /preview.html
+Disallow: /growth-hub
 Disallow: /growth-hub.html
+Disallow: /ad-landing
 Disallow: /ad-landing.html
+Disallow: /backlink-tracker
+Disallow: /backlink-tracker.html
+Disallow: /r
 Disallow: /r.html
+Disallow: /blog-post
+Disallow: /blog-post.html
+Disallow: /resume-example$
+Disallow: /resume-example.html
 Disallow: /api/
 
 # ── 2. OpenAI / ChatGPT (Training, Browsing & SearchGPT) ──
 User-agent: GPTBot
 Allow: /
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login
 Disallow: /login.html
+Disallow: /signup
 Disallow: /signup.html
+Disallow: /preview
+Disallow: /preview.html
 Disallow: /api/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login
 Disallow: /login.html
+Disallow: /signup
 Disallow: /signup.html
+Disallow: /preview
+Disallow: /preview.html
 Disallow: /api/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login
 Disallow: /login.html
+Disallow: /signup
 Disallow: /signup.html
+Disallow: /preview
+Disallow: /preview.html
 Disallow: /api/
 
 # ── 3. Google (Googlebot & Gemini / AI Overviews) ──
 User-agent: Googlebot
 Allow: /
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login
 Disallow: /login.html
+Disallow: /signup
 Disallow: /signup.html
+Disallow: /preview
+Disallow: /preview.html
+Disallow: /growth-hub
+Disallow: /ad-landing
+Disallow: /backlink-tracker
+Disallow: /blog-post
+Disallow: /resume-example$
 Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login
 Disallow: /login.html
+Disallow: /signup
 Disallow: /signup.html
+Disallow: /preview
+Disallow: /preview.html
 Disallow: /api/
 
 # ── 4. Anthropic / Claude (ClaudeBot, anthropic-ai, Claude-Web) ──
 User-agent: ClaudeBot
 Allow: /
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login
 Disallow: /login.html
+Disallow: /signup
 Disallow: /signup.html
+Disallow: /preview
+Disallow: /preview.html
 Disallow: /api/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login
 Disallow: /login.html
+Disallow: /signup
 Disallow: /signup.html
+Disallow: /preview
+Disallow: /preview.html
 Disallow: /api/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login
 Disallow: /login.html
+Disallow: /signup
 Disallow: /signup.html
+Disallow: /preview
+Disallow: /preview.html
 Disallow: /api/
 
 # ── 5. Perplexity AI (PerplexityBot) ──
 User-agent: PerplexityBot
 Allow: /
+Disallow: /dashboard
 Disallow: /dashboard.html
+Disallow: /login
 Disallow: /login.html
+Disallow: /signup
 Disallow: /signup.html
+Disallow: /preview
+Disallow: /preview.html
 Disallow: /api/
 
 # ── 6. Apple Intelligence & Siri Knowledge ──

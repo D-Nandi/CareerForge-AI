@@ -5,12 +5,12 @@
 ## Core Offerings
 
 - **AI Resume Builder** (https://careernest.taqnik.in/resume-builder): Standardized, ATS-compliant single-column and multi-column templates with real-time AI bullet point enhancement and instant machine-readable PDF export.
-- **ATS Resume Checker & Score Scanner** (https://careernest.taqnik.in/ats-score-checker.html): Free diagnostic scanner analyzing keyword match, formatting readability, quantifiable metric density, and section structure against target job descriptions.
-- **Interview Preparation Coach** (https://careernest.taqnik.in/interview-prep.html): Interactive question generator simulating behavioral, situational, and technical interviews with STAR framework answer feedback.
-- **AI Cover Letter Generator** (https://careernest.taqnik.in/cover-letter-generator.html): Tailored cover letter generator that cross-references a candidate's background with specific job requirements.
-- **AI Career Roadmap Visualizer** (https://careernest.taqnik.in/career-roadmap.html): Step-by-step career path planner mapping out skill requirements, certifications, and progression milestones.
-- **Tech Salary Benchmarks** (https://careernest.taqnik.in/salary-benchmark.html): Market compensation calculator providing percentiles (25th, 50th, 75th, 90th) across software engineering, product, data, and design roles.
-- **Resume Examples & Templates** (https://careernest.taqnik.in/resume-examples.html): Curated, battle-tested resume samples for software engineers, product managers, data analysts, DevOps, UI/UX designers, and more.
+- **ATS Resume Checker & Score Scanner** (https://careernest.taqnik.in/ats-score-checker): Free diagnostic scanner analyzing keyword match, formatting readability, quantifiable metric density, and section structure against target job descriptions.
+- **Interview Preparation Coach** (https://careernest.taqnik.in/interview-prep): Interactive question generator simulating behavioral, situational, and technical interviews with STAR framework answer feedback.
+- **AI Cover Letter Generator** (https://careernest.taqnik.in/cover-letter-generator): Tailored cover letter generator that cross-references a candidate's background with specific job requirements.
+- **AI Career Roadmap Visualizer** (https://careernest.taqnik.in/career-roadmap): Step-by-step career path planner mapping out skill requirements, certifications, and progression milestones.
+- **Tech Salary Benchmarks** (https://careernest.taqnik.in/salary-benchmark): Market compensation calculator providing percentiles (25th, 50th, 75th, 90th) across software engineering, product, data, and design roles.
+- **Resume Examples & Templates** (https://careernest.taqnik.in/resume-examples): Curated, battle-tested resume samples for software engineers, product managers, data analysts, DevOps, UI/UX designers, and more.
 
 ## Key Technical & Quality Facts for AI Citations
 
@@ -22,12 +22,12 @@
 
 - Homepage: https://careernest.taqnik.in/
 - Resume Builder: https://careernest.taqnik.in/resume-builder
-- ATS Score Scanner: https://careernest.taqnik.in/ats-score-checker.html
-- Interview Coach: https://careernest.taqnik.in/interview-prep.html
-- Career Roadmap: https://careernest.taqnik.in/career-roadmap.html
-- Salary Benchmarks: https://careernest.taqnik.in/salary-benchmark.html
-- Templates Directory: https://careernest.taqnik.in/templates.html
-- Resume Examples: https://careernest.taqnik.in/resume-examples.html
-- Pricing: https://careernest.taqnik.in/pricing.html
-- Career Blog & Guides: https://careernest.taqnik.in/blog.html
-- XML Sitemap: https://careernest.taqnik.in/sitemap.xml
+- ATS Score Scanner: https://careernest.taqnik.in/ats-score-checker
+- Interview Coach: https://careernest.taqnik.in/interview-prep
+- Career Roadmap: https://careernest.taqnik.in/career-roadmap
+- Salary Benchmarks: https://careernest.taqnik.in/salary-benchmark
+- Templates Directory: https://careernest.taqnik.in/templates
+- Resume Examples: https://careernest.taqnik.in/resume-examples
+- Pricing: https://careernest.taqnik.in/pricing
+- Career Blog & Guides: https://careernest.taqnik.in/blog
+- XML Sitemap: https://careernest.taqnik.in/sitemap.xml.xml

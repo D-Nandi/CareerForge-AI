@@ -535,7 +535,7 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
           <li aria-hidden="true">/</li>
           <li><a href="/blog">Blog</a></li>
           <li aria-hidden="true">/</li>
-          <li aria-current="page">${post.category || 'Article'}</li>
+          <li aria-current="page">${post.title.replace(/\s*\|.*$/, '').trim()}</li>
         </ol>
       </nav>
     </div>
@@ -907,7 +907,7 @@ for (const [slug, role] of Object.entries(ROLES_DATABASE)) {
         <ol>
           <li><a href="/">Home</a></li>
           <li aria-hidden="true">/</li>
-          <li><a href="/resume-examples">Examples</a></li>
+          <li><a href="/resume-examples">Resume Examples</a></li>
           <li aria-hidden="true">/</li>
           <li aria-current="page">${role.title}</li>
         </ol>

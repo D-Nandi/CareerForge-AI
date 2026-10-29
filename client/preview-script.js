@@ -3129,3 +3129,37 @@ initCanvaLiveEditor();
 initSkillEnhancer();
 renderAll();
 renderSegmentManager();
+
+
+// ── URL PARAMETERS & TEMPLATE INITIALIZATION ──
+(function initTemplateFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const tpl = params.get('tpl');
+  const from = params.get('from');
+
+  const validTemplates = ['classic', 'modern', 'minimal'];
+
+  if (tpl && validTemplates.includes(tpl.toLowerCase())) {
+    switchTemplate(tpl.toLowerCase());
+    localStorage.setItem('careernest_selected_template', tpl.toLowerCase());
+  } else {
+    const saved = localStorage.getItem('careernest_selected_template');
+    if (saved && validTemplates.includes(saved.toLowerCase())) {
+      switchTemplate(saved.toLowerCase());
+    }
+  }
+
+  // Contextual breadcrumb when navigating from templates
+  if (from === 'templates' || document.referrer.includes('/templates')) {
+    const bc = document.querySelector('.breadcrumbs ol');
+    if (bc) {
+      bc.innerHTML = `
+        <li><a href="/">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/templates">Resume Templates</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page">Live Preview</li>
+      `;
+    }
+  }
+})();

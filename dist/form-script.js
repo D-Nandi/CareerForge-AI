@@ -1102,3 +1102,43 @@ window.removeTag = removeTag;
 window.syncEntry = syncEntry;
 window.saveStep = saveStep;
 window.persistState = persistState;
+
+
+// ── TEMPLATE PARAMETER & CONTEXTUAL BREADCRUMB ──
+(function initBuilderTemplateContext() {
+  const params = new URLSearchParams(window.location.search);
+  const tpl = params.get('template') || params.get('tpl');
+  const from = params.get('from');
+
+  const validTemplates = ['classic', 'modern', 'minimal'];
+
+  if (tpl && validTemplates.includes(tpl.toLowerCase())) {
+    localStorage.setItem('careernest_selected_template', tpl.toLowerCase());
+  }
+
+  // If arrived with template selection or from templates gallery
+  if (tpl || from === 'templates' || document.referrer.includes('/templates')) {
+    const bc = document.querySelector('.breadcrumbs ol');
+    if (bc) {
+      bc.innerHTML = `
+        <li><a href="/">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/templates">Resume Templates</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page">Resume Builder</li>
+      `;
+    }
+
+    const headerLeft = document.querySelector('.form-header .header-left');
+    if (headerLeft && !document.getElementById('btnChangeTemplateNav')) {
+      const changeBtn = document.createElement('a');
+      changeBtn.id = 'btnChangeTemplateNav';
+      changeBtn.href = '/templates';
+      changeBtn.className = 'btn-ghost btn-xs';
+      changeBtn.style.cssText = 'margin-left: 10px; font-size: 0.8rem; text-decoration: none; padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-muted); display: inline-flex; align-items: center; gap: 4px;';
+      changeBtn.innerHTML = '← Change Template';
+      changeBtn.title = 'Return to templates gallery to choose a different design';
+      headerLeft.appendChild(changeBtn);
+    }
+  }
+})();

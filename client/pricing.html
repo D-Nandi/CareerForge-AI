@@ -110,16 +110,18 @@
 
   <!-- Header -->
   <header class="tool-header" role="banner">
-    <a href="/" class="nav-logo" aria-label="CareerNest Homepage">
-      <span class="logo-mark">C</span>
-      <span class="logo-text">areerNest</span>
-    </a>
-
-    <nav class="tool-breadcrumbs" aria-label="Breadcrumb">
-      <a href="/" class="crumb-link">Home</a>
-      <span class="crumb-sep">/</span>
-      <span class="crumb-current">Pricing</span>
-    </nav>
+    <div class="header-left">
+      <a href="/" class="nav-logo" aria-label="CareerNest Homepage">
+        <span class="logo-mark">C</span><span class="logo-text">areerNest</span>
+      </a>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">Pricing</li>
+        </ol>
+      </nav>
+    </div>
 
     <div class="header-actions">
       <a href="/ats-score-checker" class="btn btn-ghost btn-sm">ATS Scanner</a>
@@ -685,9 +687,9 @@
         Please sign in or create your free account before completing your plan upgrade.
       </p>
       <div class="modal-actions" style="flex-direction: column;">
-        <a href="login.html?redirect=pricing.html" class="btn btn-primary"
+        <a href="/login?redirect=/pricing" class="btn btn-primary"
           style="width: 100%; justify-content: center;">Sign In to CareerNest</a>
-        <a href="signup.html?redirect=pricing.html" class="btn btn-outline"
+        <a href="/signup?redirect=/pricing" class="btn btn-outline"
           style="width: 100%; justify-content: center;">Create Account</a>
       </div>
     </div>
