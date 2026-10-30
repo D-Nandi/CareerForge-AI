@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-10-29",
+  "lastUpdated": "2026-10-30",
   "publishedSlugs": [
     "what-information-should-you-put-on-a-resume",
     "what-is-a-resume-and-what-is-it-used-for",
@@ -8,7 +8,8 @@
     "how-to-write-a-resume-for-2026",
     "what-is-the-best-resume-format",
     "how-to-write-a-resume-step-by-step",
-    "how-to-write-a-resume-with-no-work-experience"
+    "how-to-write-a-resume-with-no-work-experience",
+    "how-to-write-resume-bullet-points-that-show-impact"
   ],
   "productPages": [
     {
@@ -2793,6 +2794,7 @@
       "title": "What to Put on a Resume in 2026 (Guide) | CareerNest",
       "outboundBlog": [
         "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step"
       ],
       "outboundProduct": [
@@ -2807,6 +2809,7 @@
     "what-is-a-resume-and-what-is-it-used-for": {
       "title": "What Is a Resume and What Is It Used For? (Guide) | CareerNest",
       "outboundBlog": [
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/how-to-write-a-resume-for-2026"
@@ -2823,6 +2826,7 @@
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/how-to-write-a-resume-for-2026",
         "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/what-is-the-best-resume-format"
       ],
@@ -2838,6 +2842,7 @@
       "outboundBlog": [
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-long-should-a-resume-be"
       ],
@@ -2855,6 +2860,7 @@
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-a-resume-with-no-work-experience",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-to-write-a-resume-for-2026",
         "/blog/how-long-should-a-resume-be"
@@ -2870,6 +2876,7 @@
       "outboundBlog": [
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/what-is-the-best-resume-format",
         "/blog/how-to-write-a-resume-for-2026",
@@ -2889,6 +2896,7 @@
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/what-is-the-best-resume-format",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-long-should-a-resume-be",
         "/blog/how-to-write-a-resume-for-2026"
@@ -2896,6 +2904,24 @@
       "outboundProduct": [
         "/resume-examples",
         "/interview-prep"
+      ]
+    },
+    "how-to-write-resume-bullet-points-that-show-impact": {
+      "title": "How to Write Resume Bullet Points That Show Impact | CareerNest",
+      "outboundBlog": [
+        "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-write-a-resume-with-no-work-experience",
+        "/blog/what-is-the-best-resume-format",
+        "/blog/how-long-should-a-resume-be",
+        "/blog/how-to-write-a-resume-for-2026"
+      ],
+      "outboundProduct": [
+        "/templates",
+        "/resume-examples",
+        "/ats-score-checker",
+        "/interview-prep",
+        "/ats-score-checker"
       ]
     }
   }
