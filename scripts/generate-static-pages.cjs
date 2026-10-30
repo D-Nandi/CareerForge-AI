@@ -4,6 +4,9 @@ const path = require('path');
 // Ensure output directories exist
 const blogDir = path.resolve(__dirname, '../client/blog');
 const rolesDir = path.resolve(__dirname, '../client/resume-examples');
+const distDir = path.resolve(__dirname, '../dist');
+const distBlogDir = path.resolve(__dirname, '../dist/blog');
+const distRolesDir = path.resolve(__dirname, '../dist/resume-examples');
 
 if (!fs.existsSync(blogDir)) fs.mkdirSync(blogDir, { recursive: true });
 if (!fs.existsSync(rolesDir)) fs.mkdirSync(rolesDir, { recursive: true });
@@ -671,6 +674,9 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
 
   const filePath = path.join(blogDir, `${slug}.html`);
   fs.writeFileSync(filePath, html, 'utf8');
+  if (fs.existsSync(distBlogDir)) {
+    fs.writeFileSync(path.join(distBlogDir, `${slug}.html`), html, 'utf8');
+  }
   console.log(`Generated: client/blog/${slug}.html`);
 }
 
@@ -1081,7 +1087,34 @@ for (const [slug, role] of Object.entries(ROLES_DATABASE)) {
 
   const filePath = path.join(rolesDir, `${slug}.html`);
   fs.writeFileSync(filePath, html, 'utf8');
+  if (fs.existsSync(distRolesDir)) {
+    fs.writeFileSync(path.join(distRolesDir, `${slug}.html`), html, 'utf8');
+  }
   console.log(`Generated: client/resume-examples/${slug}.html`);
+}
+
+// Sync blog-data.js and img/ into dist if dist exists
+if (fs.existsSync(distDir)) {
+  const blogDataSrc = path.resolve(__dirname, '../client/blog-data.js');
+  const blogDataDist = path.resolve(__dirname, '../dist/blog-data.js');
+  if (fs.existsSync(blogDataSrc)) fs.copyFileSync(blogDataSrc, blogDataDist);
+
+  const imgSrc = path.resolve(__dirname, '../client/img');
+  const imgDist = path.resolve(__dirname, '../dist/img');
+  function copyDirRecursive(source, target) {
+    if (!fs.existsSync(source)) return;
+    if (!fs.existsSync(target)) fs.mkdirSync(target, { recursive: true });
+    for (const item of fs.readdirSync(source)) {
+      const s = path.join(source, item);
+      const t = path.join(target, item);
+      if (fs.statSync(s).isDirectory()) {
+        copyDirRecursive(s, t);
+      } else {
+        fs.copyFileSync(s, t);
+      }
+    }
+  }
+  copyDirRecursive(imgSrc, imgDist);
 }
 
 console.log('✅ All static programmatic pages generated successfully!');

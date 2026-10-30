@@ -91,7 +91,7 @@ Present your roles starting with your current or most recent engagement. Frame e
 | *Managed social media accounts and posted updates.* | *Spearheaded multi-channel B2B content campaign across LinkedIn and YouTube, boosting inbound demo signups by 44% in Q3.* |
 | *Built backend database queries for internal dashboards.* | *Refactored PostgreSQL indexing layers, slashing query response times by 58% for 8,500 active dashboard users.* |
 
-Lead every bullet with strong, high-impact action verbs (such as *Spearheaded*, *Orchestrated*, *Engineered*, and *Accelerated*) to eliminate passive language. For a complete walkthrough on crafting high-impact bullets, explore our tutorial on [how to write resume bullet points step-by-step](/blog/how-to-write-a-resume-step-by-step), or benchmark your draft against real [role-specific resume examples](/resume-examples) to see proven metrics in action. You can also test your draft on our [Free ATS Resume Checker](/ats-score-checker) to verify keyword parsing scores.
+Lead every bullet with strong, high-impact action verbs (such as *Spearheaded*, *Orchestrated*, *Engineered*, and *Accelerated*) to eliminate passive language. For a complete breakdown of metric-driven writing, read our guide on [how to write resume bullet points that show impact](/blog/how-to-write-resume-bullet-points-that-show-impact), explore our tutorial on [how to write resume bullet points step-by-step](/blog/how-to-write-a-resume-step-by-step), or benchmark your draft against real [role-specific resume examples](/resume-examples) to see proven metrics in action. You can also test your draft on our [Free ATS Resume Checker](/ats-score-checker) to verify keyword parsing scores.
 
 
 ---
@@ -202,7 +202,7 @@ A resume is a targeted marketing document that summarizes your career trajectory
 
 A resume is a concise summary of your employment history, educational background, and skill sets intended to pique the interest of hiring managers. It acts as a curated highlight reel that showcases your ability to solve specific business problems rather than simply functioning as a chronological record of tasks performed.
 
-Moving away from the legacy "list of duties" model remains vital for modern applicants. Recruiters prioritize quantified achievements over static responsibilities. A weak entry looks like: *"Responsible for managing a team."* A strong, results-driven entry reads: *"Increased quarterly department output by 22% through the implementation of agile workflows."* This shift from process-oriented descriptions to results-driven data helps you stand out. Consider your document a persuasive sales brochure for your labor, emphasizing the value you generate rather than the time you have spent in previous seats.
+Moving away from the legacy "list of duties" model remains vital for modern applicants. Recruiters prioritize quantified achievements over static responsibilities. Learn our exact formula in our guide on [how to write resume bullet points that show impact](/blog/how-to-write-resume-bullet-points-that-show-impact). A weak entry looks like: *"Responsible for managing a team."* A strong, results-driven entry reads: *"Increased quarterly department output by 22% through the implementation of agile workflows."* This shift from process-oriented descriptions to results-driven data helps you stand out. Consider your document a persuasive sales brochure for your labor, emphasizing the value you generate rather than the time you have spent in previous seats.
 
 ---
 
@@ -406,7 +406,7 @@ When auditing your document for space, implement these high-leverage adjustments
 > 💡 **The Rule of Three for Older Positions:**  
 > For roles held more than five years ago, limit yourself to the **three most significant achievements**. This demonstrates career growth without consuming prime space that belongs to your latest leadership milestones.
 
-If you struggle to fit your experience onto the desired page count, perform a line-by-line audit on your bullet points. Junior candidates frequently write 4 lines describing mundane tasks. By trimming each bullet to 1–2 lines focusing strictly on **Outcome + Action + Metric**, you immediately cut 40% of document height while drastically increasing candidate appeal. Learn the exact formula in our guide on [writing resume bullet points step by step](/blog/how-to-write-a-resume-step-by-step), or see them modeled across real [role-specific resume examples](/resume-examples).
+If you struggle to fit your experience onto the desired page count, perform a line-by-line audit on your bullet points. Junior candidates frequently write 4 lines describing mundane tasks. By trimming each bullet to 1–2 lines focusing strictly on **Outcome + Action + Metric**, you immediately cut 40% of document height while drastically increasing candidate appeal. Master this by [writing high-impact resume bullet points](/blog/how-to-write-resume-bullet-points-that-show-impact) using the Google XYZ formula, explore our tutorial on [writing resume bullet points step by step](/blog/how-to-write-a-resume-step-by-step), or see them modeled across real [role-specific resume examples](/resume-examples).
 
 ---
 
@@ -555,7 +555,7 @@ Recruiters hunt for outcomes rather than lists of daily activities:
 * **Weak duty statement:** *"Managed social media channels for the marketing team."*
 * **Results-oriented standard:** *"Orchestrated a cross-channel B2B campaign that increased organic engagement by 40% and generated 500+ qualified MQLs within six months."*
 
-This shift proves your value immediately. Focus on the "So What?" factor by clarifying the delta between your entry and your exit from a specific task. By showing how you changed a situation, you move your candidacy from "qualified" to "essential." A recruiter scanning a stack of resumes will stop on a profile that leads with quantified growth instead of passive responsibilities. To master this phrasing, follow our step-by-step tutorial on [how to write resume bullet points that show impact](/blog/how-to-write-a-resume-step-by-step), and benchmark your achievements against verified [resume examples by industry](/resume-examples). Run your drafted points through our [Free ATS Resume Checker](/ats-score-checker) to verify your metric density.
+This shift proves your value immediately. Focus on the "So What?" factor by clarifying the delta between your entry and your exit from a specific task. By showing how you changed a situation, you move your candidacy from "qualified" to "essential." A recruiter scanning a stack of resumes will stop on a profile that leads with quantified growth instead of passive responsibilities. To master this phrasing, follow our in-depth framework on [how to write resume bullet points that show impact](/blog/how-to-write-resume-bullet-points-that-show-impact), review our step-by-step tutorial on [how to write a resume step by step](/blog/how-to-write-a-resume-step-by-step), and benchmark your achievements against verified [resume examples by industry](/resume-examples). Run your drafted points through our [Free ATS Resume Checker](/ats-score-checker) to verify your metric density.
 
 ---
 
@@ -719,7 +719,7 @@ If you have a background in hospitality looking to move into corporate administr
 
 Drafting a resume with no experience requires shifting your focus from historical job titles to project-based accomplishments. By emphasizing academic research, volunteer contributions, and internships, you highlight your capacity to execute tasks and learn quickly. This narrative structure demonstrates your potential value to prospective employers, proving you possess the initiative to succeed from day one without needing traditional oversight.
 
-Focus on the impact of your actions rather than the basic duties of a position. Learn how to write metric-backed bullet points in our guide on [how to write a resume step by step](/blog/how-to-write-a-resume-step-by-step):
+Focus on the impact of your actions rather than the basic duties of a position. Learn how to transform daily responsibilities by [crafting quantified resume bullets](/blog/how-to-write-resume-bullet-points-that-show-impact) or reviewing our step-by-step guide on [how to write a resume step by step](/blog/how-to-write-a-resume-step-by-step):
 
 * **Weak phrasing:** *"Responsible for organizing school events."*
 * **High-impact framing:** *"Coordinated logistics for a 200-person regional conference, increasing attendance by 15% through targeted social media outreach."*
@@ -855,7 +855,7 @@ This shift changes the focus from a basic responsibility to a demonstrated capab
 * Did you streamline a workflow that saved five hours of manual labor weekly?
 * Did you clean and normalize dirty data for internal dashboards?
 
-To see how professionals across technical and creative fields quantify their accomplishments, browse our collection of [industry-specific resume examples](/resume-examples).
+To see how professionals across technical and creative fields quantify their accomplishments, browse our collection of [industry-specific resume examples](/resume-examples), or check out our guide on [how to write resume bullet points that show impact](/blog/how-to-write-resume-bullet-points-that-show-impact) to master the Google XYZ formula and avoid common layout mistakes.
 
 Consider a junior marketing assistant who organized a client database: instead of *"filed client contact information,"* they should write:
 > *"Standardized a client contact database of 12,000+ records, increasing account retrieval speed by 40% and eliminating redundant entries across 4 regional pods."*
@@ -1000,7 +1000,7 @@ For example, a junior developer transitioning into tech can lead with technical 
 | **Data Analytics** | SQL, Python, Excel (VLOOKUP, Pivot) | Analyzed 15,000 public survey records for university research |
 | **Stakeholder Comms** | Technical Writing, Client Presentations | Delivered final thesis presentation to department faculty |
 
-Avoid repeating identical duties across different sections. If you emphasize "Budgeting" in your skills summary, keep bullet points focused on concrete outcomes: *"Administered student club budget of $8,500 with zero audit variances."* Learn the step-by-step formula for crafting high-impact bullets in our guide on [how to write resume bullet points](/blog/how-to-write-a-resume-step-by-step). Also, ensure your document strictly remains within the one-page limit outlined in our [resume length guide](/blog/how-long-should-a-resume-be).
+Avoid repeating identical duties across different sections. If you emphasize "Budgeting" in your skills summary, keep bullet points focused on concrete outcomes: *"Administered student club budget of $8,500 with zero audit variances."* Learn the step-by-step formula for crafting high-impact bullets in our guide on [how to write resume bullet points that show impact](/blog/how-to-write-resume-bullet-points-that-show-impact) and our tutorial on [how to write a resume step-by-step](/blog/how-to-write-a-resume-step-by-step). Also, ensure your document strictly remains within the one-page limit outlined in our [resume length guide](/blog/how-long-should-a-resume-be).
 
 ---
 
@@ -1074,8 +1074,182 @@ Best regards,
   </div>
 </div>
     `.trim()
+  },
+  "how-to-write-resume-bullet-points-that-show-impact": {
+    slug: "how-to-write-resume-bullet-points-that-show-impact",
+    title: "How to Write Resume Bullet Points That Show Impact | CareerNest",
+    subtitle: "Master the Action-Result model, Google XYZ formula, and ATS metrics to craft high-impact resume bullet points that avoid common resume mistakes.",
+    category: "Resume Writing",
+    readTime: "8 min read",
+    date: "Oct 30, 2026",
+    author: "Marcus Vance",
+    authorRole: "Senior Career Coach",
+    featured: false,
+    summary: "Learn how to write resume bullet points that show impact using the Action-Result model and Google XYZ formula, while avoiding common layout, metric, and ATS mistakes.",
+    heroImage: "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=1200&q=80",
+    tags: ["Resume Writing", "Resume Bullet Points", "Google XYZ Formula", "Career Advice", "ATS Optimization", "Resume Mistakes"],
+    faqs: [
+      {
+        question: "How many bullet points should I put under each job?",
+        answer: "Aim for three to six bullet points per role. This allows enough space to show impact without overwhelming the reader. If a position was brief, stick to three; for senior roles with long tenures, six is appropriate to demonstrate the evolution of your responsibilities."
+      },
+      {
+        question: "What are the best action verbs to use?",
+        answer: "Select verbs that imply leadership and transformation. Words like Spearheaded, Orchestrated, Quantified, Architected, Negotiated, and Transformed carry more weight than generic terms like Helped or Managed. Match the verb to the level of seniority expected for the specific job description."
+      },
+      {
+        question: "Should I put periods at the end of my bullet points?",
+        answer: "Consistency is the priority. If your bullet points are full sentences, use a period at the end of every line. If your bullets are sentence fragments, avoid punctuation. Most recruiters prefer brief, punchy fragments, but clear, grammatical sentences are better for conveying complex technical impacts."
+      },
+      {
+        question: "Will the ATS struggle with my bullet points?",
+        answer: "Most systems handle standard round bullets seamlessly. Avoid using custom icons, emojis, or complex text boxes, as these can trigger OCR parsing errors. If you are uncertain about your layout, verify your document through our Free ATS Resume Checker to ensure clean text extraction."
+      },
+      {
+        question: "How far back should my resume go?",
+        answer: "Keep your professional history to the last 10–15 years. Recruiters are primarily interested in your recent trajectory and the skills you currently possess. If you have older, high-impact roles, include them in an 'Earlier Career Experience' section with fewer bullet points to keep the focus on your current value."
+      }
+    ],
+    video: {
+      title: "5 Resume Mistakes You MUST Avoid (with real examples)!",
+      description: "Master how to write impactful resume bullet points, avoid common formatting mistakes, and quantify your achievements with real-world before-and-after examples.",
+      thumbnailUrl: "https://i.ytimg.com/vi/pjqi_M3SPwY/maxresdefault.jpg",
+      uploadDate: "2023-09-15T08:00:00+00:00",
+      url: "https://www.youtube.com/watch?v=pjqi_M3SPwY",
+      embedUrl: "https://www.youtube-nocookie.com/embed/pjqi_M3SPwY"
+    },
+    content: `
+To secure an interview, replace static task lists with dynamic resume bullet points that quantify your professional value. By using the Action-Result model, you translate daily activities into tangible achievements, proving to recruiters that you possess the skills necessary to deliver high-level organizational success. Avoiding common resume mistakes is the first step toward getting your profile noticed. Before fine-tuning your bullet points, review [what a resume is and why it matters](/blog/what-is-a-resume-and-what-is-it-used-for) to modern recruiters.
+
+---
+
+## Understanding Resume Bullet Points and Avoiding Mistakes
+
+Resume bullet points are concise, impact-oriented statements that document professional achievements using active language. When crafted effectively, these lines function as the primary data points for ATS algorithms and human recruiters, providing evidence of your capability to solve complex business challenges. Focusing on outcomes over responsibilities prevents the most frequent resume mistakes, such as listing job descriptions that fail to highlight your personal contributions to company growth. Be sure your bullets align with the [5 essential resume sections](/blog/what-information-should-you-put-on-a-resume) needed for ATS compliance.
+
+Many applicants suffer from the "job description trap," where they copy-paste duties directly from an HR handbook. To break this cycle, audit every line on your document. If a bullet describes what you were *supposed* to do, rewrite it to describe what you *achieved*. 
+
+* **Weak:** Managed internal communications.
+* **Strong:** Orchestrated a global internal newsletter, improving employee engagement scores by 15% across four regional offices.
+
+This shift from process to outcome is the most effective way to grab a recruiter’s attention during their initial six-second scan. Consider a marketing professional: instead of writing "posted to social media," they should write "Executed a cross-platform social media strategy that increased organic follower growth by 25% over six months."
+
+<figure>
+  <img src="/img/blog/resume-bullet-points-impact-framework.svg" alt="High-Impact Resume Bullet Point Architecture showing Google XYZ formula and before-after mistake comparison" width="860" height="480" loading="lazy" />
+  <figcaption>Framework Breakdown: The Google XYZ Formula and Action-Result model for transforming routine responsibilities into persuasive business achievements.</figcaption>
+</figure>
+
+---
+
+## Mastering the Google XYZ Formula
+
+The Google XYZ formula is a structured writing framework that defines your contribution by stating: **"Accomplished [X] as measured by [Y], by doing [Z]."** This technique ensures your career narrative remains objective, data-backed, and optimized for both human readability and the specific keyword requirements of advanced applicant tracking systems.
+
+While many experts emphasize results, the "Z" component—the *how*—is where you demonstrate critical thinking. If you are a student or candidate with limited work history, review our guide on [writing a resume with no work experience](/blog/how-to-write-a-resume-with-no-work-experience) to see how to focus on the methodologies and capstones you applied to reach your goals.
+
+* **Weak:** Increased sales.
+* **Strong:** Increased quarterly sales by 20% by implementing a new CRM segmentation strategy using Salesforce.
+
+This specificity provides recruiters with a clear blueprint of your technical proficiency and your ability to leverage modern software ecosystems to drive growth. A common resume mistake is ignoring the "how," but detailing your process highlights your unique value proposition. For instance, a junior developer might write: *"Reduced page load time by 1.2 seconds by optimizing image compression and minifying CSS files, significantly improving user retention rates."* 
+
+To further apply this, if you are in a leadership role, consider this framework: *"Scaled team output [X] by 35% [Y] through the implementation of agile project management methodologies and CI/CD pipelines [Z]."* This structure proves that your results were intentional and repeatable.
+
+---
+
+## Common Resume Mistakes in Layout and Design
+
+Design mistakes often sabotage the best content by making a document difficult for human eyes to parse. Crowded margins, tiny fonts, and the misuse of decorative graphics create visual fatigue, causing recruiters to abandon your application. A clean, professional layout signals organizational skills and allows your strongest bullet points to stand out prominently.
+
+When organizing your layout, learn about [choosing the best resume format](/blog/what-is-the-best-resume-format) for your career stage, and explore our library of pre-formatted [ATS-friendly resume templates](/templates). Also check our comprehensive guide on [how long a resume should be](/blog/how-long-should-a-resume-be) to ensure your bullet density does not trigger awkward multi-page spillovers.
+
+Avoid using multiple columns if the layout is not strictly linear, as many older parsing systems scramble text when columns are present. Stick to a standard font like Arial or Calibri at 10-12pt size. If you include contact information, ensure it is clearly placed at the top and avoid embedding it within an image, as this renders your name and email unsearchable by internal database software.
+
+---
+
+## Tailoring Bullet Points to Job Descriptions
+
+Tailoring bullet points involves mapping your historical professional achievements directly to the specific requirements and language found in a target job description. By mirroring the company’s stated needs through your accomplishments, you demonstrate immediate alignment, convincing hiring managers that your background provides a perfect solution to their current organizational pain points and strategic goals.
+
+Blindly applying to positions with a one-size-fits-all resume rarely yields results. Instead, analyze the job posting for recurring themes, such as "team leadership," "budget management," or "process automation." If a posting emphasizes "cross-functional collaboration," do not just list your past teams; detail how you bridged communication gaps.
+
+* **Example:** If the job description asks for "stakeholder management," rewrite a bullet from *"Led software updates"* to *"Collaborated with cross-functional product, engineering, and sales stakeholders to deploy software updates, resulting in a 15% faster release cycle and total alignment on feature priorities."*
+
+This approach forces you to view your history through the lens of the employer’s needs. It signals to recruiters that you understand their unique challenges, which is a significant competitive advantage over candidates who submit generic, unoptimized documents. Benchmark your drafted statements against verified [real-world resume examples](/resume-examples) to observe how top candidates phrase achievements across different industries.
+
+---
+
+## Quantifying Results Without Hard Metrics
+
+Quantifying results refers to the process of assigning precise scope, scale, or frequency to professional achievements when revenue figures are unavailable. By estimating impact through time savings, stakeholder volume, or percentage-based improvements, you provide the context needed to make your contributions appear significant, verifiable, and impressive to busy hiring managers.
+
+Service-oriented roles often struggle with this, but impact is not always monetary. If you worked in administrative support, count how many individuals you supported or how many documents you processed. You can frame these as: *"Streamlined faculty documentation processes for a department of 40 staff, resulting in a 20% reduction in weekly administrative overhead."* Even if your metrics are based on reasonable approximations, providing a specific number remains far more persuasive than vague qualitative statements. A receptionist, for example, could write: *"Managed high-volume front desk operations for a facility with 200+ daily visitors, reducing guest wait times by 10 minutes through a new digital check-in system."*
+
+---
+
+## Optimizing for ATS Parsing Systems
+
+ATS parsing is the automated digital process by which applicant tracking software scans, extracts, and organizes your resume data. Correct formatting, such as standard bullet points and machine-readable text, allows these systems to accurately index your skills and experiences, preventing your application from being filtered out by poor structural design or non-standard characters.
+
+To understand modern screening algorithms, review our breakdown on [what makes a good resume in 2026](/blog/how-to-write-a-resume-for-2026). If your document uses non-standard symbols or complex vector graphics for bullet points, the parser may fail to interpret your text, resulting in a "null" entry for your work history. Use standard circular or square bullets and save your file as a machine-readable PDF or DOCX. Furthermore, avoid placing critical information in headers or footers, as many parsing algorithms ignore these zones entirely. Before applying, run your document through our [Free ATS Resume Checker](/ats-score-checker) to verify keyword density and formatting compatibility.
+
+---
+
+## Handling Non-Traditional Career Histories
+
+Non-traditional career histories involve presenting gaps or pivots by emphasizing transferable competencies over chronological progression. Utilizing functional bullet points highlights core skills and specific project results that remain valuable regardless of the industry. Reframing these periods through specific achievements rather than leaving them unexplained prevents common resume mistakes and narrative fragmentation, providing a cohesive story.
+
+For freelance contractors, avoid listing individual clients if it obscures your overall contribution. Group your projects by theme, such as "Product Development" or "Client Acquisition," and use bullets to detail the scope of your work. If you managed a community initiative during a career gap, treat it as a formal professional role: *"Spearheaded a neighborhood outreach program, coordinating 15 volunteers and securing $5,000 in local funding, which demonstrated effective stakeholder management and budgetary oversight."* Similarly, a parent returning to the workforce might highlight management skills: *"Directed logistical planning and budget allocation for a non-profit organization with a $10,000 annual operating budget, improving resource distribution by 20%."* 
+
+When addressing long-term employment gaps, use the "Career Note" method—a single line entry that explains the focus of your time, such as *"Professional Development: Completed three industry certifications in Data Analytics and Cloud Computing."* This approach maintains the professional tone of your document while accounting for your time off in a way that aligns with your future career goals. Once your resume opens doors, prepare for behavioral interviews with our [AI mock interview practice](/interview-prep) tool.
+
+---
+
+### Impact Comparison Table
+
+| Feature / Domain | Weak (Task-Oriented) | Strong (Impact-Oriented) |
+| :--- | :--- | :--- |
+| **Sales** | Cold-called prospective clients. | Generated $50k in new monthly recurring revenue by optimizing outbound lead qualification. |
+| **HR / People Operations** | Maintained employee files. | Reduced file audit time by 30% by transitioning records to a cloud-based digital database. |
+| **Education & Training** | Taught biology classes. | Facilitated core science curricula for 150+ students, achieving a 95% final exam pass rate. |
+| **Tech & Engineering** | Wrote backend code. | Refactored legacy codebases, decreasing system latency by 200ms and improving UI response time. |
+
+---
+
+## Video Guide: 5 Resume Mistakes You MUST Avoid
+
+<div class="video-container">
+  <iframe src="https://www.youtube-nocookie.com/embed/pjqi_M3SPwY" title="5 Resume Mistakes You MUST Avoid (with real examples)!" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+---
+
+## Frequently Asked Questions
+
+### How many bullet points should I put under each job?
+Aim for three to six bullet points per role. This allows enough space to show impact without overwhelming the reader. If a position was brief, stick to three; for senior roles with long tenures, six is appropriate to demonstrate the evolution of your responsibilities.
+
+### What are the best action verbs to use?
+Select verbs that imply leadership and transformation. Words like *Spearheaded, Orchestrated, Quantified, Architected, Negotiated,* and *Transformed* carry more weight than generic terms like *Helped* or *Managed*. Match the verb to the level of seniority expected for the specific job description.
+
+### Should I put periods at the end of my bullet points?
+Consistency is the priority. If your bullet points are full sentences, use a period at the end of every line. If your bullets are sentence fragments, avoid punctuation. Most recruiters prefer brief, punchy fragments, but clear, grammatical sentences are better for conveying complex technical impacts.
+
+### Will the ATS struggle with my bullet points?
+Most systems handle standard round bullets seamlessly. Avoid using custom icons, emojis, or complex text boxes, as these can trigger OCR parsing errors. If you are uncertain about your layout, verify your document through our [Free ATS Resume Checker](/ats-score-checker) to ensure clean text extraction.
+
+### How far back should my resume go?
+Keep your professional history to the last 10–15 years. Recruiters are primarily interested in your recent trajectory and the skills you currently possess. If you have older, high-impact roles, include them in an "Earlier Career Experience" section with fewer bullet points to keep the focus on your current value.
+
+---
+
+<div style="background:linear-gradient(135deg, rgba(99,102,241,0.1), rgba(16,185,129,0.08)); border:1px solid rgba(99,102,241,0.3); border-radius:14px; padding:24px; margin:36px 0; display:flex; flex-direction:column; gap:12px;">
+  <strong style="color:var(--text); font-size:1.15rem; font-family:var(--font-head);">Ready to stop guessing and start getting interviews?</strong>
+  <p style="color:var(--text-muted); font-size:0.92rem; margin:0; line-height:1.6;">Transform your daily duties into quantifiable, ATS-friendly bullet points with CareerNest's intelligent resume builder.</p>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px;">
+    <a href="/resume-builder" class="btn-primary" style="display:inline-block; padding:10px 22px; text-decoration:none; color:#ffffff !important;">Use AI Resume Builder Free →</a>
+    <a href="/ats-score-checker" class="btn-ghost" style="display:inline-block; padding:10px 22px; text-decoration:none; color:var(--text) !important;">Check ATS Score →</a>
+  </div>
+</div>
+    `.trim()
   }
 };
-
-
-

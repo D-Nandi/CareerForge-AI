@@ -151,6 +151,21 @@ function cleanUrlsDevPlugin() {
   };
 }
 
+// Automatically discover all static programmatic blog articles and resume examples
+function getHtmlEntries(dirName, prefix) {
+  const dirPath = resolve(__dirname, dirName);
+  const entries = {};
+  if (fs.existsSync(dirPath)) {
+    for (const file of fs.readdirSync(dirPath)) {
+      if (file.endsWith('.html')) {
+        const key = prefix + '_' + file.replace('.html', '').replace(/[^a-zA-Z0-9]/g, '_');
+        entries[key] = resolve(dirPath, file);
+      }
+    }
+  }
+  return entries;
+}
+
 export default defineConfig({
   root: 'client',
   plugins: [copyStaticAssetsPlugin(), cleanUrlsDevPlugin()],
@@ -205,21 +220,9 @@ export default defineConfig({
         login: resolve(__dirname, 'client/login.html'),
         signup: resolve(__dirname, 'client/signup.html'),
         notFound: resolve(__dirname, 'client/404.html'),
-        // Static Programmatic Blog Articles
-        blogResumeInfo: resolve(__dirname, 'client/blog/what-information-should-you-put-on-a-resume.html'),
-        blogWhatIsResume: resolve(__dirname, 'client/blog/what-is-a-resume-and-what-is-it-used-for.html'),
-        blogResumeLength: resolve(__dirname, 'client/blog/how-long-should-a-resume-be.html'),
-        blogWriteResume2026: resolve(__dirname, 'client/blog/how-to-write-a-resume-for-2026.html'),
-        blogBestFormat: resolve(__dirname, 'client/blog/what-is-the-best-resume-format.html'),
-        blogWriteStepByStep: resolve(__dirname, 'client/blog/how-to-write-a-resume-step-by-step.html'),
-        blogResumeNoExp: resolve(__dirname, 'client/blog/how-to-write-a-resume-with-no-work-experience.html'),
-        // Static Programmatic Resume Examples
-        roleSoftwareEngineer: resolve(__dirname, 'client/resume-examples/software-engineer.html'),
-        roleDataAnalyst: resolve(__dirname, 'client/resume-examples/data-analyst.html'),
-        roleProductManager: resolve(__dirname, 'client/resume-examples/product-manager.html'),
-        roleUiUxDesigner: resolve(__dirname, 'client/resume-examples/ui-ux-designer.html'),
-        roleMarketingSpecialist: resolve(__dirname, 'client/resume-examples/digital-marketing-specialist.html'),
-        roleFullStackDev: resolve(__dirname, 'client/resume-examples/full-stack-developer.html'),
+        // Automatically discovered static programmatic blog articles & resume examples
+        ...getHtmlEntries('client/blog', 'blog'),
+        ...getHtmlEntries('client/resume-examples', 'role'),
       },
     },
   },
