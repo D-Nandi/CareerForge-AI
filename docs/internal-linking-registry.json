@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-10-30",
+  "lastUpdated": "2026-11-02",
   "publishedSlugs": [
     "what-information-should-you-put-on-a-resume",
     "what-is-a-resume-and-what-is-it-used-for",
@@ -9,7 +9,8 @@
     "what-is-the-best-resume-format",
     "how-to-write-a-resume-step-by-step",
     "how-to-write-a-resume-with-no-work-experience",
-    "how-to-write-resume-bullet-points-that-show-impact"
+    "how-to-write-resume-bullet-points-that-show-impact",
+    "15-common-resume-mistakes-that-can-cost-you-an-interview"
   ],
   "productPages": [
     {
@@ -2795,7 +2796,8 @@
       "outboundBlog": [
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
-        "/blog/how-to-write-a-resume-step-by-step"
+        "/blog/how-to-write-a-resume-step-by-step",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview"
       ],
       "outboundProduct": [
         "/resume-examples",
@@ -2810,6 +2812,7 @@
       "title": "What Is a Resume and What Is It Used For? (Guide) | CareerNest",
       "outboundBlog": [
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/how-to-write-a-resume-for-2026"
@@ -2828,6 +2831,7 @@
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/what-is-the-best-resume-format"
       ],
       "outboundProduct": [
@@ -2844,7 +2848,8 @@
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
-        "/blog/how-long-should-a-resume-be"
+        "/blog/how-long-should-a-resume-be",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview"
       ],
       "outboundProduct": [
         "/templates",
@@ -2863,6 +2868,7 @@
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-to-write-a-resume-for-2026",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/how-long-should-a-resume-be"
       ],
       "outboundProduct": [
@@ -2880,7 +2886,8 @@
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/what-is-the-best-resume-format",
         "/blog/how-to-write-a-resume-for-2026",
-        "/blog/how-long-should-a-resume-be"
+        "/blog/how-long-should-a-resume-be",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview"
       ],
       "outboundProduct": [
         "/resume-examples",
@@ -2899,7 +2906,8 @@
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-long-should-a-resume-be",
-        "/blog/how-to-write-a-resume-for-2026"
+        "/blog/how-to-write-a-resume-for-2026",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview"
       ],
       "outboundProduct": [
         "/resume-examples",
@@ -2912,6 +2920,7 @@
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-a-resume-with-no-work-experience",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/what-is-the-best-resume-format",
         "/blog/how-long-should-a-resume-be",
         "/blog/how-to-write-a-resume-for-2026"
@@ -2922,6 +2931,28 @@
         "/ats-score-checker",
         "/interview-prep",
         "/ats-score-checker"
+      ]
+    },
+    "15-common-resume-mistakes-that-can-cost-you-an-interview": {
+      "title": "15 Common Resume Mistakes That Can Cost You an Interview | CareerNest",
+      "outboundBlog": [
+        "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/how-to-write-a-resume-for-2026",
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/what-is-the-best-resume-format",
+        "/blog/how-to-write-a-resume-with-no-work-experience",
+        "/blog/how-to-write-a-resume-step-by-step",
+        "/blog/how-long-should-a-resume-be",
+        "/blog/how-long-should-a-resume-be",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/how-to-write-a-resume-with-no-work-experience"
+      ],
+      "outboundProduct": [
+        "/ats-score-checker",
+        "/templates",
+        "/resume-examples",
+        "/interview-prep"
       ]
     }
   }
