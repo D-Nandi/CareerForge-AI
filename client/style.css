@@ -927,3 +927,214 @@ ul { list-style: none; }
   .hero-actions { flex-direction: column; width: 100%; gap: 12px; }
   .hero-actions .btn-primary, .hero-actions .btn-text { width: 100%; justify-content: center; }
 }
+
+/* ══════════════════════════════════════════════════════
+   TECHPRODUCTINDIA RECOGNITION SHOWCASE STYLES
+   ══════════════════════════════════════════════════════ */
+.hero-tpi-award {
+  margin-bottom: 24px;
+  animation: heroSlideIn 0.45s 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-award-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 12px;
+  border-radius: 100px;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+  font-size: 0.88rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+.hero-award-link:hover {
+  background: rgba(99, 102, 241, 0.16);
+  border-color: rgba(99, 102, 241, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(99, 102, 241, 0.25);
+}
+.hero-award-link .award-trophy {
+  font-size: 1.05rem;
+}
+.hero-award-link .award-tag {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+.hero-award-link .award-text {
+  color: var(--text);
+  font-weight: 500;
+}
+.hero-award-link .award-text strong {
+  font-weight: 700;
+  color: var(--accent);
+}
+.hero-award-link .award-arrow {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.hero-award-link:hover .award-arrow {
+  transform: translate(2px, -2px);
+  color: var(--accent);
+}
+
+/* Showcase Section */
+.tpi-recognition-strip {
+  position: relative;
+  z-index: 1;
+  padding: 44px 24px 54px;
+  background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.03) 50%, transparent 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 10px 0 30px;
+}
+.tpi-recognition-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+}
+.tpi-recognition-header {
+  max-width: 660px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.tpi-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #ef4444;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+[data-theme="dark"] .tpi-pill {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+.tpi-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+  animation: pulse 2s ease-in-out infinite;
+}
+.tpi-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0;
+}
+.tpi-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.tpi-badges-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.tpi-badge-wrapper {
+  border-radius: 12px;
+  background: #0c0c0c;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tpi-badge-wrapper.highlight {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 10px 28px -5px rgba(239, 68, 68, 0.28);
+}
+.tpi-badge-wrapper:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 16px 36px -6px rgba(99, 102, 241, 0.35);
+}
+.tpi-badge-wrapper.highlight:hover {
+  border-color: rgba(239, 68, 68, 0.85);
+  box-shadow: 0 16px 36px -6px rgba(239, 68, 68, 0.45);
+}
+.tpi-badge-link {
+  display: block;
+  line-height: 0;
+  border-radius: 9px;
+  overflow: hidden;
+}
+.tpi-badge-link img {
+  display: block;
+  height: 54px;
+  width: 250px;
+  object-fit: contain;
+  border-radius: 9px;
+}
+
+/* Footer Badge */
+.footer-tpi-badge {
+  margin: 16px 0 14px;
+}
+.footer-tpi-badge a {
+  display: inline-block;
+  line-height: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0c0c0c;
+  padding: 2px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.footer-tpi-badge a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+.footer-tpi-badge img {
+  display: block;
+  height: 46px;
+  width: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .tpi-badges-row {
+    gap: 16px;
+  }
+  .tpi-badge-wrapper {
+    max-width: 100%;
+  }
+  .tpi-badge-link img {
+    max-width: 100%;
+    height: auto;
+  }
+}
