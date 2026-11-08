@@ -1271,26 +1271,26 @@ Keep your professional history to the last 10–15 years. Recruiters are primari
     tags: ["Resume Mistakes", "ATS Optimization", "Resume Writing", "Career Advice", "Job Search Tips"],
     faqs: [
       {
-            "question": "How long should my resume be?",
-            "answer": "Aim for one page if you have less than 10 years of experience. Professionals with extensive, high-level leadership histories may extend to two pages, provided every line contributes unique, high-value information. Read our full analysis on [how long a resume should be](/blog/how-long-should-a-resume-be)."
+        "question": "How long should my resume be?",
+        "answer": "Aim for one page if you have less than 10 years of experience. Professionals with extensive, high-level leadership histories may extend to two pages, provided every line contributes unique, high-value information. Read our full analysis on [how long a resume should be](/blog/how-long-should-a-resume-be)."
       },
       {
-            "question": "Should I include a photo on my resume?",
-            "answer": "No. In the US, UK, and most tech markets, photos can trigger unconscious bias and are often stripped by ATS software. Stick to clean text-based credentials."
+        "question": "Should I include a photo on my resume?",
+        "answer": "No. In the US, UK, and most tech markets, photos can trigger unconscious bias and are often stripped by ATS software. Stick to clean text-based credentials."
       },
       {
-            "question": "What is the most common resume error?",
-            "answer": "The biggest error is failing to quantify achievements. Recruiters prioritize candidates who demonstrate clear, measurable impact over those who simply list daily duties. Use our guide on [how to write resume bullet points that show impact](/blog/how-to-write-resume-bullet-points-that-show-impact) to format every achievement."
+        "question": "What is the most common resume error?",
+        "answer": "The biggest error is failing to quantify achievements. Recruiters prioritize candidates who demonstrate clear, measurable impact over those who simply list daily duties. Use our guide on [how to write resume bullet points that show impact](/blog/how-to-write-resume-bullet-points-that-show-impact) to format every achievement."
       },
       {
-            "question": "Do I still need an objective statement?",
-            "answer": "No. Replace it with a 3-to-4 sentence 'Professional Summary.' This provides a compelling snapshot of your experience and value proposition, which is far more persuasive than stating personal career goals."
+        "question": "Do I still need an objective statement?",
+        "answer": "No. Replace it with a 3-to-4 sentence 'Professional Summary.' This provides a compelling snapshot of your experience and value proposition, which is far more persuasive than stating personal career goals."
       },
       {
-            "question": "How do I explain gaps in my work history?",
-            "answer": "Frame gaps as productive periods. If you spent time on professional development, freelancing, or personal projects, list these as entries in your work history to show you remained engaged in your field. Explore our guide on [writing a resume with no work experience](/blog/how-to-write-a-resume-with-no-work-experience) for formatting ideas."
+        "question": "How do I explain gaps in my work history?",
+        "answer": "Frame gaps as productive periods. If you spent time on professional development, freelancing, or personal projects, list these as entries in your work history to show you remained engaged in your field. Explore our guide on [writing a resume with no work experience](/blog/how-to-write-a-resume-with-no-work-experience) for formatting ideas."
       }
-],
+    ],
     video: {
       title: "RESUME MISTAKES! (TOP 11 Mistakes to AVOID on your RESUME or CV!)",
       description: "Recruiting expert Richard McMunn breaks down the most dangerous resume mistakes that ruin candidate chances, and how to fix them with high-impact formatting.",
