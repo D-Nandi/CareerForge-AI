@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-11-02",
+  "lastUpdated": "2026-11-10",
   "publishedSlugs": [
     "what-information-should-you-put-on-a-resume",
     "what-is-a-resume-and-what-is-it-used-for",
@@ -10,7 +10,8 @@
     "how-to-write-a-resume-step-by-step",
     "how-to-write-a-resume-with-no-work-experience",
     "how-to-write-resume-bullet-points-that-show-impact",
-    "15-common-resume-mistakes-that-can-cost-you-an-interview"
+    "15-common-resume-mistakes-that-can-cost-you-an-interview",
+    "how-to-choose-the-right-ai-resume-builder-for-your-career-transition"
   ],
   "productPages": [
     {
@@ -521,8 +522,8 @@
       "pillarPage": "AI Resume Builder: Complete Guide to Creating a Better Resume With AI",
       "productCTA": "/ai-resume-builder",
       "relatedClusters": "Resume Fundamentals; ATS Optimization; Resume Job Match; Resume Templates",
-      "suggestedSlug": "what-to-look-for-in-an-ai-resume-builder",
-      "status": "Backlog"
+      "suggestedSlug": "how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
+      "status": "Published"
     },
     {
       "id": 30,
@@ -2849,7 +2850,8 @@
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-long-should-a-resume-be",
-        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview"
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition"
       ],
       "outboundProduct": [
         "/templates",
@@ -2869,7 +2871,8 @@
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-to-write-a-resume-for-2026",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
-        "/blog/how-long-should-a-resume-be"
+        "/blog/how-long-should-a-resume-be",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition"
       ],
       "outboundProduct": [
         "/resume-examples",
@@ -2907,6 +2910,7 @@
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-long-should-a-resume-be",
         "/blog/how-to-write-a-resume-for-2026",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview"
       ],
       "outboundProduct": [
@@ -2942,6 +2946,7 @@
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/what-is-the-best-resume-format",
         "/blog/how-to-write-a-resume-with-no-work-experience",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-long-should-a-resume-be",
         "/blog/how-long-should-a-resume-be",
@@ -2953,6 +2958,27 @@
         "/templates",
         "/resume-examples",
         "/interview-prep"
+      ]
+    },
+    "how-to-choose-the-right-ai-resume-builder-for-your-career-transition": {
+      "title": "How to Choose the Right AI Resume Builder for Your Career Transition | CareerNest",
+      "outboundBlog": [
+        "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-write-a-resume-for-2026",
+        "/blog/what-is-the-best-resume-format",
+        "/blog/how-long-should-a-resume-be",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
+        "/blog/how-to-write-a-resume-with-no-work-experience",
+        "/blog/how-to-write-a-resume-step-by-step"
+      ],
+      "outboundProduct": [
+        "/templates",
+        "/ats-score-checker",
+        "/resume-examples",
+        "/interview-prep",
+        "/resume-builder"
       ]
     }
   }

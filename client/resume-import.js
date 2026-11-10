@@ -73,9 +73,12 @@
 
   // ── DROP ZONE INTERACTIONS ─────────────────────────────
   if (imDropZone && imFileInput) {
-    imDropZone.addEventListener('click', function() { imFileInput.click(); });
+    // Keyboard activation (Enter/Space on focused label)
     imDropZone.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') imFileInput.click();
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        imFileInput.click();
+      }
     });
     imDropZone.addEventListener('dragover', function(e) {
       e.preventDefault();
@@ -91,7 +94,7 @@
       if (f) setFile(f);
     });
     imFileInput.addEventListener('change', function() {
-      if (imFileInput.files[0]) setFile(imFileInput.files[0]);
+      if (imFileInput.files && imFileInput.files[0]) setFile(imFileInput.files[0]);
     });
   }
 
@@ -167,8 +170,14 @@
     if (typeof pdfjsLib === 'undefined') {
       throw new Error('PDF.js not loaded');
     }
-    pdfjsLib.GlobalWorkerOptions.workerSrc =
-      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    try {
+      const workerCode = 'importScripts("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js");';
+      const workerBlob = new Blob([workerCode], { type: 'application/javascript' });
+      pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(workerBlob);
+    } catch (e) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
 
     var buf = await readAsArrayBuffer(file);
     var pdf = await pdfjsLib.getDocument({ data: new Uint8Array(buf) }).promise;
