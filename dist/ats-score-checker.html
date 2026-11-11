@@ -102,7 +102,7 @@
   }
   </script>
   <link rel="stylesheet" crossorigin href="/assets/index-BNHvRdOX.css">
-  <link rel="stylesheet" crossorigin href="/assets/tools-style-BwgURR6M.css">
+  <link rel="stylesheet" crossorigin href="/assets/tools-style-vX-9onmb.css">
 </head>
 
 <body>
@@ -206,27 +206,26 @@
         <span id="uploadStatus" class="badge-tag">No file uploaded</span>
       </div>
 
-      <!-- VISUALLY HIDDEN FILE INPUT (safely kept in render tree so browser native activation always succeeds) -->
-      <input type="file" id="fileInput" accept=".pdf,.docx,.doc,.txt"
-        style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; opacity:0; pointer-events:none;" />
-
-      <!-- FILE UPLOAD DROP ZONE (Semantic <label for="fileInput"> guarantees 100% native browser file chooser on click) -->
-      <label for="fileInput" id="uploadZone" class="upload-zone" tabindex="0" aria-label="Upload resume file">
-        <div class="upload-icon">
+      <!-- FILE UPLOAD DROP ZONE: Full-surface overlay native input guarantees 100% reliable clicks & drops across all browsers -->
+      <div id="uploadZone" class="upload-zone" tabindex="0" role="button" aria-label="Upload resume file"
+        style="position: relative; cursor: pointer; user-select: none;">
+        <!-- NATIVE FULL-SURFACE INPUT OVERLAY -->
+        <input type="file" id="fileInput" accept=".pdf,.docx,.doc,.txt"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 10; margin: 0; padding: 0;" />
+        <div class="upload-icon" style="pointer-events: none;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
             <polyline points="17 8 12 3 7 8" />
             <line x1="12" y1="3" x2="12" y2="15" />
           </svg>
         </div>
-        <div class="upload-text">
+        <div class="upload-text" style="pointer-events: none;">
           <strong>Upload your resume</strong>
-          <span>Drag &amp; drop or click to browse</span>
+          <span>Drag &amp; drop or click anywhere to browse</span>
           <span class="upload-formats">Supports PDF, DOCX, DOC, TXT</span>
         </div>
-        <span class="btn-ghost" id="btnBrowse" style="margin-top:8px; font-size:0.8rem; padding:6px 16px; pointer-events:none;">Browse
-          Files</span>
-      </label>
+        <span class="btn-ghost" id="btnBrowse" style="margin-top: 8px; font-size: 0.8rem; padding: 6px 16px; pointer-events: none;">Browse Files</span>
+      </div>
 
       <div id="uploadedFileInfo" class="uploaded-file-info" style="display:none;">
         <div class="file-info-inner">
@@ -452,40 +451,51 @@
     }
 
     if (uploadZone) {
-      // Keyboard accessibility for label: Enter or Space triggers file input
+      // Direct click fallback: if click lands on uploadZone and not directly on fileInput
+      uploadZone.addEventListener('click', (e) => {
+        if (e.target !== fileInput && fileInput) {
+          fileInput.click();
+        }
+      });
+
+      // Keyboard accessibility: Enter or Space triggers file input
       uploadZone.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           if (fileInput) fileInput.click();
         }
       });
+    }
 
-      // Drag and drop support
-      ['dragenter', 'dragover'].forEach((eventName) => {
-        uploadZone.addEventListener(eventName, (e) => {
+    // Drag and drop support on both uploadZone and full-overlay fileInput
+    const dragTargets = [uploadZone, fileInput].filter(Boolean);
+    ['dragenter', 'dragover'].forEach((eventName) => {
+      dragTargets.forEach((el) => {
+        el.addEventListener(eventName, (e) => {
           e.preventDefault();
-          e.stopPropagation();
-          uploadZone.classList.add('drag-over');
+          if (uploadZone) uploadZone.classList.add('drag-over');
         });
       });
+    });
 
-      ['dragleave', 'dragend'].forEach((eventName) => {
-        uploadZone.addEventListener(eventName, (e) => {
+    ['dragleave', 'dragend'].forEach((eventName) => {
+      dragTargets.forEach((el) => {
+        el.addEventListener(eventName, (e) => {
           e.preventDefault();
-          e.stopPropagation();
-          uploadZone.classList.remove('drag-over');
+          if (uploadZone) uploadZone.classList.remove('drag-over');
         });
       });
+    });
 
-      uploadZone.addEventListener('drop', (e) => {
+    dragTargets.forEach((el) => {
+      el.addEventListener('drop', (e) => {
         e.preventDefault();
-        e.stopPropagation();
-        uploadZone.classList.remove('drag-over');
+        if (uploadZone) uploadZone.classList.remove('drag-over');
         if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
           handleFile(e.dataTransfer.files[0]);
         }
       });
-    }
+    });
 
     const btnRemove = document.getElementById('btnRemoveFile');
     if (btnRemove) {
@@ -588,7 +598,9 @@
           }
 
           const arrayBuf = await file.arrayBuffer();
-          const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(arrayBuf) }).promise;
+          const docTask = pdfjsLib.getDocument({ data: new Uint8Array(arrayBuf) });
+          const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('PDF.js timed out')), 5000));
+          const pdf = await Promise.race([docTask.promise, timeoutPromise]);
           let fullText = '';
           for (let i = 1; i <= pdf.numPages; i++) {
             const page = await pdf.getPage(i);

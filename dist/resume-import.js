@@ -73,26 +73,50 @@
 
   // ── DROP ZONE INTERACTIONS ─────────────────────────────
   if (imDropZone && imFileInput) {
-    // Keyboard activation (Enter/Space on focused label)
+    // Click fallback: ensure clicking anywhere in the drop zone activates file input
+    imDropZone.addEventListener('click', function(e) {
+      if (e.target !== imFileInput && imFileInput) {
+        imFileInput.click();
+      }
+    });
+
+    // Keyboard activation (Enter/Space on focused element)
     imDropZone.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         imFileInput.click();
       }
     });
-    imDropZone.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      imDropZone.classList.add('drag-over');
+
+    var imDragTargets = [imDropZone, imFileInput].filter(Boolean);
+    ['dragenter', 'dragover'].forEach(function(evt) {
+      imDragTargets.forEach(function(el) {
+        el.addEventListener(evt, function(e) {
+          e.preventDefault();
+          imDropZone.classList.add('drag-over');
+        });
+      });
     });
-    imDropZone.addEventListener('dragleave', function() {
-      imDropZone.classList.remove('drag-over');
+
+    ['dragleave', 'dragend'].forEach(function(evt) {
+      imDragTargets.forEach(function(el) {
+        el.addEventListener(evt, function(e) {
+          e.preventDefault();
+          imDropZone.classList.remove('drag-over');
+        });
+      });
     });
-    imDropZone.addEventListener('drop', function(e) {
-      e.preventDefault();
-      imDropZone.classList.remove('drag-over');
-      var f = e.dataTransfer.files[0];
-      if (f) setFile(f);
+
+    imDragTargets.forEach(function(el) {
+      el.addEventListener('drop', function(e) {
+        e.preventDefault();
+        imDropZone.classList.remove('drag-over');
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+          setFile(e.dataTransfer.files[0]);
+        }
+      });
     });
+
     imFileInput.addEventListener('change', function() {
       if (imFileInput.files && imFileInput.files[0]) setFile(imFileInput.files[0]);
     });

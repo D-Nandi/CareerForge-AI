@@ -213,64 +213,77 @@
       <!-- FILE UPLOAD DROP ZONE (Semantic <label for="fileInput"> guarantees 100% native browser file chooser on click) -->
       <label for="fileInput" id="uploadZone" class="upload-zone" tabindex="0" aria-label="Upload resume file">
         <div class="upload-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="17 8 12 3 7 8" />
-            <line x1="12" y1="3" x2="12" y2="15" />
-          </svg>
-        </div>
-        <div class="upload-text">
-          <strong>Upload your resume</strong>
-          <span>Drag &amp; drop or click to browse</span>
-          <span class="upload-formats">Supports PDF, DOCX, DOC, TXT</span>
-        </div>
-        <span class="btn-ghost" id="btnBrowse" style="margin-top:8px; font-size:0.8rem; padding:6px 16px; pointer-events:none;">Browse
-          Files</span>
+          <!-- FILE UPLOAD DROP ZONE: Full-surface overlay native input guarantees 100% reliable clicks & drops across all browsers -->
+          <div id="uploadZone" class="upload-zone" tabindex="0" role="button" aria-label="Upload resume file"
+            style="position: relative; cursor: pointer; user-select: none;">
+            <!-- NATIVE FULL-SURFACE INPUT OVERLAY -->
+            <input type="file" id="fileInput" accept=".pdf,.docx,.doc,.txt"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 10; margin: 0; padding: 0;" />
+            <div class="upload-icon" style="pointer-events: none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+            </div>
+            <div class="upload-text">
+              <div class="upload-text" style="pointer-events: none;">
+                <strong>Upload your resume</strong>
+                <span>Drag &amp; drop or click to browse</span>
+                <span>Drag &amp; drop or click anywhere to browse</span>
+                <span class="upload-formats">Supports PDF, DOCX, DOC, TXT</span>
+              </div>
+              <span class="btn-ghost" id="btnBrowse"
+                style="margin-top:8px; font-size:0.8rem; padding:6px 16px; pointer-events:none;">Browse
+                Files</span>
       </label>
+      <span class="btn-ghost" id="btnBrowse"
+        style="margin-top: 8px; font-size: 0.8rem; padding: 6px 16px; pointer-events: none;">Browse Files</span>
+    </div>
 
-      <div id="uploadedFileInfo" class="uploaded-file-info" style="display:none;">
-        <div class="file-info-inner">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-          </svg>
-          <span id="fileName">resume.pdf</span>
-          <span id="fileSize" class="file-size-label">0 KB</span>
-        </div>
-        <button type="button" id="btnRemoveFile" class="btn-ghost"
-          style="font-size:0.75rem; padding:4px 10px; color:var(--red); border-color:var(--red);">Remove</button>
+    <div id="uploadedFileInfo" class="uploaded-file-info" style="display:none;">
+      <div class="file-info-inner">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+        </svg>
+        <span id="fileName">resume.pdf</span>
+        <span id="fileSize" class="file-size-label">0 KB</span>
       </div>
+      <button type="button" id="btnRemoveFile" class="btn-ghost"
+        style="font-size:0.75rem; padding:4px 10px; color:var(--red); border-color:var(--red);">Remove</button>
+    </div>
 
-      <div id="parseProgress" class="parse-progress" style="display:none;">
-        <div class="parse-bar">
-          <div class="parse-bar-fill"></div>
-        </div>
-        <span class="parse-label">Extracting text from file...</span>
+    <div id="parseProgress" class="parse-progress" style="display:none;">
+      <div class="parse-bar">
+        <div class="parse-bar-fill"></div>
       </div>
+      <span class="parse-label">Extracting text from file...</span>
+    </div>
 
-      <div class="field-group" style="margin-top:16px;">
-        <label for="resumeInput">Resume Text / Content <span style="color:var(--accent);">*</span>
-          <span style="font-weight:400; color:var(--text-muted); font-size:0.78rem;"> — auto-filled from upload or paste
-            below</span>
-        </label>
-        <textarea id="resumeInput"
-          placeholder="Upload a file above or paste your resume text here (experience, summary, skills, education)..."
-          style="min-height: 160px;"></textarea>
-      </div>
+    <div class="field-group" style="margin-top:16px;">
+      <label for="resumeInput">Resume Text / Content <span style="color:var(--accent);">*</span>
+        <span style="font-weight:400; color:var(--text-muted); font-size:0.78rem;"> — auto-filled from upload or paste
+          below</span>
+      </label>
+      <textarea id="resumeInput"
+        placeholder="Upload a file above or paste your resume text here (experience, summary, skills, education)..."
+        style="min-height: 160px;"></textarea>
+    </div>
 
-      <div class="field-group">
-        <label for="jobDescInput">Target Job Description <span
-            style="font-weight:400; color:var(--text-muted); font-size:0.78rem;">(Optional — for keyword
-            matching)</span></label>
-        <textarea id="jobDescInput"
-          placeholder="Paste the job requirements or job posting here to analyze keyword match rate..."
-          style="min-height: 100px;"></textarea>
-      </div>
+    <div class="field-group">
+      <label for="jobDescInput">Target Job Description <span
+          style="font-weight:400; color:var(--text-muted); font-size:0.78rem;">(Optional — for keyword
+          matching)</span></label>
+      <textarea id="jobDescInput"
+        placeholder="Paste the job requirements or job posting here to analyze keyword match rate..."
+        style="min-height: 100px;"></textarea>
+    </div>
 
-      <button id="btnScanResume" class="btn-primary"
-        style="width: 100%; justify-content: center; padding: 14px; margin-top: 10px; font-size: 1rem;">
-        <span>🔍 Scan Resume with AI</span>
-      </button>
+    <button id="btnScanResume" class="btn-primary"
+      style="width: 100%; justify-content: center; padding: 14px; margin-top: 10px; font-size: 1rem;">
+      <span>🔍 Scan Resume with AI</span>
+    </button>
     </div>
 
     <!-- ANALYSIS OUTPUT -->
@@ -453,1017 +466,1045 @@
 
     if (uploadZone) {
       // Keyboard accessibility for label: Enter or Space triggers file input
+      // Direct click fallback: if click lands on uploadZone and not directly on fileInput
+      uploadZone.addEventListener('click', (e) => {
+        if (e.target !== fileInput && fileInput) {
+          fileInput.click();
+        }
+      });
+
+      // Keyboard accessibility: Enter or Space triggers file input
       uploadZone.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           if (fileInput) fileInput.click();
         }
       });
-
-      // Drag and drop support
-      ['dragenter', 'dragover'].forEach((eventName) => {
-        uploadZone.addEventListener(eventName, (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          uploadZone.classList.add('drag-over');
-        });
-      });
-
-      ['dragleave', 'dragend'].forEach((eventName) => {
-        uploadZone.addEventListener(eventName, (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          uploadZone.classList.remove('drag-over');
-        });
-      });
-
-      uploadZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        uploadZone.classList.remove('drag-over');
-        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
-          handleFile(e.dataTransfer.files[0]);
-        }
-      });
     }
 
-    const btnRemove = document.getElementById('btnRemoveFile');
-    if (btnRemove) {
-      btnRemove.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (fileInput) fileInput.value = '';
-        if (resumeInput) {
-          resumeInput.value = '';
-          resumeInput.dispatchEvent(new Event('input', { bubbles: true }));
-        }
-        if (uploadedFileInfo) uploadedFileInfo.style.display = 'none';
-        if (parseProgress) parseProgress.style.display = 'none';
-        if (uploadZone) uploadZone.style.display = 'flex';
-        if (uploadStatus) {
-          uploadStatus.textContent = 'No file uploaded';
-          uploadStatus.style.background = '';
-          uploadStatus.style.color = '';
-        }
-        if (window.toast) window.toast.info('File removed.');
-      });
-    }
-
-    function handleFile(file) {
-      if (!file) return;
-      const ext = file.name.split('.').pop().toLowerCase();
-      if (!['pdf', 'docx', 'doc', 'txt'].includes(ext)) {
-        alert('Please upload a PDF, DOCX, DOC, or TXT file.');
-        if (fileInput) fileInput.value = '';
-        return;
-      }
-
-      if (ext === 'doc') {
-        alert('Legacy .doc binary Word files cannot be parsed directly in browser. Please save your file as .docx or .pdf, or paste your text directly into the text area below.');
-        if (fileInput) fileInput.value = '';
-        return;
-      }
-
-      const fileNameEl = document.getElementById('fileName');
-      const fileSizeEl = document.getElementById('fileSize');
-      if (fileNameEl) fileNameEl.textContent = file.name;
-      if (fileSizeEl) fileSizeEl.textContent = (file.size / 1024).toFixed(1) + ' KB';
-
-      if (uploadZone) uploadZone.style.display = 'none';
-      if (uploadedFileInfo) uploadedFileInfo.style.display = 'flex';
-      if (parseProgress) parseProgress.style.display = 'flex';
-      if (uploadStatus) {
-        uploadStatus.textContent = 'Extracting text...';
-        uploadStatus.style.background = 'rgba(108,92,231,0.12)';
-        uploadStatus.style.color = 'var(--accent)';
-      }
-
-      if (ext === 'txt') {
-        const reader = new FileReader();
-        reader.onload = (e) => finishExtraction(e.target.result || '');
-        reader.onerror = () => {
-          if (parseProgress) parseProgress.style.display = 'none';
-          if (uploadStatus) {
-            uploadStatus.textContent = 'Failed to read TXT file';
-            uploadStatus.style.color = 'var(--red)';
-          }
-          if (window.toast) window.toast.error('Failed to read TXT file.');
-        };
-        reader.readAsText(file);
-      } else if (ext === 'pdf') {
-        extractPDF(file);
-      } else if (ext === 'docx') {
-        extractDOCX(file);
-      }
-    }
-
-    function finishExtraction(text) {
-      if (parseProgress) parseProgress.style.display = 'none';
-      const cleaned = (text || '').replace(/\r\n/g, '\n').replace(/[ \t]+/g, ' ').trim();
-      if (resumeInput) {
-        resumeInput.value = cleaned;
-        resumeInput.dispatchEvent(new Event('input', { bubbles: true }));
-      }
-      if (uploadStatus) {
-        uploadStatus.textContent = '✓ Text extracted';
-        uploadStatus.style.background = 'rgba(16,185,129,0.12)';
-        uploadStatus.style.color = 'var(--green)';
-      }
-      if (window.toast) window.toast.success('Resume text extracted successfully!');
-      // Reset input value so re-selecting the exact same file in future triggers change
-      if (fileInput) fileInput.value = '';
-    }
-
-    async function extractPDF(file) {
-      // 1. Primary extraction with PDF.js
-      if (typeof pdfjsLib !== 'undefined') {
-        try {
-          // Configure worker via Blob URL to eliminate cross-origin Web Worker restrictions
-          try {
-            const workerCode = 'importScripts("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js");';
-            const workerBlob = new Blob([workerCode], { type: 'application/javascript' });
-            pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(workerBlob);
-          } catch (workerErr) {
-            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-          }
-
-          const arrayBuf = await file.arrayBuffer();
-          const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(arrayBuf) }).promise;
-          let fullText = '';
-          for (let i = 1; i <= pdf.numPages; i++) {
-            const page = await pdf.getPage(i);
-            const tc = await page.getTextContent();
-            const pageText = tc.items.map(s => s.str).join(' ');
-            fullText += pageText + '\n\n';
-          }
-          if (fullText.trim().length > 15) {
-            finishExtraction(fullText);
-            return;
-          }
-        } catch (pdfErr) {
-          console.warn('PDF.js parser error, attempting stream extraction fallback:', pdfErr);
-        }
-      }
-
-      // 2. Resilient fallback text stream parser for PDFs
-      try {
-        const fallbackText = await extractRawPdfText(file);
-        if (fallbackText && fallbackText.trim().length > 15) {
-          finishExtraction(fallbackText);
-          return;
-        }
-      } catch (fbErr) {
-        console.warn('Fallback PDF extraction error:', fbErr);
-      }
-
-      // Failed all extraction paths
-      if (parseProgress) parseProgress.style.display = 'none';
-      if (uploadStatus) {
-        uploadStatus.textContent = 'PDF extraction failed — paste text below';
-        uploadStatus.style.color = 'var(--red)';
-      }
-      if (window.toast) window.toast.error('Could not extract text from PDF. Please paste resume text below.');
-      if (fileInput) fileInput.value = '';
-    }
-
-    function extractRawPdfText(file) {
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          try {
-            const raw = e.target.result || '';
-            const matches = [];
-            const tjRegex = /\(([^)]+)\)\s*(?:Tj|'|")/g;
-            let m;
-            while ((m = tjRegex.exec(raw)) !== null) {
-              if (m[1]) matches.push(m[1]);
-            }
-            if (matches.length > 5) {
-              resolve(matches.join(' ').replace(/\\([()\\])/g, '$1').replace(/\\[rn]/g, ' '));
-            } else {
-              resolve('');
-            }
-          } catch (err) {
-            resolve('');
-          }
-        };
-        reader.onerror = () => resolve('');
-        reader.readAsBinaryString(file);
-      });
-    }
-
-    async function extractDOCX(file) {
-      // 1. Primary extraction with Mammoth
-      if (typeof mammoth !== 'undefined') {
-        try {
-          const arrayBuffer = await file.arrayBuffer();
-          const result = await mammoth.extractRawText({ arrayBuffer });
-          if (result && result.value && result.value.trim().length > 15) {
-            finishExtraction(result.value);
-            return;
-          }
-        } catch (mErr) {
-          console.warn('Mammoth error, attempting XML stream fallback:', mErr);
-        }
-      }
-
-      // 2. Resilient fallback for DOCX text XML streams
-      try {
-        const fallbackDocx = await extractRawDocxText(file);
-        if (fallbackDocx && fallbackDocx.trim().length > 15) {
-          finishExtraction(fallbackDocx);
-          return;
-        }
-      } catch (docFbErr) {
-        console.warn('Fallback DOCX extraction error:', docFbErr);
-      }
-
-      if (parseProgress) parseProgress.style.display = 'none';
-      if (uploadStatus) {
-        uploadStatus.textContent = 'DOCX extraction failed — paste text below';
-        uploadStatus.style.color = 'var(--red)';
-      }
-      if (window.toast) window.toast.error('Could not parse DOCX. Please paste text directly below.');
-      if (fileInput) fileInput.value = '';
-    }
-
-    function extractRawDocxText(file) {
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          try {
-            const raw = e.target.result || '';
-            const matches = [];
-            const wtRegex = /<w:t[^>]*>([^<]+)<\/w:t>/g;
-            let m;
-            while ((m = wtRegex.exec(raw)) !== null) {
-              if (m[1]) matches.push(m[1]);
-            }
-            resolve(matches.join(' '));
-          } catch (e) {
-            resolve('');
-          }
-        };
-        reader.onerror = () => resolve('');
-        reader.readAsBinaryString(file);
-      });
-    }
-
-    const btnScan = document.getElementById('btnScanResume');
-    const gaugeCircle = document.getElementById('gaugeCircle');
-    const scoreVal = document.getElementById('scoreVal');
-    const scoreGrade = document.getElementById('scoreGrade');
-    const scoreStatusTag = document.getElementById('scoreStatusTag');
-
-    btnScan.addEventListener('click', () => {
-      const resume = document.getElementById('resumeInput').value.trim();
-      const job = document.getElementById('jobDescInput').value.trim();
-
-      if (!resume || resume.length < 50) {
-        alert('Please paste at least 50 characters of resume content to analyze.');
-        return;
-      }
-
-      btnScan.disabled = true;
-      btnScan.innerHTML = '<span>⚡ Simulating ATS Parser...</span>';
-
-      setTimeout(() => {
-        // ── 1.1 COMPREHENSIVE INDUSTRY STOPWORDS & NOISE FILTER (175+ words) ──
-        const INDUSTRY_STOPWORDS = new Set([
-          'a', 'about', 'above', 'across', 'after', 'again', 'against', 'all', 'almost', 'alone', 'along',
-          'already', 'also', 'although', 'always', 'am', 'among', 'an', 'and', 'another', 'any', 'anybody',
-          'anyone', 'anything', 'anywhere', 'applicant', 'applicants', 'apply', 'applying', 'are', 'area',
-          'areas', 'around', 'as', 'ask', 'asked', 'at', 'away', 'back', 'be', 'became', 'because', 'become',
-          'becomes', 'becoming', 'been', 'before', 'began', 'behind', 'being', 'below', 'benefits', 'beside',
-          'best', 'better', 'between', 'beyond', 'both', 'bring', 'brought', 'but', 'by', 'came', 'can',
-          'cannot', 'candidate', 'candidates', 'career', 'careers', 'case', 'certain', 'clear', 'clearly',
-          'close', 'closely', 'come', 'comes', 'company', 'companies', 'complete', 'completed', 'consider',
-          'considered', 'could', 'culture', 'current', 'currently', 'daily', 'day', 'days', 'describe',
-          'described', 'description', 'did', 'different', 'differently', 'do', 'does', 'doing', 'done',
-          'down', 'during', 'duties', 'each', 'early', 'either', 'else', 'employee', 'employees', 'employer',
-          'employers', 'employment', 'enough', 'entire', 'environment', 'equal', 'especially', 'etc', 'even',
-          'ever', 'every', 'everyone', 'everything', 'everywhere', 'example', 'except', 'expect', 'expected',
-          'experience', 'experienced', 'experiences', 'face', 'fact', 'few', 'field', 'find', 'first',
-          'five', 'for', 'form', 'former', 'forward', 'found', 'four', 'friday', 'from', 'front', 'full',
-          'full-time', 'further', 'gave', 'general', 'generally', 'get', 'gets', 'getting', 'give', 'given',
-          'gives', 'giving', 'go', 'goes', 'going', 'good', 'got', 'great', 'group', 'had', 'has', 'have',
-          'having', 'he', 'help', 'helped', 'helping', 'helps', 'her', 'here', 'hers', 'herself', 'high',
-          'higher', 'highest', 'him', 'himself', 'hire', 'hired', 'hiring', 'his', 'home', 'hour', 'hours',
-          'how', 'however', 'i', 'ideal', 'if', 'important', 'in', 'include', 'included', 'includes',
-          'including', 'income', 'indeed', 'individual', 'individuals', 'industry', 'instead', 'into',
-          'is', 'it', 'its', 'itself', 'job', 'jobs', 'join', 'joining', 'just', 'keep', 'keeps', 'kept',
-          'kind', 'knew', 'know', 'known', 'knows', 'large', 'largely', 'last', 'later', 'latest', 'least',
-          'less', 'let', 'like', 'likely', 'little', 'look', 'looked', 'looking', 'looks', 'made', 'make',
-          'makes', 'making', 'many', 'matter', 'may', 'maybe', 'me', 'mean', 'means', 'meant', 'meet',
-          'member', 'members', 'might', 'more', 'moreover', 'most', 'mostly', 'move', 'much', 'must',
-          'my', 'myself', 'name', 'near', 'nearly', 'necessary', 'need', 'needed', 'needs', 'neither',
-          'never', 'new', 'next', 'no', 'nobody', 'none', 'noone', 'nor', 'not', 'nothing', 'now', 'nowhere',
-          'number', 'obtain', 'obtained', 'of', 'off', 'office', 'often', 'on', 'once', 'one', 'ones',
-          'only', 'onto', 'opportunity', 'opportunities', 'or', 'order', 'other', 'others', 'otherwise',
-          'our', 'ours', 'ourselves', 'out', 'over', 'overall', 'own', 'part', 'part-time', 'participate',
-          'particular', 'particularly', 'people', 'per', 'perhaps', 'person', 'personal', 'place', 'places',
-          'please', 'plus', 'point', 'points', 'policy', 'policies', 'position', 'positions', 'possible',
-          'post', 'posted', 'potential', 'prefer', 'preference', 'preferred', 'prepare', 'prepared',
-          'present', 'presented', 'problem', 'problems', 'provide', 'provided', 'provides', 'providing',
-          'purpose', 'put', 'puts', 'qualification', 'qualifications', 'quite', 'rather', 'ready', 'real',
-          'really', 'reason', 'reasons', 'receive', 'received', 'recent', 'recently', 'regard', 'regarding',
-          'regular', 'regularly', 'related', 'require', 'required', 'requirement', 'requirements', 'requires',
-          'requiring', 'responsible', 'responsibilities', 'responsibility', 'right', 'role', 'roles', 'said',
-          'same', 'saw', 'say', 'saying', 'says', 'second', 'see', 'seeing', 'seem', 'seemed', 'seeming',
-          'seems', 'seen', 'sees', 'several', 'shall', 'she', 'should', 'show', 'showed', 'showing',
-          'shows', 'side', 'sides', 'similar', 'similarly', 'simple', 'simply', 'since', 'small', 'so',
-          'some', 'somebody', 'someone', 'something', 'somewhere', 'soon', 'stand', 'start', 'started',
-          'starting', 'state', 'stated', 'states', 'status', 'stay', 'still', 'stop', 'strong', 'strongly',
-          'such', 'sure', 'take', 'taken', 'takes', 'taking', 'team', 'teams', 'tell', 'telling', 'tells',
-          'than', 'thank', 'thanks', 'that', 'the', 'their', 'theirs', 'them', 'themselves', 'then',
-          'there', 'therefore', 'these', 'they', 'thing', 'things', 'think', 'thinks', 'third', 'this',
-          'those', 'though', 'thought', 'thoughts', 'three', 'through', 'throughout', 'thus', 'time',
-          'times', 'to', 'today', 'together', 'told', 'too', 'took', 'toward', 'towards', 'try', 'trying',
-          'turn', 'turned', 'turning', 'turns', 'two', 'under', 'understand', 'understanding', 'understands',
-          'understood', 'unless', 'until', 'up', 'upon', 'us', 'use', 'used', 'uses', 'using', 'usual',
-          'usually', 'various', 'very', 'via', 'view', 'want', 'wanted', 'wants', 'was', 'way', 'ways',
-          'we', 'week', 'weeks', 'well', 'went', 'were', 'what', 'whatever', 'when', 'where', 'whether',
-          'which', 'while', 'who', 'whole', 'whom', 'whose', 'why', 'wide', 'widely', 'will', 'willing',
-          'with', 'within', 'without', 'won', 'word', 'words', 'work', 'worked', 'working', 'works',
-          'world', 'would', 'year', 'years', 'yes', 'yet', 'you', 'young', 'your', 'yours', 'yourself',
-          'yourselves', 'seeking', 'hands-on', 'key', 'plus', 'proven', 'track', 'record', 'ability', 'skills',
-          'knowledge', 'understanding', 'minimum', 'level', 'degree', 'bachelor', 'master', 'demonstrate',
-          'demonstrated', 'fast-paced', 'looking', 'hire', 'apply', 'responsibilities', 'duties'
-        ]);
-
-        // ── 1.2 CONTEXTUAL METRIC EXTRACTION (No phone numbers, zip codes, or dates) ──
-        function extractContextualMetrics(text) {
-          if (!text) return [];
-          const metrics = [];
-
-          // Percentages (e.g. 24%, 15.5%)
-          const pcts = text.match(/\b\d+(\.\d+)?\s*%/g) || [];
-          pcts.forEach(m => metrics.push({ text: m, type: 'percentage' }));
-
-          // Scale & Volume (e.g. 10k users, 50,000 requests, 100+ clients)
-          const scaleRegex = /\b\d{1,3}(,\d{3})*(\.\d+)?\s*([kKmMbB]|\+)?\s*(users|clients|customers|requests|queries|downloads|records|visits|subscribers|transactions|accounts|events|students|members|sessions|endpoints|tickets|features|pipelines)\b/gi;
-          let sm;
-          while ((sm = scaleRegex.exec(text)) !== null) {
-            metrics.push({ text: sm[0], type: 'scale' });
-          }
-
-          // Currency / Financial Impact (e.g. $50k, €2M, ₹10L, $100,000)
-          const moneyRegex = /[\$\€\£\₹]\s*\d{1,3}(,\d{3})*(\.\d+)?\s*([kKmMbB]|million|thousand)?\b/gi;
-          let mm;
-          while ((mm = moneyRegex.exec(text)) !== null) {
-            metrics.push({ text: mm[0], type: 'financial' });
-          }
-
-          // Latency & Performance (e.g. 300ms, 2x faster, 4-fold increase, 60fps)
-          const perfRegex = /\b\d+(\.\d+)?\s*(ms|milliseconds|seconds|sec|x|fold|fps)\b/gi;
-          let pm;
-          while ((pm = perfRegex.exec(text)) !== null) {
-            if (/ms|x|fold|fps/i.test(pm[0]) || /reduced|decreased|faster|latency|speed|turnaround/i.test(text.substr(Math.max(0, pm.index - 35), 70))) {
-              metrics.push({ text: pm[0], type: 'performance' });
-            }
-          }
-
-          // Metric movement verbs (e.g. "reduced by 40", "increased team by 12", "saved 15 hours")
-          const verbMetricRegex = /\b(reduced|increased|improved|boosted|cut|saved|scaled|optimized|accelerated|generated|delivered|grew)\s+(by\s+)?(\d+(\.\d+)?\s*(hours|hrs|days|weeks|fte|percent)?)/gi;
-          let vm;
-          while ((vm = verbMetricRegex.exec(text)) !== null) {
-            metrics.push({ text: vm[0], type: 'movement' });
-          }
-
-          return metrics;
-        }
-
-        // ── 1.3 SECTION VALIDATION & DEPTH CHECKING ──
-        function validateSectionStructure(text) {
-          const result = {
-            contact: { valid: false, score: 0, details: [] },
-            experience: { valid: false, score: 0, details: [] },
-            education: { valid: false, score: 0, details: [] },
-            skills: { valid: false, score: 0, details: [] },
-            totalScore: 0
-          };
-
-          // Contact check
-          const hasEmail = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(text);
-          const hasPhone = /(?:\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}|\b\d{10}\b/.test(text);
-          const hasLinks = /linkedin\.com|github\.com|portfolio|[a-z0-9-]+\.(io|dev|com|me)/i.test(text);
-
-          if (hasEmail) { result.contact.score += 10; result.contact.details.push('Email verified'); }
-          if (hasPhone) { result.contact.score += 5; result.contact.details.push('Phone verified'); }
-          if (hasLinks) { result.contact.score += 5; result.contact.details.push('Links verified'); }
-          result.contact.valid = hasEmail && (hasPhone || hasLinks);
-
-          // Experience check
-          const expHeader = /\b(work\s+experience|professional\s+experience|employment\s+history|experience)\b/i.test(text);
-          const hasDates = /\b(19\d\d|20\d\d)\s*[-–—to]+\s*(19\d\d|20\d\d|present|current)\b/i.test(text);
-          const hasRoles = /\b(developer|engineer|manager|lead|intern|architect|consultant|analyst|designer|specialist|coordinator|officer)\b/i.test(text);
-
-          if (expHeader && hasDates && hasRoles) {
-            result.experience.score = 35;
-            result.experience.valid = true;
-          } else if (expHeader && (hasDates || hasRoles)) {
-            result.experience.score = 25;
-            result.experience.valid = true;
-          } else if (expHeader || hasRoles) {
-            result.experience.score = 15;
-          }
-
-          // Education check
-          const eduHeader = /\b(education|academic|qualifications)\b/i.test(text);
-          const hasDegree = /\b(bachelor|master|phd|doctorate|b\.?s|m\.?s|b\.?a|m\.?a|b\.?tech|m\.?tech|diploma|associate|degree)\b/i.test(text);
-          const hasSchool = /\b(university|college|institute|school|academy|polytechnic)\b/i.test(text);
-
-          if (eduHeader && (hasDegree || hasSchool)) {
-            result.education.score = 20;
-            result.education.valid = true;
-          } else if (hasDegree || hasSchool) {
-            result.education.score = 14;
-            result.education.valid = true;
-          } else if (eduHeader) {
-            result.education.score = 8;
-          }
-
-          // Skills check
-          const skillsHeader = /\b(skills|technical\s+skills|core\s+competencies|technologies|proficiencies|tools)\b/i.test(text);
-          const techTokens = text.match(/\b(javascript|typescript|python|java|c\+\+|c#|react|angular|vue|node|express|sql|mongodb|docker|kubernetes|aws|azure|gcp|git|linux|html|css|agile|scrum|ci\/cd|rest|graphql)\b/gi) || [];
-          const uniqueTokens = new Set(techTokens.map(t => t.toLowerCase()));
-          const hasProficiency = /\b(expert|advanced|intermediate|proficient|beginner|senior|lead|fluent)\b/i.test(text) || /\([a-z\s]+\)/i.test(text);
-
-          if (skillsHeader && uniqueTokens.size >= 4) {
-            result.skills.score = hasProficiency ? 25 : 20;
-            result.skills.valid = true;
-            if (hasProficiency) result.skills.details.push('Skill proficiency levels verified (+5 ATS bonus)');
-          } else if (uniqueTokens.size >= 3 || skillsHeader) {
-            result.skills.score = hasProficiency ? 18 : 14;
-            result.skills.valid = true;
-          } else {
-            result.skills.score = 6;
-          }
-
-          result.totalScore = Math.min(100, Math.max(0, result.contact.score + result.experience.score + result.education.score + result.skills.score));
-          return result;
-        }
-
-        // ── 2.1 BIDIRECTIONAL SYNONYM & ACRONYM RESOLVER ──
-        const SYNONYM_CLUSTERS = [
-          ['aws', 'amazon web services', 'amazon web service'],
-          ['gcp', 'google cloud', 'google cloud platform'],
-          ['azure', 'microsoft azure'],
-          ['k8s', 'kubernetes', 'kube'],
-          ['postgres', 'postgresql'],
-          ['mongo', 'mongodb'],
-          ['react', 'react.js', 'reactjs'],
-          ['node', 'node.js', 'nodejs'],
-          ['vue', 'vue.js', 'vuejs'],
-          ['angular', 'angularjs', 'angular.js'],
-          ['ts', 'typescript'],
-          ['js', 'javascript'],
-          ['py', 'python'],
-          ['ci/cd', 'cicd', 'continuous integration', 'continuous delivery', 'continuous deployment'],
-          ['ml', 'machine learning'],
-          ['ai', 'artificial intelligence', 'genai', 'generative ai'],
-          ['nlp', 'natural language processing'],
-          ['db', 'database', 'databases'],
-          ['rest', 'restful', 'rest api', 'rest apis', 'restful api'],
-          ['graphql', 'gql'],
-          ['docker', 'containerization', 'containers'],
-          ['microservices', 'microservice architecture', 'micro-services'],
-          ['frontend', 'front-end', 'front end', 'client-side'],
-          ['backend', 'back-end', 'back end', 'server-side'],
-          ['fullstack', 'full-stack', 'full stack'],
-          ['golang', 'go lang', 'go'],
-          ['c++', 'cpp'],
-          ['c#', 'csharp', 'c-sharp'],
-          ['oop', 'object-oriented programming', 'object oriented'],
-          ['tdd', 'test driven development', 'test-driven development'],
-          ['devops', 'development operations', 'site reliability', 'sre']
-        ];
-
-        function resolveSynonymMatch(targetKeyword, searchDoc) {
-          const kwLower = targetKeyword.toLowerCase().trim();
-          const cluster = SYNONYM_CLUSTERS.find(group => group.some(alias => alias === kwLower));
-          const variants = cluster ? cluster : [kwLower];
-
-          for (const variant of variants) {
-            const escaped = variant.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            const pattern = new RegExp('(^|[^a-zA-Z0-9])' + escaped + '([^a-zA-Z0-9]|$)', 'i');
-            if (pattern.test(searchDoc)) {
-              return { matched: true, matchedVariant: variant, isSynonym: variant !== kwLower };
-            }
-          }
-          return { matched: false, matchedVariant: null, isSynonym: false };
-        }
-
-        // ── 2.2 HARD VS. SOFT SKILLS TAXONOMY & CLASSIFIER ──
-        const HARD_SKILLS_SET = new Set([
-          'javascript', 'typescript', 'python', 'java', 'c++', 'c#', 'golang', 'go', 'rust', 'ruby', 'php',
-          'swift', 'kotlin', 'sql', 'html', 'css', 'r', 'bash', 'shell', 'scala', 'perl', 'dart',
-          'react', 'react.js', 'reactjs', 'vue', 'vue.js', 'angular', 'next.js', 'svelte', 'node', 'node.js',
-          'express', 'django', 'flask', 'fastapi', 'spring', 'spring boot', 'rails', 'laravel', 'asp.net',
-          '.net', 'dotnet', 'graphql', 'rest', 'restful', 'api', 'microservices',
-          'aws', 'azure', 'gcp', 'docker', 'kubernetes', 'k8s', 'terraform', 'ci/cd', 'jenkins', 'git',
-          'github', 'gitlab', 'linux', 'ansible', 'helm', 'circleci', 'prometheus', 'grafana', 'cloud',
-          'postgresql', 'postgres', 'mysql', 'mongodb', 'redis', 'elasticsearch', 'kafka', 'rabbitmq',
-          'sqlite', 'cassandra', 'dynamodb', 'snowflake', 'bigquery', 'databricks',
-          'machine learning', 'deep learning', 'pytorch', 'tensorflow', 'pandas', 'numpy', 'scikit-learn',
-          'nlp', 'llm', 'computer vision', 'data science', 'etl', 'tableau', 'power bi'
-        ]);
-
-        const SOFT_SKILLS_SET = new Set([
-          'leadership', 'communication', 'problem solving', 'collaboration', 'mentorship', 'mentoring',
-          'stakeholder management', 'cross-functional', 'critical thinking', 'adaptability',
-          'project management', 'team player', 'time management', 'conflict resolution',
-          'analytical skills', 'presentation', 'creativity', 'negotiation', 'organizational',
-          'multitasking', 'strategic planning', 'decision making', 'team building'
-        ]);
-
-        function classifySkill(kw) {
-          const lower = kw.toLowerCase().trim();
-          if (HARD_SKILLS_SET.has(lower)) return 'hard';
-          const cluster = SYNONYM_CLUSTERS.find(group => group.some(alias => alias === lower));
-          if (cluster && cluster.some(a => HARD_SKILLS_SET.has(a))) return 'hard';
-          if (SOFT_SKILLS_SET.has(lower)) return 'soft';
-          return 'general';
-        }
-
-        // ── 2.3 FLESCH-KINCAID READABILITY & SYLLABLE COUNTING ENGINE ──
-        function countWordSyllables(word) {
-          let w = word.toLowerCase().trim();
-          if (!w || w.length <= 2) return 1;
-          w = w.replace(/(?:[^laeiouy]|ed|es|e)$/, '');
-          w = w.replace(/^y/, '');
-          const syllables = w.match(/[aeiouy]{1,2}/g);
-          return syllables ? Math.max(1, syllables.length) : 1;
-        }
-
-        function calculateFleschKincaid(text) {
-          if (!text || text.trim().length === 0) {
-            return { readingEase: 60, gradeLevel: 9, asl: 12, asw: 1.5, score: 60, totalWords: 0 };
-          }
-
-          const words = text.match(/\b[A-Za-z0-9'-]+\b/g) || [];
-          const totalWords = words.length;
-          if (totalWords < 15) {
-            return { readingEase: 60, gradeLevel: 8, asl: 8, asw: 1.4, score: 50, totalWords };
-          }
-
-          const sentences = text.split(/[\n\.\!\?•\-\*]+/).filter(s => s.trim().length > 0);
-          const totalSentences = Math.max(1, sentences.length);
-
-          let totalSyllables = 0;
-          words.forEach(w => {
-            totalSyllables += countWordSyllables(w);
+    // Drag and drop support
+    ['dragenter', 'dragover'].forEach((eventName) => {
+      uploadZone.addEventListener(eventName, (e) => {
+        // Drag and drop support on both uploadZone and full-overlay fileInput
+        const dragTargets = [uploadZone, fileInput].filter(Boolean);
+        ['dragenter', 'dragover'].forEach((eventName) => {
+          dragTargets.forEach((el) => {
+            el.addEventListener(eventName, (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              uploadZone.classList.add('drag-over');
+              if (uploadZone) uploadZone.classList.add('drag-over');
+            });
           });
+        });
 
-          const asl = totalWords / totalSentences;
-          const asw = totalSyllables / totalWords;
-
-          // Flesch Reading Ease Formula: 206.835 - 1.015(ASL) - 84.6(ASW)
-          const rawEase = 206.835 - (1.015 * asl) - (84.6 * asw);
-          const readingEase = Math.round(Math.min(100, Math.max(0, rawEase)));
-
-          // Flesch-Kincaid Grade Level: 0.39(ASL) + 11.8(ASW) - 15.59
-          const rawGrade = (0.39 * asl) + (11.8 * asw) - 15.59;
-          const gradeLevel = Math.max(1, Math.min(18, parseFloat(rawGrade.toFixed(1))));
-
-          // Recruiter Scannability calibration:
-          // Sweet spot is 50-75 (Grade 8.0 - 11.5)
-          let readabilityScore = 95;
-          if (readingEase >= 50 && readingEase <= 75) {
-            readabilityScore = 95;
-          } else if (readingEase > 75) {
-            readabilityScore = Math.max(60, Math.round(95 - (readingEase - 75) * 1.5));
-          } else {
-            readabilityScore = Math.max(40, Math.round(95 - (50 - readingEase) * 1.8));
-          }
-
-          // Length budget calibration
-          if (totalWords >= 350 && totalWords <= 850) {
-            readabilityScore = Math.min(100, readabilityScore + 5);
-          } else if (totalWords < 300) {
-            readabilityScore = Math.max(30, readabilityScore - 18);
-          } else if (totalWords > 1200) {
-            readabilityScore = Math.max(40, readabilityScore - 15);
-          }
-
-          return {
-            readingEase,
-            gradeLevel,
-            asl: parseFloat(asl.toFixed(1)),
-            asw: parseFloat(asw.toFixed(2)),
-            score: Math.round(readabilityScore),
-            totalWords
-          };
-        }
-
-        // ── 2.4 SEMANTIC KEYWORD EVALUATOR WITH SYNONYMS & HARD/SOFT TAXONOMY ──
-        function evaluateKeywords(resumeText, jobText) {
-          if (jobText && jobText.trim().length > 25) {
-            // Case A: Targeted Job Description Provided
-            // Extract recognized multi-word compound phrases first
-            const COMPOUND_PHRASES = [
-              'amazon web services', 'google cloud platform', 'google cloud', 'microsoft azure',
-              'machine learning', 'deep learning', 'artificial intelligence', 'generative ai',
-              'natural language processing', 'computer vision', 'data science',
-              'continuous integration', 'continuous deployment', 'continuous delivery',
-              'microservice architecture', 'system design', 'problem solving', 'test driven development',
-              'test-driven development', 'cross-functional', 'unit testing', 'object-oriented programming',
-              'rest api', 'rest apis', 'restful api', 'spring boot', 'ruby on rails'
-            ];
-
-            const foundCompounds = [];
-            let cleanJobText = jobText;
-            COMPOUND_PHRASES.forEach(phrase => {
-              const esc = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-              if (new RegExp('\\b' + esc + '\\b', 'i').test(jobText)) {
-                foundCompounds.push(phrase);
-                cleanJobText = cleanJobText.replace(new RegExp('\\b' + esc + '\\b', 'gi'), ' ');
-              }
-            });
-
-            const rawTokens = cleanJobText.match(/\b[A-Za-z0-9#\+\.\/\-]{2,}\b/g) || [];
-            const filteredTokens = rawTokens
-              .map(t => t.replace(/^[,\.\-_\/]+|[,\.\-_\/]+$/g, ''))
-              .filter(t => {
-                const lw = t.toLowerCase();
-                return lw.length >= 2 && !INDUSTRY_STOPWORDS.has(lw) && !/^\d+$/.test(lw);
-              });
-
-            const freq = {};
-            foundCompounds.forEach(p => { freq[p.toLowerCase()] = 10; });
-            filteredTokens.forEach(t => {
-              const key = t.toLowerCase();
-              freq[key] = (freq[key] || 0) + 1;
-            });
-
-            const uniqueJDKeywords = Object.keys(freq).sort((a, b) => freq[b] - freq[a]);
-            const matches = [];
-            const missing = [];
-            let hardTotal = 0, hardMatched = 0;
-            let softTotal = 0, softMatched = 0;
-
-            uniqueJDKeywords.forEach(kw => {
-              const skillType = classifySkill(kw);
-              if (skillType === 'hard') hardTotal++;
-              else if (skillType === 'soft') softTotal++;
-
-              const matchResult = resolveSynonymMatch(kw, resumeText);
-              if (matchResult.matched) {
-                matches.push({
-                  keyword: kw,
-                  matchedVariant: matchResult.matchedVariant,
-                  isSynonym: matchResult.isSynonym,
-                  skillType
+        ['dragleave', 'dragend'].forEach((eventName) => {
+          uploadZone.addEventListener(eventName, (e) => {
+            ['dragleave', 'dragend'].forEach((eventName) => {
+              dragTargets.forEach((el) => {
+                el.addEventListener(eventName, (e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  uploadZone.classList.remove('drag-over');
+                  if (uploadZone) uploadZone.classList.remove('drag-over');
                 });
-                if (skillType === 'hard') hardMatched++;
-                else if (skillType === 'soft') softMatched++;
-              } else {
-                missing.push({
-                  keyword: kw,
-                  skillType
+              });
+            });
+
+            uploadZone.addEventListener('drop', (e) => {
+              dragTargets.forEach((el) => {
+                el.addEventListener('drop', (e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  uploadZone.classList.remove('drag-over');
+                  if (uploadZone) uploadZone.classList.remove('drag-over');
+                  if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+                    handleFile(e.dataTransfer.files[0]);
+                  }
                 });
               }
-            });
-
-            const hardRatio = hardTotal > 0 ? (hardMatched / hardTotal) : (matches.length / (uniqueJDKeywords.length || 1));
-            const softRatio = softTotal > 0 ? (softMatched / softTotal) : (matches.length / (uniqueJDKeywords.length || 1));
-            const overallRatio = matches.length / (uniqueJDKeywords.length || 1);
-
-            let score;
-            if (hardTotal > 0 && softTotal > 0) {
-              score = Math.round((hardRatio * 75) + (softRatio * 25));
-            } else if (hardTotal > 0) {
-              score = Math.round(hardRatio * 100);
-            } else {
-              score = Math.round(overallRatio * 100);
-            }
-            score = Math.min(100, Math.max(15, score));
-
-            return {
-              hasJD: true,
-              score,
-              hardScore: Math.round(hardRatio * 100),
-              softScore: Math.round(softRatio * 100),
-              hardTotal,
-              softTotal,
-              matched: matches.slice(0, 12),
-              missing: missing.slice(0, 8),
-              totalKeywords: uniqueJDKeywords.length,
-              matchRatio: Math.round(overallRatio * 100)
-            };
-          }
-
-          // Case B: No Job Description (Baseline Role Benchmark)
-          const DOMAIN_BENCHMARKS = {
-            frontend: ['javascript', 'typescript', 'react', 'html', 'css', 'redux', 'vue', 'webpack', 'tailwind', 'next.js', 'responsive', 'rest', 'git', 'collaboration', 'problem solving'],
-            backend: ['node.js', 'python', 'java', 'express', 'sql', 'postgresql', 'mongodb', 'docker', 'api', 'microservices', 'redis', 'aws', 'git', 'system design', 'problem solving'],
-            fullstack: ['javascript', 'typescript', 'react', 'node.js', 'sql', 'mongodb', 'api', 'docker', 'git', 'html', 'css', 'rest', 'aws', 'communication', 'leadership'],
-            devops: ['docker', 'kubernetes', 'aws', 'terraform', 'ci/cd', 'linux', 'python', 'bash', 'ansible', 'jenkins', 'cloud', 'git', 'monitoring', 'incident management', 'troubleshooting'],
-            data: ['python', 'sql', 'pandas', 'machine learning', 'numpy', 'tableau', 'spark', 'r', 'statistics', 'etl', 'visualization', 'git', 'analytical skills', 'critical thinking']
-          };
-
-          let detectedDomain = 'fullstack';
-          if (/devops|sre|infrastructure|kubernetes|terraform/i.test(resumeText)) detectedDomain = 'devops';
-          else if (/data\s*scientist|data\s*analyst|machine\s*learning|pandas/i.test(resumeText)) detectedDomain = 'data';
-          else if (/frontend|react|angular|vue|ui\/ux/i.test(resumeText) && !/node|express|django|spring/i.test(resumeText)) detectedDomain = 'frontend';
-          else if (/backend|django|spring\s*boot|golang|fastapi/i.test(resumeText)) detectedDomain = 'backend';
-
-          const benchmarkList = DOMAIN_BENCHMARKS[detectedDomain];
-          const domainMatches = [];
-          const domainMissing = [];
-          let hardTotal = 0, hardMatched = 0;
-          let softTotal = 0, softMatched = 0;
-
-          benchmarkList.forEach(skill => {
-            const skillType = classifySkill(skill);
-            if (skillType === 'hard') hardTotal++;
-            else if (skillType === 'soft') softTotal++;
-
-            const matchResult = resolveSynonymMatch(skill, resumeText);
-            if (matchResult.matched) {
-              domainMatches.push({
-                keyword: skill,
-                matchedVariant: matchResult.matchedVariant,
-                isSynonym: matchResult.isSynonym,
-                skillType
-              });
-              if (skillType === 'hard') hardMatched++;
-              else if (skillType === 'soft') softMatched++;
-            } else {
-              domainMissing.push({
-                keyword: skill,
-                skillType
-              });
-            }
-          });
-
-          const hardRatio = hardTotal > 0 ? (hardMatched / hardTotal) : 0.5;
-          const softRatio = softTotal > 0 ? (softMatched / softTotal) : 0.5;
-          let domainScore = Math.min(100, Math.max(25, Math.round((hardRatio * 75) + (softRatio * 25))));
-
-          // Reward verified competency levels (Expert, Advanced, etc.)
-          const hasProficiency = /\b(expert|advanced|intermediate|proficient|beginner|senior|lead)\b/i.test(resumeText) || /\([a-z\s]+\)/i.test(resumeText);
-          if (hasProficiency) {
-            domainScore = Math.min(100, domainScore + 10);
-          }
-
-          return {
-            hasJD: false,
-            score: domainScore,
-            hardScore: Math.round(hardRatio * 100),
-            softScore: Math.round(softRatio * 100),
-            hardTotal,
-            softTotal,
-            detectedDomain,
-            matched: domainMatches,
-            missing: domainMissing.slice(0, 6),
-            totalKeywords: benchmarkList.length,
-            matchRatio: Math.round((domainMatches.length / benchmarkList.length) * 100)
-          };
-        }
-
-        // ── EXECUTE PHASE 1 & 2 EVALUATIONS ──
-        const metricList = extractContextualMetrics(resume);
-        const structureResult = validateSectionStructure(resume);
-        const keywordResult = evaluateKeywords(resume, job);
-        const fleschResult = calculateFleschKincaid(resume);
-
-        // Power Action Verbs audit (extended 60+ industry power verbs)
-        const ACTION_VERBS = [
-          'accelerated', 'achieved', 'administered', 'analyzed', 'architected', 'automated',
-          'benchmarked', 'built', 'championed', 'collaborated', 'conceptualized', 'coordinated',
-          'decreased', 'delivered', 'deployed', 'designed', 'developed', 'devised', 'directed',
-          'engineered', 'established', 'executed', 'expanded', 'expedited', 'formulated',
-          'generated', 'implemented', 'improved', 'increased', 'initiated', 'innovated',
-          'integrated', 'launched', 'led', 'managed', 'maximized', 'mentored', 'minimized',
-          'modernized', 'optimized', 'orchestrated', 'overhauled', 'pioneered', 'reduced',
-          'refactored', 'resolved', 'restructured', 'revamped', 'scaled', 'simplified',
-          'spearheaded', 'standardized', 'streamlined', 'strengthened', 'supervised',
-          'surpassed', 'systematized', 'transformed', 'upgraded', 'yielded'
-        ];
-
-        let actionVerbCount = 0;
-        const foundVerbs = [];
-        ACTION_VERBS.forEach(v => {
-          if (new RegExp('\\b' + v + '\\b', 'i').test(resume)) {
-            actionVerbCount++;
-            if (foundVerbs.length < 6) foundVerbs.push(v);
-          }
-        });
-
-        // Impact & Metrics Score: based strictly on contextual metrics + verified action verbs
-        const impactScore = Math.min(100, Math.round((metricList.length * 18) + (actionVerbCount * 8)));
-
-        // Readability & Word Count Score (driven by Flesch-Kincaid formula + length budget)
-        const readabilityScore = fleschResult.score;
-        const structureScore = Math.min(100, Math.max(0, structureResult.totalScore));
-        const keywordScore = keywordResult.score;
-
-        // Composite ATS Score (strictly capped at 100)
-        const overallScore = Math.min(100, Math.max(0, Math.round(
-          (keywordScore * 0.35) +
-          (readabilityScore * 0.25) +
-          (impactScore * 0.20) +
-          (structureScore * 0.20)
-        )));
-
-        // Update Gauge
-        const circumference = 408;
-        const offset = circumference - (overallScore / 100) * circumference;
-        gaugeCircle.style.strokeDashoffset = offset;
-        scoreVal.innerText = overallScore;
-
-        if (overallScore >= 85) {
-          gaugeCircle.style.stroke = '#10b981';
-          scoreGrade.innerText = 'Excellent ATS Pass';
-          scoreGrade.style.color = '#10b981';
-          scoreStatusTag.innerText = keywordResult.hasJD ? 'ATS High Match' : 'High Baseline Profile';
-        } else if (overallScore >= 65) {
-          gaugeCircle.style.stroke = '#f59e0b';
-          scoreGrade.innerText = 'Moderate Match';
-          scoreGrade.style.color = '#f59e0b';
-          scoreStatusTag.innerText = keywordResult.hasJD ? 'Needs Keyword Boost' : 'Moderate Baseline';
-        } else {
-          gaugeCircle.style.stroke = '#ef4444';
-          scoreGrade.innerText = 'High Risk of Rejection';
-          scoreGrade.style.color = '#ef4444';
-          scoreStatusTag.innerText = 'Action Required';
-        }
-
-        // Update Metrics in UI with Phase 2 Sub-Detail
-        document.getElementById('mKeyword').innerText = keywordScore + '%';
-        document.getElementById('bKeyword').style.width = keywordScore + '%';
-        const mKeywordSub = document.getElementById('mKeywordSub');
-        if (mKeywordSub) {
-          mKeywordSub.innerText = `Hard: ${keywordResult.hardScore}% | Soft: ${keywordResult.softScore}%`;
-        }
-
-        document.getElementById('mReadability').innerText = readabilityScore + '%';
-        document.getElementById('bReadability').style.width = readabilityScore + '%';
-        const mReadabilitySub = document.getElementById('mReadabilitySub');
-        if (mReadabilitySub) {
-          mReadabilitySub.innerText = `Flesch: ${fleschResult.readingEase} | Gr: ${fleschResult.gradeLevel}`;
-        }
-
-        document.getElementById('mImpact').innerText = impactScore + '%';
-        document.getElementById('bImpact').style.width = impactScore + '%';
-
-        document.getElementById('mStructure').innerText = structureScore + '%';
-        document.getElementById('bStructure').style.width = structureScore + '%';
-
-        // Update Chips UI with Synonym & Hard/Soft Tags
-        const chipsContainer = document.getElementById('keywordChips');
-        chipsContainer.innerHTML = '';
-
-        if (!keywordResult.hasJD) {
-          chipsContainer.innerHTML += `<div style="width:100%; font-size:0.75rem; color:var(--text-muted); margin-bottom:8px; font-style:italic;">
-            ⚡ Scanned against <strong>${keywordResult.detectedDomain.toUpperCase()}</strong> industry taxonomy. Paste a Target Job Description above for customized ATS keyword match.
-          </div>`;
-        }
-
-        keywordResult.matched.forEach(item => {
-          const typeTag = item.skillType === 'hard'
-            ? '<small style="opacity:0.75; font-size:0.68rem; margin-left:3px;">[Hard]</small>'
-            : (item.skillType === 'soft' ? '<small style="opacity:0.75; font-size:0.68rem; margin-left:3px;">[Soft]</small>' : '');
-          const aliasTag = item.isSynonym
-            ? `<small style="color:var(--accent); font-size:0.68rem; margin-left:2px;">(${item.matchedVariant})</small>`
-            : '';
-          chipsContainer.innerHTML += `<span class="chip chip-match" title="${item.isSynonym ? 'Matched via synonym ' + item.matchedVariant : ''}">✓ ${item.keyword}${aliasTag} ${typeTag}</span>`;
-        });
-
-        keywordResult.missing.forEach(item => {
-          const typeTag = item.skillType === 'hard'
-            ? '<small style="opacity:0.75; font-size:0.68rem; margin-left:3px;">[Hard]</small>'
-            : (item.skillType === 'soft' ? '<small style="opacity:0.75; font-size:0.68rem; margin-left:3px;">[Soft]</small>' : '');
-          chipsContainer.innerHTML += `<span class="chip chip-miss" title="Missing required skill">✕ ${item.keyword} ${typeTag}</span>`;
-        });
-
-        // Update AI Improvement Checklist
-        const suggestionsList = document.getElementById('suggestionsList');
-        suggestionsList.innerHTML = '';
-
-        if (!keywordResult.hasJD) {
-          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">🎯</span><span>Paste your target job posting in the <strong>Target Job Description</strong> field to analyze customized ATS keyword match.</span></li>`;
-        } else {
-          const missingHard = keywordResult.missing.filter(m => m.skillType === 'hard');
-          if (missingHard.length > 0) {
-            suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">💻</span><span>High-Priority Technical Hard Skills missing: <strong>${missingHard.map(m => m.keyword).join(', ')}</strong>. Hard skills drive 75% of ATS keyword ranking.</span></li>`;
-          }
-          const missingSoft = keywordResult.missing.filter(m => m.skillType === 'soft');
-          if (missingSoft.length > 0) {
-            suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">🤝</span><span>Demonstrate competencies in: <strong>${missingSoft.map(m => m.keyword).join(', ')}</strong> within your project narratives.</span></li>`;
-          }
-        }
-
-        // Flesch-Kincaid Readability suggestions
-        if (fleschResult.readingEase < 45) {
-          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📖</span><span>Bullet points are overly dense (Flesch Score: <strong>${fleschResult.readingEase}</strong>, Grade Level: <strong>${fleschResult.gradeLevel}</strong>). Shorten multi-clause sentences to improve recruiter skim-rate.</span></li>`;
-        } else if (fleschResult.readingEase > 78) {
-          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📖</span><span>Language is relatively informal (Flesch Score: <strong>${fleschResult.readingEase}</strong>). Infuse more technical depth and industry terminology to align with ATS expectations.</span></li>`;
-        } else {
-          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">✨</span><span>Recruiter readability is optimal (Flesch: <strong>${fleschResult.readingEase}</strong>, Grade <strong>${fleschResult.gradeLevel}</strong>). Punchy sentence lengths support rapid screening.</span></li>`;
-        }
-
-        if (metricList.length < 3) {
-          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📈</span><span>Add verified business impact metrics (e.g. <em>"reduced latency by 32%"</em>, <em>"scaled to 15,000 DAU"</em>). Found only ${metricList.length} validated metric(s) — phone numbers and dates are excluded.</span></li>`;
-        }
-
-        if (actionVerbCount < 4) {
-          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">⚡</span><span>Begin every bullet with strong power verbs like <em>Architected, Streamlined, Spearheaded</em> instead of passive phrases like <em>"Responsible for"</em>.</span></li>`;
-        }
-
-        if (structureResult.totalScore < 90) {
-          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">🏗️</span><span>Ensure clear section layout: full contact details, explicit role titles with date ranges, and verified education degree/school.</span></li>`;
-        }
-
-        if (fleschResult.totalWords < 300) {
-          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📄</span><span>Resume is relatively brief (${fleschResult.totalWords} words). A competitive ATS profile typically contains 400–800 words of technical depth and project detail.</span></li>`;
-        } else if (fleschResult.totalWords > 1200) {
-          suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📄</span><span>Resume is lengthy (${fleschResult.totalWords} words). Consider tightening descriptions to maintain recruiter scannability.</span></li>`;
-        }
-
-        // ── 3. VALUE GLIMPSE & EMAIL CAPTURE ENFORCEMENT ──
-        const leadOverlay = document.getElementById('leadEmailGateOverlay');
-        const postUnlockCard = document.getElementById('postUnlockCard');
-        const checklistCounter = document.getElementById('checklistCounter');
-        if (checklistCounter) {
-          checklistCounter.textContent = `${suggestionsList.children.length} Action Items`;
-          checklistCounter.style.display = 'inline-flex';
-        }
-
-        const isAlreadyCaptured = Boolean(sessionStorage.getItem('cf-email-captured') || (window.auth && window.auth.isLoggedIn()));
-
-        if (isAlreadyCaptured) {
-          suggestionsList.classList.remove('paywall-blurred-content');
-          suggestionsList.classList.add('unlocked');
-          if (leadOverlay) leadOverlay.classList.add('hidden');
-          if (postUnlockCard) postUnlockCard.style.display = 'block';
-        } else {
-          suggestionsList.classList.remove('unlocked');
-          suggestionsList.classList.add('paywall-blurred-content');
-          if (leadOverlay) leadOverlay.classList.remove('hidden');
-          if (postUnlockCard) postUnlockCard.style.display = 'none';
-        }
-
-        // Store last scan stats for lead submission
-        window._lastAtsScan = {
-          score: overallScore,
-          role: keywordResult.detectedDomain,
-          matchRatio: keywordResult.matchRatio,
-          hardMissing: keywordResult.missing.filter(m => m.skillType === 'hard').map(m => m.keyword),
-          totalWords: fleschResult.totalWords
-        };
-
-        btnScan.disabled = false;
-        btnScan.innerHTML = '<span>🔍 Re-scan Resume</span>';
-      }, 600);
     });
 
-    // ── EMAIL CAPTURE FORM SUBMISSION ──
-    const leadForm = document.getElementById('leadCaptureForm');
-    if (leadForm) {
-      leadForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const emailInput = document.getElementById('leadEmailInput');
-        const email = emailInput.value.trim();
-        if (!email) return;
+            const btnRemove = document.getElementById('btnRemoveFile');
+            if (btnRemove) {
+              btnRemove.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (fileInput) fileInput.value = '';
+                if (resumeInput) {
+                  resumeInput.value = '';
+                  resumeInput.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+                if (uploadedFileInfo) uploadedFileInfo.style.display = 'none';
+                if (parseProgress) parseProgress.style.display = 'none';
+                if (uploadZone) uploadZone.style.display = 'flex';
+                if (uploadStatus) {
+                  uploadStatus.textContent = 'No file uploaded';
+                  uploadStatus.style.background = '';
+                  uploadStatus.style.color = '';
+                }
+                if (window.toast) window.toast.info('File removed.');
+              });
+            }
 
-        const btnUnlock = document.getElementById('btnUnlockAnalysis');
-        if (btnUnlock) {
-          btnUnlock.disabled = true;
-          btnUnlock.textContent = 'Unlocking...';
-        }
+            function handleFile(file) {
+              if (!file) return;
+              const ext = file.name.split('.').pop().toLowerCase();
+              if (!['pdf', 'docx', 'doc', 'txt'].includes(ext)) {
+                alert('Please upload a PDF, DOCX, DOC, or TXT file.');
+                if (fileInput) fileInput.value = '';
+                return;
+              }
 
-        const suggestionsList = document.getElementById('suggestionsList');
-        const leadOverlay = document.getElementById('leadEmailGateOverlay');
-        const postUnlockCard = document.getElementById('postUnlockCard');
+              if (ext === 'doc') {
+                alert('Legacy .doc binary Word files cannot be parsed directly in browser. Please save your file as .docx or .pdf, or paste your text directly into the text area below.');
+                if (fileInput) fileInput.value = '';
+                return;
+              }
 
-        // 1. Optimistic reveal
-        if (suggestionsList) {
-          suggestionsList.classList.remove('paywall-blurred-content');
-          suggestionsList.classList.add('unlocked');
-        }
-        if (leadOverlay) leadOverlay.classList.add('hidden');
-        if (postUnlockCard) postUnlockCard.style.display = 'block';
-        sessionStorage.setItem('cf-email-captured', '1');
+              const fileNameEl = document.getElementById('fileName');
+              const fileSizeEl = document.getElementById('fileSize');
+              if (fileNameEl) fileNameEl.textContent = file.name;
+              if (fileSizeEl) fileSizeEl.textContent = (file.size / 1024).toFixed(1) + ' KB';
 
-        if (window.toast) {
-          window.toast.success('Full ATS breakdown unlocked! Summary queued.');
-        }
+              if (uploadZone) uploadZone.style.display = 'none';
+              if (uploadedFileInfo) uploadedFileInfo.style.display = 'flex';
+              if (parseProgress) parseProgress.style.display = 'flex';
+              if (uploadStatus) {
+                uploadStatus.textContent = 'Extracting text...';
+                uploadStatus.style.background = 'rgba(108,92,231,0.12)';
+                uploadStatus.style.color = 'var(--accent)';
+              }
 
-        // 2. Send lead to backend non-blocking
-        if (window.api) {
-          window.api.post('/api/leads', {
-            email,
-            source: 'ats_score',
-            score: window._lastAtsScan?.score,
-            metadata: window._lastAtsScan || {}
-          }).catch(err => {
-            console.warn('Lead capture backend note:', err);
-          });
-        }
-      });
-    }
+              if (ext === 'txt') {
+                const reader = new FileReader();
+                reader.onload = (e) => finishExtraction(e.target.result || '');
+                reader.onerror = () => {
+                  if (parseProgress) parseProgress.style.display = 'none';
+                  if (uploadStatus) {
+                    uploadStatus.textContent = 'Failed to read TXT file';
+                    uploadStatus.style.color = 'var(--red)';
+                  }
+                  if (window.toast) window.toast.error('Failed to read TXT file.');
+                };
+                reader.readAsText(file);
+              } else if (ext === 'pdf') {
+                extractPDF(file);
+              } else if (ext === 'docx') {
+                extractDOCX(file);
+              }
+            }
+
+            function finishExtraction(text) {
+              if (parseProgress) parseProgress.style.display = 'none';
+              const cleaned = (text || '').replace(/\r\n/g, '\n').replace(/[ \t]+/g, ' ').trim();
+              if (resumeInput) {
+                resumeInput.value = cleaned;
+                resumeInput.dispatchEvent(new Event('input', { bubbles: true }));
+              }
+              if (uploadStatus) {
+                uploadStatus.textContent = '✓ Text extracted';
+                uploadStatus.style.background = 'rgba(16,185,129,0.12)';
+                uploadStatus.style.color = 'var(--green)';
+              }
+              if (window.toast) window.toast.success('Resume text extracted successfully!');
+              // Reset input value so re-selecting the exact same file in future triggers change
+              if (fileInput) fileInput.value = '';
+            }
+
+            async function extractPDF(file) {
+              // 1. Primary extraction with PDF.js
+              if (typeof pdfjsLib !== 'undefined') {
+                try {
+                  // Configure worker via Blob URL to eliminate cross-origin Web Worker restrictions
+                  try {
+                    const workerCode = 'importScripts("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js");';
+                    const workerBlob = new Blob([workerCode], { type: 'application/javascript' });
+                    pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(workerBlob);
+                  } catch (workerErr) {
+                    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                  }
+
+                  const arrayBuf = await file.arrayBuffer();
+                  const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(arrayBuf) }).promise;
+                  const docTask = pdfjsLib.getDocument({ data: new Uint8Array(arrayBuf) });
+                  const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('PDF.js timed out')), 5000));
+                  const pdf = await Promise.race([docTask.promise, timeoutPromise]);
+                  let fullText = '';
+                  for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const tc = await page.getTextContent();
+                    const pageText = tc.items.map(s => s.str).join(' ');
+                    fullText += pageText + '\n\n';
+                  }
+                  if (fullText.trim().length > 15) {
+                    finishExtraction(fullText);
+                    return;
+                  }
+                } catch (pdfErr) {
+                  console.warn('PDF.js parser error, attempting stream extraction fallback:', pdfErr);
+                }
+              }
+
+              // 2. Resilient fallback text stream parser for PDFs
+              try {
+                const fallbackText = await extractRawPdfText(file);
+                if (fallbackText && fallbackText.trim().length > 15) {
+                  finishExtraction(fallbackText);
+                  return;
+                }
+              } catch (fbErr) {
+                console.warn('Fallback PDF extraction error:', fbErr);
+              }
+
+              // Failed all extraction paths
+              if (parseProgress) parseProgress.style.display = 'none';
+              if (uploadStatus) {
+                uploadStatus.textContent = 'PDF extraction failed — paste text below';
+                uploadStatus.style.color = 'var(--red)';
+              }
+              if (window.toast) window.toast.error('Could not extract text from PDF. Please paste resume text below.');
+              if (fileInput) fileInput.value = '';
+            }
+
+            function extractRawPdfText(file) {
+              return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                  try {
+                    const raw = e.target.result || '';
+                    const matches = [];
+                    const tjRegex = /\(([^)]+)\)\s*(?:Tj|'|")/g;
+                    let m;
+                    while ((m = tjRegex.exec(raw)) !== null) {
+                      if (m[1]) matches.push(m[1]);
+                    }
+                    if (matches.length > 5) {
+                      resolve(matches.join(' ').replace(/\\([()\\])/g, '$1').replace(/\\[rn]/g, ' '));
+                    } else {
+                      resolve('');
+                    }
+                  } catch (err) {
+                    resolve('');
+                  }
+                };
+                reader.onerror = () => resolve('');
+                reader.readAsBinaryString(file);
+              });
+            }
+
+            async function extractDOCX(file) {
+              // 1. Primary extraction with Mammoth
+              if (typeof mammoth !== 'undefined') {
+                try {
+                  const arrayBuffer = await file.arrayBuffer();
+                  const result = await mammoth.extractRawText({ arrayBuffer });
+                  if (result && result.value && result.value.trim().length > 15) {
+                    finishExtraction(result.value);
+                    return;
+                  }
+                } catch (mErr) {
+                  console.warn('Mammoth error, attempting XML stream fallback:', mErr);
+                }
+              }
+
+              // 2. Resilient fallback for DOCX text XML streams
+              try {
+                const fallbackDocx = await extractRawDocxText(file);
+                if (fallbackDocx && fallbackDocx.trim().length > 15) {
+                  finishExtraction(fallbackDocx);
+                  return;
+                }
+              } catch (docFbErr) {
+                console.warn('Fallback DOCX extraction error:', docFbErr);
+              }
+
+              if (parseProgress) parseProgress.style.display = 'none';
+              if (uploadStatus) {
+                uploadStatus.textContent = 'DOCX extraction failed — paste text below';
+                uploadStatus.style.color = 'var(--red)';
+              }
+              if (window.toast) window.toast.error('Could not parse DOCX. Please paste text directly below.');
+              if (fileInput) fileInput.value = '';
+            }
+
+            function extractRawDocxText(file) {
+              return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                  try {
+                    const raw = e.target.result || '';
+                    const matches = [];
+                    const wtRegex = /<w:t[^>]*>([^<]+)<\/w:t>/g;
+                    let m;
+                    while ((m = wtRegex.exec(raw)) !== null) {
+                      if (m[1]) matches.push(m[1]);
+                    }
+                    resolve(matches.join(' '));
+                  } catch (e) {
+                    resolve('');
+                  }
+                };
+                reader.onerror = () => resolve('');
+                reader.readAsBinaryString(file);
+              });
+            }
+
+            const btnScan = document.getElementById('btnScanResume');
+            const gaugeCircle = document.getElementById('gaugeCircle');
+            const scoreVal = document.getElementById('scoreVal');
+            const scoreGrade = document.getElementById('scoreGrade');
+            const scoreStatusTag = document.getElementById('scoreStatusTag');
+
+            btnScan.addEventListener('click', () => {
+              const resume = document.getElementById('resumeInput').value.trim();
+              const job = document.getElementById('jobDescInput').value.trim();
+
+              if (!resume || resume.length < 50) {
+                alert('Please paste at least 50 characters of resume content to analyze.');
+                return;
+              }
+
+              btnScan.disabled = true;
+              btnScan.innerHTML = '<span>⚡ Simulating ATS Parser...</span>';
+
+              setTimeout(() => {
+                // ── 1.1 COMPREHENSIVE INDUSTRY STOPWORDS & NOISE FILTER (175+ words) ──
+                const INDUSTRY_STOPWORDS = new Set([
+                  'a', 'about', 'above', 'across', 'after', 'again', 'against', 'all', 'almost', 'alone', 'along',
+                  'already', 'also', 'although', 'always', 'am', 'among', 'an', 'and', 'another', 'any', 'anybody',
+                  'anyone', 'anything', 'anywhere', 'applicant', 'applicants', 'apply', 'applying', 'are', 'area',
+                  'areas', 'around', 'as', 'ask', 'asked', 'at', 'away', 'back', 'be', 'became', 'because', 'become',
+                  'becomes', 'becoming', 'been', 'before', 'began', 'behind', 'being', 'below', 'benefits', 'beside',
+                  'best', 'better', 'between', 'beyond', 'both', 'bring', 'brought', 'but', 'by', 'came', 'can',
+                  'cannot', 'candidate', 'candidates', 'career', 'careers', 'case', 'certain', 'clear', 'clearly',
+                  'close', 'closely', 'come', 'comes', 'company', 'companies', 'complete', 'completed', 'consider',
+                  'considered', 'could', 'culture', 'current', 'currently', 'daily', 'day', 'days', 'describe',
+                  'described', 'description', 'did', 'different', 'differently', 'do', 'does', 'doing', 'done',
+                  'down', 'during', 'duties', 'each', 'early', 'either', 'else', 'employee', 'employees', 'employer',
+                  'employers', 'employment', 'enough', 'entire', 'environment', 'equal', 'especially', 'etc', 'even',
+                  'ever', 'every', 'everyone', 'everything', 'everywhere', 'example', 'except', 'expect', 'expected',
+                  'experience', 'experienced', 'experiences', 'face', 'fact', 'few', 'field', 'find', 'first',
+                  'five', 'for', 'form', 'former', 'forward', 'found', 'four', 'friday', 'from', 'front', 'full',
+                  'full-time', 'further', 'gave', 'general', 'generally', 'get', 'gets', 'getting', 'give', 'given',
+                  'gives', 'giving', 'go', 'goes', 'going', 'good', 'got', 'great', 'group', 'had', 'has', 'have',
+                  'having', 'he', 'help', 'helped', 'helping', 'helps', 'her', 'here', 'hers', 'herself', 'high',
+                  'higher', 'highest', 'him', 'himself', 'hire', 'hired', 'hiring', 'his', 'home', 'hour', 'hours',
+                  'how', 'however', 'i', 'ideal', 'if', 'important', 'in', 'include', 'included', 'includes',
+                  'including', 'income', 'indeed', 'individual', 'individuals', 'industry', 'instead', 'into',
+                  'is', 'it', 'its', 'itself', 'job', 'jobs', 'join', 'joining', 'just', 'keep', 'keeps', 'kept',
+                  'kind', 'knew', 'know', 'known', 'knows', 'large', 'largely', 'last', 'later', 'latest', 'least',
+                  'less', 'let', 'like', 'likely', 'little', 'look', 'looked', 'looking', 'looks', 'made', 'make',
+                  'makes', 'making', 'many', 'matter', 'may', 'maybe', 'me', 'mean', 'means', 'meant', 'meet',
+                  'member', 'members', 'might', 'more', 'moreover', 'most', 'mostly', 'move', 'much', 'must',
+                  'my', 'myself', 'name', 'near', 'nearly', 'necessary', 'need', 'needed', 'needs', 'neither',
+                  'never', 'new', 'next', 'no', 'nobody', 'none', 'noone', 'nor', 'not', 'nothing', 'now', 'nowhere',
+                  'number', 'obtain', 'obtained', 'of', 'off', 'office', 'often', 'on', 'once', 'one', 'ones',
+                  'only', 'onto', 'opportunity', 'opportunities', 'or', 'order', 'other', 'others', 'otherwise',
+                  'our', 'ours', 'ourselves', 'out', 'over', 'overall', 'own', 'part', 'part-time', 'participate',
+                  'particular', 'particularly', 'people', 'per', 'perhaps', 'person', 'personal', 'place', 'places',
+                  'please', 'plus', 'point', 'points', 'policy', 'policies', 'position', 'positions', 'possible',
+                  'post', 'posted', 'potential', 'prefer', 'preference', 'preferred', 'prepare', 'prepared',
+                  'present', 'presented', 'problem', 'problems', 'provide', 'provided', 'provides', 'providing',
+                  'purpose', 'put', 'puts', 'qualification', 'qualifications', 'quite', 'rather', 'ready', 'real',
+                  'really', 'reason', 'reasons', 'receive', 'received', 'recent', 'recently', 'regard', 'regarding',
+                  'regular', 'regularly', 'related', 'require', 'required', 'requirement', 'requirements', 'requires',
+                  'requiring', 'responsible', 'responsibilities', 'responsibility', 'right', 'role', 'roles', 'said',
+                  'same', 'saw', 'say', 'saying', 'says', 'second', 'see', 'seeing', 'seem', 'seemed', 'seeming',
+                  'seems', 'seen', 'sees', 'several', 'shall', 'she', 'should', 'show', 'showed', 'showing',
+                  'shows', 'side', 'sides', 'similar', 'similarly', 'simple', 'simply', 'since', 'small', 'so',
+                  'some', 'somebody', 'someone', 'something', 'somewhere', 'soon', 'stand', 'start', 'started',
+                  'starting', 'state', 'stated', 'states', 'status', 'stay', 'still', 'stop', 'strong', 'strongly',
+                  'such', 'sure', 'take', 'taken', 'takes', 'taking', 'team', 'teams', 'tell', 'telling', 'tells',
+                  'than', 'thank', 'thanks', 'that', 'the', 'their', 'theirs', 'them', 'themselves', 'then',
+                  'there', 'therefore', 'these', 'they', 'thing', 'things', 'think', 'thinks', 'third', 'this',
+                  'those', 'though', 'thought', 'thoughts', 'three', 'through', 'throughout', 'thus', 'time',
+                  'times', 'to', 'today', 'together', 'told', 'too', 'took', 'toward', 'towards', 'try', 'trying',
+                  'turn', 'turned', 'turning', 'turns', 'two', 'under', 'understand', 'understanding', 'understands',
+                  'understood', 'unless', 'until', 'up', 'upon', 'us', 'use', 'used', 'uses', 'using', 'usual',
+                  'usually', 'various', 'very', 'via', 'view', 'want', 'wanted', 'wants', 'was', 'way', 'ways',
+                  'we', 'week', 'weeks', 'well', 'went', 'were', 'what', 'whatever', 'when', 'where', 'whether',
+                  'which', 'while', 'who', 'whole', 'whom', 'whose', 'why', 'wide', 'widely', 'will', 'willing',
+                  'with', 'within', 'without', 'won', 'word', 'words', 'work', 'worked', 'working', 'works',
+                  'world', 'would', 'year', 'years', 'yes', 'yet', 'you', 'young', 'your', 'yours', 'yourself',
+                  'yourselves', 'seeking', 'hands-on', 'key', 'plus', 'proven', 'track', 'record', 'ability', 'skills',
+                  'knowledge', 'understanding', 'minimum', 'level', 'degree', 'bachelor', 'master', 'demonstrate',
+                  'demonstrated', 'fast-paced', 'looking', 'hire', 'apply', 'responsibilities', 'duties'
+                ]);
+
+                // ── 1.2 CONTEXTUAL METRIC EXTRACTION (No phone numbers, zip codes, or dates) ──
+                function extractContextualMetrics(text) {
+                  if (!text) return [];
+                  const metrics = [];
+
+                  // Percentages (e.g. 24%, 15.5%)
+                  const pcts = text.match(/\b\d+(\.\d+)?\s*%/g) || [];
+                  pcts.forEach(m => metrics.push({ text: m, type: 'percentage' }));
+
+                  // Scale & Volume (e.g. 10k users, 50,000 requests, 100+ clients)
+                  const scaleRegex = /\b\d{1,3}(,\d{3})*(\.\d+)?\s*([kKmMbB]|\+)?\s*(users|clients|customers|requests|queries|downloads|records|visits|subscribers|transactions|accounts|events|students|members|sessions|endpoints|tickets|features|pipelines)\b/gi;
+                  let sm;
+                  while ((sm = scaleRegex.exec(text)) !== null) {
+                    metrics.push({ text: sm[0], type: 'scale' });
+                  }
+
+                  // Currency / Financial Impact (e.g. $50k, €2M, ₹10L, $100,000)
+                  const moneyRegex = /[\$\€\£\₹]\s*\d{1,3}(,\d{3})*(\.\d+)?\s*([kKmMbB]|million|thousand)?\b/gi;
+                  let mm;
+                  while ((mm = moneyRegex.exec(text)) !== null) {
+                    metrics.push({ text: mm[0], type: 'financial' });
+                  }
+
+                  // Latency & Performance (e.g. 300ms, 2x faster, 4-fold increase, 60fps)
+                  const perfRegex = /\b\d+(\.\d+)?\s*(ms|milliseconds|seconds|sec|x|fold|fps)\b/gi;
+                  let pm;
+                  while ((pm = perfRegex.exec(text)) !== null) {
+                    if (/ms|x|fold|fps/i.test(pm[0]) || /reduced|decreased|faster|latency|speed|turnaround/i.test(text.substr(Math.max(0, pm.index - 35), 70))) {
+                      metrics.push({ text: pm[0], type: 'performance' });
+                    }
+                  }
+
+                  // Metric movement verbs (e.g. "reduced by 40", "increased team by 12", "saved 15 hours")
+                  const verbMetricRegex = /\b(reduced|increased|improved|boosted|cut|saved|scaled|optimized|accelerated|generated|delivered|grew)\s+(by\s+)?(\d+(\.\d+)?\s*(hours|hrs|days|weeks|fte|percent)?)/gi;
+                  let vm;
+                  while ((vm = verbMetricRegex.exec(text)) !== null) {
+                    metrics.push({ text: vm[0], type: 'movement' });
+                  }
+
+                  return metrics;
+                }
+
+                // ── 1.3 SECTION VALIDATION & DEPTH CHECKING ──
+                function validateSectionStructure(text) {
+                  const result = {
+                    contact: { valid: false, score: 0, details: [] },
+                    experience: { valid: false, score: 0, details: [] },
+                    education: { valid: false, score: 0, details: [] },
+                    skills: { valid: false, score: 0, details: [] },
+                    totalScore: 0
+                  };
+
+                  // Contact check
+                  const hasEmail = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(text);
+                  const hasPhone = /(?:\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}|\b\d{10}\b/.test(text);
+                  const hasLinks = /linkedin\.com|github\.com|portfolio|[a-z0-9-]+\.(io|dev|com|me)/i.test(text);
+
+                  if (hasEmail) { result.contact.score += 10; result.contact.details.push('Email verified'); }
+                  if (hasPhone) { result.contact.score += 5; result.contact.details.push('Phone verified'); }
+                  if (hasLinks) { result.contact.score += 5; result.contact.details.push('Links verified'); }
+                  result.contact.valid = hasEmail && (hasPhone || hasLinks);
+
+                  // Experience check
+                  const expHeader = /\b(work\s+experience|professional\s+experience|employment\s+history|experience)\b/i.test(text);
+                  const hasDates = /\b(19\d\d|20\d\d)\s*[-–—to]+\s*(19\d\d|20\d\d|present|current)\b/i.test(text);
+                  const hasRoles = /\b(developer|engineer|manager|lead|intern|architect|consultant|analyst|designer|specialist|coordinator|officer)\b/i.test(text);
+
+                  if (expHeader && hasDates && hasRoles) {
+                    result.experience.score = 35;
+                    result.experience.valid = true;
+                  } else if (expHeader && (hasDates || hasRoles)) {
+                    result.experience.score = 25;
+                    result.experience.valid = true;
+                  } else if (expHeader || hasRoles) {
+                    result.experience.score = 15;
+                  }
+
+                  // Education check
+                  const eduHeader = /\b(education|academic|qualifications)\b/i.test(text);
+                  const hasDegree = /\b(bachelor|master|phd|doctorate|b\.?s|m\.?s|b\.?a|m\.?a|b\.?tech|m\.?tech|diploma|associate|degree)\b/i.test(text);
+                  const hasSchool = /\b(university|college|institute|school|academy|polytechnic)\b/i.test(text);
+
+                  if (eduHeader && (hasDegree || hasSchool)) {
+                    result.education.score = 20;
+                    result.education.valid = true;
+                  } else if (hasDegree || hasSchool) {
+                    result.education.score = 14;
+                    result.education.valid = true;
+                  } else if (eduHeader) {
+                    result.education.score = 8;
+                  }
+
+                  // Skills check
+                  const skillsHeader = /\b(skills|technical\s+skills|core\s+competencies|technologies|proficiencies|tools)\b/i.test(text);
+                  const techTokens = text.match(/\b(javascript|typescript|python|java|c\+\+|c#|react|angular|vue|node|express|sql|mongodb|docker|kubernetes|aws|azure|gcp|git|linux|html|css|agile|scrum|ci\/cd|rest|graphql)\b/gi) || [];
+                  const uniqueTokens = new Set(techTokens.map(t => t.toLowerCase()));
+                  const hasProficiency = /\b(expert|advanced|intermediate|proficient|beginner|senior|lead|fluent)\b/i.test(text) || /\([a-z\s]+\)/i.test(text);
+
+                  if (skillsHeader && uniqueTokens.size >= 4) {
+                    result.skills.score = hasProficiency ? 25 : 20;
+                    result.skills.valid = true;
+                    if (hasProficiency) result.skills.details.push('Skill proficiency levels verified (+5 ATS bonus)');
+                  } else if (uniqueTokens.size >= 3 || skillsHeader) {
+                    result.skills.score = hasProficiency ? 18 : 14;
+                    result.skills.valid = true;
+                  } else {
+                    result.skills.score = 6;
+                  }
+
+                  result.totalScore = Math.min(100, Math.max(0, result.contact.score + result.experience.score + result.education.score + result.skills.score));
+                  return result;
+                }
+
+                // ── 2.1 BIDIRECTIONAL SYNONYM & ACRONYM RESOLVER ──
+                const SYNONYM_CLUSTERS = [
+                  ['aws', 'amazon web services', 'amazon web service'],
+                  ['gcp', 'google cloud', 'google cloud platform'],
+                  ['azure', 'microsoft azure'],
+                  ['k8s', 'kubernetes', 'kube'],
+                  ['postgres', 'postgresql'],
+                  ['mongo', 'mongodb'],
+                  ['react', 'react.js', 'reactjs'],
+                  ['node', 'node.js', 'nodejs'],
+                  ['vue', 'vue.js', 'vuejs'],
+                  ['angular', 'angularjs', 'angular.js'],
+                  ['ts', 'typescript'],
+                  ['js', 'javascript'],
+                  ['py', 'python'],
+                  ['ci/cd', 'cicd', 'continuous integration', 'continuous delivery', 'continuous deployment'],
+                  ['ml', 'machine learning'],
+                  ['ai', 'artificial intelligence', 'genai', 'generative ai'],
+                  ['nlp', 'natural language processing'],
+                  ['db', 'database', 'databases'],
+                  ['rest', 'restful', 'rest api', 'rest apis', 'restful api'],
+                  ['graphql', 'gql'],
+                  ['docker', 'containerization', 'containers'],
+                  ['microservices', 'microservice architecture', 'micro-services'],
+                  ['frontend', 'front-end', 'front end', 'client-side'],
+                  ['backend', 'back-end', 'back end', 'server-side'],
+                  ['fullstack', 'full-stack', 'full stack'],
+                  ['golang', 'go lang', 'go'],
+                  ['c++', 'cpp'],
+                  ['c#', 'csharp', 'c-sharp'],
+                  ['oop', 'object-oriented programming', 'object oriented'],
+                  ['tdd', 'test driven development', 'test-driven development'],
+                  ['devops', 'development operations', 'site reliability', 'sre']
+                ];
+
+                function resolveSynonymMatch(targetKeyword, searchDoc) {
+                  const kwLower = targetKeyword.toLowerCase().trim();
+                  const cluster = SYNONYM_CLUSTERS.find(group => group.some(alias => alias === kwLower));
+                  const variants = cluster ? cluster : [kwLower];
+
+                  for (const variant of variants) {
+                    const escaped = variant.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    const pattern = new RegExp('(^|[^a-zA-Z0-9])' + escaped + '([^a-zA-Z0-9]|$)', 'i');
+                    if (pattern.test(searchDoc)) {
+                      return { matched: true, matchedVariant: variant, isSynonym: variant !== kwLower };
+                    }
+                  }
+                  return { matched: false, matchedVariant: null, isSynonym: false };
+                }
+
+                // ── 2.2 HARD VS. SOFT SKILLS TAXONOMY & CLASSIFIER ──
+                const HARD_SKILLS_SET = new Set([
+                  'javascript', 'typescript', 'python', 'java', 'c++', 'c#', 'golang', 'go', 'rust', 'ruby', 'php',
+                  'swift', 'kotlin', 'sql', 'html', 'css', 'r', 'bash', 'shell', 'scala', 'perl', 'dart',
+                  'react', 'react.js', 'reactjs', 'vue', 'vue.js', 'angular', 'next.js', 'svelte', 'node', 'node.js',
+                  'express', 'django', 'flask', 'fastapi', 'spring', 'spring boot', 'rails', 'laravel', 'asp.net',
+                  '.net', 'dotnet', 'graphql', 'rest', 'restful', 'api', 'microservices',
+                  'aws', 'azure', 'gcp', 'docker', 'kubernetes', 'k8s', 'terraform', 'ci/cd', 'jenkins', 'git',
+                  'github', 'gitlab', 'linux', 'ansible', 'helm', 'circleci', 'prometheus', 'grafana', 'cloud',
+                  'postgresql', 'postgres', 'mysql', 'mongodb', 'redis', 'elasticsearch', 'kafka', 'rabbitmq',
+                  'sqlite', 'cassandra', 'dynamodb', 'snowflake', 'bigquery', 'databricks',
+                  'machine learning', 'deep learning', 'pytorch', 'tensorflow', 'pandas', 'numpy', 'scikit-learn',
+                  'nlp', 'llm', 'computer vision', 'data science', 'etl', 'tableau', 'power bi'
+                ]);
+
+                const SOFT_SKILLS_SET = new Set([
+                  'leadership', 'communication', 'problem solving', 'collaboration', 'mentorship', 'mentoring',
+                  'stakeholder management', 'cross-functional', 'critical thinking', 'adaptability',
+                  'project management', 'team player', 'time management', 'conflict resolution',
+                  'analytical skills', 'presentation', 'creativity', 'negotiation', 'organizational',
+                  'multitasking', 'strategic planning', 'decision making', 'team building'
+                ]);
+
+                function classifySkill(kw) {
+                  const lower = kw.toLowerCase().trim();
+                  if (HARD_SKILLS_SET.has(lower)) return 'hard';
+                  const cluster = SYNONYM_CLUSTERS.find(group => group.some(alias => alias === lower));
+                  if (cluster && cluster.some(a => HARD_SKILLS_SET.has(a))) return 'hard';
+                  if (SOFT_SKILLS_SET.has(lower)) return 'soft';
+                  return 'general';
+                }
+
+                // ── 2.3 FLESCH-KINCAID READABILITY & SYLLABLE COUNTING ENGINE ──
+                function countWordSyllables(word) {
+                  let w = word.toLowerCase().trim();
+                  if (!w || w.length <= 2) return 1;
+                  w = w.replace(/(?:[^laeiouy]|ed|es|e)$/, '');
+                  w = w.replace(/^y/, '');
+                  const syllables = w.match(/[aeiouy]{1,2}/g);
+                  return syllables ? Math.max(1, syllables.length) : 1;
+                }
+
+                function calculateFleschKincaid(text) {
+                  if (!text || text.trim().length === 0) {
+                    return { readingEase: 60, gradeLevel: 9, asl: 12, asw: 1.5, score: 60, totalWords: 0 };
+                  }
+
+                  const words = text.match(/\b[A-Za-z0-9'-]+\b/g) || [];
+                  const totalWords = words.length;
+                  if (totalWords < 15) {
+                    return { readingEase: 60, gradeLevel: 8, asl: 8, asw: 1.4, score: 50, totalWords };
+                  }
+
+                  const sentences = text.split(/[\n\.\!\?•\-\*]+/).filter(s => s.trim().length > 0);
+                  const totalSentences = Math.max(1, sentences.length);
+
+                  let totalSyllables = 0;
+                  words.forEach(w => {
+                    totalSyllables += countWordSyllables(w);
+                  });
+
+                  const asl = totalWords / totalSentences;
+                  const asw = totalSyllables / totalWords;
+
+                  // Flesch Reading Ease Formula: 206.835 - 1.015(ASL) - 84.6(ASW)
+                  const rawEase = 206.835 - (1.015 * asl) - (84.6 * asw);
+                  const readingEase = Math.round(Math.min(100, Math.max(0, rawEase)));
+
+                  // Flesch-Kincaid Grade Level: 0.39(ASL) + 11.8(ASW) - 15.59
+                  const rawGrade = (0.39 * asl) + (11.8 * asw) - 15.59;
+                  const gradeLevel = Math.max(1, Math.min(18, parseFloat(rawGrade.toFixed(1))));
+
+                  // Recruiter Scannability calibration:
+                  // Sweet spot is 50-75 (Grade 8.0 - 11.5)
+                  let readabilityScore = 95;
+                  if (readingEase >= 50 && readingEase <= 75) {
+                    readabilityScore = 95;
+                  } else if (readingEase > 75) {
+                    readabilityScore = Math.max(60, Math.round(95 - (readingEase - 75) * 1.5));
+                  } else {
+                    readabilityScore = Math.max(40, Math.round(95 - (50 - readingEase) * 1.8));
+                  }
+
+                  // Length budget calibration
+                  if (totalWords >= 350 && totalWords <= 850) {
+                    readabilityScore = Math.min(100, readabilityScore + 5);
+                  } else if (totalWords < 300) {
+                    readabilityScore = Math.max(30, readabilityScore - 18);
+                  } else if (totalWords > 1200) {
+                    readabilityScore = Math.max(40, readabilityScore - 15);
+                  }
+
+                  return {
+                    readingEase,
+                    gradeLevel,
+                    asl: parseFloat(asl.toFixed(1)),
+                    asw: parseFloat(asw.toFixed(2)),
+                    score: Math.round(readabilityScore),
+                    totalWords
+                  };
+                }
+
+                // ── 2.4 SEMANTIC KEYWORD EVALUATOR WITH SYNONYMS & HARD/SOFT TAXONOMY ──
+                function evaluateKeywords(resumeText, jobText) {
+                  if (jobText && jobText.trim().length > 25) {
+                    // Case A: Targeted Job Description Provided
+                    // Extract recognized multi-word compound phrases first
+                    const COMPOUND_PHRASES = [
+                      'amazon web services', 'google cloud platform', 'google cloud', 'microsoft azure',
+                      'machine learning', 'deep learning', 'artificial intelligence', 'generative ai',
+                      'natural language processing', 'computer vision', 'data science',
+                      'continuous integration', 'continuous deployment', 'continuous delivery',
+                      'microservice architecture', 'system design', 'problem solving', 'test driven development',
+                      'test-driven development', 'cross-functional', 'unit testing', 'object-oriented programming',
+                      'rest api', 'rest apis', 'restful api', 'spring boot', 'ruby on rails'
+                    ];
+
+                    const foundCompounds = [];
+                    let cleanJobText = jobText;
+                    COMPOUND_PHRASES.forEach(phrase => {
+                      const esc = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                      if (new RegExp('\\b' + esc + '\\b', 'i').test(jobText)) {
+                        foundCompounds.push(phrase);
+                        cleanJobText = cleanJobText.replace(new RegExp('\\b' + esc + '\\b', 'gi'), ' ');
+                      }
+                    });
+
+                    const rawTokens = cleanJobText.match(/\b[A-Za-z0-9#\+\.\/\-]{2,}\b/g) || [];
+                    const filteredTokens = rawTokens
+                      .map(t => t.replace(/^[,\.\-_\/]+|[,\.\-_\/]+$/g, ''))
+                      .filter(t => {
+                        const lw = t.toLowerCase();
+                        return lw.length >= 2 && !INDUSTRY_STOPWORDS.has(lw) && !/^\d+$/.test(lw);
+                      });
+
+                    const freq = {};
+                    foundCompounds.forEach(p => { freq[p.toLowerCase()] = 10; });
+                    filteredTokens.forEach(t => {
+                      const key = t.toLowerCase();
+                      freq[key] = (freq[key] || 0) + 1;
+                    });
+
+                    const uniqueJDKeywords = Object.keys(freq).sort((a, b) => freq[b] - freq[a]);
+                    const matches = [];
+                    const missing = [];
+                    let hardTotal = 0, hardMatched = 0;
+                    let softTotal = 0, softMatched = 0;
+
+                    uniqueJDKeywords.forEach(kw => {
+                      const skillType = classifySkill(kw);
+                      if (skillType === 'hard') hardTotal++;
+                      else if (skillType === 'soft') softTotal++;
+
+                      const matchResult = resolveSynonymMatch(kw, resumeText);
+                      if (matchResult.matched) {
+                        matches.push({
+                          keyword: kw,
+                          matchedVariant: matchResult.matchedVariant,
+                          isSynonym: matchResult.isSynonym,
+                          skillType
+                        });
+                        if (skillType === 'hard') hardMatched++;
+                        else if (skillType === 'soft') softMatched++;
+                      } else {
+                        missing.push({
+                          keyword: kw,
+                          skillType
+                        });
+                      }
+                    });
+
+                    const hardRatio = hardTotal > 0 ? (hardMatched / hardTotal) : (matches.length / (uniqueJDKeywords.length || 1));
+                    const softRatio = softTotal > 0 ? (softMatched / softTotal) : (matches.length / (uniqueJDKeywords.length || 1));
+                    const overallRatio = matches.length / (uniqueJDKeywords.length || 1);
+
+                    let score;
+                    if (hardTotal > 0 && softTotal > 0) {
+                      score = Math.round((hardRatio * 75) + (softRatio * 25));
+                    } else if (hardTotal > 0) {
+                      score = Math.round(hardRatio * 100);
+                    } else {
+                      score = Math.round(overallRatio * 100);
+                    }
+                    score = Math.min(100, Math.max(15, score));
+
+                    return {
+                      hasJD: true,
+                      score,
+                      hardScore: Math.round(hardRatio * 100),
+                      softScore: Math.round(softRatio * 100),
+                      hardTotal,
+                      softTotal,
+                      matched: matches.slice(0, 12),
+                      missing: missing.slice(0, 8),
+                      totalKeywords: uniqueJDKeywords.length,
+                      matchRatio: Math.round(overallRatio * 100)
+                    };
+                  }
+
+                  // Case B: No Job Description (Baseline Role Benchmark)
+                  const DOMAIN_BENCHMARKS = {
+                    frontend: ['javascript', 'typescript', 'react', 'html', 'css', 'redux', 'vue', 'webpack', 'tailwind', 'next.js', 'responsive', 'rest', 'git', 'collaboration', 'problem solving'],
+                    backend: ['node.js', 'python', 'java', 'express', 'sql', 'postgresql', 'mongodb', 'docker', 'api', 'microservices', 'redis', 'aws', 'git', 'system design', 'problem solving'],
+                    fullstack: ['javascript', 'typescript', 'react', 'node.js', 'sql', 'mongodb', 'api', 'docker', 'git', 'html', 'css', 'rest', 'aws', 'communication', 'leadership'],
+                    devops: ['docker', 'kubernetes', 'aws', 'terraform', 'ci/cd', 'linux', 'python', 'bash', 'ansible', 'jenkins', 'cloud', 'git', 'monitoring', 'incident management', 'troubleshooting'],
+                    data: ['python', 'sql', 'pandas', 'machine learning', 'numpy', 'tableau', 'spark', 'r', 'statistics', 'etl', 'visualization', 'git', 'analytical skills', 'critical thinking']
+                  };
+
+                  let detectedDomain = 'fullstack';
+                  if (/devops|sre|infrastructure|kubernetes|terraform/i.test(resumeText)) detectedDomain = 'devops';
+                  else if (/data\s*scientist|data\s*analyst|machine\s*learning|pandas/i.test(resumeText)) detectedDomain = 'data';
+                  else if (/frontend|react|angular|vue|ui\/ux/i.test(resumeText) && !/node|express|django|spring/i.test(resumeText)) detectedDomain = 'frontend';
+                  else if (/backend|django|spring\s*boot|golang|fastapi/i.test(resumeText)) detectedDomain = 'backend';
+
+                  const benchmarkList = DOMAIN_BENCHMARKS[detectedDomain];
+                  const domainMatches = [];
+                  const domainMissing = [];
+                  let hardTotal = 0, hardMatched = 0;
+                  let softTotal = 0, softMatched = 0;
+
+                  benchmarkList.forEach(skill => {
+                    const skillType = classifySkill(skill);
+                    if (skillType === 'hard') hardTotal++;
+                    else if (skillType === 'soft') softTotal++;
+
+                    const matchResult = resolveSynonymMatch(skill, resumeText);
+                    if (matchResult.matched) {
+                      domainMatches.push({
+                        keyword: skill,
+                        matchedVariant: matchResult.matchedVariant,
+                        isSynonym: matchResult.isSynonym,
+                        skillType
+                      });
+                      if (skillType === 'hard') hardMatched++;
+                      else if (skillType === 'soft') softMatched++;
+                    } else {
+                      domainMissing.push({
+                        keyword: skill,
+                        skillType
+                      });
+                    }
+                  });
+
+                  const hardRatio = hardTotal > 0 ? (hardMatched / hardTotal) : 0.5;
+                  const softRatio = softTotal > 0 ? (softMatched / softTotal) : 0.5;
+                  let domainScore = Math.min(100, Math.max(25, Math.round((hardRatio * 75) + (softRatio * 25))));
+
+                  // Reward verified competency levels (Expert, Advanced, etc.)
+                  const hasProficiency = /\b(expert|advanced|intermediate|proficient|beginner|senior|lead)\b/i.test(resumeText) || /\([a-z\s]+\)/i.test(resumeText);
+                  if (hasProficiency) {
+                    domainScore = Math.min(100, domainScore + 10);
+                  }
+
+                  return {
+                    hasJD: false,
+                    score: domainScore,
+                    hardScore: Math.round(hardRatio * 100),
+                    softScore: Math.round(softRatio * 100),
+                    hardTotal,
+                    softTotal,
+                    detectedDomain,
+                    matched: domainMatches,
+                    missing: domainMissing.slice(0, 6),
+                    totalKeywords: benchmarkList.length,
+                    matchRatio: Math.round((domainMatches.length / benchmarkList.length) * 100)
+                  };
+                }
+
+                // ── EXECUTE PHASE 1 & 2 EVALUATIONS ──
+                const metricList = extractContextualMetrics(resume);
+                const structureResult = validateSectionStructure(resume);
+                const keywordResult = evaluateKeywords(resume, job);
+                const fleschResult = calculateFleschKincaid(resume);
+
+                // Power Action Verbs audit (extended 60+ industry power verbs)
+                const ACTION_VERBS = [
+                  'accelerated', 'achieved', 'administered', 'analyzed', 'architected', 'automated',
+                  'benchmarked', 'built', 'championed', 'collaborated', 'conceptualized', 'coordinated',
+                  'decreased', 'delivered', 'deployed', 'designed', 'developed', 'devised', 'directed',
+                  'engineered', 'established', 'executed', 'expanded', 'expedited', 'formulated',
+                  'generated', 'implemented', 'improved', 'increased', 'initiated', 'innovated',
+                  'integrated', 'launched', 'led', 'managed', 'maximized', 'mentored', 'minimized',
+                  'modernized', 'optimized', 'orchestrated', 'overhauled', 'pioneered', 'reduced',
+                  'refactored', 'resolved', 'restructured', 'revamped', 'scaled', 'simplified',
+                  'spearheaded', 'standardized', 'streamlined', 'strengthened', 'supervised',
+                  'surpassed', 'systematized', 'transformed', 'upgraded', 'yielded'
+                ];
+
+                let actionVerbCount = 0;
+                const foundVerbs = [];
+                ACTION_VERBS.forEach(v => {
+                  if (new RegExp('\\b' + v + '\\b', 'i').test(resume)) {
+                    actionVerbCount++;
+                    if (foundVerbs.length < 6) foundVerbs.push(v);
+                  }
+                });
+
+                // Impact & Metrics Score: based strictly on contextual metrics + verified action verbs
+                const impactScore = Math.min(100, Math.round((metricList.length * 18) + (actionVerbCount * 8)));
+
+                // Readability & Word Count Score (driven by Flesch-Kincaid formula + length budget)
+                const readabilityScore = fleschResult.score;
+                const structureScore = Math.min(100, Math.max(0, structureResult.totalScore));
+                const keywordScore = keywordResult.score;
+
+                // Composite ATS Score (strictly capped at 100)
+                const overallScore = Math.min(100, Math.max(0, Math.round(
+                  (keywordScore * 0.35) +
+                  (readabilityScore * 0.25) +
+                  (impactScore * 0.20) +
+                  (structureScore * 0.20)
+                )));
+
+                // Update Gauge
+                const circumference = 408;
+                const offset = circumference - (overallScore / 100) * circumference;
+                gaugeCircle.style.strokeDashoffset = offset;
+                scoreVal.innerText = overallScore;
+
+                if (overallScore >= 85) {
+                  gaugeCircle.style.stroke = '#10b981';
+                  scoreGrade.innerText = 'Excellent ATS Pass';
+                  scoreGrade.style.color = '#10b981';
+                  scoreStatusTag.innerText = keywordResult.hasJD ? 'ATS High Match' : 'High Baseline Profile';
+                } else if (overallScore >= 65) {
+                  gaugeCircle.style.stroke = '#f59e0b';
+                  scoreGrade.innerText = 'Moderate Match';
+                  scoreGrade.style.color = '#f59e0b';
+                  scoreStatusTag.innerText = keywordResult.hasJD ? 'Needs Keyword Boost' : 'Moderate Baseline';
+                } else {
+                  gaugeCircle.style.stroke = '#ef4444';
+                  scoreGrade.innerText = 'High Risk of Rejection';
+                  scoreGrade.style.color = '#ef4444';
+                  scoreStatusTag.innerText = 'Action Required';
+                }
+
+                // Update Metrics in UI with Phase 2 Sub-Detail
+                document.getElementById('mKeyword').innerText = keywordScore + '%';
+                document.getElementById('bKeyword').style.width = keywordScore + '%';
+                const mKeywordSub = document.getElementById('mKeywordSub');
+                if (mKeywordSub) {
+                  mKeywordSub.innerText = `Hard: ${keywordResult.hardScore}% | Soft: ${keywordResult.softScore}%`;
+                }
+
+                document.getElementById('mReadability').innerText = readabilityScore + '%';
+                document.getElementById('bReadability').style.width = readabilityScore + '%';
+                const mReadabilitySub = document.getElementById('mReadabilitySub');
+                if (mReadabilitySub) {
+                  mReadabilitySub.innerText = `Flesch: ${fleschResult.readingEase} | Gr: ${fleschResult.gradeLevel}`;
+                }
+
+                document.getElementById('mImpact').innerText = impactScore + '%';
+                document.getElementById('bImpact').style.width = impactScore + '%';
+
+                document.getElementById('mStructure').innerText = structureScore + '%';
+                document.getElementById('bStructure').style.width = structureScore + '%';
+
+                // Update Chips UI with Synonym & Hard/Soft Tags
+                const chipsContainer = document.getElementById('keywordChips');
+                chipsContainer.innerHTML = '';
+
+                if (!keywordResult.hasJD) {
+                  chipsContainer.innerHTML += `<div style="width:100%; font-size:0.75rem; color:var(--text-muted); margin-bottom:8px; font-style:italic;">
+            ⚡ Scanned against <strong>${keywordResult.detectedDomain.toUpperCase()}</strong> industry taxonomy. Paste a Target Job Description above for customized ATS keyword match.
+          </div>`;
+                }
+
+                keywordResult.matched.forEach(item => {
+                  const typeTag = item.skillType === 'hard'
+                    ? '<small style="opacity:0.75; font-size:0.68rem; margin-left:3px;">[Hard]</small>'
+                    : (item.skillType === 'soft' ? '<small style="opacity:0.75; font-size:0.68rem; margin-left:3px;">[Soft]</small>' : '');
+                  const aliasTag = item.isSynonym
+                    ? `<small style="color:var(--accent); font-size:0.68rem; margin-left:2px;">(${item.matchedVariant})</small>`
+                    : '';
+                  chipsContainer.innerHTML += `<span class="chip chip-match" title="${item.isSynonym ? 'Matched via synonym ' + item.matchedVariant : ''}">✓ ${item.keyword}${aliasTag} ${typeTag}</span>`;
+                });
+
+                keywordResult.missing.forEach(item => {
+                  const typeTag = item.skillType === 'hard'
+                    ? '<small style="opacity:0.75; font-size:0.68rem; margin-left:3px;">[Hard]</small>'
+                    : (item.skillType === 'soft' ? '<small style="opacity:0.75; font-size:0.68rem; margin-left:3px;">[Soft]</small>' : '');
+                  chipsContainer.innerHTML += `<span class="chip chip-miss" title="Missing required skill">✕ ${item.keyword} ${typeTag}</span>`;
+                });
+
+                // Update AI Improvement Checklist
+                const suggestionsList = document.getElementById('suggestionsList');
+                suggestionsList.innerHTML = '';
+
+                if (!keywordResult.hasJD) {
+                  suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">🎯</span><span>Paste your target job posting in the <strong>Target Job Description</strong> field to analyze customized ATS keyword match.</span></li>`;
+                } else {
+                  const missingHard = keywordResult.missing.filter(m => m.skillType === 'hard');
+                  if (missingHard.length > 0) {
+                    suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">💻</span><span>High-Priority Technical Hard Skills missing: <strong>${missingHard.map(m => m.keyword).join(', ')}</strong>. Hard skills drive 75% of ATS keyword ranking.</span></li>`;
+                  }
+                  const missingSoft = keywordResult.missing.filter(m => m.skillType === 'soft');
+                  if (missingSoft.length > 0) {
+                    suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">🤝</span><span>Demonstrate competencies in: <strong>${missingSoft.map(m => m.keyword).join(', ')}</strong> within your project narratives.</span></li>`;
+                  }
+                }
+
+                // Flesch-Kincaid Readability suggestions
+                if (fleschResult.readingEase < 45) {
+                  suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📖</span><span>Bullet points are overly dense (Flesch Score: <strong>${fleschResult.readingEase}</strong>, Grade Level: <strong>${fleschResult.gradeLevel}</strong>). Shorten multi-clause sentences to improve recruiter skim-rate.</span></li>`;
+                } else if (fleschResult.readingEase > 78) {
+                  suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📖</span><span>Language is relatively informal (Flesch Score: <strong>${fleschResult.readingEase}</strong>). Infuse more technical depth and industry terminology to align with ATS expectations.</span></li>`;
+                } else {
+                  suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">✨</span><span>Recruiter readability is optimal (Flesch: <strong>${fleschResult.readingEase}</strong>, Grade <strong>${fleschResult.gradeLevel}</strong>). Punchy sentence lengths support rapid screening.</span></li>`;
+                }
+
+                if (metricList.length < 3) {
+                  suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📈</span><span>Add verified business impact metrics (e.g. <em>"reduced latency by 32%"</em>, <em>"scaled to 15,000 DAU"</em>). Found only ${metricList.length} validated metric(s) — phone numbers and dates are excluded.</span></li>`;
+                }
+
+                if (actionVerbCount < 4) {
+                  suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">⚡</span><span>Begin every bullet with strong power verbs like <em>Architected, Streamlined, Spearheaded</em> instead of passive phrases like <em>"Responsible for"</em>.</span></li>`;
+                }
+
+                if (structureResult.totalScore < 90) {
+                  suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">🏗️</span><span>Ensure clear section layout: full contact details, explicit role titles with date ranges, and verified education degree/school.</span></li>`;
+                }
+
+                if (fleschResult.totalWords < 300) {
+                  suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📄</span><span>Resume is relatively brief (${fleschResult.totalWords} words). A competitive ATS profile typically contains 400–800 words of technical depth and project detail.</span></li>`;
+                } else if (fleschResult.totalWords > 1200) {
+                  suggestionsList.innerHTML += `<li class="suggestion-item"><span class="suggestion-icon">📄</span><span>Resume is lengthy (${fleschResult.totalWords} words). Consider tightening descriptions to maintain recruiter scannability.</span></li>`;
+                }
+
+                // ── 3. VALUE GLIMPSE & EMAIL CAPTURE ENFORCEMENT ──
+                const leadOverlay = document.getElementById('leadEmailGateOverlay');
+                const postUnlockCard = document.getElementById('postUnlockCard');
+                const checklistCounter = document.getElementById('checklistCounter');
+                if (checklistCounter) {
+                  checklistCounter.textContent = `${suggestionsList.children.length} Action Items`;
+                  checklistCounter.style.display = 'inline-flex';
+                }
+
+                const isAlreadyCaptured = Boolean(sessionStorage.getItem('cf-email-captured') || (window.auth && window.auth.isLoggedIn()));
+
+                if (isAlreadyCaptured) {
+                  suggestionsList.classList.remove('paywall-blurred-content');
+                  suggestionsList.classList.add('unlocked');
+                  if (leadOverlay) leadOverlay.classList.add('hidden');
+                  if (postUnlockCard) postUnlockCard.style.display = 'block';
+                } else {
+                  suggestionsList.classList.remove('unlocked');
+                  suggestionsList.classList.add('paywall-blurred-content');
+                  if (leadOverlay) leadOverlay.classList.remove('hidden');
+                  if (postUnlockCard) postUnlockCard.style.display = 'none';
+                }
+
+                // Store last scan stats for lead submission
+                window._lastAtsScan = {
+                  score: overallScore,
+                  role: keywordResult.detectedDomain,
+                  matchRatio: keywordResult.matchRatio,
+                  hardMissing: keywordResult.missing.filter(m => m.skillType === 'hard').map(m => m.keyword),
+                  totalWords: fleschResult.totalWords
+                };
+
+                btnScan.disabled = false;
+                btnScan.innerHTML = '<span>🔍 Re-scan Resume</span>';
+              }, 600);
+            });
+
+            // ── EMAIL CAPTURE FORM SUBMISSION ──
+            const leadForm = document.getElementById('leadCaptureForm');
+            if (leadForm) {
+              leadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const emailInput = document.getElementById('leadEmailInput');
+                const email = emailInput.value.trim();
+                if (!email) return;
+
+                const btnUnlock = document.getElementById('btnUnlockAnalysis');
+                if (btnUnlock) {
+                  btnUnlock.disabled = true;
+                  btnUnlock.textContent = 'Unlocking...';
+                }
+
+                const suggestionsList = document.getElementById('suggestionsList');
+                const leadOverlay = document.getElementById('leadEmailGateOverlay');
+                const postUnlockCard = document.getElementById('postUnlockCard');
+
+                // 1. Optimistic reveal
+                if (suggestionsList) {
+                  suggestionsList.classList.remove('paywall-blurred-content');
+                  suggestionsList.classList.add('unlocked');
+                }
+                if (leadOverlay) leadOverlay.classList.add('hidden');
+                if (postUnlockCard) postUnlockCard.style.display = 'block';
+                sessionStorage.setItem('cf-email-captured', '1');
+
+                if (window.toast) {
+                  window.toast.success('Full ATS breakdown unlocked! Summary queued.');
+                }
+
+                // 2. Send lead to backend non-blocking
+                if (window.api) {
+                  window.api.post('/api/leads', {
+                    email,
+                    source: 'ats_score',
+                    score: window._lastAtsScan?.score,
+                    metadata: window._lastAtsScan || {}
+                  }).catch(err => {
+                    console.warn('Lead capture backend note:', err);
+                  });
+                }
+              });
+            }
   <!-- EMBED / BADGE MODAL -->
   <div id="embedModal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.65); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:16px;">
     <div style="background:var(--card-bg, #111827); border:1px solid var(--border, #374151); border-radius:16px; max-width:580px; width:100%; max-height:90vh; overflow-y:auto; padding:24px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.5); color:var(--text, #f9fafb); font-family:inherit;">

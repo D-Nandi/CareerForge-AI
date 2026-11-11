@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-11-10",
+  "lastUpdated": "2026-11-11",
   "publishedSlugs": [
     "what-information-should-you-put-on-a-resume",
     "what-is-a-resume-and-what-is-it-used-for",
@@ -11,7 +11,8 @@
     "how-to-write-a-resume-with-no-work-experience",
     "how-to-write-resume-bullet-points-that-show-impact",
     "15-common-resume-mistakes-that-can-cost-you-an-interview",
-    "how-to-choose-the-right-ai-resume-builder-for-your-career-transition"
+    "how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
+    "how-to-optimize-your-resume-skills-using-an-ai-resume-builder"
   ],
   "productPages": [
     {
@@ -252,8 +253,7 @@
       "pillarPage": "Ultimate Guide to Writing a Resume in 2026",
       "productCTA": "/resume-builder",
       "relatedClusters": "AI Resume Builder; ATS Resume Checker; Resume Templates; Resume Examples",
-      "suggestedSlug": "how-to-write-the-skills-section-of-a-resume",
-      "status": "Backlog"
+      "status": "Published"
     },
     {
       "id": 12,
@@ -2798,6 +2798,7 @@
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview"
       ],
       "outboundProduct": [
@@ -2851,6 +2852,7 @@
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-long-should-a-resume-be",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
         "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition"
       ],
       "outboundProduct": [
@@ -2889,6 +2891,7 @@
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/what-is-the-best-resume-format",
         "/blog/how-to-write-a-resume-for-2026",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
         "/blog/how-long-should-a-resume-be",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview"
       ],
@@ -2947,6 +2950,7 @@
         "/blog/what-is-the-best-resume-format",
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-long-should-a-resume-be",
         "/blog/how-long-should-a-resume-be",
@@ -2969,6 +2973,7 @@
         "/blog/what-is-the-best-resume-format",
         "/blog/how-long-should-a-resume-be",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/how-to-write-a-resume-step-by-step"
@@ -2978,6 +2983,27 @@
         "/ats-score-checker",
         "/resume-examples",
         "/interview-prep",
+        "/resume-builder"
+      ]
+    },
+    "how-to-optimize-your-resume-skills-using-an-ai-resume-builder": {
+      "title": "How to Optimize Your Resume Skills Using an AI Resume Builder | CareerNest",
+      "outboundBlog": [
+        "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
+        "/blog/how-long-should-a-resume-be"
+      ],
+      "outboundProduct": [
+        "/resume-builder",
+        "/templates",
+        "/resume-builder",
+        "/ats-score-checker",
+        "/resume-examples",
+        "/interview-prep",
+        "/resume-builder",
         "/resume-builder"
       ]
     }

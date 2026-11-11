@@ -132,7 +132,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" crossorigin href="/assets/form-style-DBR0QIS0.css">
+  <link rel="stylesheet" crossorigin href="/assets/form-style-BMTeXi7V.css">
 </head>
 
 <body>
@@ -250,26 +250,28 @@
       <div class="im-panel" id="imPanelUpload">
         <p class="im-subtitle">Your file is processed locally — nothing is uploaded to any server.</p>
 
-        <label for="imFileInput" class="im-drop-zone" id="imDropZone" tabindex="0" aria-label="Upload resume file">
-          <input type="file" id="imFileInput" accept=".pdf,.docx,.doc,.txt" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; opacity:0; pointer-events:none;" />
-          <div class="im-drop-icon">
+        <div class="im-drop-zone" id="imDropZone" tabindex="0" role="button" aria-label="Upload resume file"
+          style="position: relative; cursor: pointer; user-select: none;">
+          <input type="file" id="imFileInput" accept=".pdf,.docx,.doc,.txt"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 10; margin: 0; padding: 0;" />
+          <div class="im-drop-icon" style="pointer-events: none;">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="17 8 12 3 7 8" />
               <line x1="12" y1="3" x2="12" y2="15" />
             </svg>
           </div>
-          <div class="im-drop-text">
+          <div class="im-drop-text" style="pointer-events: none;">
             <strong>Drag &amp; drop your resume here</strong>
-            <span>or click to browse your files</span>
+            <span>or click anywhere to browse your files</span>
           </div>
-          <div class="im-format-pills">
+          <div class="im-format-pills" style="pointer-events: none;">
             <span class="im-pill">PDF</span>
             <span class="im-pill">DOCX</span>
             <span class="im-pill">DOC</span>
             <span class="im-pill">TXT</span>
           </div>
-        </label>
+        </div>
 
         <div class="im-file-selected" id="imFileSelected" style="display:none;">
           <div class="im-file-info">
