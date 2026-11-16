@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-11-11",
+  "lastUpdated": "2026-11-16",
   "publishedSlugs": [
     "what-information-should-you-put-on-a-resume",
     "what-is-a-resume-and-what-is-it-used-for",
@@ -12,7 +12,12 @@
     "how-to-write-resume-bullet-points-that-show-impact",
     "15-common-resume-mistakes-that-can-cost-you-an-interview",
     "how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
-    "how-to-optimize-your-resume-skills-using-an-ai-resume-builder"
+    "how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
+    "ai-resume-builder-vs-writing-a-resume-from-scratch",
+    "should-you-use-an-ai-resume-builder",
+    "free-resume-builder-vs-making-a-resume-manually",
+    "what-to-look-for-in-a-resume-builder",
+    "what-is-an-ai-resume-builder"
   ],
   "productPages": [
     {
@@ -268,7 +273,7 @@
       "productCTA": "/resume-builder",
       "relatedClusters": "AI Resume Builder; ATS Resume Checker; Resume Templates; Resume Examples",
       "suggestedSlug": "ai-resume-builder-vs-writing-a-resume-from-scratch",
-      "status": "Backlog"
+      "status": "Published"
     },
     {
       "id": 13,
@@ -283,7 +288,7 @@
       "productCTA": "/resume-builder",
       "relatedClusters": "AI Resume Builder; ATS Resume Checker; Resume Templates; Resume Examples",
       "suggestedSlug": "should-you-use-an-ai-resume-builder",
-      "status": "Backlog"
+      "status": "Published"
     },
     {
       "id": 14,
@@ -298,7 +303,7 @@
       "productCTA": "/resume-builder",
       "relatedClusters": "AI Resume Builder; ATS Resume Checker; Resume Templates; Resume Examples",
       "suggestedSlug": "free-resume-builder-vs-making-a-resume-manually",
-      "status": "Backlog"
+      "status": "Published"
     },
     {
       "id": 15,
@@ -313,7 +318,7 @@
       "productCTA": "/resume-builder",
       "relatedClusters": "AI Resume Builder; ATS Resume Checker; Resume Templates; Resume Examples",
       "suggestedSlug": "what-to-look-for-in-a-resume-builder",
-      "status": "Backlog"
+      "status": "Published"
     },
     {
       "id": 16,
@@ -328,7 +333,7 @@
       "productCTA": "/ai-resume-builder",
       "relatedClusters": "Resume Fundamentals; ATS Optimization; Resume Job Match; Resume Templates",
       "suggestedSlug": "what-is-an-ai-resume-builder",
-      "status": "Backlog"
+      "status": "Published"
     },
     {
       "id": 17,
@@ -2817,6 +2822,7 @@
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-a-resume-with-no-work-experience",
+        "/blog/what-is-an-ai-resume-builder",
         "/blog/how-to-write-a-resume-for-2026"
       ],
       "outboundProduct": [
@@ -2834,7 +2840,8 @@
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
-        "/blog/what-is-the-best-resume-format"
+        "/blog/what-is-the-best-resume-format",
+        "/blog/free-resume-builder-vs-making-a-resume-manually"
       ],
       "outboundProduct": [
         "/templates",
@@ -2848,6 +2855,7 @@
       "outboundBlog": [
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/should-you-use-an-ai-resume-builder",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-step-by-step",
         "/blog/how-long-should-a-resume-be",
@@ -2867,6 +2875,7 @@
       "title": "What Is the Best Resume Format? Modern Strategies for Every Career Stage | CareerNest",
       "outboundBlog": [
         "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/ai-resume-builder-vs-writing-a-resume-from-scratch",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
@@ -2886,6 +2895,7 @@
       "title": "How to Write a Resume Step by Step: Mastering Bullet Points & Metrics | CareerNest",
       "outboundBlog": [
         "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/what-to-look-for-in-a-resume-builder",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-with-no-work-experience",
@@ -2906,6 +2916,7 @@
     "how-to-write-a-resume-with-no-work-experience": {
       "title": "How to Write a Resume With No Work Experience (2026 Guide) | CareerNest",
       "outboundBlog": [
+        "/blog/what-is-an-ai-resume-builder",
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/what-is-the-best-resume-format",
@@ -2925,6 +2936,7 @@
       "title": "How to Write Resume Bullet Points That Show Impact | CareerNest",
       "outboundBlog": [
         "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/should-you-use-an-ai-resume-builder",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
@@ -2946,6 +2958,7 @@
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/how-to-write-a-resume-for-2026",
+        "/blog/free-resume-builder-vs-making-a-resume-manually",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/what-is-the-best-resume-format",
         "/blog/how-to-write-a-resume-with-no-work-experience",
@@ -2970,6 +2983,8 @@
         "/blog/what-is-a-resume-and-what-is-it-used-for",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-a-resume-for-2026",
+        "/blog/what-to-look-for-in-a-resume-builder",
+        "/blog/ai-resume-builder-vs-writing-a-resume-from-scratch",
         "/blog/what-is-the-best-resume-format",
         "/blog/how-long-should-a-resume-be",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
@@ -2993,6 +3008,8 @@
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/what-is-an-ai-resume-builder",
+        "/blog/should-you-use-an-ai-resume-builder",
         "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
         "/blog/how-long-should-a-resume-be"
       ],
@@ -3004,6 +3021,122 @@
         "/resume-examples",
         "/interview-prep",
         "/resume-builder",
+        "/resume-builder"
+      ]
+    },
+    "ai-resume-builder-vs-writing-a-resume-from-scratch": {
+      "title": "AI Resume Builder vs. Writing a Resume From Scratch: The CareerNest Guide",
+      "outboundBlog": [
+        "/blog/what-is-an-ai-resume-builder",
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-write-a-resume-for-2026",
+        "/blog/free-resume-builder-vs-making-a-resume-manually",
+        "/blog/what-is-the-best-resume-format",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/how-to-write-a-resume-step-by-step"
+      ],
+      "outboundProduct": [
+        "/resume-builder",
+        "/ats-score-checker",
+        "/resume-examples",
+        "/templates",
+        "/interview-prep",
+        "/ats-score-checker",
+        "/resume-builder"
+      ]
+    },
+    "should-you-use-an-ai-resume-builder": {
+      "title": "Should You Use an AI Resume Builder? (Pros, Cons & ATS Reality)",
+      "outboundBlog": [
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-write-a-resume-for-2026",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/ai-resume-builder-vs-writing-a-resume-from-scratch",
+        "/blog/free-resume-builder-vs-making-a-resume-manually",
+        "/blog/what-is-an-ai-resume-builder",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
+        "/blog/how-to-write-a-resume-with-no-work-experience",
+        "/blog/what-is-the-best-resume-format",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder"
+      ],
+      "outboundProduct": [
+        "/resume-builder",
+        "/ats-score-checker",
+        "/resume-examples",
+        "/templates",
+        "/interview-prep",
+        "/resume-builder"
+      ]
+    },
+    "free-resume-builder-vs-making-a-resume-manually": {
+      "title": "Free Resume Builder vs. Manual: Which Wins in 2026?",
+      "outboundBlog": [
+        "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/how-long-should-a-resume-be",
+        "/blog/what-to-look-for-in-a-resume-builder",
+        "/blog/what-is-an-ai-resume-builder",
+        "/blog/what-is-the-best-resume-format",
+        "/blog/how-to-write-a-resume-for-2026",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/how-to-write-a-resume-step-by-step"
+      ],
+      "outboundProduct": [
+        "/resume-builder",
+        "/ats-score-checker",
+        "/templates",
+        "/resume-examples",
+        "/interview-prep",
+        "/resume-builder"
+      ]
+    },
+    "what-to-look-for-in-a-resume-builder": {
+      "title": "What to Look for in an AI Resume Builder: A Buyer’s Guide for 2026",
+      "outboundBlog": [
+        "/blog/what-is-an-ai-resume-builder",
+        "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/how-to-write-a-resume-for-2026",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
+        "/blog/how-to-write-a-resume-with-no-work-experience",
+        "/blog/what-is-the-best-resume-format",
+        "/blog/how-long-should-a-resume-be",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/free-resume-builder-vs-making-a-resume-manually"
+      ],
+      "outboundProduct": [
+        "/resume-builder",
+        "/ats-score-checker",
+        "/templates",
+        "/resume-examples",
+        "/interview-prep",
+        "/ats-score-checker",
+        "/resume-builder"
+      ]
+    },
+    "what-is-an-ai-resume-builder": {
+      "title": "What Is an AI Resume Builder? How It Works & Key Benefits",
+      "outboundBlog": [
+        "/blog/what-is-a-resume-and-what-is-it-used-for",
+        "/blog/what-to-look-for-in-a-resume-builder",
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-write-a-resume-for-2026",
+        "/blog/ai-resume-builder-vs-writing-a-resume-from-scratch",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
+        "/blog/what-is-the-best-resume-format",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
+        "/blog/how-to-write-a-resume-with-no-work-experience",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact"
+      ],
+      "outboundProduct": [
+        "/resume-builder",
+        "/ats-score-checker",
+        "/templates",
+        "/resume-examples",
+        "/interview-prep",
         "/resume-builder"
       ]
     }
