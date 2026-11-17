@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-11-16",
+  "lastUpdated": "2026-11-17",
   "publishedSlugs": [
     "what-information-should-you-put-on-a-resume",
     "what-is-a-resume-and-what-is-it-used-for",
@@ -17,7 +17,8 @@
     "should-you-use-an-ai-resume-builder",
     "free-resume-builder-vs-making-a-resume-manually",
     "what-to-look-for-in-a-resume-builder",
-    "what-is-an-ai-resume-builder"
+    "what-is-an-ai-resume-builder",
+    "leveraging-ai-for-your-resume"
   ],
   "productPages": [
     {
@@ -347,8 +348,8 @@
       "pillarPage": "AI Resume Builder: Complete Guide to Creating a Better Resume With AI",
       "productCTA": "/ai-resume-builder",
       "relatedClusters": "Resume Fundamentals; ATS Optimization; Resume Job Match; Resume Templates",
-      "suggestedSlug": "how-does-ai-help-you-write-a-resume",
-      "status": "Backlog"
+      "suggestedSlug": "leveraging-ai-for-your-resume",
+      "status": "Published"
     },
     {
       "id": 18,
@@ -2985,6 +2986,7 @@
         "/blog/how-to-write-a-resume-for-2026",
         "/blog/what-to-look-for-in-a-resume-builder",
         "/blog/ai-resume-builder-vs-writing-a-resume-from-scratch",
+        "/blog/leveraging-ai-for-your-resume",
         "/blog/what-is-the-best-resume-format",
         "/blog/how-long-should-a-resume-be",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
@@ -3010,6 +3012,7 @@
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/what-is-an-ai-resume-builder",
         "/blog/should-you-use-an-ai-resume-builder",
+        "/blog/leveraging-ai-for-your-resume",
         "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
         "/blog/how-long-should-a-resume-be"
       ],
@@ -3034,6 +3037,7 @@
         "/blog/what-is-the-best-resume-format",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/leveraging-ai-for-your-resume",
         "/blog/how-to-write-a-resume-step-by-step"
       ],
       "outboundProduct": [
@@ -3058,7 +3062,8 @@
         "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/what-is-the-best-resume-format",
-        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder"
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
+        "/blog/leveraging-ai-for-your-resume"
       ],
       "outboundProduct": [
         "/resume-builder",
@@ -3078,6 +3083,7 @@
         "/blog/what-is-an-ai-resume-builder",
         "/blog/what-is-the-best-resume-format",
         "/blog/how-to-write-a-resume-for-2026",
+        "/blog/leveraging-ai-for-your-resume",
         "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/what-information-should-you-put-on-a-resume",
@@ -3138,6 +3144,34 @@
         "/resume-examples",
         "/interview-prep",
         "/resume-builder"
+      ]
+    },
+    "leveraging-ai-for-your-resume": {
+      "title": "Leveraging AI for Your Resume: A Strategy for Success",
+      "outboundBlog": [
+        "/blog/what-is-an-ai-resume-builder",
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/what-is-the-best-resume-format",
+        "/blog/ai-resume-builder-vs-writing-a-resume-from-scratch",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/free-resume-builder-vs-making-a-resume-manually",
+        "/blog/what-to-look-for-in-a-resume-builder",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
+        "/blog/should-you-use-an-ai-resume-builder",
+        "/blog/how-to-write-a-resume-for-2026",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
+        "/blog/how-long-should-a-resume-be",
+        "/blog/how-to-write-a-resume-step-by-step"
+      ],
+      "outboundProduct": [
+        "/resume-builder",
+        "/resume-examples",
+        "/ats-score-checker",
+        "/templates",
+        "/interview-prep",
+        "/resume-builder",
+        "/ats-score-checker"
       ]
     }
   }
