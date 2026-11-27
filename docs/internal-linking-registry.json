@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-11-24",
+  "lastUpdated": "2026-11-27",
   "publishedSlugs": [
     "what-information-should-you-put-on-a-resume",
     "what-is-a-resume-and-what-is-it-used-for",
@@ -21,7 +21,10 @@
     "leveraging-ai-for-your-resume",
     "mastering-the-ai-resume-guide",
     "mastering-ai-resume-writing",
-    "how-to-use-ai-to-optimize-your-resume-for-ats-success"
+    "how-to-use-ai-to-optimize-your-resume-for-ats-success",
+    "mastering-the-job-hunt-with-ai",
+    "mastering-the-applicant-tracking-system",
+    "mastering-ai-for-professional-document-creation"
   ],
   "productPages": [
     {
@@ -456,8 +459,8 @@
       "pillarPage": "AI Resume Builder: Complete Guide to Creating a Better Resume With AI",
       "productCTA": "/ai-resume-builder",
       "relatedClusters": "Resume Fundamentals; ATS Optimization; Resume Job Match; Resume Templates",
-      "suggestedSlug": "how-to-tailor-an-ai-resume-to-a-job-description",
-      "status": "Backlog"
+      "suggestedSlug": "mastering-the-job-hunt-with-ai",
+      "status": "Published"
     },
     {
       "id": 25,
@@ -486,8 +489,8 @@
       "pillarPage": "AI Resume Builder: Complete Guide to Creating a Better Resume With AI",
       "productCTA": "/ai-resume-builder",
       "relatedClusters": "Resume Fundamentals; ATS Optimization; Resume Job Match; Resume Templates",
-      "suggestedSlug": "prompts-for-improving-resume-bullet-points-with-ai",
-      "status": "Backlog"
+      "suggestedSlug": "mastering-ai-for-professional-document-creation",
+      "status": "Published"
     },
     {
       "id": 27,
@@ -561,8 +564,8 @@
       "pillarPage": "The Complete Guide to ATS-Friendly Resumes",
       "productCTA": "/ats-resume-checker",
       "relatedClusters": "Resume Fundamentals; Resume Job Match; Resume Templates; Resume Examples",
-      "suggestedSlug": "what-is-an-applicant-tracking-system-ats",
-      "status": "Backlog"
+      "suggestedSlug": "mastering-the-applicant-tracking-system",
+      "status": "Published"
     },
     {
       "id": 32,
@@ -2946,7 +2949,8 @@
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/what-is-the-best-resume-format",
         "/blog/how-long-should-a-resume-be",
-        "/blog/how-to-write-a-resume-for-2026"
+        "/blog/how-to-write-a-resume-for-2026",
+        "/blog/mastering-ai-for-professional-document-creation"
       ],
       "outboundProduct": [
         "/templates",
@@ -2988,6 +2992,7 @@
         "/blog/what-information-should-you-put-on-a-resume",
         "/blog/how-to-write-a-resume-for-2026",
         "/blog/what-to-look-for-in-a-resume-builder",
+        "/blog/mastering-the-job-hunt-with-ai",
         "/blog/ai-resume-builder-vs-writing-a-resume-from-scratch",
         "/blog/leveraging-ai-for-your-resume",
         "/blog/what-is-the-best-resume-format",
@@ -3017,6 +3022,7 @@
         "/blog/should-you-use-an-ai-resume-builder",
         "/blog/leveraging-ai-for-your-resume",
         "/blog/how-to-use-ai-to-optimize-your-resume-for-ats-success",
+        "/blog/mastering-the-applicant-tracking-system",
         "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
         "/blog/how-long-should-a-resume-be"
       ],
@@ -3143,7 +3149,8 @@
         "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
         "/blog/how-to-write-a-resume-with-no-work-experience",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
-        "/blog/mastering-the-ai-resume-guide"
+        "/blog/mastering-the-ai-resume-guide",
+        "/blog/mastering-ai-for-professional-document-creation"
       ],
       "outboundProduct": [
         "/resume-builder",
@@ -3166,6 +3173,7 @@
         "/blog/what-to-look-for-in-a-resume-builder",
         "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
         "/blog/mastering-the-ai-resume-guide",
+        "/blog/mastering-the-job-hunt-with-ai",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
         "/blog/should-you-use-an-ai-resume-builder",
         "/blog/how-to-write-a-resume-for-2026",
@@ -3194,7 +3202,8 @@
         "/blog/what-is-the-best-resume-format",
         "/blog/how-to-write-resume-bullet-points-that-show-impact",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
-        "/blog/leveraging-ai-for-your-resume"
+        "/blog/leveraging-ai-for-your-resume",
+        "/blog/mastering-the-job-hunt-with-ai"
       ],
       "outboundProduct": [
         "/resume-builder",
@@ -3216,6 +3225,7 @@
         "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
         "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
         "/blog/how-to-use-ai-to-optimize-your-resume-for-ats-success",
+        "/blog/mastering-ai-for-professional-document-creation",
         "/blog/should-you-use-an-ai-resume-builder"
       ],
       "outboundProduct": [
@@ -3238,6 +3248,7 @@
         "/blog/mastering-the-ai-resume-guide",
         "/blog/what-to-look-for-in-a-resume-builder",
         "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
+        "/blog/mastering-the-applicant-tracking-system",
         "/blog/free-resume-builder-vs-making-a-resume-manually"
       ],
       "outboundProduct": [
@@ -3248,6 +3259,77 @@
         "/interview-prep",
         "/resume-builder",
         "/ats-score-checker"
+      ]
+    },
+    "mastering-the-job-hunt-with-ai": {
+      "title": "Mastering the Job Hunt: How to Leverage AI for Career Growth",
+      "outboundBlog": [
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
+        "/blog/what-is-an-ai-resume-builder",
+        "/blog/mastering-the-ai-resume-guide",
+        "/blog/mastering-ai-for-professional-document-creation",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/what-to-look-for-in-a-resume-builder",
+        "/blog/leveraging-ai-for-your-resume",
+        "/blog/mastering-the-applicant-tracking-system",
+        "/blog/how-to-write-a-resume-for-2026"
+      ],
+      "outboundProduct": [
+        "/resume-builder",
+        "/ats-score-checker",
+        "/interview-prep",
+        "/resume-examples",
+        "/templates",
+        "/resume-builder"
+      ]
+    },
+    "mastering-the-applicant-tracking-system": {
+      "title": "Mastering the Applicant Tracking System: A Guide for Modern Job Seekers",
+      "outboundBlog": [
+        "/blog/what-is-an-ai-resume-builder",
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/mastering-the-job-hunt-with-ai",
+        "/blog/how-long-should-a-resume-be",
+        "/blog/what-is-the-best-resume-format",
+        "/blog/how-to-choose-the-right-ai-resume-builder-for-your-career-transition",
+        "/blog/how-to-write-a-resume-step-by-step",
+        "/blog/how-to-optimize-your-resume-skills-using-an-ai-resume-builder",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
+        "/blog/how-to-use-ai-to-optimize-your-resume-for-ats-success",
+        "/blog/free-resume-builder-vs-making-a-resume-manually",
+        "/blog/how-to-write-a-resume-for-2026"
+      ],
+      "outboundProduct": [
+        "/resume-builder",
+        "/templates",
+        "/resume-examples",
+        "/ats-score-checker",
+        "/interview-prep",
+        "/resume-builder",
+        "/ats-score-checker"
+      ]
+    },
+    "mastering-ai-for-professional-document-creation": {
+      "title": "Mastering AI for Professional Document Creation",
+      "outboundBlog": [
+        "/blog/leveraging-ai-for-your-resume",
+        "/blog/what-information-should-you-put-on-a-resume",
+        "/blog/mastering-ai-resume-writing",
+        "/blog/ai-resume-builder-vs-writing-a-resume-from-scratch",
+        "/blog/15-common-resume-mistakes-that-can-cost-you-an-interview",
+        "/blog/how-to-write-resume-bullet-points-that-show-impact",
+        "/blog/mastering-the-job-hunt-with-ai",
+        "/blog/mastering-the-applicant-tracking-system"
+      ],
+      "outboundProduct": [
+        "/resume-builder",
+        "/resume-examples",
+        "/templates",
+        "/ats-score-checker",
+        "/interview-prep",
+        "/ats-score-checker",
+        "/resume-builder"
       ]
     }
   }
