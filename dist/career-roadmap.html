@@ -317,7 +317,7 @@
     }
   </style>
   <link rel="stylesheet" crossorigin href="/assets/index-BNHvRdOX.css">
-  <link rel="stylesheet" crossorigin href="/assets/tools-style-vX-9onmb.css">
+  <link rel="stylesheet" crossorigin href="/assets/tools-style-DJnY9CFe.css">
 </head>
 
 <body>
@@ -1228,7 +1228,7 @@
           if (!window.auth || !window.auth.isLoggedIn()) {
             if (window.toast) window.toast.info('Please log in or sign up to save roadmaps to your dashboard.');
             setTimeout(() => {
-              window.location.href = `signup.html?redirect=career-roadmap.html`;
+              window.location.href = `/signup?redirect=/career-roadmap`;
             }, 1500);
             return;
           }
@@ -1249,7 +1249,7 @@
           btnRecal.addEventListener('click', async () => {
             if (!window.auth || !window.auth.isLoggedIn()) {
               if (window.toast) window.toast.info('Sign in to recalibrate your roadmap based on progress.');
-              setTimeout(() => { window.location.href = 'login.html?redirect=career-roadmap.html'; }, 1200);
+              setTimeout(() => { window.location.href = '/login?redirect=/career-roadmap'; }, 1200);
               return;
             }
 

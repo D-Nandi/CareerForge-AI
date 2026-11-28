@@ -98,14 +98,15 @@ function inlineFormat(str) {
 // ─────────────────────────────────────────────────────────────
 for (const [slug, post] of Object.entries(BLOG_POSTS)) {
   const canonicalUrl = `https://careernest.taqnik.in/blog/${slug}`;
-  const docTitle = post.title.includes('CareerNest') ? post.title : `${post.title} | CareerNest`;
+  const baseTitle = post.title.replace(/\s*\|\s*(CareerNest|Career Guide).*$/i, '').trim();
+  const docTitle = (baseTitle.length + 13 <= 60) ? `${baseTitle} | CareerNest` : baseTitle;
   const metaDesc = post.summary || post.subtitle || '';
   const postHtmlContent = markdownToHtml(post.content);
 
   const schemaGraph = [
     {
       "@type": "BlogPosting",
-      "headline": post.title,
+      "headline": baseTitle,
       "description": post.summary || post.subtitle || '',
       "author": {
         "@type": "Person",
@@ -138,7 +139,7 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
         {
           "@type": "ListItem",
           "position": 3,
-          "name": post.title,
+          "name": baseTitle,
           "item": canonicalUrl
         }
       ]
@@ -608,7 +609,7 @@ for (const [slug, post] of Object.entries(BLOG_POSTS)) {
   <main class="article-wrap">
     <header class="article-header">
       <span class="article-cat-pill">${post.category || 'ATS Secrets'}</span>
-      <h1 class="article-h1">${post.title}</h1>
+      <h1 class="article-h1">${baseTitle}</h1>
       <p class="article-sub">${post.subtitle || post.summary || ''}</p>
 
       <div class="author-bar">

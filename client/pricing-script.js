@@ -349,7 +349,7 @@
 
         // Celebrate and redirect to dashboard after short delay
         setTimeout(() => {
-          window.location.href = 'dashboard.html?upgraded=true';
+          window.location.href = '/dashboard?upgraded=true';
         }, 1500);
       } else {
         throw new Error(verifyRes.message || 'Payment verification failed');

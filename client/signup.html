@@ -392,7 +392,7 @@
             };
             if (window.auth) window.auth.setUser(demoUser);
             showAlert('Signed in with Dev Session! Redirecting…', 'success');
-            setTimeout(() => window.location.href = 'dashboard.html', 800);
+            setTimeout(() => window.location.href = '/dashboard', 800);
           };
         }
         return;
@@ -433,7 +433,7 @@
           if (res.ok && data?.success && data?.user) {
             if (window.auth) window.auth.setUser(data.user);
             showAlert('Account created! Redirecting…', 'success');
-            setTimeout(() => window.location.href = 'dashboard.html', 800);
+            setTimeout(() => window.location.href = '/dashboard', 800);
             return;
           }
         } catch (fetchErr) {
@@ -452,7 +452,7 @@
         };
         if (window.auth) window.auth.setUser(fallbackUser);
         showAlert('Account created! Redirecting…', 'success');
-        setTimeout(() => window.location.href = 'dashboard.html', 800);
+        setTimeout(() => window.location.href = '/dashboard', 800);
       } catch (err) {
         handleFirebaseError(err);
       } finally {
@@ -516,7 +516,7 @@
 
         if (window.auth) window.auth.setUser(data.user);
         showAlert('Account created! Redirecting…', 'success');
-        setTimeout(() => window.location.href = 'dashboard.html', 800);
+        setTimeout(() => window.location.href = '/dashboard', 800);
       } catch (err) {
         showAlert('Something went wrong. Please try again.', 'error');
       } finally {

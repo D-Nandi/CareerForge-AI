@@ -6,4 +6,3 @@ const locMatches = [...sitemap.matchAll(/<loc>(https:\/\/careernest\.taqnik\.in[
 
 console.log('URLs in sitemap (' + locMatches.length + '):');
 locMatches.forEach(u => console.log('  ', u));
-

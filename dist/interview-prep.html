@@ -242,7 +242,7 @@
     }
   </style>
   <link rel="stylesheet" crossorigin href="/assets/index-BNHvRdOX.css">
-  <link rel="stylesheet" crossorigin href="/assets/tools-style-vX-9onmb.css">
+  <link rel="stylesheet" crossorigin href="/assets/tools-style-DJnY9CFe.css">
 </head>
 
 <body>
@@ -894,7 +894,7 @@
           if (!window.auth || !window.auth.isLoggedIn()) {
             if (window.toast) window.toast.info('Please log in or sign up to save interview practice sessions.');
             setTimeout(() => {
-              window.location.href = `signup.html?redirect=interview-prep.html`;
+              window.location.href = `/signup?redirect=/interview-prep`;
             }, 1500);
             return;
           }

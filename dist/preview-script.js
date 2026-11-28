@@ -1615,7 +1615,7 @@ function openViralModal() {
   const slug = `${fName}-${lName}`.toLowerCase().replace(/[^a-z0-9]/g, '-');
   
   if (shareableLinkInput) {
-    shareableLinkInput.value = `${window.location.origin}/r.html?id=${slug}`;
+    shareableLinkInput.value = `${window.location.origin}/r?id=${slug}`;
   }
   if (referralCodeInput) {
     referralCodeInput.value = `https://careernest.taqnik.in/?ref=${fName.toUpperCase()}_PRO`;

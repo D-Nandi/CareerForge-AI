@@ -335,11 +335,11 @@ function buildCLRow(cl) {
 //  ACTIONS — RESUME
 // ══════════════════════════════════════════════════════
 function editResume(id) {
-  window.location.href = `preview.html?resumeId=${id}`;
+  window.location.href = `/preview?resumeId=${id}`;
 }
 
 async function downloadResume(id) {
-  window.location.href = `preview.html?resumeId=${id}&download=true`;
+  window.location.href = `/preview?resumeId=${id}&download=true`;
 }
 
 // ══════════════════════════════════════════════════════

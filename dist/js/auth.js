@@ -71,7 +71,7 @@
     }
 
     clearUser();
-    window.location.href = '/login.html';
+    window.location.href = '/login';
   }
 
   // Auto-verify on boot if user is believed to be logged in

@@ -4,6 +4,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/form-index",
       "destination": "/resume-builder",
       "permanent": true
@@ -16,16 +26,12 @@
   ],
   "rewrites": [
     {
-      "source": "/resume-builder",
-      "destination": "/resume-builder.html"
-    },
-    {
       "source": "/blog/:slug",
-      "destination": "/blog-post.html?slug=:slug"
+      "destination": "/blog-post?slug=:slug"
     },
     {
       "source": "/resume-examples/:role",
-      "destination": "/resume-example.html?role=:role"
+      "destination": "/resume-example?role=:role"
     }
   ],
   "headers": [

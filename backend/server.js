@@ -75,6 +75,32 @@ const staticDir = (isProd && fs.existsSync(path.join(__dirname, '../dist')))
   ? path.join(__dirname, '../dist')
   : path.join(__dirname, '../client');
 
+// Direct redirects to eliminate mobile redirect chains
+app.get(['/index.html', '/index'], (req, res) => {
+  return res.redirect(301, '/');
+});
+
+app.get(['/form-index', '/form-index.html'], (req, res) => {
+  return res.redirect(301, '/resume-builder');
+});
+
+// Legacy blog 301 redirects to preserve SEO PageRank and fix Search Console 404s
+app.get(['/blog/how-to-beat-ats-in-2025', '/blog-post?slug=how-to-beat-ats-in-2025'], (req, res) => {
+  return res.redirect(301, '/blog/how-to-use-ai-to-optimize-your-resume-for-ats-success');
+});
+app.get(['/blog/cover-letter-secrets-2025', '/blog-post?slug=cover-letter-secrets-2025'], (req, res) => {
+  return res.redirect(301, '/cover-letter-generator');
+});
+
+// Eliminate trailing slash redirect chains on subpaths
+app.use((req, res, next) => {
+  if (req.path.length > 1 && req.path.endsWith('/')) {
+    const query = req.url.slice(req.path.length);
+    return res.redirect(301, req.path.slice(0, -1) + query);
+  }
+  next();
+});
+
 app.get('/robots.txt', (req, res) => {
   const robotsFile = path.join(staticDir, 'robots.txt');
   res.type('text/plain').set('Cache-Control', 'public, max-age=86400, s-maxage=86400').sendFile(robotsFile);
